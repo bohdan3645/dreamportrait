@@ -1,0 +1,105 @@
+.cartContent {
+	background-color: rgb(255,255,255,0.4);
+	padding: 20px;
+	margin-top: 40px;
+}
+
+.cartHead {
+	font-size: 30px;
+	font-family: hellofreeday;
+	color: #6A57A4;
+
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.orderDetails {
+	display: grid;
+	grid-template-columns: 50px 210px auto 100px 100px;
+	padding: 20px 20px 20px 0;
+	background-color: rgb(255,255,255,0.6);
+	margin-bottom: 20px;
+}
+
+
+.namberOfOrder, .price-Order, .deleteOrder {
+	padding: 60px 10px;
+	text-align: center;
+}
+
+.orderPhoto {
+	margin: 0 25px;
+	background-color:#DDD8E5;
+
+}
+.orderPhoto img {
+	position: absolute;
+	overflow: hidden; 
+	 width: 160px; 
+	 height: 105px;
+	 object-fit: cover;
+	 margin-top: 27.5px
+}
+
+
+
+.details {
+	padding: 10px 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	line-height: 22px;
+}
+.hOrder {
+	font-size: 20px;
+  font-family: hellofreeday;
+	color: #6A57A4;
+
+  margin-bottom: 30px;
+}
+
+.nextPartOrder {
+display: grid;
+justify-content: flex-end;
+}
+
+.saveOfOrder, .grandTotal {
+	font-size: 16px;
+	/*text-align: center;*/
+}
+
+.updateBtn {
+	width: 95px;
+	height: 30px;
+	font-size: 15px;
+    font-family: hellofreeday;
+	color: #fff;
+	background-color: #BFBFBF;
+	border: none;
+	margin: 20px 10px 10px 10px;
+	}
+
+.checkoutBtn {
+	width: 200px;
+	height: 30px;
+	font-size: 15px;
+    font-family: hellofreeday;
+	color: #fff;
+	background-color: #00D15A;
+	border: none;
+	
+}
+
+
+@media(max-width: 770px){
+	
+}
+
+@media(max-width: 483px){
+	.cartContent {
+	width: 770px;
+	}
+}
+
+@media(max-width: 378px){
+
+}

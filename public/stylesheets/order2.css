@@ -1,0 +1,17 @@
+
+.grid-container-order{
+	word-break: break-all;
+	overflow: hidden;
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+.mainItemOne{ 
+	background-color: yellow;
+}
+
+
+
+.mainItemTwo{
+	background-color: red;
+}

@@ -1,0 +1,43 @@
+<div class="row">
+ <div class="registerContent">
+  <div class="register">RGISTER</div>
+  <hr>
+  <div class="welcome">Welcome!</div>
+
+{{#if hasErrors}}
+<div class="alert alert-danger">
+	{{# each messages}}
+	<p>{{ this}}</p>
+	{{/each}}
+</div>
+ {{/if}}
+
+ <form action="/user/register" method="post">
+     <div class="names">
+     <div class="form-group" >
+          <input type="text2" id="FirstNameRegister" name="firstName" class="formName" placeholder="First Name">
+     </div>
+     <div class="form-group">
+          <input type="text2" id="lastNameRegister" name="lastName" class="formName" placeholder="Last Name">
+     </div>
+</div>
+ 	<div class="form-group">
+ 		<input type="text3" id="email" name="email" class="form-control" placeholder="E-mail">
+ 	</div>
+<div class="form-group">
+ 		<input type="password" id="password" name="password" class="form-control" placeholder="Password">
+<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+ 		<div class="btn">
+     <button class="registerBtn">REGISTER</button>
+</div>
+<hr>
+<div class="subtitleRegister">
+Alredy have an account? <a href="">Sign In</a>
+</div>
+ </div>
+ 	</div>
+ </form>
+
+</div>
+	</div>
+</div>

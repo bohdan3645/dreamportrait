@@ -1,0 +1,281 @@
+.grid-item.item0{
+ height: 1700px;
+ padding: 30px;
+ grid-column: 1;
+}
+
+.flex-container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flex-container > div{ 
+  width: 460px;
+  background-color: rgb(255,255,255,0.4);
+  margin: 5px 5px;
+  padding: 20px 20px;
+}
+
+.galery {
+  width: 420px;
+}
+
+
+.people-amount-image{
+  width: 70px;
+  height: 70px;
+  padding: 0;
+  font-family: hellofreeday;
+  margin: 3px 3px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 50%;
+  border-color: #fff;
+  border: 3px solid #D5AEA2;
+  transition: border .1s;
+  outline: none;
+}
+.people-amount-image:hover{
+  border: 3px solid #000;
+  
+}
+.people-amount-image-clicked {
+    border: 3px solid #000;
+  }
+
+.background-image{
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  font-family: hellofreeday;
+  margin: 3px 3px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid #D5AEA2;
+  transition: border .1s;
+  outline: none;
+}
+.background-image:hover{
+  border: 3px solid #000;
+  
+}
+.people-amount-image, .background-image  {
+    border-radius: 100%;
+  }
+
+
+.upload_btn{
+  background-color: #F74C4C;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-family: hellofreeday;
+  font-size: 28px;
+  padding: 14px 75px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-left: 95px;
+  margin-top: 5px;
+  outline: none;
+}
+.upload_btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.upload_btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.upload_btn:hover span {
+  padding-right: 25px;
+}
+
+.upload_btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+.add_btn{
+  width: 350px;
+  height: 60;
+  background-color: #4FC478;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  font-family: hellofreeday;
+  padding: 14px 60px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px 45px 5px;
+  outline: none;
+  
+}
+.add_btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.add_btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.add_btn:hover span {
+  padding-right: 25px;
+}
+
+.add_btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+/*=============================*/
+ .grid-item.item01 {
+ height: 1700px;
+ padding: 30px;
+ grid-column: 2;
+
+}
+
+
+.container-with-photos { 
+ overflow: hidden; 
+ margin: 20px;
+ width: 430px; 
+ height: 425px;
+}
+.items-with-photo { 
+  float: left; 
+  margin-right: 1px; 
+  margin-bottom: 1px; 
+  width: 141px; 
+  height: 141px; 
+  overflow: hidden;
+}
+.items-with-photo img {
+  width: 141px; 
+  height: 141px; 
+  object-fit: cover;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container img {
+  vertical-align: middle;
+}
+
+.container a {
+  text-decoration: none;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+    width: 300px;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(243, 206, 206, 0.5);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+

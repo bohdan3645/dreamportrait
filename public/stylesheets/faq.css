@@ -1,0 +1,48 @@
+.grid-container5 {
+  display: grid;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.grid-container5 > div {
+  background-color: rgb(255,255,255,0.4);
+  padding: 10px 10px;
+  margin: 30px;
+  text-align: center;
+}
+
+.textFQ{
+  text-align: left;
+  font-size: 10px;
+  padding: 0 26px;
+  margin: 5px 0;
+}
+
+
+@media(max-width: 770px){
+    .grid-container5 > div {
+    margin: 30px 0;
+    }
+
+}
+
+@media (max-width: 483px) {
+    .grid-container5 > div {
+      margin: 50px 10px ;
+    }
+
+    .textFQ {
+    font-size: 15px;
+    }
+
+}
+
+@media(max-width: 378px){
+    .grid-container5 > div {
+      margin: 50px 0 ;
+    }
+
+    .textFQ {
+    font-size: 24px;
+    }
+}

@@ -1,0 +1,183 @@
+
+hr{
+  border: 1px solid #fff;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+@font-face{
+  font-family: hellofreeday;
+  src: url(hellofreeday.demo.otf);
+}
+@font-face{
+  font-family: MidnightConstellations;
+  src: url(MidnightConstellations.ttf);
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5{
+  margin: 0;
+}
+
+.row {
+  margin: 0;
+}
+/*==================================*/
+
+.grid-container {
+  display: grid;
+}
+
+/*==================================*/
+
+.grid-item.item1 {
+  width: 100%;
+  grid-row: 1;
+  grid-column: 1 / span 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px 10px 10px;
+  height: 130px;
+  background-color: #F8D7FD;
+  margin: 0;
+}
+
+.navLink {
+  font-size: 20px;
+  text-decoration: none;
+  font-family: hellofreeday;
+}
+.nav__link1{
+  margin-left: 20px;
+  color: #4B538D;
+}
+.nav__link1:hover {
+  font-size: 20.2px;
+}
+
+.nav__link2:hover {
+  font-size: 18.5px;
+}
+
+
+.nav__link2{
+  margin: 0 5px;
+  color: #4B538D;
+}
+
+
+.logo{
+  max-width: 550px;
+  padding-right: 250px;
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: 0;
+  padding: 9px 2px;
+  cursor: pointer;
+}
+
+
+
+.brgSpan {
+  display: block;
+  width: 40px;
+  height: 5px;
+  margin: 5px;
+
+  background-color: #000;
+  position: relative;
+}
+
+.brgSpan:before,
+.brgSpan:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+
+  background-color: #000;
+
+  position: absolute;
+  left: 0;
+  z-index: 1;
+}
+
+.brgSpan:before {
+  top: 10px;
+}
+.brgSpan:after {
+  bottom: 10px;
+}
+
+
+
+@media(max-width: 1230px){
+  .navLink {
+      display: none;
+    }
+
+    .burger {
+      display: block;
+    } 
+
+
+
+
+
+    .navLink {
+  overflow: hidden;
+  background-color: #333;
+  position: relative;
+}
+
+.navLink a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+.navLink a:hover {
+  background-color: #ddd;
+  color: black;
+}
+}
+
+@media(max-width: 770px){
+     .grid-item.item1 {
+     /*width: 768px;*/
+     }
+     
+     .logo{
+      max-width: 350px;
+      padding-right: 0;
+    }
+
+
+
+
+
+
+
+}
+
+@media (max-width: 483px) 
+{   
+
+}
+
+@media(max-width: 378px){
+
+    
+}
+

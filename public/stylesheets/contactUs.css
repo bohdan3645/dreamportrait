@@ -1,0 +1,71 @@
+
+textarea {
+  width: 340px;
+  height: 120px;
+  padding: 12px 12px;
+  margin: 3px; 
+
+  font-family: 'Releway', sans-serif;
+  border: none;
+  background-color: #fff;
+  resize: none;
+}
+input[type="text1"], [type="text2"]{
+ padding: 12px 12px;
+ width: 166px; 
+ height: 40px; 
+ margin: 3px 2px; 
+ line-height: 28px; 
+ border: none;
+}
+input[type="email"]{ 
+  padding: 12px 12px;
+  width: 340px; 
+  height: 40px; 
+  margin: 3px; 
+  line-height: 28px; 
+  border: none;
+}
+
+.grid-container1 {
+  display: grid;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.grid-container1 h {
+  font-size: 60px;
+  font-family: MidnightConstellations;
+}
+.grid-container1 p {
+  
+}
+
+.grid-container1 > div {
+  background-color: rgb(255,255,255,0.4);
+  padding: 5px 10px;
+  margin: 30px;
+  text-align: center;
+  width: 420px;
+}
+
+.textCU{
+  text-align: left;
+  font-size: 10px;
+  padding: 0 26px;
+  margin: 5px 0;
+}
+
+.sendBtn{
+  width: 180px;
+  height: 40px;
+  font-size: 18px;
+  font-family: hellofreeday;
+  color: #fff;
+  background-color: #00D15A;
+  border: none;
+  margin: 5px 0;
+}
+.sendBtn:hover{
+  background-color: rgb(0, 209, 90, .6);
+}

@@ -1,0 +1,96 @@
+.grid-container {
+  display: grid;
+  grid-gap: 1px;
+}	
+
+.grid-item {
+	width: 100%;
+	grid-row: 1; 
+}
+
+.firstContainerHomePage {
+	  position: relative;
+	  width: 100%;
+	  display: flex;
+	  text-align: center;
+	}
+
+.center_title {
+	  position: absolute;
+	  font-family: hellofreeday;
+	  background-color: rgb(106, 87, 164, 0.5);
+	  width:100%;
+	  font-size: 48px;
+	  padding: 70px 70px 10px 70px;
+	  letter-spacing: 3px;
+	  color: #fff;
+	  box-shadow:0px 40px 50px 43px rgb(106, 87, 164, 0.5) ;
+	}
+
+
+.firstContainerHomePage img {
+	  width: 1550px;
+	  height: auto;
+	  margin-top: 23px;
+	}
+
+.firstContainerHomePage .getMyPortrait {
+	  position: absolute;
+	  margin-left: 550px;
+	  margin-top: 750px;
+	  align-self: center;
+	  background-color: #FF007C;
+	  font-size: 36px;
+	  width: 420px;
+	  height: 70px;
+      display: inline-block;
+	  font-family: hellofreeday;
+	  border-radius: 16px; 
+	  color: #fff;
+	  border: none;
+	  cursor: pointer;
+	  -webkit-box-shadow: 0px 0px 22px 43px rgba(255,255,255,0.8);
+	  -moz-box-shadow: 0px 0px 22px 43px rgba(255,255,255,0.8);
+      box-shadow: 0px 0px 22px 43px rgba(255,255,255,0.8);
+	}
+
+
+.instructionOfOrder{
+	display: grid;
+	padding: 30px 350px 30px;
+	background-color: #F0EDEC;
+	margin-bottom: 30px;
+}
+
+.gridT{
+	width: 100%;
+	  font-family: hellofreeday;
+	  font-size: 32px;
+	  text-align: center;
+	  color: #4B538D;
+}
+
+
+.grid-container7 {
+  display: grid;
+  padding: 10px;
+}
+.grid-container7 > div {
+  grid-template-columns: 260px 260px 260px;
+  padding: 25px  0;
+  margin: 5px  20px 5px 20px;
+  font-size: 20px;
+  font-family: hellofreeday;
+  text-align: center;
+}
+
+.rev{
+    margin-top: 20px;
+}
+
+.rev h3{
+	text-align: center;
+	font-size: 13px;
+	letter-spacing: 1px;
+	font-family: Arial, Helvetica, sans-serif;
+}
