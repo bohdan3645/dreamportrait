@@ -1,148 +1,134 @@
-
 <div class="row">
- <div class="cartContent">
-
-  <div class="cartHead">CART</div>
-
-<div id="cart">
-
+    <div class="cartContent">
+        <div class="cartHead">CART</div>
+        <div id="cart">
+        </div>
+        <div class="nextPartOrder">
+            <div class="saveOfOrder">YOU SAVE:</div>
+            <div class="grandTotal">GRAND TOTAL:</div> <br>
+            <div class="expireCart">The cart will expire in:</div>
+            <span>
+                <button class="updateBtn">UPDATE</button>
+                <button class="checkoutBtn">PROCEED TO CHECKOUT</button>
+            </span>
+        </div>
+        <p id="total-price">total price:</p>
+    </div>
 </div>
+<script>
+showCartElement();
+var selectedPeopleAmount = null;
+var selectedBakcground = null;
 
-<div class="nextPartOrder">
-    <div class="saveOfOrder">YOU SAVE:</div>
-    <div class="grandTotal">GRAND TOTAL:</div> <br>
+var addToCart = document.getElementById('add-to-cart');
 
-    <div class="expireCart">The cart will expire in:</div>
-<span>
-     <button class="updateBtn">UPDATE</button>
-     <button class="checkoutBtn">PROCEED TO CHECKOUT</button>
-     </span>
-     </div>
-    
-<p id="total-price">total price:</p>
-
-</div>
- </div>
-
- <script>
-  showCartElement();
-  var selectedPeopleAmount = null;
-  var selectedBakcground = null;
-  
-  var addToCart = document.getElementById('add-to-cart');
-  
-  addToCart.addEventListener('click', function (event) { 
+addToCart.addEventListener('click', function(event) {
     if (selectedPeopleAmount != null) {
-      
-      var localStorageCart = JSON.parse(localStorage.getItem("cart"));
-      
-      if (localStorageCart == null) {
-        localStorageCart = [];
-      }
 
-      localStorageCart.push({
-        selectedPeople: selectedPeopleAmount,
-        selectedBakcground: selectedBakcground
-      });
-      
-      localStorage.setItem("cart", JSON.stringify(localStorageCart));
-      showCartElement();
+        var localStorageCart = JSON.parse(localStorage.getItem("cart"));
+
+        if (localStorageCart == null) {
+            localStorageCart = [];
+        }
+
+        localStorageCart.push({
+            selectedPeople: selectedPeopleAmount,
+            selectedBakcground: selectedBakcground
+        });
+
+        localStorage.setItem("cart", JSON.stringify(localStorageCart));
+        showCartElement();
     }
-  });
-  
-  var peopleAmountImages = document.getElementsByClassName("people-amount-image");
-   
-  for (var i = 0; i < peopleAmountImages.length; i++) {
-    peopleAmountImages[i].addEventListener('click', function (event) {
-      for (var j = 0; j < peopleAmountImages.length; j++) {
-        peopleAmountImages[j].className = "people-amount-image";
-      }
-    
-      var price = Number(event.target.getAttribute('data-price'));
-      var id = event.target.getAttribute('data-id');
-      
-      event.target.className += " people-amount-image-clicked";
-      
-      selectedPeopleAmount = {
-        id: id,
-        price: price
-      };
+});
+
+var peopleAmountImages = document.getElementsByClassName("people-amount-image");
+
+for (var i = 0; i < peopleAmountImages.length; i++) {
+    peopleAmountImages[i].addEventListener('click', function(event) {
+        for (var j = 0; j < peopleAmountImages.length; j++) {
+            peopleAmountImages[j].className = "people-amount-image";
+        }
+
+        var price = Number(event.target.getAttribute('data-price'));
+        var id = event.target.getAttribute('data-id');
+
+        event.target.className += " people-amount-image-clicked";
+
+        selectedPeopleAmount = {
+            id: id,
+            price: price
+        };
     });
-  }
+}
 
-  
-  var backgroundImage = document.getElementsByClassName("background-image");
-  
-  for (var i = 0; i < backgroundImage.length; i++) {
-    backgroundImage[i].addEventListener('click', function (event) {
-      for (var j = 0; j < backgroundImage.length; j++) {
-        backgroundImage[j].className = "background-image";
-      }
-      
-      var price = Number(event.target.getAttribute('data-price'));
-      var id = event.target.getAttribute('data-id');
-      var name = event.target.getAttribute('name');
 
-      
-      event.target.className += " people-amount-image-clicked";
-      
-      selectedBakcground = {
-        id: id,
-        price: price,
-        name: name
-      };
+var backgroundImage = document.getElementsByClassName("background-image");
+
+for (var i = 0; i < backgroundImage.length; i++) {
+    backgroundImage[i].addEventListener('click', function(event) {
+        for (var j = 0; j < backgroundImage.length; j++) {
+            backgroundImage[j].className = "background-image";
+        }
+
+        var price = Number(event.target.getAttribute('data-price'));
+        var id = event.target.getAttribute('data-id');
+        var name = event.target.getAttribute('name');
+
+
+        event.target.className += " people-amount-image-clicked";
+
+        selectedBakcground = {
+            id: id,
+            price: price,
+            name: name
+        };
     });
-  }
-  
-  function getItemTemplate(numPpl, bgName, price, text, image) {
-    return '<div class="orderDetails">'
-  +'<div class="namberOfOrder"><b>0000</b></div>'
-  +'<div class="orderPhoto"><img src="' + image +'"></div>'
-  +'<div class="details">'
-   + '<div class="hOrder">Original Dream Portrait Art</div>'
-    +'<div class="numberOfPeopleOrder">Number of people: ' + numPpl +'</div>'
-    +'<div class="backgroundOrder">Background: ' + bgName + '</div>'
-    +'<div class="noteOrder">Note: ' + text + '</div>'
-    +'<div class="priceOrder">Price: ' + price + '</div>'
-      +'</div>'
-  +'<div class="price-Order"><b>$</b></div>'
-    +'<button class="deleteOrder" onclick="ClearData()"><img src="/images/container.png" alt=""></button>'
-+'</div>';
-  };
+}
 
-    function showCartElement() {
+function getItemTemplate(numPpl, bgName, price, text, image) {
+    return '<div class="orderDetails">' +
+        '<div class="namberOfOrder"><b>0000</b></div>' +
+        '<div class="orderPhoto"><img src="' + image + '"></div>' +
+        '<div class="details">' +
+        '<div class="hOrder">Original Dream Portrait Art</div>' +
+        '<div class="numberOfPeopleOrder">Number of people: ' + numPpl + '</div>' +
+        '<div class="backgroundOrder">Background: ' + bgName + '</div>' +
+        '<div class="noteOrder">Note: ' + text + '</div>' +
+        '<div class="priceOrder">Price: ' + price + '</div>' +
+        '</div>' +
+        '<div class="price-Order"><b>$</b></div>' +
+        '<button class="deleteOrder" onclick="ClearData()"><img src="/images/container.png" alt=""></button>' +
+        '</div>';
+};
+
+function showCartElement() {
     var localStorageCart = JSON.parse(localStorage.getItem("cart"));
     var totalPrice = 0;
-    
+
     if (!localStorageCart) {
-      return;
+        return;
     }
-    
+
     var shoppingCart = document.getElementById('cart');
     shoppingCart.innerHTML = '';
-    
+
     for (var i = 0; i < localStorageCart.length; i++) {
-      var item = localStorageCart[i];
-      totalPrice += item.selectedPeople.price;
-      
-      if (item.selectedBakcground != null) {
-        totalPrice += item.selectedBakcground.price;
-      }
-      
-      if (item.selectedBakcground != null) {
-        shoppingCart.innerHTML += getItemTemplate(item.selectedPeople.id, item.selectedBakcground.name, item.selectedPeople.price, item.wishesText, item.image);
-      } else {
-      shoppingCart.innerHTML += 
-        "<li>People: " + item.selectedPeople.id + " - $" + item.selectedPeople.price + "</li>";
-      }
+        var item = localStorageCart[i];
+        totalPrice += item.selectedPeople.price;
+
+        if (item.selectedBakcground != null) {
+            totalPrice += item.selectedBakcground.price;
+        }
+
+        if (item.selectedBakcground != null) {
+            shoppingCart.innerHTML += getItemTemplate(item.selectedPeople.id, item.selectedBakcground.name, item.selectedPeople.price, item.wishesText, item.image);
+        } else {
+            shoppingCart.innerHTML +=
+                "<li>People: " + item.selectedPeople.id + " - $" + item.selectedPeople.price + "</li>";
+        }
     }
-    
+
     var totalPriceElement = document.getElementById('total-price');
     totalPriceElement.innerHTML = 'Total Price : $' + totalPrice;
-  }
-
-
-  
- 
- </script>
-
+}
+</script>

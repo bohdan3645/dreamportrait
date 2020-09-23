@@ -1,103 +1,78 @@
-  
 <div class="row">
-  <div class="grid-container">
-<div class="grid-item item0">
-<div class="flex-container">
-<div class="descriptionOfSale">
-      <h2>Original DreamPortrait art</h2>
-      <div>
-          <img src="/images/stars.png">
-          <h3> 62 reviews</h3>
-      </div>
-        <hr>
-          <img src="/images/airport.png"><p><b>Estimated delivery time 5-10 days</b></p>
-          <h3><b>Only 11 arts left at this price</b></h3>
- </div>
-</div>
-
-<div class="flex-container">
-  <div>
-<h4 class="features__title">Number of people & pets:</h4>
-<div>
-  <button data-price="49" data-id="1" class="people-amount-image"><b>1</b><br>people</button> 
-  <button data-price="59" data-id="2" class="people-amount-image"><b>2</b><br>people</button>
-  <button data-price="69" data-id="3" class="people-amount-image"><b>3</b><br>people</button>
-  <button data-price="79" data-id="4" class="people-amount-image"><b>4</b><br>people</button>
-  <button data-price="89" data-id="5" class="people-amount-image"><b>5</b><br>people</button>
-</div>
-<div>
-  <button data-price="99" data-id="6" class="people-amount-image"><b>6</b><br>people</button>
-  <button data-price="109" data-id="7" class="people-amount-image"><b>7</b><br>people</button>
-  <button data-price="119" data-id="8" class="people-amount-image"><b>8</b><br>people</button>
-  <button data-price="129" data-id="9" class="people-amount-image"><b>9</b><br>people</button>
-  <button data-price="139" data-id="10" class="people-amount-image"><b>10</b><br>people</button>
-  </div>
-</div>
-</div>
-
-<div class="flex-container">
-  <div>
-<h4 class="features__title">Background:</h4>
-
-      <img class="galery" src="/images/gallery.png" >
-<div>
-  <img data-price="0" data-id="11" class="background-image" src="/images/12x18 H starry night.jpg" 
-  name="Starry Night" width="70" height="70">
-  
-
-  <img data-price="0" data-id="12" class="background-image" src="/images/18x12 H beach.jpg"
-  name="Beach" width="70" height="70">
- 
-
-  <img data-price="0" data-id="13" class="background-image" src="/images/12x18 H hearts.jpg"
-  name="Hearts" width="70" height="70">
-
-  <img data-price="0" data-id="14" class="background-image" src="/images/12x18 H castle.jpg"
-  name="Castle" width="70" height="70">
-
-  <img data-price="0" data-id="15" class="background-image" src="/images/12x18 bokeh.jpg"
-  name="Bokeh" width="70" height="70">
-
-  <button data-price="25" data-id="111" class="background-image">custom
-  </button>
-</div>
-</div>
-</div>
-
-<div class="flex-container">
-  <div>
-<h4 class="features__title">Notes (eye, color, particular<br> accessories, details, special test):</h4>
-      <textarea class="input_text" id="text-in" type="input" oninput="textIn(this.value)" style="width: 100%; height: 150px;"></textarea>
-      <p id="demo"></p>
-    </div>
-    </div>
-
-<div class="flex-container">
-<div>
-<h4 class="features__title">Upload your photo</h4>
-      <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
-      <div id="imgTest" style="display: none"></div>
-</div>
-</div>
-
-<div class="flex-container">
-  <div>
-      <button class="add_btn" id="add-to-cart"><span>ADD TO CART</span></button>
-     <form method="post" action="/doOrdersTest"> 
-      <button class="sendBtn" id="sendBtnId"><span>SEND</span></button>
-    </form>
-
-    </div>
-    </div>
-    
-</div>
-     
-     
-     
-
-  <div class="grid-item item01">
-
-   <!--  <img class="big_image" src="images/artwork.png">
+    <div class="grid-container">
+        <div class="grid-item item0">
+            <div class="flex-container">
+                <div class="descriptionOfSale">
+                    <h2>Original DreamPortrait art</h2>
+                    <div>
+                        <img src="/images/stars.png">
+                        <h3> 62 reviews</h3>
+                    </div>
+                    <hr>
+                    <img src="/images/airport.png">
+                    <p><b>Estimated delivery time 5-10 days</b></p>
+                    <h3><b>Only 11 arts left at this price</b></h3>
+                </div>
+            </div>
+            <div class="flex-container">
+                <div>
+                    <h4 class="features__title">Number of people & pets:</h4>
+                    <div>
+                        <button data-price="49" data-id="1" class="people-amount-image"><b>1</b><br>people</button>
+                        <button data-price="59" data-id="2" class="people-amount-image"><b>2</b><br>people</button>
+                        <button data-price="69" data-id="3" class="people-amount-image"><b>3</b><br>people</button>
+                        <button data-price="79" data-id="4" class="people-amount-image"><b>4</b><br>people</button>
+                        <button data-price="89" data-id="5" class="people-amount-image"><b>5</b><br>people</button>
+                    </div>
+                    <div>
+                        <button data-price="99" data-id="6" class="people-amount-image"><b>6</b><br>people</button>
+                        <button data-price="109" data-id="7" class="people-amount-image"><b>7</b><br>people</button>
+                        <button data-price="119" data-id="8" class="people-amount-image"><b>8</b><br>people</button>
+                        <button data-price="129" data-id="9" class="people-amount-image"><b>9</b><br>people</button>
+                        <button data-price="139" data-id="10" class="people-amount-image"><b>10</b><br>people</button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container">
+                <div>
+                    <h4 class="features__title">Background:</h4>
+                    <img class="galery" src="/images/gallery.png">
+                    <div>
+                        <img data-price="0" data-id="11" class="background-image" src="/images/12x18 H starry night.jpg" name="Starry Night" width="70" height="70">
+                        <img data-price="0" data-id="12" class="background-image" src="/images/18x12 H beach.jpg" name="Beach" width="70" height="70">
+                        <img data-price="0" data-id="13" class="background-image" src="/images/12x18 H hearts.jpg" name="Hearts" width="70" height="70">
+                        <img data-price="0" data-id="14" class="background-image" src="/images/12x18 H castle.jpg" name="Castle" width="70" height="70">
+                        <img data-price="0" data-id="15" class="background-image" src="/images/12x18 bokeh.jpg" name="Bokeh" width="70" height="70">
+                        <button data-price="25" data-id="111" class="background-image">custom
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container">
+                <div>
+                    <h4 class="features__title">Notes (eye, color, particular<br> accessories, details, special test):</h4>
+                    <textarea class="input_text" id="text-in" type="input" oninput="textIn(this.value)" style="width: 100%; height: 150px;"></textarea>
+                    <p id="demo"></p>
+                </div>
+            </div>
+            <div class="flex-container">
+                <div>
+                    <h4 class="features__title">Upload your photo</h4>
+                    <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+                    <div id="imgTest" style="display: none"></div>
+                </div>
+            </div>
+            <div class="flex-container">
+                <div>
+                    <button class="add_btn" id="add-to-cart"><span>ADD TO CART</span></button>
+                    <form method="post" action="/doOrdersTest">
+                        <button class="sendBtn" id="sendBtnId"><span>SEND</span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="grid-item item01">
+            <!--  <img class="big_image" src="images/artwork.png">
 
   <div class="container-with-photos">
     <div class="items-with-photo"><img src="ex 2 full.jpg"></div>
@@ -111,214 +86,198 @@
     <div class="items-with-photo"><img src="ex10 full.jpg"></div>
   </div>
   <img src="priceff.png"> -->
-
-
-<div class="container">
-  <div class="mySlides">
-    <img src="/images/ex1 full.jpg" style="width:300px; height:300px">
-  </div>
-
-  <div class="mySlides">
-    <img src="/images/ex 2 full.jpg" style="width:300px; height:300px">
-  </div>
-
-  <div class="mySlides">
-    <img src="/images/ex3 full.jpg" style="width:300px; height:300px">
-  </div>
-    
-  <div class="mySlides">
-    <img src="/images/ex4 full.jpg" style="width:300px; height:300px">
-  </div>
-
-  <div class="mySlides">
-    <img src="/images/ex5 full.jpg" style="width:300px; height:300px">
-  </div>
-    
-  <div class="mySlides">
-    <img src="/images/ex6 full.jpg" style="width:300px; height:300px">
-  </div>
-<a class="prev" onclick="plusSlides(-1)">❮</a>
-  <a class="next" onclick="plusSlides(1)">❯</a>
-
-
+            <div class="container">
+                <div class="mySlides">
+                    <img src="/images/ex1 full.jpg" style="width:300px; height:300px">
+                </div>
+                <div class="mySlides">
+                    <img src="/images/ex 2 full.jpg" style="width:300px; height:300px">
+                </div>
+                <div class="mySlides">
+                    <img src="/images/ex3 full.jpg" style="width:300px; height:300px">
+                </div>
+                <div class="mySlides">
+                    <img src="/images/ex4 full.jpg" style="width:300px; height:300px">
+                </div>
+                <div class="mySlides">
+                    <img src="/images/ex5 full.jpg" style="width:300px; height:300px">
+                </div>
+                <div class="mySlides">
+                    <img src="/images/ex6 full.jpg" style="width:300px; height:300px">
+                </div>
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+            </div>
+        </div>
+    </div>
 </div>
-
-</div>  
-</div>
-</div>
-<script>paypal.Buttons().render('body');</script>
-
+<script>
+paypal.Buttons().render('body');
+</script>
 <script>
 var slideIndex = 1;
 // showSlides(slideIndex);
 
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+    showSlides(slideIndex += n);
 }
 
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+    showSlides(slideIndex = n);
 }
 
 function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("demo");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
 }
 
 // =============================
 
 
-  var selectedPeopleAmount = null;
-  var selectedBakcground = null;
-  var wishesText = null;
-  var image = null;
-
-  
-
-  var addToCart = document.getElementById('add-to-cart');
-  var textIn = document.getElementById('text-in');
+var selectedPeopleAmount = null;
+var selectedBakcground = null;
+var wishesText = null;
+var image = null;
 
 
 
-  addToCart.addEventListener('click', function (event) { 
+var addToCart = document.getElementById('add-to-cart');
+var textIn = document.getElementById('text-in');
+
+
+
+addToCart.addEventListener('click', function(event) {
 
     if (selectedPeopleAmount != null) {
-      
-      var localStorageCart = JSON.parse(localStorage.getItem("cart"));
-      
-      if (localStorageCart == null) {
-        localStorageCart = [];
-      }
 
-      localStorageCart.push({
-        selectedPeople: selectedPeopleAmount,
-        selectedBakcground: selectedBakcground,
-        wishesText: wishesText,
-        image: image
-      });
-      
-      localStorage.setItem("cart", JSON.stringify(localStorageCart));
-      
+        var localStorageCart = JSON.parse(localStorage.getItem("cart"));
+
+        if (localStorageCart == null) {
+            localStorageCart = [];
+        }
+
+        localStorageCart.push({
+            selectedPeople: selectedPeopleAmount,
+            selectedBakcground: selectedBakcground,
+            wishesText: wishesText,
+            image: image
+        });
+
+        localStorage.setItem("cart", JSON.stringify(localStorageCart));
+
     }
-  });
-  
-  var peopleAmountImages = document.getElementsByClassName("people-amount-image");
-   
-  for (var i = 0; i < peopleAmountImages.length; i++) {
-    peopleAmountImages[i].addEventListener('click', function (event) {
+});
 
-      for (var j = 0; j < peopleAmountImages.length; j++) {
-        peopleAmountImages[j].className = "people-amount-image";
-      }
-    
-      var price = Number(event.target.getAttribute('data-price'));
-      var id = event.target.getAttribute('data-id');
-      
-      event.target.className += " people-amount-image-clicked";
-      
-      selectedPeopleAmount = {
-        id: id,
-        price: price
-      };
-    });
-  }
+var peopleAmountImages = document.getElementsByClassName("people-amount-image");
 
-  
-  var backgroundImage = document.getElementsByClassName("background-image");
-  
-  for (var i = 0; i < backgroundImage.length; i++) {
-    backgroundImage[i].addEventListener('click', function (event) {
-      for (var j = 0; j < backgroundImage.length; j++) {
-        backgroundImage[j].className = "background-image";
-      }
-      
-      var price = Number(event.target.getAttribute('data-price'));
-      var id = event.target.getAttribute('data-id');
-      var name = event.target.getAttribute('name');
-      
-      event.target.className += " people-amount-image-clicked";
-      
-      selectedBakcground = {
-        id: id,
-        price: price,
-        name: name
-      };
+for (var i = 0; i < peopleAmountImages.length; i++) {
+    peopleAmountImages[i].addEventListener('click', function(event) {
+
+        for (var j = 0; j < peopleAmountImages.length; j++) {
+            peopleAmountImages[j].className = "people-amount-image";
+        }
+
+        var price = Number(event.target.getAttribute('data-price'));
+        var id = event.target.getAttribute('data-id');
+
+        event.target.className += " people-amount-image-clicked";
+
+        selectedPeopleAmount = {
+            id: id,
+            price: price
+        };
     });
-  }
-  
-  function showCartElement() {
+}
+
+
+var backgroundImage = document.getElementsByClassName("background-image");
+
+for (var i = 0; i < backgroundImage.length; i++) {
+    backgroundImage[i].addEventListener('click', function(event) {
+        for (var j = 0; j < backgroundImage.length; j++) {
+            backgroundImage[j].className = "background-image";
+        }
+
+        var price = Number(event.target.getAttribute('data-price'));
+        var id = event.target.getAttribute('data-id');
+        var name = event.target.getAttribute('name');
+
+        event.target.className += " people-amount-image-clicked";
+
+        selectedBakcground = {
+            id: id,
+            price: price,
+            name: name
+        };
+    });
+}
+
+function showCartElement() {
     var localStorageCart = JSON.parse(localStorage.getItem("cart"));
     var totalPrice = 0;
-    
+
     if (!localStorageCart) {
-      return;
+        return;
     }
-    
+
     var shoppingCart = document.getElementById('cart');
     shoppingCart.innerHTML = '';
-    
+
     for (var i = 0; i < localStorageCart.length; i++) {
-      var item = localStorageCart[i];
-      totalPrice += item.selectedPeople.price;
-      
-      if (item.selectedBakcground != null) {
-        totalPrice += item.selectedBakcground.price;
-      }
-      
-      if (item.selectedBakcground != null) {
-        shoppingCart.innerHTML += 
-        "<li>People: " + item.selectedPeople.id + " - $" + item.selectedPeople.price + 
-        " : " + item.selectedBakcground.name + " - $" + item.selectedBakcground.price + "</li>";
-      } else {
-      shoppingCart.innerHTML += 
-        "<li>People: " + item.selectedPeople.id + " - $" + item.selectedPeople.price + "</li>";
-      }
+        var item = localStorageCart[i];
+        totalPrice += item.selectedPeople.price;
+
+        if (item.selectedBakcground != null) {
+            totalPrice += item.selectedBakcground.price;
+        }
+
+        if (item.selectedBakcground != null) {
+            shoppingCart.innerHTML +=
+                "<li>People: " + item.selectedPeople.id + " - $" + item.selectedPeople.price +
+                " : " + item.selectedBakcground.name + " - $" + item.selectedBakcground.price + "</li>";
+        } else {
+            shoppingCart.innerHTML +=
+                "<li>People: " + item.selectedPeople.id + " - $" + item.selectedPeople.price + "</li>";
+        }
     }
-    
+
     var totalPriceElement = document.getElementById('total-price');
     totalPriceElement.innerHTML = 'Total Price : $' + totalPrice;
-  }
+}
 
 
-  textIn.addEventListener('input', function (event) {
+textIn.addEventListener('input', function(event) {
     wishesText = event.target.value;
-  }); 
+});
 
 
-  function encodeImageFileAsURL() {
+function encodeImageFileAsURL() {
 
     var filesSelected = document.getElementById("inputFileToLoad").files;
     if (filesSelected.length > 0) {
-      var fileToLoad = filesSelected[0];
+        var fileToLoad = filesSelected[0];
 
-      var fileReader = new FileReader();
+        var fileReader = new FileReader();
 
-      fileReader.onload = function(fileLoadedEvent) {
-        var srcData = fileLoadedEvent.target.result; // <--- data: base64
-        image = srcData;
+        fileReader.onload = function(fileLoadedEvent) {
+            var srcData = fileLoadedEvent.target.result; // <--- data: base64
+            image = srcData;
 
         }
-      fileReader.readAsDataURL(fileToLoad);
+        fileReader.readAsDataURL(fileToLoad);
     }
-  }
-
-
-
- 
-
-  
-  
+}
 </script>
