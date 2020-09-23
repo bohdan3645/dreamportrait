@@ -9,8 +9,6 @@
 </div>
 
 <div class="nextPartOrder">
-  <p id="demo"></p>
-    
     <div class="saveOfOrder">YOU SAVE:</div>
     <div class="grandTotal">GRAND TOTAL:</div> <br>
 
@@ -96,10 +94,10 @@
     });
   }
   
-  function getItemTemplate(numPpl, bgName, price, text) {
+  function getItemTemplate(numPpl, bgName, price, text, image) {
     return '<div class="orderDetails">'
   +'<div class="namberOfOrder"><b>0000</b></div>'
-  +'<div class="orderPhoto"></div>'
+  +'<div class="orderPhoto"><img src="' + image +'"></div>'
   +'<div class="details">'
    + '<div class="hOrder">Original Dream Portrait Art</div>'
     +'<div class="numberOfPeopleOrder">Number of people: ' + numPpl +'</div>'
@@ -108,7 +106,7 @@
     +'<div class="priceOrder">Price: ' + price + '</div>'
       +'</div>'
   +'<div class="price-Order"><b>$</b></div>'
-    +'<div class="deleteOrder"><img src="/images/container.png" alt=""></div>'
+    +'<button class="deleteOrder" onclick="ClearData()"><img src="/images/container.png" alt=""></button>'
 +'</div>';
   };
 
@@ -132,7 +130,7 @@
       }
       
       if (item.selectedBakcground != null) {
-        shoppingCart.innerHTML += getItemTemplate(item.selectedPeople.id, item.selectedBakcground.name, item.selectedPeople.price, item.wishesText);
+        shoppingCart.innerHTML += getItemTemplate(item.selectedPeople.id, item.selectedBakcground.name, item.selectedPeople.price, item.wishesText, item.image);
       } else {
       shoppingCart.innerHTML += 
         "<li>People: " + item.selectedPeople.id + " - $" + item.selectedPeople.price + "</li>";
@@ -143,8 +141,8 @@
     totalPriceElement.innerHTML = 'Total Price : $' + totalPrice;
   }
 
-  function textIn(val) {
-  document.getElementById("demo").innerHTML = val; 
-}
+
+  
+ 
  </script>
 

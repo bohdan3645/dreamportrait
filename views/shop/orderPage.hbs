@@ -72,10 +72,11 @@
     </div>
     </div>
 
-    <div class="flex-container">
-      <div>
+<div class="flex-container">
+<div>
 <h4 class="features__title">Upload your photo</h4>
-      <input class="upload_btn" type="file" /><span>UPLOAD</span></input>
+      <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+      <div id="imgTest" style="display: none"></div>
 </div>
 </div>
 
@@ -183,11 +184,15 @@ function showSlides(n) {
   var selectedPeopleAmount = null;
   var selectedBakcground = null;
   var wishesText = null;
+  var image = null;
+
   
+
   var addToCart = document.getElementById('add-to-cart');
   var textIn = document.getElementById('text-in');
 
-  
+
+
   addToCart.addEventListener('click', function (event) { 
 
     if (selectedPeopleAmount != null) {
@@ -201,7 +206,8 @@ function showSlides(n) {
       localStorageCart.push({
         selectedPeople: selectedPeopleAmount,
         selectedBakcground: selectedBakcground,
-        wishesText: wishesText
+        wishesText: wishesText,
+        image: image
       });
       
       localStorage.setItem("cart", JSON.stringify(localStorageCart));
@@ -291,9 +297,27 @@ function showSlides(n) {
     wishesText = event.target.value;
   }); 
 
-// function textIn(val) {
-//   document.getElementById("demo").innerHTML = val; 
-// }
+
+  function encodeImageFileAsURL() {
+
+    var filesSelected = document.getElementById("inputFileToLoad").files;
+    if (filesSelected.length > 0) {
+      var fileToLoad = filesSelected[0];
+
+      var fileReader = new FileReader();
+
+      fileReader.onload = function(fileLoadedEvent) {
+        var srcData = fileLoadedEvent.target.result; // <--- data: base64
+        image = srcData;
+
+        }
+      fileReader.readAsDataURL(fileToLoad);
+    }
+  }
+
+
+
+ 
 
   
   
