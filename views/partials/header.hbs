@@ -1,58 +1,38 @@
-<body>
 
-<div class="grid-container">
-<div class="grid-item item1">
-  <nav class="navLink" id="nav" role="navigation" id="myLinks">
-    <a class="nav__link1" href="/orderPageTest/" data-scroll="#DRAW MY PORTREIT">DRAW MY PORTRAIT</a>
-    <a class="nav__link1" href="/revievsPageTest/" data-scroll="#REVIEWIS">REVIEWS</a>
-    <a class="nav__link1" href="/F.A.Q.Test/" data-scroll="#F.A.Q">F.A.Q.</a>
-    <a class="nav__link1" href="/contactUsTest/" data-scroll="#CONTACT US">CONTACT US</a>
-  </nav>
+<div class="head">
 
-  <button class="burger" type="button" onclick="myFunction()">
-    <span class="brgSpan"></span>
-  </button>
+    <nav class="navLink" id="nav" role="navigation" id="myLinks">
+      <button class="burger" type="button" id="navToggle" onclick="myFunction()">
+      <span class="brgSpan"></span>
+      </button>
+      <div class="navv" id="navv">
+        <a class="link" href="/orderPageTest/" data-scroll="#DRAW MY PORTREIT">DRAW MY PORTRAIT</a>
+        <a class="link" href="/revievsPageTest/" data-scroll="#REVIEWIS">REVIEWS</a>
+        <a class="link" href="/F.A.Q.Test/" data-scroll="#F.A.Q">F.A.Q.</a>
+        <a class="link" href="/contactUsTest/" data-scroll="#CONTACT US">CONTACT US</a>
+       </div>
+    <a href="/homePageTest/" ><img class="logo" src="/images/logo.png"></a>
+    
+      <div class="navv" id="navv">
+        {{# if login }}
+        <a class="link" href="/user/profile/" data-scroll="#USER"><i class="fas fa-user" style="font-size: 30px"></i></a>
 
-<div>
-<a href="/homePageTest/"><img class="logo" src="/images/logo.png"></a>
-</div>
-<nav class="navLink" id="navSignIn" role="navigation">
-  <a class="nav__link2" href="/user/signin/" data-scroll="#SIGN IN">SIGN IN<a class="nav__linkSignIn" href="">|</a></a>
-  <a class="nav__link2" href="/user/register/" data-scroll="#REGISTER">REGISTER</a>
-  <a class="nav__link2" href="/cartPageTest/{{this._id}}">Cart</a>
-</nav> 
+        {{ else }}
+        <a class="link" href="/user/signin/" data-scroll="#SIGN IN">SIGN IN</a>
 
-</div>
-</div>
-
-  <!-- <div class="grid-item item9">
-    <footer>
-<div class="footer__inner">                                                 
-  <a class="footer__lnk" href="FAQ.html">F.A.Q.</a>                                                 
-  <a class="footer__lnk" href="PRIVECY POLICY.html">Privacy Policy</a>                                     
-  <a class="footer__lnk" href="refound_policy.html">Refund Policy</a>                                       
-  <a class="footer__lnk" href="TERMS_OF_SERVIS.html">Terms of Service</a> 
+           {{/if}}
+         </div>
+      
+        <a class="link" href="/cartPageTest/{{this._id}}"><i class="fas fa-shopping-cart"></i></a>
+       
+    </nav>
 </div>
 
-<div class="copyright__content">
-  <div class="logo_footer"><img src="/images/logo_footer.png" width="340"></div>
-  <h3>©DreamSonnet</h3>  
-</div>
-</footer>
-
-</div> 
-</div> -->
 <script>
-function myFunction() {
-  var x = document.getElementById("myLinks");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
+  var isopen = false;
+  function myFunction() {
+    document.getElementById("navv").style.display = isopen ? 'flex' : 'none';
+    isopen = !isopen;
   }
-}
+  
 </script>
-
-</body>
-     
-

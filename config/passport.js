@@ -20,7 +20,7 @@ passport.use('local.register', new LocalStrategy({
 }, async (req, email, password, done) => { 
 
 	 var huy = await body('email').notEmpty().isEmail().withMessage('E-mail will be contain email').run(req);
-	 await body('password').notEmpty().isLength({min: 4}).withMessage('Password will be at least 5 chars long').run(req);
+	 await body('password').notEmpty().isLength({min: 6}).withMessage('Password will be at least 7 chars long').run(req);
 	 const errors = validationResult(req);
   if (!errors.isEmpty()){ 
     
@@ -29,7 +29,7 @@ passport.use('local.register', new LocalStrategy({
   	errors.array().forEach(function(error) {messages.push(error.msg)});
      return done(null, false, req.flash('error', messages))
   }
-	User.findOne({'email': email}, function(err,user) {
+	User.findOne({'email': email}, function(err, user) {
 		if (err) {
 			return done(err);
 		}

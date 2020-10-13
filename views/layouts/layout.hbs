@@ -4,6 +4,7 @@
     <title>{{title}}</title>
     <meta name="viewport" content="width=device-width" initial-scale=1>
     <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="https://kit.fontawesome.com/0cf37eb68e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css'>
@@ -21,10 +22,14 @@
 
   </head>
   <body>
+    
     {{> header}}
-    <!-- <div class="container"> -->
+   <div class="contain">
       {{{body}}}
-    <!-- </div> -->
+    </div>
+
+    {{> footer}}
+
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"
   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
   crossorigin="anonymous"></script>

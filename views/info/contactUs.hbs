@@ -10,12 +10,15 @@
        <li>Please notee that our cutomer support is active from Monday<br> 
        to Friday.</p></b>
    </div>
-     <input type="text1" name="first name" placeholder="First Name">
-     <input type="text2" name="last name" placeholder="Last Name">
+   <form method="POST" action="shop/contactUs">
+     <input type="text1" name="firstName" placeholder="First Name">
+     <input type="text2" name="lastName" placeholder="Last Name">
      <input type="email" name="email" placeholder="E-mail">
-     <textarea placeholder="Message"></textarea>
+     <textarea type="message" name="contactMessage" placeholder="Message"></textarea>
 <div class="btn">
-     <button class="sendBtn">SEND</button>
+     <button type="submit" class="sendBtn">SEND</button>
   </div>
+  </form>
+</div>
 </div>
 </div>

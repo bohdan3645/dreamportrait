@@ -1,96 +1,141 @@
-.grid-container {
-  display: grid;
-  grid-gap: 1px;
-}	
-
-.grid-item {
-	width: 100%;
-	grid-row: 1; 
+.home-img {
+    position: relative;
+    text-align: center;
+    color: white;
 }
 
-.firstContainerHomePage {
-	  position: relative;
-	  width: 100%;
-	  display: flex;
-	  text-align: center;
-	}
-
-.center_title {
-	  position: absolute;
-	  font-family: hellofreeday;
-	  background-color: rgb(106, 87, 164, 0.5);
-	  width:100%;
-	  font-size: 48px;
-	  padding: 70px 70px 10px 70px;
-	  letter-spacing: 3px;
-	  color: #fff;
-	  box-shadow:0px 40px 50px 43px rgb(106, 87, 164, 0.5) ;
-	}
-
-
-.firstContainerHomePage img {
-	  width: 1550px;
-	  height: auto;
-	  margin-top: 23px;
-	}
-
-.firstContainerHomePage .getMyPortrait {
-	  position: absolute;
-	  margin-left: 550px;
-	  margin-top: 750px;
-	  align-self: center;
-	  background-color: #FF007C;
-	  font-size: 36px;
-	  width: 420px;
-	  height: 70px;
-      display: inline-block;
-	  font-family: hellofreeday;
-	  border-radius: 16px; 
-	  color: #fff;
-	  border: none;
-	  cursor: pointer;
-	  -webkit-box-shadow: 0px 0px 22px 43px rgba(255,255,255,0.8);
-	  -moz-box-shadow: 0px 0px 22px 43px rgba(255,255,255,0.8);
-      box-shadow: 0px 0px 22px 43px rgba(255,255,255,0.8);
-	}
-
-
-.instructionOfOrder{
-	display: grid;
-	padding: 30px 350px 30px;
-	background-color: #F0EDEC;
-	margin-bottom: 30px;
-}
-
-.gridT{
-	width: 100%;
-	  font-family: hellofreeday;
-	  font-size: 32px;
-	  text-align: center;
-	  color: #4B538D;
+.img_home {
+    width: 100%;
 }
 
 
-.grid-container7 {
-  display: grid;
-  padding: 10px;
-}
-.grid-container7 > div {
-  grid-template-columns: 260px 260px 260px;
-  padding: 25px  0;
-  margin: 5px  20px 5px 20px;
-  font-size: 20px;
-  font-family: hellofreeday;
-  text-align: center;
+
+.btn_home {
+    position: absolute;
+    top: 86%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    background-color: #FF007d;
+    font-family: hellofreeday;
+    font-size: 25px;
+    padding: 10px 45px;
+    box-shadow: 10px 10px 10px 5px white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
 }
 
-.rev{
+.btn_home:hover {
+    padding: 11px 46px;
+}
+
+.how-it-work {
+	margin-top: 25px;
+    background-color: #E9EEEE;
+    padding: 25px;
+    text-align: center;
+}
+
+
+.description {
+    display: grid;
+    grid-template-columns: 20% 20% 20%;
+    align-items: center;
+    justify-content: center;
+}
+
+.description div {
+    text-align: center;
+    font-size: 25px;
+    justify-content: space-between;
+    font-family: hellofreeday;
+}
+
+.description img {
     margin-top: 20px;
 }
 
-.rev h3{
-	text-align: center;
-	font-size: 13px;
-	letter-spacing: 1px;
-	font-family: Arial, Helvetica, sans-serif;
+.how-it-work-desc {
+
+    text-align: center;
+    padding: 25px;
+    font-size: 18px;
+    font-weight: bolder;
+    background-color: #E9EEEE;
+
+}
+
+.p {
+    height: 200px;
+}
+
+@media(max-width: 1235px) {
+    .btn_home {
+        top: 87%;
+        font-size: 23px;
+        padding: 7px 25px;
+
+    }
+
+    .btn_home:hover {
+        padding: 8px 26px;
+    }
+
+    .description {
+        grid-template-columns: 30% 30% 30%;
+
+    }
+
+    .how-it-work-desc {
+        font-size: 20px;
+    }
+}
+
+@media(max-width: 770px) {
+
+
+    .img_home {
+        height: 670px;
+        object-fit: cover;
+    }
+
+    .btn_home {
+        font-size: 23px;
+        padding: 7px 25px;
+    }
+
+    .description {
+        grid-template-columns: 33% 33% 33%;
+
+    }
+}
+
+@media(max-width: 483px) {
+    .btn_home {
+        font-size: 27px;
+        padding: 4px 20px;
+    }
+
+    .btn_home:hover {
+        padding: 5px 21px;
+    }
+
+    .how-it-work-desc {
+        font-size: 23px;
+    }
+}
+
+@media(max-width: 378px) {
+    .how-it-work-desc {
+        font-size: 27px;
+    }
+
+    .description div {
+        font-weight: bolder;
+        letter-spacing: .5px;
+    }
 }

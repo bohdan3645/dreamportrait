@@ -30,7 +30,6 @@
 .orderPhoto {
 	margin: 0 25px;
 	background-color:#DDD8E5;
-
 }
 .orderPhoto img {
 	position: absolute;
@@ -38,7 +37,7 @@
 	 width: 160px; 
 	 height: 105px;
 	 object-fit: cover;
-	 margin-top: 27.5px
+	 margin-top: 27.5px;
 }
 
 
@@ -66,6 +65,11 @@
 .nextPartOrder {
 display: grid;
 justify-content: flex-end;
+
+}
+
+.nextPartOrder > div {
+width: 300px;
 }
 
 .saveOfOrder, .grandTotal {

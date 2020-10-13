@@ -1,48 +1,53 @@
-  var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var expressHbs = require('express-handlebars');
-var mongoose = require('mongoose');
-var session = require('express-session');
-var passport = require('passport');
-var flash = require('connect-flash');
-var validator = require('express-validator');
-var MongoStore = require('connect-mongo')(session);
-var nodemailer = require('nodemailer');
+require('dotenv').config();
+
+const createError = require('http-errors');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const express = require('express')
+const logger = require('morgan');
+const expressHbs = require('express-handlebars');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const passport = require('passport');
+const flash = require('connect-flash');
+const validator = require('express-validator');
+const MongoStore = require('connect-mongo')(session);
+const nodemailer = require('nodemailer');
+const stripe = require('stripe')(process.env.STRIPEKEY);
 
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var userRoutes = require('./routes/user');
-var orderPage = require('./routes/orderPage');
-var contactUs = require('./routes/contactUs');
-var privacyPolicy = require('./routes/privacyPolicy');
-var termsOfService = require('./routes/termsOfService');
-var refundPolicy = require('./routes/refundPolicy');
-var faq = require('./routes/faq');
-var homePage = require('./routes/homePage');
-var cartPage = require('./routes/cartPage');
-
-var order2 = require('./routes/order2');
-
-var doOrders = require('./routes/doOrders');
+const routes = require('./routes/index');
+const userRoutes = require('./routes/user');
+const orderPage = require('./routes/orderPage');
+const contactUs = require('./routes/contactUs');
+const privacyPolicy = require('./routes/privacyPolicy');
+const termsOfService = require('./routes/termsOfService');
+const refundPolicy = require('./routes/refundPolicy');
+const faq = require('./routes/faq');
+const homePage = require('./routes/homePage');
+const cartPage = require('./routes/cartPage');
 
 
 
-var app = express();
 
-mongoose.connect('mongodb+srv://kafka1010:kakao300@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority');
+
+
+const app = express();
+
+mongoose.connect('mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority');
 require('./config/passport');
+
 
 // view engine setup
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', '.hbs');
+// view engine setup
+
 
 app.use(logger('dev'));
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+// app.use(validator());
 app.use(cookieParser());
 app.use(session({
 	secret: 'mysupersecret', 
@@ -62,7 +67,10 @@ app.use(function(req, res, next) {
 	next();
 });
 
+
 app.use('/user', userRoutes);
+app.use('/', routes);
+
 app.use('/orderPageTest', orderPage);
 app.use('/contactUsTest', contactUs);
 app.use('/privacyPolicyTest', privacyPolicy);
@@ -73,43 +81,39 @@ app.use('/F.A.Q.Test', faq);
 app.use('/homePageTest', homePage);
 app.use('/cartPageTest', cartPage);
 
-app.use('/order2Test', order2);
 
-app.post('/doOrdersTest', function(req, res) {
-	
-let transporter = nodemailer.createTransport({
-    host: 'smtp.mailtrap.io',
-    port: 2525,
-    auth: {
-       user: '1117c414d43f0e',
-       pass: 'e24eebc8afcb27'
-    }
+
+
+//Stripe Post
+app.post('/stripePaymant', (req, res)=> {
+  const {order, token} = req.body;
+  console.log('ORDER ', order);
+  console.log('Price ', order.price);
+  const idempontencyKey = uuid();
+
+  return stripe.customers
+  .create({
+    email: token.email,
+    source: token.id
+  })
+  .then(customer => {
+   return stripe.charges.create(
+    {
+      amount:  order.price * 100,
+      currency: 'usd',
+      customer: customer.id,
+      receipt_email: token.email,
+      description: 'order',
+      shipping: {
+        name: token.card.name,
+      }
+    });
+  })
+  .then(result => res.status(200).json(result))
+  .catch(err => console.log(err));
+
 });
-var mailOptions = {
-  from: 'pavliuk.vlad@gmail.com',
-  to: 'ehohorb@gmail.com',
-  subject: 'Sending Email using Node.js',
-  text: 'That was not shit easy!'
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
-	res.json({test: 'jakob'});
-});
-
-
-
-
-
-
-
-app.use('/', indexRouter);
-
+//Stripe Post
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -125,6 +129,13 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+
+app.post('shop/contactUs', function(req, res){
+if(!req.body) return res.sendStatus(400);
+  console.log(req.body);
+  res.end()
 });
 
 module.exports = app;

@@ -1,281 +1,319 @@
-.grid-item.item0{
- height: 1700px;
- padding: 30px;
- grid-column: 1;
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
-.flex-container{
-  display: flex;
-  justify-content: flex-end;
+.grid-item.item0 {
+    padding: 30px;
+}
+.flex-container {
+    display: flex;
+    justify-content: flex-start;
 }
 
-.flex-container > div{ 
-  width: 460px;
-  background-color: rgb(255,255,255,0.4);
-  margin: 5px 5px;
-  padding: 20px 20px;
+.flex-container>div {
+    width: 460px;
+    background-color: rgb(255, 255, 255, 0.4);
+    margin: 5px 5px;
+    padding: 20px 20px;
+}
+.flex-container-two{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .galery {
-  width: 420px;
+    width: 420px;
 }
 
 
-.people-amount-image{
-  width: 70px;
-  height: 70px;
-  padding: 0;
-  font-family: hellofreeday;
-  margin: 3px 3px;
-  overflow: hidden;
-  cursor: pointer;
-  border-radius: 50%;
-  border-color: #fff;
-  border: 3px solid #D5AEA2;
-  transition: border .1s;
-  outline: none;
+.people-amount-image {
+    width: 70px;
+    height: 70px;
+    padding: 0;
+    font-family: hellofreeday;
+    margin: 3px 5px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 50%;
+    border-color: #fff;
+    border: 3px solid #D5AEA2;
+    transition: border .1s;
+    outline: none;
 }
-.people-amount-image:hover{
-  border: 3px solid #000;
-  
+
+.people-amount-image:hover {
+    border: 3px solid #000;
 }
 .people-amount-image-clicked {
     border: 3px solid #000;
-  }
+}
 
-.background-image{
-  width: 60px;
-  height: 60px;
-  padding: 0;
-  font-family: hellofreeday;
-  margin: 3px 3px;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 50%;
-  border: 3px solid #D5AEA2;
-  transition: border .1s;
-  outline: none;
+.background-image {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    font-family: hellofreeday;
+    margin: 3px 3px;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 3px solid #D5AEA2;
+    transition: border .1s;
 }
-.background-image:hover{
-  border: 3px solid #000;
-  
+
+.background-image:hover {
+    border: 3px solid #000;
 }
-.people-amount-image, .background-image  {
+
+.people-amount-image,
+.background-image {
     border-radius: 100%;
-  }
-
-
-.upload_btn{
-  background-color: #F74C4C;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-family: hellofreeday;
-  font-size: 28px;
-  padding: 14px 75px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin-left: 95px;
-  margin-top: 5px;
-  outline: none;
-}
-.upload_btn span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-.upload_btn span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.upload_btn:hover span {
-  padding-right: 25px;
-}
-
-.upload_btn:hover span:after {
-  opacity: 1;
-  right: 0;
 }
 
 
-.add_btn{
-  width: 350px;
-  height: 60;
-  background-color: #4FC478;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 28px;
-  font-family: hellofreeday;
-  padding: 14px 60px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px 45px 5px;
-  outline: none;
-  
+.add_btn {
+    width: 350px;
+    height: 60;
+    background-color: #4FC478;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    font-family: hellofreeday;
+    padding: 14px 60px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px 45px 5px;
+    outline: none;
+
 }
+
 .add_btn span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
 }
+
 .add_btn span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
 }
 
 .add_btn:hover span {
-  padding-right: 25px;
+    padding-right: 25px;
 }
 
 .add_btn:hover span:after {
-  opacity: 1;
-  right: 0;
+    opacity: 1;
+    right: 0;
 }
 
 
 /*=============================*/
- .grid-item.item01 {
- height: 1700px;
- padding: 30px;
- grid-column: 2;
-
+.grid-item.item01 {
+    height: 1700px;
+    padding: 30px;
+    grid-column: 2;
 }
 
 
-.container-with-photos { 
- overflow: hidden; 
- margin: 20px;
- width: 430px; 
- height: 425px;
+.container-with-photos {
+    overflow: hidden;
+    margin: 20px;
+    width: 430px;
+    height: 425px;
 }
-.items-with-photo { 
-  float: left; 
-  margin-right: 1px; 
-  margin-bottom: 1px; 
-  width: 141px; 
-  height: 141px; 
-  overflow: hidden;
+
+.items-with-photo {
+    float: left;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    width: 141px;
+    height: 141px;
+    overflow: hidden;
 }
+
 .items-with-photo img {
-  width: 141px; 
-  height: 141px; 
-  object-fit: cover;}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.container img {
-  vertical-align: middle;
+    width: 141px;
+    height: 141px;
+    object-fit: cover;
 }
 
-.container a {
-  text-decoration: none;
+
+
+
+
+
+
+
+
+
+
+
+
+.showSlide {
+    display: none;
 }
 
-/* Position the image container (needed to position the left and right arrows) */
-.container {
-  position: relative;
-    width: 300px;
+.showSlide img {
+    object-fit: cover;
+    width: 525px;
+    height: 525px;
 }
 
-/* Hide the images by default */
-.mySlides {
-  display: none;
-
+.slidercontainer {
+    width: 525px;
+    height: 525px;
+    position: relative;
+    overflow: hidden;
+    margin: 5px 0 0 20px;
 }
 
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
+.left,
+.right {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.1s ease;
+    border-radius: 0 3px 3px 0;
 }
 
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
+.right {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+    text-decoration: none;
 }
 
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+.left:hover,
+.right:hover {
+    background-color: rgba(115, 115, 115, 0.8);
 }
 
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(243, 206, 206, 0.5);
+.active {
+    background-color: #717171;
 }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
+@media(max-width: 1235px) {
+    .row {
+        margin-left: 0;
+    }
+
+    .grid-item.item0 {
+        padding: 15px;
+
+    }
 }
 
-/* Container for image text */
-.caption-container {
-  text-align: center;
-  background-color: #222;
-  padding: 2px 16px;
-  color: white;
+@media(max-width: 770px) {
+    .grid-container {
+        display: block;
+    }
+
+    .flex-container>div {
+        width: 560px;
+        padding: 20px 65px;
+
+    }
+
+    .grid-item.item0 {
+        padding: 10px;
+
+    }
+
+    .grid-item.item01 {
+        padding: 10px;
+
+    }
+
+    .slidercontainer {
+        width: 625px;
+        height: 460px;
+    }
+
+    .showSlide img {
+        width: 625px;
+        height: 460px;
+
+    }
+
+    .flex-container {
+        justify-content: center;
+    }
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+@media(max-width: 483px) {
+    .flex-container>div {
+        width: 100%;
+        padding: 20px 20px;
 
-/* Six columns side by side */
-.column {
-  float: left;
-  width: 16.66%;
-}
+    }
 
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
-}
+    .people-amount-image {
+        width: 132px;
+        height: 132px;
+        margin: 2px;
+        font-size: 40px;
+        line-height: 40px;
 
-.active,
-.demo:hover {
-  opacity: 1;
-}
+    }
 
+    .background-image {
+        width: 107px;
+        height: 107px;
+        margin: 2px;
+        font-size: 40px;
+
+    }
+
+    .galery {
+        width: 100%;
+    }
+
+    .features__title {
+        font-size: 40px;
+    }
+
+    .descriptionOfSale h2 {
+        font-size: 55px;
+
+    }
+
+    .descriptionOfSale b {
+        font-size: 35px;
+
+    }
+
+    .add_btn {
+        width: 100%;
+        height: 100px;
+        font-size: 50px;
+        margin: 0;
+    }
+
+    .slidercontainer {
+        width: 100%;
+    }
+
+    .showSlide img {
+        width: 100%;
+    }
+
+    .fas {
+        font-size: 50px;
+    }
+
+}
