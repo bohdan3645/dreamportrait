@@ -1,1 +1,1 @@
-web: www
+web: app.js
