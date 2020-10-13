@@ -107,7 +107,7 @@ function getItemTemplate(numPpl, bgName, price, text, image) {
         '<div class="numberOfPeopleOrder">Number of people:<b> ' + numPpl + '</b></div>' +
         '<div class="backgroundOrder">Background: ' + bgName + '</div>' +
         '<div class="noteOrder">Note: ' + text + '</div>' +
-        '<div class="priceOrder">Price:<b> ' + price + '</b></div>' +
+        '<div class="priceOrder">Price:  <b><del>' + price * 2 + '  </del>' + price + '</b></div>' +
         '</div>' +
         '<div class="price-Order"><b>$' + price + ' </b></div>' +
         '<button class="deleteOrder" onclick="ClearData()"><img src="/images/container.png" alt=""></button>' +

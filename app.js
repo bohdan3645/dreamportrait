@@ -34,7 +34,7 @@ const cartPage = require('./routes/cartPage');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority');
 require('./config/passport');
 
 
@@ -132,10 +132,5 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.post('shop/contactUs', function(req, res){
-if(!req.body) return res.sendStatus(400);
-  console.log(req.body);
-  res.end()
-});
 
 module.exports = app;
