@@ -29,7 +29,7 @@ let mailOption = {
   from: email,
   to: email,
   subject: 'hello',
-  text: email + message
+  text: message
 }
 
 transporter.sendMail(mailOption, (err, data) => {
