@@ -1,4 +1,5 @@
 <div class="row">
+
     <div class="cartContent">
         <div class="cartHead">CART</div>
         <div id="cart">
@@ -15,8 +16,9 @@
         </div>
     </div>
 </div>
+
 <script>
-var timeLeft = 1000;
+var timeLeft = 10;
 var downloadTimer = setInterval(function() {
     if (timeLeft <= 0) {
         clearInterval(downloadTimer);
@@ -151,26 +153,37 @@ function showCartElement() {
 }
 </script>
 <script>
-var localStorageCart = JSON.parse(localStorage.getItem("cart"));
-var totalPrice = 0;
+    var stripe;
+     fetch('/public-keys')
+     .then((response) => response.json())
+     .then((dat) => {
+        stripe = Stripe(data.key);
+     })
+     .catch((error) => {
+        console.error('Error: ', error);
+     });
+// var localStorageCart = JSON.parse(localStorage.getItem("cart"));
+// var totalPrice = 0;
 
-if (localStorageCart) {
-    for (var i = 0; i < localStorageCart.length; i++) {
-        var item = localStorageCart[i];
-        totalPrice += item.selectedPeople.price;
+// if (localStorageCart) {
+//     for (var i = 0; i < localStorageCart.length; i++) {
+//         var item = localStorageCart[i];
+//         totalPrice += item.selectedPeople.price;
 
-        if (item.selectedBakcground != null) {
-            totalPrice += item.selectedBakcground.price;
-        }
-    }
-    const payButtonBlock = document.getElementById("pay-button");
-    const script = document.createElement('script');
-    script.setAttribute('src', '//checkout.stripe.com/v2/checkout.js');
-    script.setAttribute('class', 'stripe-button');
-    script.setAttribute('data-key', 'pk_test_51HUukXJCfuIg3Y2YIdIhomHB9Y1h78cTGrcNUA9V9ZkpX4FmkIhoMtzsPoXQv6hpuOsMVRmLO7yc3v36MBZGfnaa00BOyrTPLV');
-    script.setAttribute('data-description', 'Sample payment');
-    script.setAttribute('data-amount', totalPrice * 100);
+//         if (item.selectedBakcground != null) {
+//             totalPrice += item.selectedBakcground.price;
+//         }
+//     }
+// const pbStripe = require('stripe')(process.env.PUBLISHABLE_STRIPE_KEY);
 
-    payButtonBlock.appendChild(script);
-}
+//     const payButtonBlock = document.getElementById("pay-button");
+//     const script = document.createElement('script');
+//     script.setAttribute('src', '//checkout.stripe.com/v2/checkout.js');
+//     script.setAttribute('class', 'stripe-button');
+//     script.setAttribute('data-key', pbStripe);
+//     script.setAttribute('data-description', 'Stripe payment');
+//     script.setAttribute('data-amount', totalPrice * 100);
+
+//     payButtonBlock.appendChild(script);
+// }
 </script>

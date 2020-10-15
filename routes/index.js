@@ -19,7 +19,7 @@ router.get('/cartPageTest/:id', function(req, res, next) {
 	var orderId = req.params.id;
 	var cart = new Cart(req.session.cart ? req.session.cart : {});
 
-	Order.findById(orderId, function(err, product) {
+	Order.findById(orderId, function(err, order) {
 		if (err) {
 			return res.redirect('/');
 		}

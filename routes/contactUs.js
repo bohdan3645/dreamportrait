@@ -27,9 +27,9 @@ router.post('/submit', (req, res, next) => {
 
 let mailOption = {
   from: email,
-  to: email,
-  subject: 'hello',
-  text: message
+  to: 'ehohorb@gmail.com',
+  subject: 'Dream Portrait Support',
+  html: email<br>message<br>fname<br>lname 
 }
 
 transporter.sendMail(mailOption, (err, data) => {
