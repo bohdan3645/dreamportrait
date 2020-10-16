@@ -1,6 +1,9 @@
 body {
+
     background-image: url('/images/back.png');
+    margin: 0 auto;
 }
+
 button:focus {
     outline: none;
 }
@@ -47,55 +50,60 @@ footer {
     background-color: #482020;
 }
 
+.row {
+    margin: 0;
+}
+
 
 /*header*/
-.head {
-    width: 100%
+.header {
+    padding: 0 3%;
+    background-color: #FFD8FE;
+    display: grid;
+    grid-template-columns: 31% 38% 31%;
+    width: 100% max-height: 129px;
+
 }
 
-.navLink {
-    padding: 25px 25px;
+.header div {
     display: flex;
     background-color: #FFD8FE;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+#navLinks {
+    padding: 25px 0;
     justify-content: space-between;
 }
 
-#navv {
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-
-}
-
-
-
-.logo {
-    width: 370px;
-    margin-right: 350px;
-    margin-left: 100px;
-
-}
-
-
-
-
-.link {
+#navlink {
     color: #6A57A4;
-    font-size: 23px;
+    font-size: 22px;
     font-family: hellofreeday;
-    margin: 5px 5px;
+    margin: 3px 5px;
     padding: 20px 0;
 }
 
-/*header*/
+.logoHead {
+    justify-content: center;
+    align-items: center;
+}
 
+.logot {
+    width: 350px;
+}
 
+#navLinksManagment {
+    padding: 25px 0;
+    justify-content: flex-end;
+}
 
-
-
-
-
-
+#navLinksManagment a {
+    margin-left: 10px;
+}
 
 .burger {
     display: none;
@@ -176,25 +184,28 @@ footer
 
 
 
-.ordersContent{
-    background-color: rgb(255,255,255,0.4);
+.ordersContent {
+    background-color: rgb(255, 255, 255, 0.4);
     padding: 20px;
     margin-top: 40px;
 }
-.userManagement{
-    background-color: rgb(255,255,255,0.4);
+
+.userManagement {
+    background-color: rgb(255, 255, 255, 0.4);
     height: 200px;
     padding: 20px 0;
     margin: 40px 10px;
 }
 
-.menage-nav div{
-   padding: 5px 20px;
+.menage-nav div {
+    padding: 5px 20px;
 }
-.menage-nav div:hover{
-    background-color: rgb(255,255,255,0.9);
+
+.menage-nav div:hover {
+    background-color: rgb(255, 255, 255, 0.9);
 }
-.menage-nav{
+
+.menage-nav {
     padding: 10px 0;
 }
 
@@ -209,26 +220,33 @@ footer
 
 
 
-@media(max-width: 1025px) {
+@media(max-width: 1200px) {
 
 
-    #navv {
+    #navLinks {
         flex-direction: column;
         position: absolute;
         width: 100%;
-        top: 15%;
+        top: 17%;
         left: 0;
         margin: 0;
+
+        background-color: #808080;
         display: none;
-        background-color: #fff;
-        padding: 5px;
         z-index: 1;
     }
 
+    #navLinks #navlink {
+        padding: 0 20px;
+        color: #FFD8FE;
+    }
 
+    #navLinksManagment #navlink {
+        font-size: 25px;
+    }
 
-    .navv .link:hover {
-        background-color: #808080;
+    .navlink:hover {
+        background-color: #CCD4D4;
     }
 
 
@@ -237,25 +255,7 @@ footer
         width: 100px;
     }
 
-    .navvv {
-        width: 130px;
-        padding-left: 20px;
-    }
 
-
-
-    .navLink {
-        padding: 20px 10px;
-        background-color: #FFD8FE;
-        justify-content: space-between;
-    }
-
-    .link {
-        font-size: 25px;
-        background-color: #FFD8FE;
-        margin: 0;
-        padding: 10px 10px;
-    }
 
     .logo {
         width: 350px;
@@ -274,32 +274,23 @@ footer
 }
 
 
-@media(max-width: 770px) {
+@media(max-width: 901px) {
 
-
-    body {
-        width: 770px;
-    }
-
-    .navv {
+    .header {
         width: 100%;
-        top: 13.5%;
+        grid-template-columns: 24% 52% 24%;
     }
 
 
-    .link {
-        font-size: 30px;
+    #navLinks {
+        top: 13%;
     }
 
-    .logo {
-        width: 400px;
-        margin-left: 50px
-    }
 
     .brgSpan {
         width: 70px;
         height: 10px;
-        margin: 30px;
+        margin: 10px;
     }
 
     .brgSpan:before {
@@ -309,6 +300,8 @@ footer
     .brgSpan:after {
         bottom: 20px;
     }
+
+
 
     .copyright__content div {
         width: 45%;
@@ -321,45 +314,44 @@ footer
 
 }
 
-@media (max-width: 483px) {
+@media (max-width: 767px) {
 
-
-
-    .navLink {
-        height: 200px;
+.brgSpan{
+    width: 50px;
+    
+}
+    #navLinksManagment {
+        padding: 5px 0;
     }
 
-    .navv {
-        top: 27%;
+    #navLinksManagment #navlink {
+        display: none;
     }
 
-    .navv .link {
-        font-size: 50px;
-    }
-
-    .logo {
-        width: 450px;
-        margin-top: 15px;
-
+    .logot {
+        width: 300px;
     }
 
     .footer__inner {
         display: grid;
+        padding: 10px 0 10px 0;
     }
 
     .footer__lnk {
-        margin: 10px;
-        font-size: 32px;
+        margin: 5px;
+        font-size: 20px;
     }
 
     .copyright__content div {
+        display: grid;
+        justify-content: center;
         width: 70%;
-        font-size: 40px;
-
+        font-size: 20px;
+        padding: 0 0 10px 0;
     }
 
     .logo_footer img {
-        width: 550px;
+        width: 250px;
     }
 
 }

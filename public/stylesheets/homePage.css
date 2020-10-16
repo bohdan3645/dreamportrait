@@ -108,10 +108,8 @@
         padding: 7px 25px;
     }
 
-    .description {
-        grid-template-columns: 33% 33% 33%;
+    
 
-    }
 }
 
 @media(max-width: 483px) {
@@ -123,16 +121,17 @@
     .btn_home:hover {
         padding: 5px 21px;
     }
-
-    .how-it-work-desc {
-        font-size: 23px;
+    .description {
+        display: block;
     }
+.how-it-work-desc {
+        font-size: 22px;
+    }
+    
 }
 
 @media(max-width: 378px) {
-    .how-it-work-desc {
-        font-size: 27px;
-    }
+    
 
     .description div {
         font-weight: bolder;
