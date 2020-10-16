@@ -8,11 +8,17 @@
             <div class="saveOfOrder">YOU SAVE: <span style="color: red;"><b>50% </b></span>OFF</div>
             <div class="grandTotal" id="total-price">GRAND TOTAL:</div> <br>
             <div class="expireCart" id="countdown"></div>
+            <div id="card-element"></div>
+
             <button class="updateBtn">UPDATE</button>
             <span style="display: flex;">
-                <a id="pay-button" style="margin-right: 10px"></a>
-                <a id="paypal-button"></a>
+                <form action="/stripePaymant" id="payment-form" method="POST">
+                    <label for="email">email<input type="email"></label>
+                    <button >stripe</button>
+                    <input type="hidden" name="price" value="333">
+                </form>
             </span>
+
         </div>
     </div>
 </div>
@@ -152,16 +158,93 @@ function showCartElement() {
     totalPriceElement.innerHTML = 'GRAND TOTAL:<b> $' + totalPrice + '</b>';
 }
 </script>
+
+
 <script>
-    var stripe;
-     fetch('/public-keys')
-     .then((response) => response.json())
-     .then((dat) => {
-        stripe = Stripe(data.key);
-     })
-     .catch((error) => {
-        console.error('Error: ', error);
-     });
+var stripe;
+var orderData = {
+  items: [{ id: "photo-subscription" }],
+  currency: "usd"
+};
+
+var pay = function(stripe, card) {
+  // changeLoadingState(true);
+
+  // Collects card details and creates a PaymentMethod
+  stripe
+    .createPaymentMethod("card", card)
+    .then(function(result) {
+      if (result.error) {
+        // showError(result.error.message);
+        console.log(result);
+      } else {
+        orderData.paymentMethodId = result.paymentMethod.id;
+
+        return fetch("/pay", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(orderData)
+        });
+      }
+    })
+    .then(function(result) {
+      return result.json();
+    })
+    .then(function(response) {
+      if (response.error) {
+        showError(response.error);
+      } else if (response.requiresAction) {
+        // Request authentication
+        handleAction(response.clientSecret);
+      } else {
+        orderComplete(response.clientSecret);
+      }
+    });
+};
+
+
+    var setupElements = function(data) {
+  stripe = Stripe(data);
+  /* ------- Set up Stripe Elements to use in checkout form ------- */
+  var elements = stripe.elements();
+  var style = {
+    base: {
+      color: "#32325d",
+      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+      fontSmoothing: "antialiased",
+      fontSize: "16px",
+      "::placeholder": {
+        color: "#aab7c4"
+      }
+    },
+    invalid: {
+      color: "#fa755a",
+      iconColor: "#fa755a"
+    }
+  };
+
+
+  var card = elements.create("card", { style: style });
+  card.mount("#card-element");
+
+  return {
+    stripe: stripe,
+    card: card,
+    clientSecret: data.clientSecret
+  };
+};
+
+
+const setelem = setupElements('{{stripe}}');
+
+var form = document.getElementById("payment-form");
+form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      pay(setelem.stripe, setelem.card, setelem.clientSecret);
+    });
+    
 // var localStorageCart = JSON.parse(localStorage.getItem("cart"));
 // var totalPrice = 0;
 
@@ -174,13 +257,12 @@ function showCartElement() {
 //             totalPrice += item.selectedBakcground.price;
 //         }
 //     }
-// const pbStripe = require('stripe')(process.env.PUBLISHABLE_STRIPE_KEY);
 
 //     const payButtonBlock = document.getElementById("pay-button");
 //     const script = document.createElement('script');
 //     script.setAttribute('src', '//checkout.stripe.com/v2/checkout.js');
 //     script.setAttribute('class', 'stripe-button');
-//     script.setAttribute('data-key', pbStripe);
+//     script.setAttribute('data-key', '{{ stripe }}');
 //     script.setAttribute('data-description', 'Stripe payment');
 //     script.setAttribute('data-amount', totalPrice * 100);
 

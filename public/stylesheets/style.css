@@ -60,7 +60,7 @@ footer {
     justify-content: space-between;
 }
 
-.navv {
+#navv {
     margin: 0;
     display: flex;
     justify-content: space-between;
@@ -209,10 +209,10 @@ footer
 
 
 
-@media(max-width: 1235px) {
+@media(max-width: 1025px) {
 
 
-    .navv {
+    #navv {
         flex-direction: column;
         position: absolute;
         width: 100%;
@@ -224,7 +224,8 @@ footer
         padding: 5px;
         z-index: 1;
     }
-    
+
+
 
     .navv .link:hover {
         background-color: #808080;

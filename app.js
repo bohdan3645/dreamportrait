@@ -13,6 +13,9 @@ const flash = require('connect-flash');
 const validator = require('express-validator');
 const MongoStore = require('connect-mongo')(session);
 const nodemailer = require('nodemailer');
+const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY);
+
+
 
 
 
@@ -34,7 +37,7 @@ const faq = require('./routes/faq');
 
 const app = express();
 
-const stripe = require('stripe')(process.env.SEKRET_STRIPE_KEY);
+
 
 // mongodb
 mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority');
@@ -89,35 +92,30 @@ app.use('/cartPageTest', cartPage);
 
 
 
-//Stripe Post
-// app.post('/stripePaymant', (req, res)=> {
-//   const {order, token} = req.body;
-//   console.log('ORDER ', order);
-//   console.log('Price ', order.price);
-//   const idempontencyKey = uuid();
+// Stripe Post
+app.post('/stripePaymant', (req, res, next)=> {
+  const {order, token} = req.body;
+  console.log('ORDER ', order);
 
-//   return stripe.customers
-//   .create({
-//     email: token.email,
-//     source: token.id
-//   })
-//   .then(customer => {
-//    return stripe.charges.create(
-//     {
-//       amount:  order.price * 100,
-//       currency: 'usd',
-//       customer: customer.id,
-//       receipt_email: token.email,
-//       description: 'order',
-//       shipping: {
-//         name: token.card.name,
-//       }
-//     });
-//   })
-//   .then(result => res.status(200).json(result))
-//   .catch(err => console.log(err));
+  return stripe.customers
+  .create({
+    email: req.body.email,
+    source: "tok_visa"
+ })
+  .then(customer => {
+   return stripe.charges.create(
+    {
+      amount:  req.body.price,
+      currency: 'usd',
+      customer: customer.id,
+      receipt_email: req.body.email,
+      description: 'order',
+    });
+  })
+  .then(result => res.status(200).json(result))
+  .catch(err => console.log(err));
 
-// });
+});
 
 
 //Stripe Post
