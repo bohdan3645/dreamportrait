@@ -291,7 +291,7 @@ footer
 
 
     #navLinks {
-        top: 13%;
+        top: 132%;
     }
 
 
@@ -322,7 +322,7 @@ footer
 
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 
 .header {
     padding: 0 5px;
@@ -346,8 +346,8 @@ padding: 0;
     .brgSpan:after {
         bottom: 12px;
     }
-#navLinks{
-    top: 24%;
+ #navLinks{
+    top: 91px;
 }
 
 
@@ -388,8 +388,6 @@ padding: 0;
 }
 
 @media(max-width: 378px) {
-    #navLinks{
-    top: 13%;
-}
+   
 
 }
