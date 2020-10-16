@@ -86,6 +86,14 @@ footer {
     margin: 3px 5px;
     padding: 20px 0;
 }
+#navlinkCart{
+    color: #6A57A4;
+    font-size: 22px;
+    font-family: hellofreeday;
+    margin: 3px 5px;
+    padding: 20px 0;
+}
+
 
 .logoHead {
     justify-content: center;
@@ -316,10 +324,33 @@ footer
 
 @media (max-width: 767px) {
 
-.brgSpan{
-    width: 50px;
-    
+.header {
+    padding: 0 5px;
+    grid-template-columns: 17% 68% 15%;
 }
+
+.burger{
+    width:100%;
+}
+
+.brgSpan{
+    width: 40px;
+height: 5px;
+margin: 5px;
+padding: 0;
+}
+.brgSpan:before {
+        top: 12px;
+    }
+
+    .brgSpan:after {
+        bottom: 12px;
+    }
+#navLinks{
+    top: 24%;
+}
+
+
     #navLinksManagment {
         padding: 5px 0;
     }
@@ -329,7 +360,7 @@ footer
     }
 
     .logot {
-        width: 300px;
+        width: 250px;
     }
 
     .footer__inner {
@@ -356,4 +387,9 @@ footer
 
 }
 
-@media(max-width: 378px) {}
+@media(max-width: 378px) {
+    #navLinks{
+    top: 13%;
+}
+
+}
