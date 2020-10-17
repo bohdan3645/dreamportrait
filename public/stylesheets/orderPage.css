@@ -350,10 +350,10 @@
     }
 
     .people-amount-image {
-        width: 62px;
-        height: 62px;
+        width: 61px;
+        height: 61px;
         font-size: 18px;
-        margin: 3px 1px;
+        margin: 3px auto;
         line-height: 13px;
 
     }
@@ -389,9 +389,3 @@
 }
 
 
-@media(max-width: 340px) {
-.people-amount-image {
-        width: 58px;
-        height: 58px;
-}
-}
