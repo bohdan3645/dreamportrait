@@ -376,12 +376,17 @@
     }
 
     .galery {
+        margin: 15px 0;
         height: 200px;
     }
 
     .background-image {
         width: 94px;
         height: 94px;
+    }
+
+    .input_text{
+        font-size: 22px;
     }
 
     .add_btn {
