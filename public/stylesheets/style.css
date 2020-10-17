@@ -1,5 +1,5 @@
 body {
-
+background-color: #C5D4D5;
     background-image: url('/images/back.png');
     margin: 0 auto;
 }
@@ -360,7 +360,8 @@ footer
     }
 
     #navLinksManagment #navlink {
-        display: none;
+        /*display: none;*/
+        top: 91px;
     }
 
     .logot {
