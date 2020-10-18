@@ -164,17 +164,6 @@ footer {
 }
 
 
-.btn-3{
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-}
-
-
-.none {
-    display: none;
-}
 
 
 /*
@@ -390,7 +379,7 @@ padding-bottom: 1px;
     }
 
     #navLinks {
-        top: 91px;
+        top: 92px;
     }
 
 

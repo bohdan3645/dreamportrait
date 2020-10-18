@@ -99,7 +99,7 @@
 
 
     .img_home {
-        height: 670px;
+        height: 550px;
         object-fit: cover;
     }
 
@@ -113,8 +113,13 @@
 }
 
 @media(max-width: 483px) {
+ .img_home {
+        height: 320px;
+        object-fit: cover;
+    }
+
     .btn_home {
-        font-size: 27px;
+        font-size: 16px;
         padding: 4px 20px;
     }
 

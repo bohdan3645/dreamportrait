@@ -80,14 +80,14 @@
             <div class="flex-container">
                 <div>
                     <h5 class="features__title">Number of people & pets:</h5>
-                    <div>
+                    <div style="display: flex; justify-content: space-between;">
                         <button data-price="49" data-id="1" class="people-amount-image">1</button>
                         <button data-price="59" data-id="2" class="people-amount-image">2</button>
                         <button data-price="69" data-id="3" class="people-amount-image">3</button>
                         <button data-price="79" data-id="4" class="people-amount-image">4</button>
                         <button data-price="89" data-id="5" class="people-amount-image">5</button>
                     </div>
-                    <div>
+                    <div style="display: flex; justify-content: space-between;">
                         <button data-price="99" data-id="6" class="people-amount-image">6</button>
                         <button data-price="109" data-id="7" class="people-amount-image">7</button>
                         <button data-price="119" data-id="8" class="people-amount-image">8</button>
@@ -121,7 +121,7 @@
                        </div>
                    </div>
 
-                    <div style="display: flex;">
+                    <div style="display: flex; justify-content: space-between;">
                         <img data-price="0" data-id="11" class="background-image" src="/images/12x18 H starry night.jpg" name="Starry Night" onclick="currentSlideBcgr(1)">
 
                         <img data-price="0" data-id="12" class="background-image" src="/images/18x12 H beach.jpg" name="Beach" width="70" height="70" onclick="currentSlideBcgr(2)">
@@ -140,7 +140,9 @@
             <div class="flex-container">
                 <div>
                     <h5 class="features__title">Notes (eye, color, particular<br> accessories, details, special test):</h5>
+                    <div style="display: flex; justify-content: center;">
                     <textarea class="input_text" id="text-in" type="input" oninput="textIn(this.value)" style="width: 98%; height: 150px;"></textarea>
+                </div>
                     <p id="demo"></p>
                 </div>
             </div>
@@ -148,15 +150,11 @@
                 <div>
                     <h5 class="features__title">Upload your photo</h5>
                     <div class="container">
-                        <div class="button-wrap">
-
-
+                    <div class="button-wrap" style="display: flex; justify-content: center;">
                             <input class="none" type="file" id="file" />
                             <label id="inputFileToLoad" for="file" class="btn-3" onchange="encodeImageFileAsURL();" />
                                 <span>UPLOAD</span>
                             </label>
-
-                            
                         </div>
                     </div>
                     <div id="imgTest" style="display: none"></div>
