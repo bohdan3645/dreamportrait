@@ -5,7 +5,6 @@
                 <div class="slidercontainer">
                     <div class="showSlide ">
                         <img src="/images/ex1 cut.jpg" />
-                        <div class="content"></div>
                     </div>
                     <div class="showSlide ">
                         <img src="/images/ex 2 cut.jpg" />
@@ -36,7 +35,7 @@
                     <a class="right" onclick="nextSlide(1)">❯</a>
                 </div>
                 <div class="dots" style="text-align:center">
-                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
                     <span class="dot" onclick="currentSlide(2)"></span>
                     <span class="dot" onclick="currentSlide(3)"></span>
                     <span class="dot" onclick="currentSlide(4)"></span>
@@ -80,65 +79,101 @@
             </div>
             <div class="flex-container">
                 <div>
-                    <h4 class="features__title">Number of people & pets:</h4>
+                    <h5 class="features__title">Number of people & pets:</h5>
                     <div>
-                        <button data-price="49" data-id="1" class="people-amount-image">ONE<br>people</button>
-                        <button data-price="59" data-id="2" class="people-amount-image">TWO<br>people</button>
-                        <button data-price="69" data-id="3" class="people-amount-image">THREE<br>people</button>
-                        <button data-price="79" data-id="4" class="people-amount-image">FOUR<br>people</button>
-                        <button data-price="89" data-id="5" class="people-amount-image">FIVE<br>people</button>
+                        <button data-price="49" data-id="1" class="people-amount-image">1</button>
+                        <button data-price="59" data-id="2" class="people-amount-image">2</button>
+                        <button data-price="69" data-id="3" class="people-amount-image">3</button>
+                        <button data-price="79" data-id="4" class="people-amount-image">4</button>
+                        <button data-price="89" data-id="5" class="people-amount-image">5</button>
                     </div>
                     <div>
-                        <button data-price="99" data-id="6" class="people-amount-image">SIX<br>people</button>
-                        <button data-price="109" data-id="7" class="people-amount-image">SEVEN<br>people</button>
-                        <button data-price="119" data-id="8" class="people-amount-image">EIGHT<br>people</button>
-                        <button data-price="129" data-id="9" class="people-amount-image">NINE<br>people</button>
-                        <button data-price="139" data-id="10" class="people-amount-image">TEN<br>people</button>
+                        <button data-price="99" data-id="6" class="people-amount-image">6</button>
+                        <button data-price="109" data-id="7" class="people-amount-image">7</button>
+                        <button data-price="119" data-id="8" class="people-amount-image">8</button>
+                        <button data-price="129" data-id="9" class="people-amount-image">9</button>
+                        <button data-price="139" data-id="10" class="people-amount-image">10</button>
                     </div>
                 </div>
             </div>
             <div class="flex-container">
                 <div>
-                    <h4 class="features__title">Background:</h4>
-                    <img class="galery" src="/images/12x18 H starry night.jpg">
+                    <h5 class="features__title">Background:</h5>
+                   <div class="slidercontainerBcgr" style="margin: 15px 15px">
+
+                       <div class="showSlideBcgr">
+                           <img src="/images/12x18 H starry night.jpg" />
+                       </div>
+                       <div class="showSlideBcgr">
+                           <img src="/images/18x12 H beach.jpg" />
+                       </div>
+                       <div class="showSlideBcgr">
+                           <img src="/images/12x18 H hearts.jpg" />
+                       </div>
+                       <div class="showSlideBcgr">
+                           <img src="/images/12x18 H castle.jpg" />
+                       </div>
+                       <div class="showSlideBcgr">
+                           <img src="/images/12x18 bokeh.jpg" />
+                       </div>
+                       <div class="showSlideBcgr" style="padding: 30px 0">
+                           <h1 style="text-align:center;">Custom Bacground<br>+25$</h1>
+                       </div>
+                   </div>
+
                     <div style="display: flex;">
-                        <img data-price="0" data-id="11" class="background-image" src="/images/12x18 H starry night.jpg" name="Starry Night">
-                        <img data-price="0" data-id="12" class="background-image" src="/images/18x12 H beach.jpg" name="Beach" width="70" height="70">
-                        <img data-price="0" data-id="13" class="background-image" src="/images/12x18 H hearts.jpg" name="Hearts" width="70" height="70">
-                        <img data-price="0" data-id="14" class="background-image" src="/images/12x18 H castle.jpg" name="Castle" width="70" height="70">
-                        <img data-price="0" data-id="15" class="background-image" src="/images/12x18 bokeh.jpg" name="Bokeh" width="70" height="70">
-                        <div data-price="25" data-id="111" name="Custom" class="background-image" style="font-size: 22px; text-align: center; padding: 6px 0; width: 60px; height: 60px">custom</div>
+                        <img data-price="0" data-id="11" class="background-image" src="/images/12x18 H starry night.jpg" name="Starry Night" onclick="currentSlideBcgr(1)">
+
+                        <img data-price="0" data-id="12" class="background-image" src="/images/18x12 H beach.jpg" name="Beach" width="70" height="70" onclick="currentSlideBcgr(2)">
+
+                        <img data-price="0" data-id="13" class="background-image" src="/images/12x18 H hearts.jpg" name="Hearts" width="70" height="70" onclick="currentSlideBcgr(3)">
+
+                        <img data-price="0" data-id="14" class="background-image" src="/images/12x18 H castle.jpg" name="Castle" width="70" height="70" onclick="currentSlideBcgr(4)">
+
+                        <img data-price="0" data-id="15" class="background-image" src="/images/12x18 bokeh.jpg" name="Bokeh" width="70" height="70" onclick="currentSlideBcgr(5)">
+
+                        <div data-price="25" data-id="111" name="Custom" class="background-image"
+                        onclick="currentSlideBcgr(6)" style="font-size: 22px; text-align: center; padding: 6px 0; width: 60px; height: 60px">custom</div>
                     </div>
                 </div>
             </div>
             <div class="flex-container">
                 <div>
-                    <h4 class="features__title">Notes (eye, color, particular<br> accessories, details, special test):</h4>
+                    <h5 class="features__title">Notes (eye, color, particular<br> accessories, details, special test):</h5>
                     <textarea class="input_text" id="text-in" type="input" oninput="textIn(this.value)" style="width: 98%; height: 150px;"></textarea>
                     <p id="demo"></p>
                 </div>
             </div>
             <div class="flex-container">
                 <div>
-                    <h4 class="features__title">Upload your photo</h4>
+                    <h5 class="features__title">Upload your photo</h5>
                     <div class="container">
                         <div class="button-wrap">
-                            <!-- <label class="button" for="upload">Upload</label> -->
-                            <input class="btnUpl" id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+
+
+                            <input class="none" type="file" id="file" />
+                            <label id="inputFileToLoad" for="file" class="btn-3" onchange="encodeImageFileAsURL();" />
+                                <span>UPLOAD</span>
+                            </label>
+
+                            
                         </div>
                     </div>
                     <div id="imgTest" style="display: none"></div>
                 </div>
             </div>
-            <div class="flex-container">
+            <div class="flex-container" style="text-align: center;">
                 <div>
                     <button class="add_btn" id="add-to-cart"><span>ADD TO CART</span></button>
+                <p>checkout safely using your preferred payment method</p>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
+    // slider for galery
 var slide_index = 1;
 displaySlides(slide_index);
 
@@ -153,6 +188,7 @@ function currentSlide(n) {
 function displaySlides(n) {
     var i;
     var slides = document.getElementsByClassName("showSlide");
+    var dots = document.getElementsByClassName("dot");
     if (n > slides.length) { slide_index = 1 }
     if (n < 1) { slide_index = slides.length }
     for (i = 0; i < slides.length; i++) {
@@ -160,6 +196,35 @@ function displaySlides(n) {
     }
     slides[slide_index - 1].style.display = "block";
 }
+    // slider for galery
+
+    // slider for bacground
+
+var slide_index_bcgr = 1;
+displaySlidesBcgr(slide_index_bcgr);
+
+function nextSlideBcgr(h) {
+    displaySlidesBcgr(slide_index_bcgr += h);
+}
+
+function currentSlideBcgr(h) {
+    displaySlidesBcgr(slide_index_bcgr = h);
+}
+
+function displaySlidesBcgr(h) {
+    var y;
+    var slidesBcgr = document.getElementsByClassName("showSlideBcgr");
+    if (h > slidesBcgr.length) { slide_index_bcgr = 1 }
+    if (h < 1) { slide_index_bcgr = slidesBcgr.length }
+    for (y = 0; y < slidesBcgr.length; y++) {
+        slidesBcgr[y].style.display = "none";
+    }
+    slidesBcgr[slide_index_bcgr - 1].style.display = "block";
+}
+
+    // slider for bacground
+
+
 
 // =============================
 

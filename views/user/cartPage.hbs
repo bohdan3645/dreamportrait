@@ -1,6 +1,8 @@
+ <span id="demo">0</span>
+
 <div class="row">
 
-    <div class="cartContent">
+    <div class="cartContent" onscroll="myFunction()">
         <div class="cartHead">CART</div>
         <div id="cart">
         </div>
@@ -22,6 +24,14 @@
         </div>
     </div>
 </div>
+
+<script>
+   var x = 0;
+function myFunction() {
+var x = Math.floor((Math.random() * 10) + 9);
+  document.getElementById("demo").innerHTML = x+10;
+}
+</script>
 
 <script>
 var timeLeft = 10;

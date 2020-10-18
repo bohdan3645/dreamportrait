@@ -14,10 +14,6 @@ hr {
     margin: 3px 0;
 }
 
-
-
-
-
 a {
     text-decoration: none;
 }
@@ -46,6 +42,13 @@ h5 {
     margin: 0;
 
 }
+
+la{
+    font-size: 20px;
+}
+
+
+
 
 footer {
     background-color: #482020;
@@ -87,11 +90,17 @@ footer {
     margin: 3px 5px;
     padding: 20px 0;
 }
+#navlinkSignIn {
+    color: #6A57A4;
+    font-size: 22px;
+    font-family: hellofreeday;
+    margin: 3px 5px;
+    padding: 20px 0;
+}
 
 #navlinkCart {
     color: #6A57A4;
     font-size: 22px;
-    font-family: hellofreeday;
     margin: 3px 5px;
     padding: 20px 0;
 }
@@ -155,7 +164,17 @@ footer {
 }
 
 
+.btn-3{
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
 
+
+.none {
+    display: none;
+}
 
 
 /*
@@ -237,12 +256,27 @@ footer
         flex-direction: column;
         position: absolute;
         width: 100%;
-        top: 17%;
+        top: 130px;
         left: 0;
         margin: 0;
-
+padding-bottom: 1px;
         background-color: #808080;
         display: none;
+        z-index: 1;
+    }
+    #navLinksManagment a {
+    margin-left: 0;
+}
+
+     #navlinkSignIn {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        top: 310px;
+        left: 0;
+        margin: 0;
+        background-color: #808080;
         z-index: 1;
     }
 
@@ -251,8 +285,9 @@ footer
         color: #FFD8FE;
     }
 
-    #navLinksManagment #navlink {
-        font-size: 25px;
+ #navlinkSignIn {
+        padding: 0 20px 20px 25px;
+        color: #FFD8FE;
     }
 
     .navlink:hover {
@@ -293,7 +328,11 @@ footer
 
 
     #navLinks {
-        top: 132%;
+        top: 130px;
+    }
+
+     #navlinkSignIn {
+        top: 272px;
     }
 
 
@@ -359,10 +398,10 @@ footer
         padding: 5px 0;
     }
 
-    #navLinksManagment #navlink {
-        /*display: none;*/
+   /* #navLinksManagment #navlink {
+        display: none;
         top: 91px;
-    }
+    }*/
 
     .logot {
         width: 250px;
