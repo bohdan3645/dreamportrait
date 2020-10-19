@@ -70,9 +70,13 @@
                         <h3> 62 reviews</h3>
                     </div>
                     <hr>
-                    <div>
-                        <img src="/images/airport.png">
-                        <b>Estimated delivery time 5-10 days</b>
+                    <div class="counter" style="display: flex;">
+                        <img src="/images/eye.png" style="margin: 5px; width: 20px; height: 13px">
+                        <h6 style="margin:0"><b><span id="demo">28 </span></b> Estimated delivery time 5-10 days</h6>
+                    </div>
+                    <div style="display: flex;">
+                        <img src="/images/airport.png" style="margin: 5px; width: 20px; height: 20px">
+                         <h6 style="margin:5px 0 0 0"> Estimated delivery time 5-10 days</h6>
                     </div>
                     <h3><b>Only 11 arts left at this price</b></h3>
                 </div>
@@ -99,41 +103,33 @@
             <div class="flex-container">
                 <div>
                     <h5 class="features__title">Background:</h5>
-                   <div class="slidercontainerBcgr" style="margin: 15px 15px">
-
-                       <div class="showSlideBcgr">
-                           <img src="/images/12x18 H starry night.jpg" />
-                       </div>
-                       <div class="showSlideBcgr">
-                           <img src="/images/18x12 H beach.jpg" />
-                       </div>
-                       <div class="showSlideBcgr">
-                           <img src="/images/12x18 H hearts.jpg" />
-                       </div>
-                       <div class="showSlideBcgr">
-                           <img src="/images/12x18 H castle.jpg" />
-                       </div>
-                       <div class="showSlideBcgr">
-                           <img src="/images/12x18 bokeh.jpg" />
-                       </div>
-                       <div class="showSlideBcgr" style="padding: 30px 0">
-                           <h1 style="text-align:center;">Custom Bacground<br>+25$</h1>
-                       </div>
-                   </div>
-
+                    <div class="slidercontainerBcgr" style="margin: 15px 15px">
+                        <div class="showSlideBcgr">
+                            <img src="/images/12x18 H starry night.jpg" />
+                        </div>
+                        <div class="showSlideBcgr">
+                            <img src="/images/18x12 H beach.jpg" />
+                        </div>
+                        <div class="showSlideBcgr">
+                            <img src="/images/12x18 H hearts.jpg" />
+                        </div>
+                        <div class="showSlideBcgr">
+                            <img src="/images/12x18 H castle.jpg" />
+                        </div>
+                        <div class="showSlideBcgr">
+                            <img src="/images/12x18 bokeh.jpg" />
+                        </div>
+                        <div class="showSlideBcgr" style="padding: 30px 0">
+                            <h1 style="text-align:center;">Custom Bacground<br>+25$</h1>
+                        </div>
+                    </div>
                     <div style="display: flex; justify-content: space-between;">
                         <img data-price="0" data-id="11" class="background-image" src="/images/12x18 H starry night.jpg" name="Starry Night" onclick="currentSlideBcgr(1)">
-
                         <img data-price="0" data-id="12" class="background-image" src="/images/18x12 H beach.jpg" name="Beach" width="70" height="70" onclick="currentSlideBcgr(2)">
-
                         <img data-price="0" data-id="13" class="background-image" src="/images/12x18 H hearts.jpg" name="Hearts" width="70" height="70" onclick="currentSlideBcgr(3)">
-
                         <img data-price="0" data-id="14" class="background-image" src="/images/12x18 H castle.jpg" name="Castle" width="70" height="70" onclick="currentSlideBcgr(4)">
-
                         <img data-price="0" data-id="15" class="background-image" src="/images/12x18 bokeh.jpg" name="Bokeh" width="70" height="70" onclick="currentSlideBcgr(5)">
-
-                        <div data-price="25" data-id="111" name="Custom" class="background-image"
-                        onclick="currentSlideBcgr(6)" style="font-size: 22px; text-align: center; padding: 6px 0; width: 60px; height: 60px">custom</div>
+                        <div data-price="25" data-id="111" name="Custom" class="background-image" onclick="currentSlideBcgr(6)" style="font-size: 22px; text-align: center; padding: 6px 0; width: 60px; height: 60px">custom</div>
                     </div>
                 </div>
             </div>
@@ -141,8 +137,8 @@
                 <div>
                     <h5 class="features__title">Notes (eye, color, particular<br> accessories, details, special test):</h5>
                     <div style="display: flex; justify-content: center;">
-                    <textarea class="input_text" id="text-in" type="input" oninput="textIn(this.value)" style="width: 98%; height: 150px;"></textarea>
-                </div>
+                        <textarea class="input_text" id="text-in" type="input" oninput="textIn(this.value)" style="width: 98%; height: 150px;"></textarea>
+                    </div>
                     <p id="demo"></p>
                 </div>
             </div>
@@ -150,10 +146,10 @@
                 <div>
                     <h5 class="features__title">Upload your photo</h5>
                     <div class="container">
-                    <div class="button-wrap" style="display: flex; justify-content: center;">
+                        <div class="button-wrap" style="display: flex; justify-content: center;">
                             <input class="none" type="file" id="file" />
                             <label id="inputFileToLoad" for="file" class="btn-3" onchange="encodeImageFileAsURL();" />
-                                <span>UPLOAD</span>
+                            <span>UPLOAD</span>
                             </label>
                         </div>
                     </div>
@@ -163,15 +159,24 @@
             <div class="flex-container" style="text-align: center;">
                 <div>
                     <button class="add_btn" id="add-to-cart"><span>ADD TO CART</span></button>
-                <p>checkout safely using your preferred payment method</p>
-
+                    <p>checkout safely using your preferred payment method</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    // slider for galery
+// dynamic counter
+var x = 0;
+setInterval(function() {
+    var x = Math.floor((Math.random() * 20) + 10);
+    document.getElementById("demo").innerHTML = x;
+}, 5000);
+// dynamic counter
+</script>
+
+<script>
+// slider for galery
 var slide_index = 1;
 displaySlides(slide_index);
 
@@ -194,9 +199,9 @@ function displaySlides(n) {
     }
     slides[slide_index - 1].style.display = "block";
 }
-    // slider for galery
+// slider for galery
 
-    // slider for bacground
+// slider for bacground
 
 var slide_index_bcgr = 1;
 displaySlidesBcgr(slide_index_bcgr);
@@ -220,7 +225,7 @@ function displaySlidesBcgr(h) {
     slidesBcgr[slide_index_bcgr - 1].style.display = "block";
 }
 
-    // slider for bacground
+// slider for bacground
 
 
 

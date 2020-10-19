@@ -28,21 +28,21 @@
 
 @media (max-width: 483px) {
     .grid-container5 > div {
-      margin: 50px 10px ;
+      padding: 0;
     }
 
     .textFQ {
-    font-size: 15px;
+    font-size: 14px;
     }
 
 }
 
-@media(max-width: 378px){
+/*@media(max-width: 378px){
     .grid-container5 > div {
-      margin: 50px 0 ;
+      margin: 30px 0 ;
     }
 
     .textFQ {
-    font-size: 24px;
+    font-size: 18px;
     }
-}
+}*/

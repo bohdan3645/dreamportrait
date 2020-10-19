@@ -44,7 +44,7 @@ input[type="email"]{
 .grid-container1 > div {
   background-color: rgb(255,255,255,0.4);
   padding: 5px 10px;
-  margin: 30px;
+  margin: 30px 30px 150px;
   text-align: center;
   width: 420px;
 }

@@ -5,11 +5,6 @@ h {
 	color: #6A57A4;
   font-family: hellofreeday;
 }
-/*p{
-  letter-spacing: 0px;
-  margin: 7px 0 7px;
-}*/
-
 
 .grid-container3 {
   width: 100%;
@@ -42,21 +37,13 @@ h {
 
 @media (max-width: 483px) {
     .grid-container3 > div {
-      margin: 50px 10px ;
+      padding: 0;
     }
 
     .textCU {
-    font-size: 15px;
+    font-size: 14px;
     }
 
 }
 
-@media(max-width: 378px){
-    .grid-container3 > div {
-      margin: 50px 0 ;
-    }
 
-    .textCU {
-    font-size: 24px;
-    }
-}
