@@ -33,6 +33,9 @@ const privacyPolicy = require('./routes/privacyPolicy');
 const termsOfService = require('./routes/termsOfService');
 const refundPolicy = require('./routes/refundPolicy');
 const faq = require('./routes/faq');
+const reviews = require('./routes/reviews');
+var Order = require('./models/order');
+
 
 
 const app = express();
@@ -50,10 +53,9 @@ app.engine('.hbs', expressHbs({ defaultLayout: 'layout', extname: '.hbs' }));
 app.set('view engine', '.hbs');
 // view engine hbs setup
 
-
 app.use(logger('dev'));
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(express.urlencoded({limit: '50mb', extended: false }));
+app.use(express.json({limit: '50mb'}));
 app.use(cookieParser());
 
 app.use(session({
@@ -88,8 +90,45 @@ app.use('/refundPolicyTest', refundPolicy);
 app.use('/F.A.Q.Test', faq);
 app.use('/homePageTest', homePage);
 app.use('/cartPageTest', cartPage);
+app.use('/reviewsTest', reviews);
 
 
+app.post('/createOrder', (req, res, next) => {
+  
+//read order fron req
+var order = req.body.order;
+// for(var g = 0; g < order.length; g++){
+//     order[g];
+order = order.map(o => new Order({
+    imagePath: o.image,
+    selectedBakcground: o.backgroundPrice,
+    selectedPeople: o.peoplePrice,
+    wishesText: o.text,
+  }));
+
+// }
+//validate order data
+
+//call mongodb create
+var done = 0;
+
+for (var h = 0; h < order.length; h++) {
+
+  order[h].save(function (err, result) {
+    console.log(err);
+    done++;
+    if(done === order.length) {
+      mongoose.disconnect();
+    }
+  });
+}
+
+
+//check creating order
+//return 200
+res.status(200);
+res.end();
+});
 
 
 // Stripe Post

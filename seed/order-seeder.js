@@ -5,9 +5,11 @@ mongoose.connect('mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MO
 
 var orders = [
 	new Order ({
-		user:,
-		cart:,
-		paymentId:
+
+		imagePath: image,
+		selectedBakcground: selectedBakcground,
+		selectedPeople: item.selectedPeople.price,
+		wishesText: wishesText,
 }),
 ];
 

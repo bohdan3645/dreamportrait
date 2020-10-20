@@ -1,19 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-
-
-
 //order
 const Order = require('../models/order');
 
 router.get('/', function(req, res, next) {
-  Order.find(function(err, docs) {
+ Order.find(function(err, docs) {
    res.render('shop/homePage', { title: 'shopp', orders: docs });
   });	
 });
 //order
-
 
 router.get('/cartPageTest/:id', function(req, res, next) {
 	var orderId = req.params.id;
