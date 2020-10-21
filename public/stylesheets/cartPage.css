@@ -1,7 +1,8 @@
 .cartContent {
+	width: 46%;
 	background-color: rgb(255,255,255,0.4);
 	padding: 20px;
-	margin-top: 40px;
+	margin: 40px auto 150px ;
 }
 
 .cartHead {
@@ -15,29 +16,32 @@
 
 .orderDetails {
 	display: grid;
-	grid-template-columns: 50px 210px auto 100px 100px;
-	padding: 20px 20px 20px 0;
+	grid-template-columns: 5% auto 40% 12% 12%;
+	padding: 20px 10px;
 	background-color: rgb(255,255,255,0.6);
 	margin-bottom: 20px;
+	overflow: hidden;
 }
 
 
 .namberOfOrder, .price-Order, .deleteOrder {
-	padding: 60px 10px;
+	display: flex;
+	justify-content: center;
+	align-self: center;
 	text-align: center;
 }
 
 .orderPhoto {
 	margin: 0 25px;
 	background-color:#DDD8E5;
+	position: relative;
+	overflow: hidden;
 }
 .orderPhoto img {
 	position: absolute;
-	overflow: hidden; 
 	 width: 160px; 
-	 height: 105px;
 	 object-fit: cover;
-	 margin-top: 27.5px;
+	 margin: 19px 0;
 }
 
 
@@ -99,17 +103,49 @@ width: 300px;
 	
 }
 
+@media(max-width: 1235px) {
+.cartContent {
+	width: 71%;
+	margin: 40px auto 370px;
+}
+}
+
 
 @media(max-width: 770px){
-	
+	.cartContent {
+	width: 85%;
+}
+.orderDetails {
+	grid-template-columns: 5% auto 36% 12% 12%;
+}
+}
+@media(max-width: 670px){
+.orderDetails {
+	font-size: 12px;
+}
+.orderPhoto{
+	margin: 0 15px;
+
+}
+
 }
 
 @media(max-width: 483px){
 	.cartContent {
-	width: 770px;
-	}
+	width: 100%;
+	padding: 10px
+}
+.orderDetails {
+	padding: 10px 5px;
+	font-size: 10px;
+}
+.details{
+	font-size: 10px;
+}
+.hOrder{
+	font-size: 15px;
+	margin-bottom: 10px;
 }
 
-@media(max-width: 378px){
-
 }
+
