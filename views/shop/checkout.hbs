@@ -1,0 +1,127 @@
+<div class="checkoutContainr" style="display: flex; justify-content: center; padding: 200px 0 400px">
+<div class="paymantContent" style="width: 30%; border: 1px solid #EDEAF8; padding: 20px ;   background-color: rgb(255,255,255,0.4); text-align: center;">
+  <h2 class="headerCheckout" style="font-family: hellofreeday; color: #6A57A4;">Checkout</h2>
+  <hr>
+    <form action="/stripePaymant" id="payment-form" method="POST">
+        <input type="email" placeholder="E-mail" style="margin: 20px auto; width: 100%">
+        <div id="card-element" style="margin: 20px 0"></div>
+        <div class="sr-field-error" id="card-errors" role="alert"></div>
+ 
+        <button id="submit" style="background-color: #5D61E8; border-radius: 5px; border: none; width: 100%; margin: 20px 0; padding: 10px 0">Pay {{ 'this.amount' }}</button>
+        <input type="hidden" name="price" value="333">
+    </form>
+</div>
+</div>
+<script>
+function getTotalPrice() {
+    var localStorageCart = JSON.parse(localStorage.getItem("cart"));
+    var totalPrice = 0;
+
+    if (!localStorageCart) {
+        return;
+    }
+
+    for (var i = 0; i < localStorageCart.length; i++) {
+        var item = localStorageCart[i];
+        totalPrice += item.selectedPeople.price;
+
+        if (item.selectedBakcground != null) {
+            totalPrice += item.selectedBakcground.price;
+        }
+    }
+    return totalPrice * 100;
+};
+
+////create total price/////////////////////////////////////////////////////////////////////////////
+
+
+////create paymant/////////////////////////////////////////////////////////////////////////////
+
+var stripe;
+var orderData = {
+    amount: getTotalPrice(),
+    currency: "usd"
+};
+
+
+var pay = function(stripe, card) {
+
+    stripe
+        .createPaymentMethod("card", card)
+        .then(function(result) {
+            if (result.error) {
+                console.log(result);
+            } else {
+                orderData.paymentMethodId = result.paymentMethod.id;
+
+                return fetch("/pay", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(orderData)
+                });
+            }
+        })
+        .then(function(result) {
+            return result.json();
+        })
+
+        .then(function(response) {
+
+            if (response.error) {
+                showError(response.error);
+            } else if (response.requiresAction) {
+                handleAction(response.clientSecret);
+            } else {
+                // orderComplete(response.clientSecret);
+            }
+        });
+};
+
+var setupElements = function(data) {
+    stripe = Stripe(data);
+    var elements = stripe.elements();
+    var style = {
+        base: {
+            color: "#32325d",
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSmoothing: "antialiased",
+            fontSize: "18px",
+            "::placeholder": {
+                color: "grey"
+            }
+        },
+        invalid: {
+            color: "#fa755a",
+            iconColor: "#fa755a"
+        }
+    };
+
+    var card = elements.create("card", { style: style });
+    card.mount("#card-element");
+
+    return {
+        stripe: stripe,
+        card: card,
+        clientSecret: data.clientSecret
+    };
+};
+
+const setelem = setupElements('{{stripe}}');
+
+var form = document.getElementById("payment-form");
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    pay(setelem.stripe, setelem.card, setelem.clientSecret);
+});
+
+var showError = function(errorMsgText) {
+    var errorMsg = document.querySelector(".sr-field-error");
+    errorMsg.textContent = errorMsgText;
+    setTimeout(function() {
+        errorMsg.textContent = "";
+    }, 4000);
+};
+////create paymant/////////////////////////////////////////////////////////////////////////////
+</script>

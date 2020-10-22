@@ -25,6 +25,8 @@ const orderPage = require('./routes/orderPage');
 const cartPage = require('./routes/cartPage');
 
 const userRoutes = require('./routes/user');
+var checkout = require('./routes/checkout');
+
 
 const adminPage = require('./routes/adminPage');
 
@@ -35,6 +37,7 @@ const refundPolicy = require('./routes/refundPolicy');
 const faq = require('./routes/faq');
 const reviews = require('./routes/reviews');
 var Order = require('./models/order');
+
 
 
 
@@ -91,25 +94,21 @@ app.use('/F.A.Q.Test', faq);
 app.use('/homePageTest', homePage);
 app.use('/cartPageTest', cartPage);
 app.use('/reviewsTest', reviews);
+app.use('/checkoutTest', checkout);
+
 
 
 app.post('/createOrder', (req, res, next) => {
   
-//read order fron req
 var order = req.body.order;
-// for(var g = 0; g < order.length; g++){
-//     order[g];
 order = order.map(o => new Order({
+    user: req.user,
     imagePath: o.image,
-    selectedBakcground: o.backgroundPrice,
-    selectedPeople: o.peoplePrice,
+    selectedBakcground: o.backgroundName,
+    selectedPeople: o.peopleId,
     wishesText: o.text,
   }));
 
-// }
-//validate order data
-
-//call mongodb create
 var done = 0;
 
 for (var h = 0; h < order.length; h++) {
@@ -123,40 +122,57 @@ for (var h = 0; h < order.length; h++) {
   });
 }
 
-
-//check creating order
-//return 200
 res.status(200);
 res.end();
 });
 
 
 // Stripe Post
-app.post('/stripePaymant', (req, res, next)=> {
-  const {order, token} = req.body;
-  console.log('ORDER ', order);
 
-  return stripe.customers
-  .create({
-    email: req.body.email,
-    source: "tok_visa"
- })
-  .then(customer => {
-   return stripe.charges.create(
-    {
-      amount:  req.body.price,
-      currency: 'usd',
-      customer: customer.id,
-      receipt_email: req.body.email,
-      description: 'order',
-    });
-  })
-  .then(result => res.status(200).json(result))
-  .catch(err => console.log(err));
 
+app.post("/pay", async (req, res, next) => {
+  const { paymentMethodId, paymentIntentId, amount, currency, useStripeSdk } = req.body;
+
+  try {
+    let intent;
+    if (paymentMethodId) {
+      intent = await stripe.paymentIntents.create({
+        amount: amount,
+        currency: currency,
+        payment_method: paymentMethodId,
+        confirmation_method: "manual",
+        confirm: true,
+        use_stripe_sdk: useStripeSdk,
+      });
+    } else if (paymentIntentId) {
+      intent = await stripe.paymentIntents.confirm(paymentIntentId);
+    }
+    res.send(generateResponse(intent));
+  } catch (e) {
+    
+    res.send({ error: e.message });
+  }
 });
 
 
+const generateResponse = intent => {
+  switch (intent.status) {
+    case "requires_action":
+    case "requires_source_action":
+      return {
+        requiresAction: true,
+        clientSecret: intent.client_secret
+      };
+    case "requires_payment_method":
+    case "requires_source":
+      return {
+        error: "Your card was denied, please provide a new payment method"
+      };
+    case "succeeded":
+      console.log("💰 Payment received!");
+      return { clientSecret: intent.client_secret };
+  }
+};
 //Stripe Post
 
 // catch 404 and forward to error handler

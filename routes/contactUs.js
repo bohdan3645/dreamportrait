@@ -20,16 +20,16 @@ router.post('/submit', (req, res, next) => {
   let transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'ehohorb@gmail.com',
-    pass: 'eLkamino1010'
+    user: 'dreamportraitstore@gmail.com',
+    pass: '34yiuOH87%$#'
   }
 });
 
 let mailOption = {
   from: email,
-  to: 'ehohorb@gmail.com',
+  to: 'dreamportraitstore@gmail.com',
   subject: 'Dream Portrait Support',
-  html: email<br>message<br>fname<br>lname 
+  text: email + message
 }
 
 transporter.sendMail(mailOption, (err, data) => {

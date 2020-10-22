@@ -3,12 +3,23 @@ const router = express.Router();
 const passport  = require('passport');
 const csrf = require('csurf');
 
+var Order = require('../models/order');
+
 const csrfProtection = csrf();
 router.use(csrfProtection);
 
 
 router.get('/profile', isLoggedIn, function(req, res, next) {
-	res.render('user/profile');
+	Order.find({user: req.user}, function (err, orders){
+		if(err){
+			return res.write('Error!');
+		}
+		var cartHead;
+		orders.forEach(function(order){
+
+		});
+		res.render('user/profile', {orders: orders});
+	});
 });
 
 router.get('/logout', isLoggedIn, function(req, res, next) {
