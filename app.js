@@ -111,6 +111,8 @@ order = order.map(o => new Order({
 
 var done = 0;
 
+console.log(order);
+
 for (var h = 0; h < order.length; h++) {
 
   order[h].save(function (err, result) {
