@@ -1,13 +1,13 @@
-<div class="checkoutContainr" style="display: flex; justify-content: center; padding: 200px 0 400px">
-<div class="paymantContent" style="width: 30%; border: 1px solid #EDEAF8; padding: 20px ;   background-color: rgb(255,255,255,0.4); text-align: center;">
-  <h2 class="headerCheckout" style="font-family: hellofreeday; color: #6A57A4;">Checkout</h2>
+<div class="checkoutContainr">
+<div class="paymantContent">
+  <h2 class="headerCheckout">Checkout</h2>
   <hr>
     <form action="/stripePaymant" id="payment-form" method="POST">
         <input type="email" placeholder="E-mail" style="margin: 20px auto; width: 100%">
         <div id="card-element" style="margin: 20px 0"></div>
         <div class="sr-field-error" id="card-errors" role="alert"></div>
- 
-        <button id="submit" style="background-color: #5D61E8; border-radius: 5px; border: none; width: 100%; margin: 20px 0; padding: 10px 0">Pay </button>
+ <hr>
+        <button id="submit" class="submitPay">Pay </button>
         <input type="hidden" name="price" value="333">
     </form>
 </div>
