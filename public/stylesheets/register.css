@@ -1,133 +1,140 @@
 .row {
-	width: 100%;
-	display: grid;
-	justify-content: space-around;
+    width: 100%;
+    display: grid;
+    justify-content: space-around;
 }
 
-.registerContent{
-	width: 430px;
-	background-color: rgb(255,255,255,0.4);
-	text-align: center;
-	padding: 20px 30px;
-	margin-top: 40px;
-	font-size: 16px;
+.register {
+    display: flex;
+    justify-content: center;
 }
-h {
 
+.registerContent {
+    width: 27%;
+    background-color: rgb(255, 255, 255, 0.4);
+    text-align: center;
+    padding: 20px 30px;
+    margin: 40px 0 200px;
+    font-size: 16px;
 }
-.registerContent p{
-	font-size: 23px;
+
+h {}
+
+.registerContent p {
+    font-size: 23px;
 }
 
 .names {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
+
 .register {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
+
 .welcome {
-  font-family: MidnightConstellations;
-  font-size: 45px;
-  margin: 13px;
+    font-family: MidnightConstellations;
+    font-size: 45px;
+    margin: 13px;
 }
 
-.formName {
-	width: 175px;
-	height: 50px;
-	margin: 0;
+
+ #firstName {
+ 	height: 100%;
+ 	margin:0;
 }
 
-.form-control {
-	border-radius: 0;
-	border: none;
-	height: 50px;
+#lastName{
+	height: 100%;
+	margin:0;
 }
 
-.registerBtn{
-	width: 190px;
-	height: 50px;
-	font-size: 16px;
+
+
+
+/*.form-control {
+    border-radius: 0;
+    border: none;
+    height: 50px;
+}
+*/
+.registerBtn {
+    width: 190px;
+    height: 50px;
+    font-size: 16px;
     font-family: hellofreeday;
-	color: #fff;
-	background-color: #00D15A;
-	border: none;
-	margin: 20px 0 20px;
-}
-.registerBtn:hover{
-	background-color: rgb(0, 209, 90, .6);
+    color: #fff;
+    background-color: #00D15A;
+    border: none;
+    margin: 20px 0 20px;
 }
 
- .registerContent h{
-	letter-spacing: 1px;
+.registerBtn:hover {
+    background-color: rgb(0, 209, 90, .6);
 }
- .registerContent p{
-	letter-spacing: 3px;
-	margin: 15px 0 15px;
+
+.registerContent h {
+    letter-spacing: 1px;
+}
+
+.registerContent p {
+    letter-spacing: 3px;
+    margin: 15px 0 15px;
 }
 
 .subtitleRegister {
-	margin-top: 7px;
+    margin-top: 7px;
 }
 
 
+@media(max-width: 1200px) {
+    .registerContent {
+        width: 41%;
 
-@media(max-width: 770px){
-	.row {
-		width: 768px;
-	}
-}
-
-@media(max-width: 483px){
-	.registerContent {
-	width: 480px;
-	}
-	.formName {
-	width: 200px;
-	height: 50px;
-	/*margin: 0;*/
-	} 
-}
-
-@media(max-width: 378px){
-	.registerContent{
-	width: 760px;
-	padding: 20px 50px;
-	}
-
-	.form-control {
-	height: 100px;
-	font-size: 30px;
-	}
-
-	.formName {
-	width: 320px;
-	height: 100px;
-	font-size: 30px;
-	margin: 0;
-	} 
-
-	.registerBtn {
-	width: 350px;
-	height: 75px;
-	font-size: 36px;
-	margin: 30px 0 30px 0;
-	}
-
-	.welcome {
-	  font-size: 90px;
-	  margin: 13px;
     }
 
-    .subtitleRegister {
-	margin-top: 17px;
-	  font-size: 35px;
+    @media(max-width: 770px) {
+        .registerContent {
+            width: 55%;
+        }
 
-	}
+        /*.names {
+            display: flex;
+            justify-content: space-around;
+        }*/
 
-	.register {
-	font-size: 30px;
-	letter-spacing: 3px;
-	}
+    }
 
-}
+    @media(max-width: 483px) {
+        .registerContent {
+            width: 95%;
+            padding: 10px;
+        }
+
+        .registerBtn {
+            height: 40px;
+            font-size: 16px;
+            margin: 30px 0 30px 0;
+        }
+
+        .welcome {
+            font-size: 40px;
+            margin: 13px;
+        }
+
+        .subtitleRegister {
+            margin-top: 17px;
+            font-size: 18px;
+
+        }
+
+        .register {
+            font-size: 18px;
+            letter-spacing: 3px;
+        }
+
+
+    }
+
+    @media(max-width: 378px) {}
