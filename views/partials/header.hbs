@@ -47,4 +47,13 @@ function myFunction() {
 
 }
 
+
+
+function updateCartQty () {
+    var localStorageCart = JSON.parse(localStorage.getItem("cart"));
+    document.getElementById('qtyCart').innerHTML = localStorageCart.length;
+}
+
+updateCartQty ();
+
 </script>

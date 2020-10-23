@@ -246,7 +246,6 @@ var textIn = document.getElementById('text-in');
 
 
 addToCart.addEventListener('click', function(event) {
-
     if (selectedPeopleAmount != null) {
 
         var localStorageCart = JSON.parse(localStorage.getItem("cart"));
@@ -263,6 +262,7 @@ addToCart.addEventListener('click', function(event) {
         });
 
         localStorage.setItem("cart", JSON.stringify(localStorageCart));
+        updateCartQty ();
     }
 
 });

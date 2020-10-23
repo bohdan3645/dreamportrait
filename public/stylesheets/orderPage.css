@@ -56,9 +56,7 @@
     border: 3px solid #000;
 }
 
-.people-amount-image-clicked {
-    border: 3px solid #000;
-}
+
 
 .people-amount-image h3 {
 border:none;
@@ -80,6 +78,11 @@ border:none;
     border: 3px solid #D5AEA2;
     transition: border .1s;
 }
+
+.people-amount-image-clicked {
+    border: 3px solid #000;
+}
+
 
 
 .people-amount-image,

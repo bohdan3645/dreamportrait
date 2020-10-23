@@ -62,7 +62,8 @@ showCartElement();
         localStorage.setItem("cart", JSON.stringify(localStorageCart));
         showCartElement();
 
-function getItemTemplate(numPpl, bgName, price, text, image) {
+function getItemTemplate(numPpl, bgName, price, text, image, index) {
+    text = text || '';
     return '<div class="orderDetails">' +
         '<div class="namberOfOrder"><b>0000</b></div>' +
         '<div class="orderPhoto"><img src="' + image + '"></div>' +
@@ -74,12 +75,9 @@ function getItemTemplate(numPpl, bgName, price, text, image) {
         '<div class="priceOrder">Price:  <del>$' + price * 2 + ' <b></del> $' + price + '</b></div>' +
         '</div>' +
         '<div class="price-Order"><b>$' + price + ' </b></div>' +
-        '<button class="deleteOrder" onclick="ClearData()"><img src="/images/container.png" alt=""></button>' +
+        '<button class="deleteOrder" onclick="ClearData(' + index + ')"><img src="/images/container.png" alt=""></button>' +
         '</div>';
-
-
 };
-
 
 
 
@@ -103,7 +101,7 @@ function showCartElement() {
         }
 
         if (item.selectedBakcground != null) {
-            shoppingCart.innerHTML += getItemTemplate(item.selectedPeople.id, item.selectedBakcground.name, item.selectedPeople.price, item.wishesText, item.image);
+            shoppingCart.innerHTML += getItemTemplate(item.selectedPeople.id, item.selectedBakcground.name, item.selectedPeople.price, item.wishesText, item.image, i);
         } else {
             shoppingCart.innerHTML +=
                 "<li>People: " + item.selectedPeople.id + " - $" + item.selectedPeople.price + "</li>";
@@ -113,6 +111,20 @@ function showCartElement() {
     var totalPriceElement = document.getElementById('total-price');
     totalPriceElement.innerHTML = 'GRAND TOTAL:<b> $' + totalPrice + '</b>';
 }
+
+
+function ClearData(index) {
+    var localStorageCart = JSON.parse(localStorage.getItem("cart"));
+    localStorageCart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(localStorageCart));
+    showCartElement();
+    updateCartQty ();
+    if(localStorageCart.length <= 0){
+        window.location.href = '/orderPageTest';
+    }
+}
+
+
 </script>
 
 
