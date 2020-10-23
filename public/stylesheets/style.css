@@ -408,13 +408,9 @@ padding-bottom: 1px;
         padding: 5px 0;
     }
 
-   /* #navLinksManagment #navlink {
-        display: none;
-        top: 91px;
-    }*/
 
     .logot {
-        width: 250px;
+        width: 240px;
     }
 
     .footer__inner {
@@ -442,9 +438,16 @@ padding-bottom: 1px;
 }
 
 @media(max-width: 378px) {
+    .header {
+        padding: 0 5px;
+        grid-template-columns: 13% 72% 15%;
+    }
+
+
+    
 
     .brgSpan {
-        width: 33px;
+        width: 30px;
         height: 5px;
         margin: 7px;
         padding: 0;

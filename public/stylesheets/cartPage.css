@@ -147,8 +147,12 @@ width: 300px;
 	font-size: 10px;
 }
 .hOrder{
-	font-size: 15px;
+	font-size: 18px;
 	margin-bottom: 10px;
+}
+
+.badge{
+	font-size: 12px;
 }
 
 }
