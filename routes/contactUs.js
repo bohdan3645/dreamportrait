@@ -33,14 +33,12 @@ let mailOption = {
 }
 
 transporter.sendMail(mailOption, (err, data) => {
-if(err){
-  console.log("error send!");
+if(!message){
+  res.redirect('/contactUsTest');
 }else{
-  console.log('saccess send!');
+ res.redirect('/homePageTest');
 }
 });
-
-res.end('all good');
 });
 
 

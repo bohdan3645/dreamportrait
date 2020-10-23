@@ -63,10 +63,10 @@
 .people-amount-image h3 {
 border:none;
 }
-
-.bacground-image-clicked {
+.background-image:hover {
     border: 3px solid #000;
 }
+
 
 .background-image {
     width: 60px;
@@ -81,9 +81,6 @@ border:none;
     transition: border .1s;
 }
 
-.background-image:hover {
-    border: 3px solid #000;
-}
 
 .people-amount-image,
 .background-image {

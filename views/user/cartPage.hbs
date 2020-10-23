@@ -1,6 +1,6 @@
 
 
-    <div class="cartContent">
+    <div class="cartContent" style="margin-bottom: 420px">
         <div class="cartHead">CART</div>
         <div id="cart">
         </div>
@@ -11,9 +11,9 @@
              <div style="margin-right: 5px"> The cart will expire in</div>
               <div id="countDown" style="color: red">10:00</div>
             </div>
-            <button class="updateBtn">UPDATE</button>
+            <button class="updateBtn" onclick="updateTime()">UPDATE</button>
 
-            <a href="/checkoutTest" type="button">CHECKOUT</a>
+            <a class="checkoutBtn" href="/checkoutTest" type="button" >CHECKOUT</a>
 
 <!-- id="createOrder" -->
         </div>
@@ -25,10 +25,11 @@
   // timer for expire cart
 var minutes = 9;
 var seconds = 60;
+var time = document.getElementById("countDown")
 
 setInterval( function() {
   if( minutes == 0 && seconds == 1){
-    document.getElementById('countDown').innerHTML = "00:00"
+    time.innerHTML = "00:00"
   }else{
     seconds--;
     if(seconds == 0){
@@ -38,9 +39,15 @@ setInterval( function() {
         minutes = minutes;
       }
     }
-    document.getElementById('countDown').innerHTML = minutes + ":" + seconds;
+    time.innerHTML = minutes + ":" + seconds;
   }
 }, 1000);
+
+
+
+function updateTime() {
+  
+}
   // timer for expire cart
 
 
