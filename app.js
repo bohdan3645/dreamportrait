@@ -36,6 +36,8 @@ const termsOfService = require('./routes/termsOfService');
 const refundPolicy = require('./routes/refundPolicy');
 const faq = require('./routes/faq');
 const reviews = require('./routes/reviews');
+const successMsgContact = require('./routes/successMsgContact');
+
 var Order = require('./models/order');
 
 
@@ -96,6 +98,8 @@ app.use('/homePageTest', homePage);
 app.use('/cartPageTest', cartPage);
 app.use('/reviewsTest', reviews);
 app.use('/checkoutTest', checkout);
+app.use('/successMsgContactTest', successMsgContact);
+
 
 
 

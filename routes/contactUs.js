@@ -36,7 +36,7 @@ transporter.sendMail(mailOption, (err, data) => {
 if(!message){
   res.redirect('/contactUsTest');
 }else{
- res.redirect('/homePageTest');
+ res.redirect('/successMsgContactTest');
 }
 });
 });

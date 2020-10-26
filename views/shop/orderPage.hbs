@@ -77,7 +77,9 @@
                     <div style="display: flex;">
                         <img src="/images/airport.png" style="margin: 5px; width: 20px; height: 20px">
                          <h6 style="margin:5px 0 0 0"> Estimated delivery time 5-10 days</h6>
-                    </div>
+                    </div><br>
+
+                    <div id="total-price-page"></div>
                     <h3><b>Only 11 arts left at this price</b></h3>
                 </div>
             </div>
@@ -314,6 +316,29 @@ for (var i = 0; i < backgroundImage.length; i++) {
             name: name
         };
     });
+}
+
+getTotalPricePage();
+
+function getTotalPricePage(){
+    var localStorageCart = JSON.parse(localStorage.getItem("cart"));
+    var totalPrice = 0;
+
+    if (!localStorageCart) {
+        return;
+    }
+
+    for (var i = 0; i < localStorageCart.length; i++) {
+        var item = localStorageCart[i];
+        totalPrice += item.selectedPeople.price;
+
+        if (item.selectedBakcground != null) {
+            totalPrice += item.selectedBakcground.price;
+        }
+
+    }
+     var totalPricePage = document.getElementById('total-price-page');
+    totalPricePage.innerHTML = '<h2 style="color:red"><del style="color:#000">$' + totalPrice * 2 + '</del>  $' + totalPrice + '</h2>';
 }
 
 function showCartElement() {

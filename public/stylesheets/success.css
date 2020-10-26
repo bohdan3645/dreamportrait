@@ -1,0 +1,38 @@
+.successContent{
+	width: 40%;
+}
+
+.titleSuccess {
+	margin: 150px 0 20px;
+	display: flex;
+    justify-content: center;
+    font-family: hellofreeday;
+    color: #6A57A4;
+    letter-spacing: 2px;
+}
+
+.getHomebtn {
+	display: flex;
+    justify-content: center;
+    margin: 10px 0 450px;
+}
+
+.getHome {
+    width: 350px;
+    height: 60;
+    background-color: #4FC478;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    font-family: hellofreeday;
+    padding: 14px 60px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+
+.getHome:hover {
+    color: #6A57A4;
+}

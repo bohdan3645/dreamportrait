@@ -1,4 +1,5 @@
 .cartContent {
+	/*display: none;*/
 	width: 46%;
 	background-color: rgb(255,255,255,0.4);
 	padding: 20px;

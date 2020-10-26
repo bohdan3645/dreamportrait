@@ -51,6 +51,7 @@
 .description div {
     text-align: center;
     font-size: 25px;
+    word-spacing: 7px;
     justify-content: space-between;
     font-family: hellofreeday;
 }

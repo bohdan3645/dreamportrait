@@ -8,6 +8,10 @@ button:focus {
     outline: none;
 }
 
+button{
+    cursor: pointer;
+}
+
 
 hr {
     border: .5px solid #fff;
@@ -15,6 +19,7 @@ hr {
 }
 
 a {
+    cursor: pointer;
     text-decoration: none;
 }
 
