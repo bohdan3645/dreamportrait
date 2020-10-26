@@ -154,6 +154,7 @@ app.post("/pay", async (req, res, next) => {
   } catch (e) {
     
     res.send({ error: e.message });
+    done();
   }
 });
 
