@@ -46,7 +46,8 @@ const app = express();
 
 
 // mongodb
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://dream:portrait@cluster0.jnslv.mongodb.net/dream-portrait?retryWrites=true&w=majority');
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority');
 require('./config/passport');
 // mongodb
 
@@ -171,7 +172,7 @@ const generateResponse = intent => {
         error: "Your card was denied, please provide a new payment method"
       };
     case "succeeded":
-      console.log("💰 Payment received!");
+      console.log(paymentIntentId);
       return { clientSecret: intent.client_secret };
   }
 };

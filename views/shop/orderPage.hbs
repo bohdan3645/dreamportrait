@@ -263,8 +263,10 @@ addToCart.addEventListener('click', function(event) {
 
         localStorage.setItem("cart", JSON.stringify(localStorageCart));
         updateCartQty ();
+        if(localStorageCart.length > 0){
+            window.location.href = '/cartPageTest';
+        }
     }
-
 });
 
 

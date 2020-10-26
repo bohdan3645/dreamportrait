@@ -16,7 +16,9 @@
 
         <div class="navLinksManagment" id="navLinksManagment">
         {{# if login }}
-            <a class="navlink" id="navlink" href="/user/profile/" data-scroll="#USER"><i class="fas fa-user" style="font-size: 30px"></i></a>
+            <a class="navlink userSign" id="navlink" href="/user/profile/" data-scroll="#USER"><i class="fas fa-user" style="font-size: 30px"></i></a>
+
+            <a class="navlink userWord" id="navlinkUser" href="/user/profile/" data-scroll="#USER">USER</a>
             {{ else }}
             <a class="navlink" id="navlinkSignIn" href="/user/signin/" data-scroll="#SIGN IN">SIGN IN</a>
             {{/if}}
@@ -39,12 +41,9 @@
 navv = document.getElementById("navLinks");
 navvv = document.getElementById("navlinkSignIn");
 
-
-
 function myFunction() {
     navv.style.display = navv.style.display == 'flex' ? 'none' : 'flex';
     navvv.style.display = navvv.style.display == 'flex' ? 'none' : 'flex';
-
 }
 
 

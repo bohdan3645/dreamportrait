@@ -62,6 +62,7 @@
 }
 .deleteOrder {
 	border: none;
+	background-color: #EEF5F6;
 }
 .deleteOrder:focus {
 	outline: none;

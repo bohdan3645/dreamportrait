@@ -1,5 +1,5 @@
 body {
-background-color: #C5D4D5;
+    background-color: #C5D4D5;
     background-image: url('/images/back.png');
     margin: 0 auto;
 }
@@ -43,7 +43,7 @@ h5 {
 
 }
 
-la{
+la {
     font-size: 20px;
 }
 
@@ -90,6 +90,7 @@ footer {
     margin: 3px 5px;
     padding: 20px 0;
 }
+
 #navlinkSignIn {
     color: #6A57A4;
     font-size: 22px;
@@ -122,6 +123,12 @@ footer {
 
 #navLinksManagment a {
     margin-left: 10px;
+}
+
+
+
+.userWord {
+    display: none;
 }
 
 .burger {
@@ -234,6 +241,7 @@ footer
     overflow: hidden;
     margin: 10px;
 }
+
 .fileUpload input.upload {
     position: absolute;
     top: 0;
@@ -247,11 +255,12 @@ footer
 }
 
 
-.menage-nav a{
+.menage-nav a {
     font-size: 18px;
     color: black;
     text-decoration: none;
 }
+
 /*
 footer
 ==========================================*/
@@ -269,16 +278,17 @@ footer
         top: 130px;
         left: 0;
         margin: 0;
-padding-bottom: 1px;
+        padding-bottom: 1px;
         background-color: #808080;
         display: none;
         z-index: 1;
     }
-    #navLinksManagment a {
-    margin-left: 0;
-}
 
-     #navlinkSignIn {
+    #navLinksManagment a {
+        margin-left: 0;
+    }
+
+    #navlinkSignIn {
         display: none;
         flex-direction: column;
         position: absolute;
@@ -295,7 +305,7 @@ padding-bottom: 1px;
         color: #FFD8FE;
     }
 
- #navlinkSignIn {
+    #navlinkSignIn {
         padding: 0 20px 20px 25px;
         color: #FFD8FE;
     }
@@ -341,7 +351,7 @@ padding-bottom: 1px;
         top: 130px;
     }
 
-     #navlinkSignIn {
+    #navlinkSignIn {
         top: 272px;
     }
 
@@ -373,12 +383,32 @@ padding-bottom: 1px;
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
 
     .header {
         padding: 0 5px;
         grid-template-columns: 17% 68% 15%;
     }
+
+    .userSign {
+        display: none
+    }
+
+    #navlinkUser {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        padding: 5px 25px;
+        color: #FFD8FE;
+        width: 100%;
+        top: 265px;
+        left: 0;
+        background-color: #808080;
+        z-index: 1;
+    }
+
+    
+
 
     .burger {
         width: 100%;
@@ -444,7 +474,7 @@ padding-bottom: 1px;
     }
 
 
-    
+
 
     .brgSpan {
         width: 30px;
@@ -461,8 +491,8 @@ padding-bottom: 1px;
         bottom: 10px;
     }
 
-.burger{
-    padding: 10px 2px 0 2px;
-}
+    .burger {
+        padding: 10px 2px 0 2px;
+    }
 
 }
