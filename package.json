@@ -30,6 +30,7 @@
     "nodemailer": "^6.4.14",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "paypal-rest-sdk": "^1.8.1",
     "popper.js": "^1.16.1",
     "stripe": "^8.98.0",
     "uuid": "^8.3.0",

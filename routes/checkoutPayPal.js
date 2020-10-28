@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 
-/* GET checkout Stripe page. */
+/* GET checkout Pay Pal page. */
 router.get('/', function(req, res, next) {
-   res.render('shop/checkout', { title: 'shopp', stripe: process.env.PUBLISHABLE_STRIPE_KEY });
+   res.render('shop/checkoutPayPal', { title: 'shopp' });
 });
 
 module.exports = router;

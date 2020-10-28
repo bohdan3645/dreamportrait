@@ -13,8 +13,8 @@ const flash = require('connect-flash');
 const validator = require('express-validator');
 const MongoStore = require('connect-mongo')(session);
 const nodemailer = require('nodemailer');
+const paypal = require('paypal-rest-sdk');
 const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY);
-
 
 
 
@@ -26,6 +26,8 @@ const cartPage = require('./routes/cartPage');
 
 const userRoutes = require('./routes/user');
 var checkout = require('./routes/checkout');
+var checkoutPayPal = require('./routes/checkoutPayPal');
+
 
 
 const adminPage = require('./routes/adminPage');
@@ -48,7 +50,6 @@ const app = express();
 
 
 // mongodb
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://dream:portrait@cluster0.jnslv.mongodb.net/dream-portrait?retryWrites=true&w=majority');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority');
 require('./config/passport');
 // mongodb
@@ -98,6 +99,8 @@ app.use('/homePageTest', homePage);
 app.use('/cartPageTest', cartPage);
 app.use('/reviewsTest', reviews);
 app.use('/checkoutTest', checkout);
+app.use('/checkoutPayPalTest', checkoutPayPal);
+
 app.use('/successMsgContactTest', successMsgContact);
 
 
@@ -116,8 +119,6 @@ order = order.map(o => new Order({
 
 var done = 0;
 
-console.log(order);
-
 for (var h = 0; h < order.length; h++) {
 
   order[h].save(function (err, result) {
@@ -132,6 +133,36 @@ for (var h = 0; h < order.length; h++) {
 res.status(200);
 res.end();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////pal
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////pal
+
+
+
+
+
+
+
+
 
 
 // Stripe Post
