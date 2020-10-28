@@ -122,15 +122,15 @@ var done = 0;
 
 for (var h = 0; h < order.length; h++) {
 
-  order[h].save(function (err, result) {
-    console.log(err);
-    done++;
-    if(done === order.length) {
+  // order[h].save(function (err, result) {
+  //   console.log(err);
+  //   done++;
+  //   if(done === order.length) {
 
-      mongoose.disconnect();
-      console.log("huy");
-    }
-  });
+  //     mongoose.disconnect();
+  //     console.log("huy");
+  //   }
+  // });
 }
 res.send();
 }
