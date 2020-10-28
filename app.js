@@ -108,12 +108,12 @@ app.use('/successMsgContactTest', successMsgContact);
 
 app.post('/createOrder', (req, res, next) => {
 try{ 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority'); 
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority'); 
 var order = req.body.order;
 order = order.map(o => new Order({
     user: req.user,
-    imagePath: o.image,
     selectedBakcground: o.backgroundName,
+    imagePath: o.image,
     selectedPeople: o.peopleId,
     wishesText: o.text,
   }));
@@ -128,7 +128,7 @@ for (var h = 0; h < order.length; h++) {
     done++;
     if(done === order.length) {
 
-      mongoose.disconnect();
+      // mongoose.disconnect();
       console.log("huy");
     }
   });
