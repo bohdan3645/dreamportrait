@@ -129,12 +129,10 @@ for (var h = 0; h < order.length; h++) {
 
       mongoose.disconnect();
       console.log("huy");
-      // res.status(200);
-      res.send();
-
     }
   });
 }
+res.send();
 }
 catch(err){
   console.log(err);
