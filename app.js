@@ -126,12 +126,12 @@ for (var h = 0; h < order.length; h++) {
     done++;
     if(done === order.length) {
       mongoose.disconnect();
+      res.status(200);
+      res.end();
     }
   });
 }
 
-res.status(200);
-res.end();
 });
 
 
