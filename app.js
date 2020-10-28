@@ -128,8 +128,8 @@ for (var h = 0; h < order.length; h++) {
 
       mongoose.disconnect();
       console.log("huy");
-      res.status(200);
-      res.end();
+      // res.status(200);
+      res.send();
     }
   });
 }
