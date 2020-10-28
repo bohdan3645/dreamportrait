@@ -125,7 +125,9 @@ for (var h = 0; h < order.length; h++) {
     console.log(err);
     done++;
     if(done === order.length) {
+
       mongoose.disconnect();
+      console.log("huy");
       res.status(200);
       res.end();
     }
