@@ -107,7 +107,7 @@ app.use('/successMsgContactTest', successMsgContact);
 
 
 app.post('/createOrder', (req, res, next) => {
-  
+try{  
 var order = req.body.order;
 order = order.map(o => new Order({
     user: req.user,
@@ -116,6 +116,7 @@ order = order.map(o => new Order({
     selectedPeople: o.peopleId,
     wishesText: o.text,
   }));
+
 
 var done = 0;
 
@@ -130,13 +131,16 @@ for (var h = 0; h < order.length; h++) {
       console.log("huy");
       // res.status(200);
       res.send();
+
     }
   });
 }
+}
+catch(err){
+  console.log(err);
+}
 
 });
-
-
 
 
 
