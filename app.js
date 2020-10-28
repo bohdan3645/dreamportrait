@@ -107,7 +107,8 @@ app.use('/successMsgContactTest', successMsgContact);
 
 
 app.post('/createOrder', (req, res, next) => {
-try{  
+try{ 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority'); 
 var order = req.body.order;
 order = order.map(o => new Order({
     user: req.user,
@@ -122,15 +123,15 @@ var done = 0;
 
 for (var h = 0; h < order.length; h++) {
 
-  // order[h].save(function (err, result) {
-  //   console.log(err);
-  //   done++;
-  //   if(done === order.length) {
+  order[h].save(function (err, result) {
+    console.log(err);
+    done++;
+    if(done === order.length) {
 
-  //     mongoose.disconnect();
-  //     console.log("huy");
-  //   }
-  // });
+      mongoose.disconnect();
+      console.log("huy");
+    }
+  });
 }
 res.send();
 }
