@@ -127,9 +127,6 @@ for (var h = 0; h < order.length; h++) {
     console.log(err);
     done++;
     if(done === order.length) {
-
-      // mongoose.disconnect();
-      console.log("huy");
     }
   });
 }
@@ -141,19 +138,9 @@ catch(err){
 
 });
 
-
-
-
-
-
-process.on('uncaughtException', function(err) {
-console.log('Caught exception: ' + err);
-});
-
-
-
-
-
+// process.on('uncaughtException', function(err) {
+// console.log('Caught exception: ' + err);
+// });
 
 ////////////////////////////////////////////////////////////////////////////////////pal
 
@@ -162,15 +149,6 @@ console.log('Caught exception: ' + err);
 
 
 ////////////////////////////////////////////////////////////////////////////////////pal
-
-
-
-
-
-
-
-
-
 
 // Stripe Post
 
@@ -220,6 +198,9 @@ const generateResponse = intent => {
   }
 };
 //Stripe Post
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

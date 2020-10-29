@@ -76,10 +76,15 @@
                     </div>
                     <div style="display: flex;">
                         <img src="/images/airport.png" style="margin: 5px; width: 20px; height: 20px">
-                         <h6 style="margin:5px 0 0 0"> Estimated delivery time 5-10 days</h6>
+                        <h6 style="margin:5px 0 0 0"> Estimated delivery time 5-10 days</h6>
                     </div><br>
-
-                    <div id="total-price-page"></div>
+                    <div id="total-price-page-static" style="display: flex;">
+                        <del>
+                            <h2>$98</h2>
+                        </del>
+                        <h2 style="color: red">$49</h2>
+                    </div>
+                    <div id="total-price-page" style="display: none"></div>
                     <h3><b>Only 11 arts left at this price</b></h3>
                 </div>
             </div>
@@ -149,7 +154,6 @@
                     <h5 class="features__title">Upload your photo</h5>
                     <div class="container">
                         <div class="button-wrap" style="display: flex; justify-content: center;">
-                            
                             <input class="btnUpl" id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
                         </div>
                     </div>
@@ -165,9 +169,6 @@
         </div>
     </div>
 </div>
-
-
-   
 <script>
 // dynamic counter
 var x = 0;
@@ -177,7 +178,6 @@ setInterval(function() {
 }, 6000);
 // dynamic counter
 </script>
-
 <script>
 // slider for galery
 var slide_index = 1;
@@ -264,8 +264,8 @@ addToCart.addEventListener('click', function(event) {
         });
 
         localStorage.setItem("cart", JSON.stringify(localStorageCart));
-        updateCartQty ();
-        if(localStorageCart.length > 0){
+        updateCartQty();
+        if (localStorageCart.length > 0) {
             window.location.href = '/cartPageTest';
         }
     }
@@ -320,7 +320,7 @@ for (var i = 0; i < backgroundImage.length; i++) {
 
 getTotalPricePage();
 
-function getTotalPricePage(){
+function getTotalPricePage() {
     var localStorageCart = JSON.parse(localStorage.getItem("cart"));
     var totalPrice = 0;
 
@@ -336,8 +336,14 @@ function getTotalPricePage(){
             totalPrice += item.selectedBakcground.price;
         }
 
+        if (item.selectedPeople != null) {
+            document.getElementById('total-price-page-static').style.display = 'none';
+            document.getElementById('total-price-page').style.display = 'flex';
+        }
+
     }
-     var totalPricePage = document.getElementById('total-price-page');
+
+    var totalPricePage = document.getElementById('total-price-page');
     totalPricePage.innerHTML = '<h2 style="color:red"><del style="color:#000">$' + totalPrice * 2 + '</del>  $' + totalPrice + '</h2>';
 }
 
@@ -392,7 +398,7 @@ function encodeImageFileAsURL() {
         var fileReader = new FileReader();
 
         fileReader.onload = function(fileLoadedEvent) {
-            var srcData = fileLoadedEvent.target.result; 
+            var srcData = fileLoadedEvent.target.result;
             image = srcData;
 
         }
