@@ -24,12 +24,12 @@
         justify-content: flex-end;
     }
 
-    .flex-container .descriptionOfSale{
+    .flex-container .descriptionOfSale {
         padding: 30px;
     }
 
 
-    .items-with-photo img{
+    .items-with-photo img {
         cursor: pointer;
     }
 
@@ -62,7 +62,7 @@
 
 
     .people-amount-image:hover {
-        border: 3px solid #000;
+        border: 4px solid #000;
     }
 
 
@@ -72,7 +72,7 @@
     }
 
     .background-image:hover {
-        border: 3px solid #000;
+        border: 4px solid #000;
     }
 
 
@@ -90,7 +90,7 @@
     }
 
     .people-amount-image-clicked {
-        border: 3px solid #000;
+        border: 4px solid #000;
     }
 
 
@@ -111,11 +111,12 @@
         padding: 15px 0;
         width: 85%;
         font-size: 17px;
-        margin:10px;
+        margin: 10px;
         transition: all 0.5s;
     }
-    .button-wrap:hover{
-       background-color: #FF9F47; 
+
+    .button-wrap:hover {
+        background-color: #FF9F47;
     }
 
 
@@ -188,6 +189,9 @@
         overflow: hidden;
     }
 
+.items-with-photo img:hover{
+    border: 2px solid #000;
+}
     .items-with-photo img {
         width: 167px;
         height: 167px;
@@ -391,7 +395,6 @@
             height: 200px;
         }
 
-
         .container-with-photos {
             display: none;
         }
@@ -404,24 +407,15 @@
             padding: 0 2px;
         }
 
-
-
         .showSlide img {
             width: 100%;
         }
 
-
-
         .flex-container>div {
             width: 100%;
             padding: 20px 10px;
-
         }
 
-
-
-
-        /* The dots/bullets/indicators */
         .dots {
             position: absolute;
             width: 100%;
@@ -447,10 +441,10 @@
 
 
         .background-image {
-            width: 57px;
-            height: 57px;
+            width: 55px;
+            height: 55px;
             margin: 2px;
-
+            border: 2px solid #D5AEA2;
         }
 
         .galery {
@@ -463,12 +457,10 @@
 
         .descriptionOfSale h2 {
             font-size: 25px;
-
         }
 
         .descriptionOfSale h3 b {
             font-size: 22px;
-
         }
 
         .descriptionOfSale b {
@@ -485,7 +477,19 @@
             font-size: 25px;
             margin: 3px auto;
             line-height: 13px;
+            border: 2px solid #D5AEA2;
+        }
 
+        .people-amount-image:hover {
+            border: 2px solid #000;
+        }
+
+        .background-image:hover {
+            border: 2px solid #000;
+        }
+
+        .people-amount-image-clicked {
+            border: 2px solid #000;
         }
 
         .galery {
@@ -496,8 +500,6 @@
         .btn-3 {
             margin: 5px 50px;
         }
-
-
 
         .input_text {
             margin: 15px 0;
@@ -511,10 +513,7 @@
             margin: 0;
         }
 
-
-
         .fas {
             font-size: 50px;
         }
-
     }
