@@ -189,8 +189,8 @@
         overflow: hidden;
     }
 
-.items-with-photo img:hover{
-    border: 2px solid #000;
+.container-with-photos img:hover {
+    border: 4px solid #000;
 }
     .items-with-photo img {
         width: 167px;

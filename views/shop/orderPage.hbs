@@ -135,7 +135,7 @@
                         <img data-price="0" data-id="13" class="background-image" src="/images/12x18 H hearts.jpg" name="Hearts" width="70" height="70" onclick="currentSlideBcgr(3)">
                         <img data-price="0" data-id="14" class="background-image" src="/images/12x18 H castle.jpg" name="Castle" width="70" height="70" onclick="currentSlideBcgr(4)">
                         <img data-price="0" data-id="15" class="background-image" src="/images/12x18 bokeh.jpg" name="Bokeh" width="70" height="70" onclick="currentSlideBcgr(5)">
-                        <div data-price="25" data-id="111" name="Custom" class="background-image" onclick="currentSlideBcgr(6)" style="font-size: 22px; text-align: center; padding: 6px 0; width: 60px; height: 60px">custom</div>
+                        <div data-price="25" data-id="111" name="Custom" class="background-image" onclick="currentSlideBcgr(6)" style="font-size: 22px; text-align: center; padding: 6px 0; width: 55px; height: 55px">custom</div>
                     </div>
                 </div>
             </div>
@@ -190,6 +190,7 @@ function currentSlide(n) {
     displaySlides(slide_index = n);
 }
 
+
 function displaySlides(n) {
     var i;
     var slides = document.getElementsByClassName("showSlide");
@@ -216,6 +217,7 @@ function currentSlideBcgr(h) {
     displaySlidesBcgr(slide_index_bcgr = h);
 }
 
+
 function displaySlidesBcgr(h) {
     var y;
     var slidesBcgr = document.getElementsByClassName("showSlideBcgr");
@@ -228,7 +230,6 @@ function displaySlidesBcgr(h) {
 }
 
 // slider for bacground
-
 
 
 // =============================
