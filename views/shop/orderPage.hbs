@@ -82,7 +82,7 @@
                         <del>
                             <h2>$98</h2>
                         </del>
-                        <h2 style="color: red">$49</h2>
+                        <h2 style="color: red; padding-left:10px; ">$49</h2>
                     </div>
                     <div id="total-price-page" style="display: none"></div>
                     <h3><b>Only 11 arts left at this price</b></h3>
@@ -274,31 +274,6 @@ addToCart.addEventListener('click', function(event) {
 
 
 
-var peopleAmountImages = document.getElementsByClassName("people-amount-image");
-
-for (var i = 0; i < peopleAmountImages.length; i++) {
-    peopleAmountImages[i].addEventListener('click', function(event) {
-
-        for (var j = 0; j < peopleAmountImages.length; j++) {
-            peopleAmountImages[j].className = "people-amount-image";
-        }
-
-        var price = Number(event.target.getAttribute('data-price'));
-        var id = event.target.getAttribute('data-id');
-
-        event.target.className += " people-amount-image-clicked";
-
-        selectedPeopleAmount = {
-            id: id,
-            price: price
-        };
-        if(selectedPeopleAmount.price != null){
-            document.getElementById('total-price-page-static').innerHTML = '<del><h2>$' + price *2 + '</h2></del>' + '<h2 style="color:red">$' + price + '</h2>';
-        }
-    });
-}
-
-
 var backgroundImage = document.getElementsByClassName("background-image");
 
 for (var i = 0; i < backgroundImage.length; i++) {
@@ -318,13 +293,51 @@ for (var i = 0; i < backgroundImage.length; i++) {
             price: price,
             name: name
         };
-        if(selectedBakcground.price != null){
-           var priceForAll = price + selectedPeopleAmount.price;
-            document.getElementById('total-price-page-static').innerHTML = '<del><h2>$' + priceForAll *2 + '</h2></del>' + '<h2 style="color:red;">$' + priceForAll + '</h2>';
-        }
+        priceForAll();
 
     });
 }
+
+
+
+var peopleAmountImages = document.getElementsByClassName("people-amount-image");
+
+for (var i = 0; i < peopleAmountImages.length; i++) {
+    peopleAmountImages[i].addEventListener('click', function(event) {
+
+        for (var j = 0; j < peopleAmountImages.length; j++) {
+            peopleAmountImages[j].className = "people-amount-image";
+        }
+
+        var price = Number(event.target.getAttribute('data-price'));
+        var id = event.target.getAttribute('data-id');
+
+        event.target.className += " people-amount-image-clicked";
+
+        selectedPeopleAmount = {
+            id: id,
+            price: price
+        };
+        priceForAll();
+    });
+}
+
+
+var priceForAll = () => {
+    var peoplePricePage = selectedPeopleAmount ? selectedPeopleAmount.price : 0;
+    var backgroundPricePage = selectedBakcground ? selectedBakcground.price : 0;
+
+    var totalPricePage = peoplePricePage + backgroundPricePage;
+
+    if (selectedPeopleAmount.price != null) {
+        document.getElementById('total-price-page-static').innerHTML = '<del><h2>$' + totalPricePage * 2 + '</h2></del>' + ' <h2 style="color:red; padding-left:10px;">$' + totalPricePage + '</h2>';
+    }
+
+}
+
+
+
+
 
 getTotalPricePage();
 
