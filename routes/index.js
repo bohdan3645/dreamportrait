@@ -26,7 +26,7 @@ router.get('/cartPageTest/:id', function(req, res, next) {
 	});
 });
 
-// module.exports = router;
+module.exports = router;
 // function isLoggedIn(req, res, next) {
 // 	if (req.isAuthenticated()){
 // 		return next();
