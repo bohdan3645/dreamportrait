@@ -482,10 +482,12 @@ footer
 @media(max-width: 378px) {
     .header {
         padding: 0 5px;
-        grid-template-columns: 13% 72% 15%;
+        grid-template-columns: 18% 62% 20%;
     }
 
-
+.logot{
+    width: 190px;
+}
 
 
     .brgSpan {
