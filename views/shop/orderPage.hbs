@@ -48,15 +48,16 @@
             </div>
             <div class="flex-container-two">
                 <div class="container-with-photos">
-                    <div class="items-with-photo"><img src="/images/ex 2 cut.jpg" onclick="currentSlide(2)"></div>
-                    <div class="items-with-photo"><img src="/images/ex3 cut.jpg" onclick="currentSlide(3)"></div>
-                    <div class="items-with-photo"><img src="/images/ex4 cut.jpg" onclick="currentSlide(4)"></div>
-                    <div class="items-with-photo"><img src="/images/ex5 cut.jpg" onclick="currentSlide(5)"></div>
-                    <div class="items-with-photo"><img src="/images/ex6 cut.jpg" onclick="currentSlide(6)"></div>
-                    <div class="items-with-photo"><img src="/images/ex7 cut.jpg" onclick="currentSlide(7)"></div>
-                    <div class="items-with-photo"><img src="/images/ex8 cut.jpg" onclick="currentSlide(8)"></div>
-                    <div class="items-with-photo"><img src="/images/ex9 cut.jpg" onclick="currentSlide(9)"></div>
-                    <div class="items-with-photo"><img src="/images/ex1 cut.jpg" onclick="currentSlide(10)"></div>
+                    <div class="items-with-photo"  onclick="currentSlide(1)"><img class="current-item" src="/images/ex1 cut.jpg"></div>
+                    <div class="items-with-photo"  onclick="currentSlide(2)"><img class="current-item" src="/images/ex 2 cut.jpg"></div>
+                    <div class="items-with-photo"  onclick="currentSlide(3)"><img class="current-item"  src="/images/ex3 cut.jpg"></div>
+                    <div class="items-with-photo"  onclick="currentSlide(4)"><img class="current-item"  src="/images/ex4 cut.jpg"></div>
+                    <div class="items-with-photo"  onclick="currentSlide(5)"><img class="current-item"  src="/images/ex5 cut.jpg"></div>
+                    <div class="items-with-photo"  onclick="currentSlide(6)"><img class="current-item"  src="/images/ex6 cut.jpg"></div>
+                    <div class="items-with-photo"  onclick="currentSlide(7)"><img class="current-item"  src="/images/ex7 cut.jpg"></div>
+                    <div class="items-with-photo"  onclick="currentSlide(8)"><img class="current-item"  src="/images/ex8 cut.jpg"></div>
+                    <div class="items-with-photo"  onclick="currentSlide(9)"><img class="current-item"  src="/images/ex9 cut.jpg"></div>
+                    
                 </div>
             </div>
             <!-- <img src="priceff.png"> -->
@@ -67,7 +68,7 @@
                     <h2>Original DreamPortrait art</h2>
                     <div>
                         <img src="/images/stars.png">
-                        <h3> 62 reviews</h3>
+                        <h3> 3 reviews</h3>
                     </div>
                     <hr>
                     <div class="counter" style="display: flex;">
@@ -76,7 +77,7 @@
                     </div>
                     <div style="display: flex;">
                         <img src="/images/airport.png" style="margin: 5px; width: 20px; height: 20px">
-                        <h6 style="margin:5px 0 0 0"> Estimated delivery time 5-10 days</h6>
+                        <h6 style="margin:5px 0 0 0"> Estimated delivery time 3-5 days</h6>
                     </div><br>
                     <div id="total-price-page-static" style="display: flex;">
                         <del>
@@ -84,7 +85,7 @@
                         </del>
                         <h2 style="color: red; padding-left:10px; ">$49</h2>
                     </div>
-                    <h3><b>Only 11 arts left at this price</b></h3>
+                    <h3><b>Only <div id="countDownPortrait">50</div> arts left at this price</b></h3>
                 </div>
             </div>
             <div class="flex-container">
@@ -135,7 +136,7 @@
                         <img data-price="0" data-id="13" class="background-image" src="/images/12x18 H hearts.jpg" name="Hearts" width="70" height="70" onclick="currentSlideBcgr(3)">
                         <img data-price="0" data-id="14" class="background-image" src="/images/12x18 H castle.jpg" name="Castle" width="70" height="70" onclick="currentSlideBcgr(4)">
                         <img data-price="0" data-id="15" class="background-image" src="/images/12x18 bokeh.jpg" name="Bokeh" width="70" height="70" onclick="currentSlideBcgr(5)">
-                        <div data-price="25" data-id="111" name="Custom" class="background-image" onclick="currentSlideBcgr(6)" style="font-size: 22px; text-align: center; padding: 6px 0; width: 55px; height: 55px">custom</div>
+                        <div data-price="25" data-id="111" name="Custom" class="background-image" onclick="currentSlideBcgr(6)" style="font-size: 22px; text-align: center; padding: 6px 0; width: 60px; height: 60px">custom</div>
                     </div>
                 </div>
             </div>
@@ -169,6 +170,45 @@
     </div>
 </div>
 <script>
+
+// var minutes = 9;
+// var seconds = 60;
+// var time = document.getElementById("countDown")
+
+// setInterval( function() {
+//   if( minutes == 0 && seconds == 1){
+//     time.innerHTML = "00:00"
+//   }else{
+//     seconds--;
+//     if(seconds == 0){
+//       minutes--;
+//       seconds = 60;
+//       if (minutes == 0) {
+//         minutes = minutes;
+//       }
+//     }
+//     time.innerHTML = minutes + ":" + seconds;
+//   }
+// }, 1000);
+
+var qtyPortraits = 50;
+
+var countDown = document.getElementById("countDownPortrait")
+
+setInterval( function() {
+  if(qtyPortraits == 0){
+    countDown.innerHTML = "0"
+  }else{
+    qtyPortraits--;
+      if (qtyPortraits == 0) {
+        qtyPortraits = 50;
+      }
+    
+    countDown.innerHTML = qtyPortraits;
+  }
+}, 60000 * 60 * 4);
+
+
 // dynamic counter
 var x = 0;
 setInterval(function() {
@@ -178,7 +218,21 @@ setInterval(function() {
 // dynamic counter
 </script>
 <script>
+
+var itemGalery = document.getElementsByClassName('items-with-photo')
+
+function currentSlide(n) {
+for(var i = 0; i < n.length; i++){
+
+}
+}
+
+
+
 // slider for galery
+var itemGalery = document.getElementsByClassName('current-item')
+
+
 var slide_index = 1;
 displaySlides(slide_index);
 
@@ -188,6 +242,16 @@ function nextSlide(n) {
 
 function currentSlide(n) {
     displaySlides(slide_index = n);
+}
+
+
+for (var d = 0; d < itemGalery.length; d++) {
+    itemGalery[d].addEventListener('click', function(event) {
+        for (var b = 0; b < itemGalery.length; b++) {
+            itemGalery[b].className = "current-item";
+        }
+        event.target.className += " items-with-photo-clickd";
+})
 }
 
 
@@ -201,6 +265,11 @@ function displaySlides(n) {
         slides[i].style.display = "none";
     }
     slides[slide_index - 1].style.display = "block";
+
+    for (var r = 0; r < itemGalery.length; r++) {
+            itemGalery[r].className = "current-item";
+        }
+        itemGalery[slide_index -1].className += " items-with-photo-clickd";
 }
 // slider for galery
 
@@ -249,7 +318,6 @@ var textIn = document.getElementById('text-in');
 
 addToCart.addEventListener('click', function(event) {
     if (selectedPeopleAmount != null) {
-
         var localStorageCart = JSON.parse(localStorage.getItem("cart"));
 
         if (localStorageCart == null) {
@@ -264,7 +332,7 @@ addToCart.addEventListener('click', function(event) {
         });
 
         localStorage.setItem("cart", JSON.stringify(localStorageCart));
-        updateCartQty();
+        updateCartQty(); 
         if (localStorageCart.length > 0) {
             window.location.href = '/cartPageTest';
         }

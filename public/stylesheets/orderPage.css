@@ -4,7 +4,7 @@
     }
 
     .grid-item.item0 {
-        padding: 30px;
+        padding: 30px 15px 30px;
     }
 
     .flex-container {
@@ -166,7 +166,7 @@
     /*=============================*/
     .grid-item.item01 {
         height: 1700px;
-        padding: 30px;
+        padding: 30px 15px 30px;
         grid-column: 2;
     }
 
@@ -190,8 +190,9 @@
     }
 
 .container-with-photos img:hover {
-    border: 4px solid #000;
+    border: 5px solid #6A57A4;
 }
+
     .items-with-photo img {
         width: 167px;
         height: 167px;
@@ -277,6 +278,10 @@
     .active {
         background-color: #717171;
     }
+
+     .items-with-photo-clickd {
+    border: 5px solid #6A57A4;
+}
 
     @media(max-width: 1235px) {
         .row {

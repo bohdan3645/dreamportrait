@@ -1,67 +1,70 @@
-
-
-     <div class="cartContent" style="margin-bottom: 420px">
-        <div class="cartHead">CART</div>
-        <div id="cart">
+<div class="cartPageVisual">
+    <div class="successContent">
+        <div class="titleSuccess">
+            <h1>Cart is empty yet!</h1>
         </div>
-        <div class="nextPartOrder">
-            <div class="saveOfOrder">YOU SAVE: <span style="color: red;"><b>50% </b></span>OFF</div>
-            <div class="grandTotal" id="total-price">GRAND TOTAL:</div> <br>
-            <div style="display: flex;">
-             <div style="margin-right: 5px"> The cart will expire in</div>
-              <div id="countDown" style="color: red">10:00</div>
-            </div>
-            <button class="updateBtn" onclick="updateTime()">UPDATE</button>
-
-            <a class="checkoutBtn" href="/checkoutTest" type="button" >CHECKOUT</a>
-
-<button id="createOrder"> create order</button>
+        <hr>
+        <div class="getHomebtn">
+            <a type="button" href="/orderPageTest" class="getHome">Go to create an order ➜</a>
         </div>
     </div>
+</div>
+<div class="cartContent">
+    <div class="cartHead">CART</div>
+    <div id="cart">
+    </div>
+    <div class="nextPartOrder">
+        <div class="saveOfOrder">YOU SAVE: <span style="color: red;"><b>50% </b></span>OFF</div>
+        <div class="grandTotal" id="total-price">GRAND TOTAL:</div> <br>
 
+        <!-- TIMER -->
+        <!-- <div style="display: flex;">
+             <div style="margin-right: 5px"> The cart will expire in</div>
+              <div id="countDown" style="color: red">10:00</div>
+            </div> -->
+        <!-- <button class="updateBtn" onclick="updateTime()">UPDATE</button> -->
+        <!-- TIMER -->
 
-
-
+        <!-- SECOND CHECKOUT BUTTONS -->
+        <!-- <a class="checkoutBtn" href="/checkoutTest" type="button" >CHECKOUT</a> -->
+        <!-- SECOND CHECKOUT BUTTONS -->
+    </div>
+</div>
 <script>
-  // timer for expire cart
-var minutes = 9;
-var seconds = 60;
-var time = document.getElementById("countDown")
+// timer for expire cart
+// var minutes = 9;
+// var seconds = 60;
+// var time = document.getElementById("countDown")
 
-setInterval( function() {
-  if( minutes == 0 && seconds == 1){
-    time.innerHTML = "00:00"
-  }else{
-    seconds--;
-    if(seconds == 0){
-      minutes--;
-      seconds = 60;
-      if (minutes == 0) {
-        minutes = minutes;
-      }
-    }
-    time.innerHTML = minutes + ":" + seconds;
-  }
-}, 1000);
+// setInterval( function() {
+//   if( minutes == 0 && seconds == 1){
+//     time.innerHTML = "00:00"
+//   }else{
+//     seconds--;
+//     if(seconds == 0){
+//       minutes--;
+//       seconds = 60;
+//       if (minutes == 0) {
+//         minutes = minutes;
+//       }
+//     }
+//     time.innerHTML = minutes + ":" + seconds;
+//   }
+// }, 1000);
+// timer for expire cart
 
-
-
-function updateTime() {
-  
-}
-  // timer for expire cart
-
-// openCart();
 showCartElement();
 
-        var localStorageCart = JSON.parse(localStorage.getItem("cart"));
+var localStorageCart = JSON.parse(localStorage.getItem("cart"));
 
-        if (localStorageCart == null) {
-            localStorageCart = [];
-        }
+if (localStorageCart == null) {
+    localStorageCart = [];
+}
 
-        localStorage.setItem("cart", JSON.stringify(localStorageCart));
-        showCartElement();
+
+localStorage.setItem("cart", JSON.stringify(localStorageCart));
+showCartElement();
+
 
 function getItemTemplate(numPpl, bgName, price, text, image, index) {
     text = text || '';
@@ -79,7 +82,6 @@ function getItemTemplate(numPpl, bgName, price, text, image, index) {
         '<button class="deleteOrder" onclick="ClearData(' + index + ')"><img src="/images/container.png" alt=""></button>' +
         '</div>';
 };
-
 
 
 function showCartElement() {
@@ -119,50 +121,10 @@ function ClearData(index) {
     localStorageCart.splice(index, 1);
     localStorage.setItem('cart', JSON.stringify(localStorageCart));
     showCartElement();
-    updateCartQty ();
-    if(localStorageCart.length <= 0){
+    updateCartQty();
+    if (localStorageCart.length <= 0) {
         window.location.href = '/orderPageTest';
     }
 }
 
-
-// function openCart() {
-//         if(localStorageCart.length > 0){
-//             document.getElementByClassName('cartContent').style.display='block';
-//         }
-//     }
-
-</script>
-
-
-<script>
-document.getElementById('createOrder').addEventListener('click', (req, res, next) => {
-   var localStorageCart = JSON.parse(localStorage.getItem("cart"));
-
-const order = [];
-    
-   for(var m = 0; m < localStorageCart.length; m++){
-    var item = localStorageCart[m];
-
-     order.push({
-        peopleId: item.selectedPeople.id,
-        backgroundName: item.selectedBakcground.name,
-        image: item.image,
-        text: item.wishesText,
-     });
-   };
-
-  
-        fetch("/createOrder",
-    {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: "POST",
-        body: JSON.stringify({order})
-    })
-    .then(function(res){ alert('goood!')})
-    .catch(function(res){ console.log(res) })
-});
 </script>

@@ -1,22 +1,20 @@
 <div class="checkoutContainr">
-<div class="paymantContent">
-  <h2 class="headerCheckout">Checkout</h2>
-  <hr>
-    <form action="/stripePaymant" id="payment-form" method="POST">
-        <input type="email" placeholder="E-mail" style="margin: 20px auto; width: 100%">
-        <div id="card-element" style="margin: 20px 0"></div>
-        <div class="sr-field-error" id="card-errors" role="alert"></div>
- <hr>
-        <button id="submit" class="submitPay">Pay </button>
-        <input type="hidden" name="price" value="333">
-    </form>
+    <div class="paymantContent">
+        <h2 class="headerCheckout">Checkout</h2>
+        <hr>
+        <form action="/createPaymant" id="payment-form" method="POST">
+            <input type="text" id="fNameCheckout" name="fNameCheckout" placeholder="First Name" style="margin: 20px auto; width: 100%">
+            <input type="text" id="lNameCheckout" name="lNameCheckout" placeholder="Last Name" style="margin: 20px auto; width: 100%">
+            <input type="email" id="emailCheckout" name="emailCheckout" placeholder="E-mail" style="margin: 20px auto; width: 100%">
+            <div id="card-element" style="margin: 20px 0"></div>
+            <div class="sr-field-error" id="card-errors" role="alert"></div>
+            <hr>
+            <button type="button" onclick="pay();">Pay</button>
+            <!-- <button id="submit" class="submitPay">Pay </button> -->
+            <!-- <input type="hidden" name="price" value="333"> -->
+        </form>
+    </div>
 </div>
-
-</div>
-
-
-
-
 <script>
 function getTotalPrice() {
     var localStorageCart = JSON.parse(localStorage.getItem("cart"));
@@ -39,94 +37,171 @@ function getTotalPrice() {
 
 ////create total price/////////////////////////////////////////////////////////////////////////////
 
+var fNameCheckout = document.getElementById('fNameCheckout').target.value;
+    var ldNameCheckout = document.getElementById('lNameCheckout').target.value;
+    var emailCheckout = document.getElementById('emailCheckout').target.value;
+    var createOrder = document.getElementById('createOrder');
+    var wayforpay = new Wayforpay();
+
+function pay(){
+    //> Read order data from localStorage (ordered itmes):
+    var localStorageCart = JSON.parse(localStorage.getItem("cart"));
+
+    const order = [];
+
+    for (var m = 0; m < localStorageCart.length; m++) {
+        var item = localStorageCart[m];
+
+        order.push({
+            peopleId: item.selectedPeople.id,
+            backgroundName: item.selectedBakcground.name,
+            image: item.image,
+            text: item.wishesText,
+        });
+    };
+    //<
+
+    //>Send request to the server ("/create-order") with ordered items;
+    fetch('/create-order', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify({
+                order: order,
+                userData: {
+                    firstName: fNameCheckout,
+                    lastName: lNameCheckout,
+                    email: emailCheckout
+                }
+            })
+        })
+        .then(res => {
+            const hashData = res['hash_data'];
+            const orderId = res['order_id'];
+
+            
+                wayforpay.run({
+                        merchantAccount: "test_merch_n1",
+                        merchantDomainName: "www.market.ua",
+                        authorizationType: "SimpleSignature",
+                        merchantSignature: hashData,
+                        orderReference: orderId,
+                        orderDate: "1415379863",
+                        amount: "1547.36",
+                        currency: "UAH",
+                        productName: "Процессор Intel Core i5-4670 3.4GHz",
+                        productPrice: "1000",
+                        productCount: "1",
+                        clientFirstName: "Вася",
+                        clientLastName: "Васечкин",
+                        clientEmail: "some@mail.com",
+                        clientPhone: "380631234567",
+                        language: "UA"
+                    },
+                    function(response) {
+                        // on approved                          
+                    },
+                    function(response) {
+                        // on declined          
+                    },
+                    function(response) {
+                        // on pending or in processing 
+
+                    });
+        })
+        // .cathc(err => ...);
+}
+
 
 ////create paymant/////////////////////////////////////////////////////////////////////////////
 
-var stripe;
-var orderData = {
-    amount: getTotalPrice(),
-    currency: "usd"
-};
+// var stripe;
+// var orderData = {
+//     amount: getTotalPrice(),
+//     currency: "usd"
+// };
 
 
-var pay = function(stripe, card) {
+// var pay = function(stripe, card) {
 
-    stripe
-        .createPaymentMethod("card", card)
-        .then(function(result) {
-            if (result.error) {
-                console.log(result);
-            } else {
-                orderData.paymentMethodId = result.paymentMethod.id;
+//     stripe
+//         .createPaymentMethod("card", card)
+//         .then(function(result) {
+//             if (result.error) {
+//                 console.log(result);
+//             } else {
+//                 orderData.paymentMethodId = result.paymentMethod.id;
 
-                return fetch("/pay", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(orderData)
-                });
-            }
-        })
-        .then(function(result) {
-            return result.json();
-        })
+//                 return fetch("/pay", {
+//                     method: "POST",
+//                     headers: {
+//                         "Content-Type": "application/json"
+//                     },
+//                     body: JSON.stringify(orderData)
+//                 });
+//             }
+//         })
+//         .then(function(result) {
+//             return result.json();
+//         })
 
-        .then(function(response) {
+//         .then(function(response) {
 
-            if (response.error) {
-                showError(response.error);
-            } else if (response.requiresAction) {
-                handleAction(response.clientSecret);
-            } else {
-                // orderComplete(response.clientSecret);
-            }
-        });
-};
+//             if (response.error) {
+//                 showError(response.error);
+//             } else if (response.requiresAction) {
+//                 handleAction(response.clientSecret);
+//             } else {
+//                 // orderComplete(response.clientSecret);
+//             }
+//         });
+// };
 
-var setupElements = function(data) {
-    stripe = Stripe(data);
-    var elements = stripe.elements();
-    var style = {
-        base: {
-            color: "#32325d",
-            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-            fontSmoothing: "antialiased",
-            fontSize: "18px",
-            "::placeholder": {
-                color: "grey"
-            }
-        },
-        invalid: {
-            color: "#fa755a",
-            iconColor: "#fa755a"
-        }
-    };
+// var setupElements = function(data) {
+//     stripe = Stripe(data);
+//     var elements = stripe.elements();
+//     var style = {
+//         base: {
+//             color: "#32325d",
+//             fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+//             fontSmoothing: "antialiased",
+//             fontSize: "18px",
+//             "::placeholder": {
+//                 color: "grey"
+//             }
+//         },
+//         invalid: {
+//             color: "#fa755a",
+//             iconColor: "#fa755a"
+//         }
+//     };
 
-    var card = elements.create("card", { style: style });
-    card.mount("#card-element");
+//     var card = elements.create("card", { style: style });
+//     card.mount("#card-element");
 
-    return {
-        stripe: stripe,
-        card: card,
-        clientSecret: data.clientSecret
-    };
-};
+//     return {
+//         stripe: stripe,
+//         card: card,
+//         clientSecret: data.clientSecret
+//     };
+// };
 
-const setelem = setupElements('{{stripe}}');
+// const setelem = setupElements('{{stripe}}');
 
-var form = document.getElementById("payment-form");
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
-    pay(setelem.stripe, setelem.card, setelem.clientSecret);
-});
+// var form = document.getElementById("payment-form");
+// form.addEventListener("submit", function(event) {
+//     event.preventDefault();
+//     pay(setelem.stripe, setelem.card, setelem.clientSecret);
+// });
 
-var showError = function(errorMsgText) {
-    var errorMsg = document.querySelector(".sr-field-error");
-    errorMsg.textContent = errorMsgText;
-    setTimeout(function() {
-        errorMsg.textContent = "";
-    }, 4000);
-};
+// var showError = function(errorMsgText) {
+//     var errorMsg = document.querySelector(".sr-field-error");
+//     errorMsg.textContent = errorMsgText;
+//     setTimeout(function() {
+//         errorMsg.textContent = "";
+//     }, 4000);
+// };
 ////create paymant/////////////////////////////////////////////////////////////////////////////
 </script>

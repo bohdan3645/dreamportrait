@@ -12,17 +12,17 @@
 
 .btn_home {
     position: absolute;
-    top: 85%;
-    left: 50%;
+    top: 70%;
+    left: 23%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: #555;
     color: white;
     background-color: #FF007d;
     font-family: hellofreeday;
-    font-size: 25px;
+    font-size: 40px;
     padding: 10px 45px;
-    box-shadow: 10px 10px 10px 5px white;
+    box-shadow: 0 0 15px 15px white;
     border: none;
     cursor: pointer;
     border-radius: 5px;

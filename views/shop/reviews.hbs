@@ -1,13 +1,54 @@
 <div class="reviewsContent">
-<div class="reviewsHeader" style="text-align: center">
-	HERE YOU CAN READ SOME REVIEWS FORM OUR CUSTOMER
+    <div class="reviewsHeader" style="text-align: center">
+        HERE YOU CAN READ SOME REVIEWS FORM OUR CUSTOMER
+    </div>
+    <hr style="width: 70%; margin: 25px auto;">
+    <div class="reviewsContent">
+        <form action="/reviewsTest/submit" method="POST" id="forComment">
+            <input type="text" name="nameForComment" id="nameForComment" placeholder="Name" />
+            <input type="email" name="emailForComment" id="emailForComment" placeholder="Email" />
+            <input type="text" name="comment" id="comment" placeholder="Comment" />
+            <button type="button" onclick="someFunc()"> click comment </button>
+        </form>
+
+        <div class="reviewsAdmin" style="display: flex;">
+            <div class="card" style="width: 340px; padding: 10px">
+                <img src="/images/comment1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Kelli W.</h5>
+                    <p class="card-text">
+                        Very beautiful! I'll be back soon to get more Portrait from you!</p>
+                </div>
+            </div>
+            <div class="card" style="width: 340px; padding: 10px">
+                <img src="/images/comment2.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Roberta K.</h5>
+                    <p class="card-text">
+                        I love it!!!!</p>
+                </div>
+            </div>
+            <div class="card" style="width: 340px; padding: 10px">
+                <img src="/images/comment3.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Mark P.</h5>
+                    <p class="card-text">
+                        Uploaded my pic and asked for a beautiful dress on the girl and the Disney artists absolutely delivered. I love it!!</p>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
 </div>
+<script>
+function someFunc() {
+    var namecom = document.getElementById('nameForComment').value;
+    var emailcom = document.getElementById('emailForComment').value;
+    var com = document.getElementById('comment').value;
 
-<hr style="width: 70%; margin: 25px auto;">
-
-
-	<span>111</span>
-
-</div>
-
-
+    if (namecom && emailcom && com) {
+        document.getElementById('forComment').submit();
+    }
+}
+</script>

@@ -7,4 +7,5 @@ router.get('/', function(req, res, next) {
    res.render('successPages/successMsgContact', { title: 'shopp' });
 });
 
+
 module.exports = router;

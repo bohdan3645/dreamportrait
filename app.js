@@ -13,8 +13,10 @@ const flash = require('connect-flash');
 const validator = require('express-validator');
 const MongoStore = require('connect-mongo')(session);
 const nodemailer = require('nodemailer');
-const paypal = require('paypal-rest-sdk');
-const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY);
+const crypto = require('crypto');
+
+// const paypal = require('paypal-rest-sdk');
+// const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY);
 
 
 
@@ -106,9 +108,63 @@ app.use('/successMsgContactTest', successMsgContact);
 
 
 
+// 1. Create endpoint app.post("/create-order")
+app.post("/create-order", (req, res) => {
+  
+  // 2. Get secretKey (from .env)
+  const secretKey = process.env.SECRET_PAY_KEY;
+  
+  // 3. Read ordered data from request
+  const cart = req.body.order;
+  const userData = req.body.userData;
+
+  // 4. Concatenate data
+  const orderDataText = userData.firstName + ';' + userData.secondName;
+
+  // 5. Call md5 fucntion and pass orderDataText and the key
+  const hashData = crypto.md5(orderDataText, secretKey);
+
+  // 6. Create order in data base with "isPayed" status "false"
+  order = order.map(o => new Order({
+    user: req.user,
+    selectedBakcground: o.backgroundName,
+    imagePath: o.image,
+    selectedPeople: o.peopleId,
+    wishesText: o.text,
+  }));
+  for (var h = 0; h < order.length; h++) {
+
+  order[h].save(function (err, result) {
+    console.log(err);
+    done++;
+    if(done === order.length) {
+      // Read created order id from database
+      const orderId = res.id;
+      // Return hash_data and created order id
+      res.send({
+        orderId: orderId,
+        hashData: hashData
+      });
+    } else {
+      console.log(err);
+      res.status(500);
+      res.send(err);
+    }
+  });
+}
+})
+//<
+
+
+
+
+
+
+
+
+
 app.post('/createOrder', (req, res, next) => {
 try{ 
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority'); 
 var order = req.body.order;
 order = order.map(o => new Order({
     user: req.user,
@@ -153,53 +209,55 @@ catch(err){
 // Stripe Post
 
 
-app.post("/pay", async (req, res, next) => {
-  const { paymentMethodId, paymentIntentId, amount, currency, useStripeSdk } = req.body;
+// app.post("/pay", async (req, res, next) => {
+//   const { paymentMethodId, paymentIntentId, amount, currency, useStripeSdk } = req.body;
 
-  try {
-    let intent;
-    if (paymentMethodId) {
-      intent = await stripe.paymentIntents.create({
-        amount: amount,
-        currency: currency,
-        payment_method: paymentMethodId,
-        confirmation_method: "manual",
-        confirm: true,
-        use_stripe_sdk: useStripeSdk,
-      });
-    } else if (paymentIntentId) {
-      intent = await stripe.paymentIntents.confirm(paymentIntentId);
-    }
-    res.send(generateResponse(intent));
-  } catch (e) {
+//   try {
+//     let intent;
+//     if (paymentMethodId) {
+//       intent = await stripe.paymentIntents.create({
+//         amount: amount,
+//         currency: currency,
+//         payment_method: paymentMethodId,
+//         confirmation_method: "manual",
+//         confirm: true,
+//         use_stripe_sdk: useStripeSdk,
+//       });
+//     } else if (paymentIntentId) {
+//       intent = await stripe.paymentIntents.confirm(paymentIntentId);
+//     }
+//     res.send(generateResponse(intent));
+//   } catch (e) {
     
-    res.send({ error: e.message });
-    done();
-  }
-});
+//     res.send({ error: e.message });
+//     done();
+//   }
+// });
 
 
-const generateResponse = intent => {
-  switch (intent.status) {
-    case "requires_action":
-    case "requires_source_action":
-      return {
-        requiresAction: true,
-        clientSecret: intent.client_secret
-      };
-    case "requires_payment_method":
-    case "requires_source":
-      return {
-        error: "Your card was denied, please provide a new payment method"
-      };
-    case "succeeded":
-      console.log(paymentIntentId);
-      return { clientSecret: intent.client_secret };
-  }
-};
+// const generateResponse = intent => {
+//   switch (intent.status) {
+//     case "requires_action":
+//     case "requires_source_action":
+//       return {
+//         requiresAction: true,
+//         clientSecret: intent.client_secret
+//       };
+//     case "requires_payment_method":
+//     case "requires_source":
+//       return {
+//         error: "Your card was denied, please provide a new payment method"
+//       };
+//     case "succeeded":
+//       console.log(paymentIntentId);
+//       return { clientSecret: intent.client_secret };
+//   }
+// };
 //Stripe Post
 
+//new Comment
 
+//new Comment
 
 
 // catch 404 and forward to error handler

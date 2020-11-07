@@ -6,15 +6,10 @@ const Order = require('../models/order');
 
 router.get('/', function(req, res, next) {
  Order.find(function(err, docs) {
-   res.render('shop/homePage', { title: 'shopp', orders: docs });
+   res.render('shop/homePage', isLoggedIn, { title: 'shopp', orders: docs });
   });	
 });
 //order
-
-
-
-
-
 
 router.get('/cartPageTest/:id', function(req, res, next) {
 	var orderId = req.params.id;
@@ -31,9 +26,11 @@ router.get('/cartPageTest/:id', function(req, res, next) {
 	});
 });
 
-
-
-
-
-
 module.exports = router;
+function isLoggedIn(req, res, next) {
+	if (req.isAuthenticated()){
+		return next();
+	}
+	req.session.oldUrl = req.url;
+	res.redirect('/user/signin');
+}

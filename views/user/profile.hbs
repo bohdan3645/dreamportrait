@@ -14,7 +14,12 @@
 
     <div class="ordersContent" style="margin-bottom:300px">
         <div class="cartHead">My orders</div>
-        <div class="orderDetails">
+        {{# each orders}}
+            {{# each this.items }}
+
+                {{/each}}
+        {{/each}}
+        <!-- <div class="orderDetails">
             <div class="namberOfOrder"><b>0000</b></div>
             <div class="orderPhoto"><img src=""></div>
             <div class="details">
@@ -24,7 +29,7 @@
                 <div class="backgroundOrder">Background:</div>
                 <div class="noteOrder">Note:</div>
                 <div class="priceOrder">Price:<b></b></div>
-            </div>
+            </div> -->
             
         </div>
 

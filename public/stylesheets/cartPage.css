@@ -1,9 +1,14 @@
+.cartPageVisual{
+	display: none; 
+	justify-content: center;
+}
+
 .cartContent {
 	/*display: none;*/
 	width: 46%;
 	background-color: rgb(255,255,255,0.4);
 	padding: 20px;
-	margin: 40px auto 150px ;
+	margin: 40px auto 420px ;
 }
 
 .cartHead {
