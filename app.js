@@ -110,6 +110,7 @@ app.use('/successMsgContactTest', successMsgContact);
 
 // 1. Create endpoint app.post("/create-order")
 app.post("/create-order", (req, res) => {
+  debugger
   
   // 2. Get secretKey (from .env)
   const secretKey = process.env.SECRET_PAY_KEY;
@@ -119,7 +120,7 @@ app.post("/create-order", (req, res) => {
   const userData = req.body.userData;
 
   // 4. Concatenate data
-  const orderDataText = userData.firstName + ';' + userData.secondName;
+  const orderDataText = userData.firstName + ';' + userData.lastName + ';' + userData.email;
 
   // 5. Call md5 fucntion and pass orderDataText and the key
   const hashData = crypto.md5(orderDataText, secretKey);

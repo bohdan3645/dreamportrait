@@ -1,3 +1,7 @@
+.small_img_home {
+    display: none
+}
+
 .home-img {
     position: relative;
     text-align: center;
@@ -34,7 +38,7 @@
 }
 
 .how-it-work {
-	margin-top: 25px;
+    margin-top: 25px;
     background-color: #E9EEEE;
     padding: 25px;
     text-align: center;
@@ -109,17 +113,24 @@
         padding: 7px 25px;
     }
 
-    
+
 
 }
 
 @media(max-width: 483px) {
- .img_home {
-        height: 320px;
-        object-fit: cover;
+
+    .img_home {
+        display: none;
+    }
+
+    .small_img_home {
+        width: 100%;
+        display: flex;
     }
 
     .btn_home {
+        top: 91%;
+        left: 50%;
         font-size: 16px;
         padding: 4px 20px;
     }
@@ -127,19 +138,36 @@
     .btn_home:hover {
         padding: 5px 21px;
     }
+
     .description {
         display: block;
     }
-.how-it-work-desc {
-        font-size: 22px;
+
+    .description h{
+        font-size: 25px;
     }
-    
+
+    .how-it-work-desc {
+        font-size: 11px;
+    }
+
 }
 
 @media(max-width: 378px) {
-    
+.how{
+        font-size: 30px;
+
+}
+
+.how-it-work{
+    margin-top: 5px;
+}
+.description img{
+    width: 100px;
+}
 
     .description div {
+        font-size: 20px;
         font-weight: bolder;
         letter-spacing: .5px;
     }

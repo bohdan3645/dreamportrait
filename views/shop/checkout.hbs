@@ -9,7 +9,7 @@
             <div id="card-element" style="margin: 20px 0"></div>
             <div class="sr-field-error" id="card-errors" role="alert"></div>
             <hr>
-            <button type="button" onclick="pay();">Pay</button>
+            <button type="button" action="/create-order" onclick="payWay()">Pay</button>
             <!-- <button id="submit" class="submitPay">Pay </button> -->
             <!-- <input type="hidden" name="price" value="333"> -->
         </form>
@@ -37,13 +37,15 @@ function getTotalPrice() {
 
 ////create total price/////////////////////////////////////////////////////////////////////////////
 
-var fNameCheckout = document.getElementById('fNameCheckout').target.value;
-    var ldNameCheckout = document.getElementById('lNameCheckout').target.value;
-    var emailCheckout = document.getElementById('emailCheckout').target.value;
+
+
+function payWay(){
+    debugger
+    var fNameCheckout = document.getElementById('fNameCheckout').value;
+    var ldNameCheckout = document.getElementById('lNameCheckout').value;
+    var emailCheckout = document.getElementById('emailCheckout').value;
     var createOrder = document.getElementById('createOrder');
     var wayforpay = new Wayforpay();
-
-function pay(){
     //> Read order data from localStorage (ordered itmes):
     var localStorageCart = JSON.parse(localStorage.getItem("cart"));
 
