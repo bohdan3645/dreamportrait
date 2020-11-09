@@ -2,8 +2,8 @@
 <div class="userManagement">
     <div class="user-name" style="padding: 0 20px">
         <div id="name"></div>
-        <h4>My account</h4>
-        <h5>Menage account</h5>
+        <h4 style="text-align:center">My account</h4>
+        <h5 style="text-align:center">Menage account</h5>
     </div>
     <div class="menage-nav">
     <div><a class="change-password">Change password</a></div>
@@ -19,18 +19,41 @@
 
                 {{/each}}
         {{/each}}
-        <!-- <div class="orderDetails">
-            <div class="namberOfOrder"><b>0000</b></div>
-            <div class="orderPhoto"><img src=""></div>
+        <div class="orderDetailsInProgress">
+            <div class="orderPhoto"><img src="/images/comment1.jpg"></div>
             <div class="details">
-                <div id="date"></div>
-                <div id="orderId"></div>
-                <div class="numberOfPeopleOrder">Number of people:</b></div>
-                <div class="backgroundOrder">Background:</div>
-                <div class="noteOrder">Note:</div>
-                <div class="priceOrder">Price:<b></b></div>
-            </div> -->
+                <div id="orderId">0023</div>
+                <div id="date">05.09.20</div>
+                <div class="numberOfPeopleOrder">Number of people: 1</b></div>
+                <div class="backgroundOrder">Background: Custom</div>
+                <div class="noteOrder">Note: hello niga</div>
+                <div class="priceOrder">Price: $100<b></b></div>
+        
+            </div>
+            <div class="description" style=" display: flex; text-align: center;">
+            In progress<br>
+            estimated delivery date:<br>
+            08.11.20<br>
+            Your Portrait will be available<br>
+            for downloading here
+        </div>
             
+        </div>
+        <div class="orderDetailsInProgress">
+            <div class="orderPhoto"><img src="/images/comment1.jpg"></div>
+            <div class="details">
+                <div id="orderId">0022</div>
+                <div id="date">05.08.20</div>
+                <div class="numberOfPeopleOrder">Number of people: 1</b></div>
+                <div class="backgroundOrder">Background: Custom</div>
+                <div class="noteOrder">Note: blabla</div>
+                <div class="priceOrder">Price: $1000000<b></b></div>
+        
+            </div>
+            <div class="downloadFile" style=" text-align: center;">
+                Conplited
+            <button style="height: 50px; width: 80%"><i class="fa fa-download" aria-hidden="true"></i></button>
+            <a href="/leaveComment/"><button style="height: 50px; margin-top: 10px">Leave a review</button></a>
         </div>
 
     </div>

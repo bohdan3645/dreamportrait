@@ -16,7 +16,7 @@ const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 
 // const paypal = require('paypal-rest-sdk');
-// const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY);
+// const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY); 
 
 
 
@@ -40,9 +40,15 @@ const termsOfService = require('./routes/termsOfService');
 const refundPolicy = require('./routes/refundPolicy');
 const faq = require('./routes/faq');
 const reviews = require('./routes/reviews');
+const leaveComment = require('./routes/leaveComment');
+
 const successMsgContact = require('./routes/successMsgContact');
 
 var Order = require('./models/order');
+var productOrder = require('./models/productOrder');
+
+
+
 
 
 
@@ -63,8 +69,8 @@ app.set('view engine', '.hbs');
 // view engine hbs setup
 
 app.use(logger('dev'));
-app.use(express.urlencoded({limit: '50mb', extended: false }));
-app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({ limit: '50mb', extended: false }));
+app.use(express.json({ limit: '50mb' }));
 app.use(cookieParser());
 
 app.use(session({
@@ -101,7 +107,9 @@ app.use('/homePageTest', homePage);
 app.use('/cartPageTest', cartPage);
 app.use('/reviewsTest', reviews);
 app.use('/checkoutTest', checkout);
-app.use('/checkoutPayPalTest', checkoutPayPal);
+// app.use('/checkoutPayPalTest', checkoutPayPal);
+app.use('/leaveComment', leaveComment);
+
 
 app.use('/successMsgContactTest', successMsgContact);
 
@@ -110,49 +118,71 @@ app.use('/successMsgContactTest', successMsgContact);
 
 // 1. Create endpoint app.post("/create-order")
 app.post("/create-order", (req, res) => {
-  debugger
-  
-  // 2. Get secretKey (from .env)
-  const secretKey = process.env.SECRET_PAY_KEY;
-  
-  // 3. Read ordered data from request
-  const cart = req.body.order;
-  const userData = req.body.userData;
+    // 2. Get secretKey (from .env)
+    const secretKey = process.env.SECRET_PAY_KEY;
+    const merchantAccount = process.env.MERCHANT_ACCOUNT;
+    const merchantDomainName = process.env.MERCHANT_DOMAIN;
 
-  // 4. Concatenate data
-  const orderDataText = userData.firstName + ';' + userData.lastName + ';' + userData.email;
+    // 3. Read ordered data from request
+    const cart = req.body.order;
+    const userData = req.body.userData;
+    // 4. Concatenate data
 
-  // 5. Call md5 fucntion and pass orderDataText and the key
-  const hashData = crypto.md5(orderDataText, secretKey);
+    // 5. Call md5 fucntion and pass orderDataText and the key
 
-  // 6. Create order in data base with "isPayed" status "false"
-  order = order.map(o => new Order({
-    user: req.user,
-    selectedBakcground: o.backgroundName,
-    imagePath: o.image,
-    selectedPeople: o.peopleId,
-    wishesText: o.text,
-  }));
-  for (var h = 0; h < order.length; h++) {
+    // 6. Create order in data base with "isPayed" status "false"
 
-  order[h].save(function (err, result) {
-    console.log(err);
-    done++;
-    if(done === order.length) {
-      // Read created order id from database
-      const orderId = res.id;
-      // Return hash_data and created order id
-      res.send({
-        orderId: orderId,
-        hashData: hashData
-      });
-    } else {
-      console.log(err);
-      res.status(500);
-      res.send(err);
-    }
-  });
-}
+    const order = new Order({
+        user: req.user,
+        products: req.body.order.map(o => ({
+            selectedBakcground: o.backgroundName,
+            imagePath: o.image,
+            selectedPeople: o.peopleId,
+            wishesText: o.text,
+            price: o.price
+        }))
+    });
+
+    order.save(function(err, result) {
+        console.log(err);
+        if (!err) {
+            // console.log(userData.firstName, userData.lastName, userData.email, merchantAccount, merchantDomainName, amount, currency);
+            const orderId = result.id;
+            const productName = req.body.order.map(o => o.peopleId + o.backgroundName);
+            const productCount = req.body.order.map(o => 1);
+            const productPrice = req.body.order.map(o => o.price);
+
+            const orderDate = new Date().getTime();
+            const currency = 'USD';
+            const amount = req.body.order.reduce((acc, o) => acc + o.price, 0);
+            const orderDataText = merchantAccount + ';' + merchantDomainName + ';' + orderId + ';' + orderDate + ';' +
+                amount + ';' + currency + ';' + productName.join(';') + ';' + productCount.join(';') + ';' + productPrice.join(';');
+            console.log(orderDataText);
+            var hashData = require("crypto").createHmac("md5", secretKey)
+                .update(orderDataText)
+                .digest("hex");
+
+            // Read created order id from database
+
+            // Return hash_data and created order id
+            res.send({
+                orderId: orderId,
+                orderDate: orderDate,
+                hashData: hashData,
+                currency: currency,
+                amount: amount,
+                merchantDomainName: merchantDomainName,
+                merchantAccount: merchantAccount,
+                productName: productName,
+                productPrice: productPrice,
+                productCount: productCount
+            });
+        } else {
+            console.log(err);
+            res.status(500);
+            res.send(err);
+        }
+    });
 })
 //<
 
@@ -165,33 +195,31 @@ app.post("/create-order", (req, res) => {
 
 
 app.post('/createOrder', (req, res, next) => {
-try{ 
-var order = req.body.order;
-order = order.map(o => new Order({
-    user: req.user,
-    selectedBakcground: o.backgroundName,
-    imagePath: o.image,
-    selectedPeople: o.peopleId,
-    wishesText: o.text,
-  }));
+    try {
+        var order = req.body.order;
+        order = order.map(o => new Order({
+            user: req.user,
+            selectedBakcground: o.backgroundName,
+            imagePath: o.image,
+            selectedPeople: o.peopleId,
+            wishesText: o.text,
+        }));
 
 
-var done = 0;
+        var done = 0;
 
-for (var h = 0; h < order.length; h++) {
+        for (var h = 0; h < order.length; h++) {
 
-  order[h].save(function (err, result) {
-    console.log(err);
-    done++;
-    if(done === order.length) {
+            order[h].save(function(err, result) {
+                console.log(err);
+                done++;
+                if (done === order.length) {}
+            });
+        }
+        res.send();
+    } catch (err) {
+        console.log(err);
     }
-  });
-}
-res.send();
-}
-catch(err){
-  console.log(err);
-}
 
 });
 
@@ -229,7 +257,7 @@ catch(err){
 //     }
 //     res.send(generateResponse(intent));
 //   } catch (e) {
-    
+
 //     res.send({ error: e.message });
 //     done();
 //   }

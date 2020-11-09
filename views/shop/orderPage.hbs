@@ -303,11 +303,12 @@ function displaySlidesBcgr(h) {
 
 // =============================
 
-
+// order data variables
 var selectedPeopleAmount = null;
 var selectedBakcground = null;
 var wishesText = null;
 var image = null;
+// order data variables
 
 
 
@@ -416,13 +417,11 @@ function showCartElement() {
 
     for (var i = 0; i < localStorageCart.length; i++) {
         var item = localStorageCart[i];
-        totalPrice += item.selectedPeople.price;
-
-        if (item.selectedBakcground != null) {
-            totalPrice += item.selectedBakcground.price;
-        }
-
-        if (item.selectedBakcground != null) {
+        totalPrice += item.selectedPeople.price + item.selectedBakcground.price;
+        // if (item.selectedBakcground != null) {
+        //     totalPrice += item.selectedBakcground.price;
+        // }
+        if (item.image != null) {
             shoppingCart.innerHTML +=
                 "<li>People: " + item.selectedPeople.id + " - $" + item.selectedPeople.price +
                 " : " + item.selectedBakcground.name + " - $" + item.selectedBakcground.price + "</li>";

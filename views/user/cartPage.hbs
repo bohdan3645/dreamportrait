@@ -16,7 +16,6 @@
     <div class="nextPartOrder">
         <div class="saveOfOrder">YOU SAVE: <span style="color: red;"><b>50% </b></span>OFF</div>
         <div class="grandTotal" id="total-price">GRAND TOTAL:</div> <br>
-
         <!-- TIMER -->
         <!-- <div style="display: flex;">
              <div style="margin-right: 5px"> The cart will expire in</div>
@@ -24,9 +23,8 @@
             </div> -->
         <!-- <button class="updateBtn" onclick="updateTime()">UPDATE</button> -->
         <!-- TIMER -->
-
         <!-- SECOND CHECKOUT BUTTONS -->
-        <!-- <a class="checkoutBtn" href="/checkoutTest" type="button" >CHECKOUT</a> -->
+        <a class="checkoutBtn" href="/checkoutTest" type="button">CHECKOUT</a>
         <!-- SECOND CHECKOUT BUTTONS -->
     </div>
 </div>
@@ -101,16 +99,11 @@ function showCartElement() {
 
         if (item.selectedBakcground != null) {
             totalPrice += item.selectedBakcground.price;
+
+            shoppingCart.innerHTML += getItemTemplate(item.selectedPeople.id, item.selectedBakcground.name, item.selectedPeople.price + item.selectedBakcground.price, item.wishesText, item.image);
         }
 
-        if (item.selectedBakcground != null) {
-            shoppingCart.innerHTML += getItemTemplate(item.selectedPeople.id, item.selectedBakcground.name, item.selectedPeople.price, item.wishesText, item.image, i);
-        } else {
-            shoppingCart.innerHTML +=
-                "<li>People: " + item.selectedPeople.id + " - $" + item.selectedPeople.price + "</li>";
-        }
     }
-
     var totalPriceElement = document.getElementById('total-price');
     totalPriceElement.innerHTML = 'GRAND TOTAL:<b> $' + totalPrice + '</b>';
 }
@@ -126,5 +119,4 @@ function ClearData(index) {
         window.location.href = '/orderPageTest';
     }
 }
-
 </script>

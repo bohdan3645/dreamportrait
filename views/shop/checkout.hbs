@@ -40,9 +40,8 @@ function getTotalPrice() {
 
 
 function payWay(){
-    debugger
     var fNameCheckout = document.getElementById('fNameCheckout').value;
-    var ldNameCheckout = document.getElementById('lNameCheckout').value;
+    var lNameCheckout = document.getElementById('lNameCheckout').value;
     var emailCheckout = document.getElementById('emailCheckout').value;
     var createOrder = document.getElementById('createOrder');
     var wayforpay = new Wayforpay();
@@ -59,6 +58,7 @@ function payWay(){
             backgroundName: item.selectedBakcground.name,
             image: item.image,
             text: item.wishesText,
+            price: item.selectedPeople.price + item.selectedBakcground.price
         });
     };
     //<
@@ -79,30 +79,24 @@ function payWay(){
                 }
             })
         })
+        .then(res => res.json())
         .then(res => {
-            const hashData = res['hash_data'];
-            const orderId = res['order_id'];
-
-            
+            debugger
                 wayforpay.run({
-                        merchantAccount: "test_merch_n1",
-                        merchantDomainName: "www.market.ua",
-                        authorizationType: "SimpleSignature",
-                        merchantSignature: hashData,
-                        orderReference: orderId,
-                        orderDate: "1415379863",
-                        amount: "1547.36",
-                        currency: "UAH",
-                        productName: "Процессор Intel Core i5-4670 3.4GHz",
-                        productPrice: "1000",
-                        productCount: "1",
-                        clientFirstName: "Вася",
-                        clientLastName: "Васечкин",
-                        clientEmail: "some@mail.com",
-                        clientPhone: "380631234567",
-                        language: "UA"
+                        merchantAccount: res.merchantAccount,
+                        merchantDomainName: res.merchantDomainName,
+                        // authorizationType: "SimpleSignature",
+                        merchantSignature: res.hashData,
+                        orderReference: res.orderId,
+                        orderDate: res.orderDate,
+                        amount: res.amount,
+                        currency: res.currency,
+                        productName: res.productName,
+                        productPrice: res.productPrice,
+                        productCount: res.productCount
                     },
                     function(response) {
+                        debugger
                         // on approved                          
                     },
                     function(response) {
