@@ -186,14 +186,6 @@ app.post("/create-order", (req, res) => {
 })
 //<
 
-
-
-
-
-
-
-
-
 app.post('/createOrder', (req, res, next) => {
     try {
         var order = req.body.order;

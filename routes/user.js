@@ -15,10 +15,17 @@ router.get('/profile', isLoggedIn, function(req, res, next) {
             return res.write('Error!');
         }
         var cartHead;
-        orders.forEach(function(order) {
 
+        res.render('user/profile', { 
+            orders: orders.reduce((acc, o) => acc.concat(o.products), []) 
+                .map(o => ({
+                    imagePath: o.imagePath,
+                    selectedPeople: o.selectedPeople,
+                    selectedBakcground: o.selectedBakcground,
+                    wishesText: o.wishesText,
+                    price: o.price,
+                }))
         });
-        res.render('user/profile', { orders: orders });
     });
 });
 

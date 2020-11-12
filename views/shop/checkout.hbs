@@ -85,7 +85,6 @@ function payWay(){
                 wayforpay.run({
                         merchantAccount: res.merchantAccount,
                         merchantDomainName: res.merchantDomainName,
-                        // authorizationType: "SimpleSignature",
                         merchantSignature: res.hashData,
                         orderReference: res.orderId,
                         orderDate: res.orderDate,

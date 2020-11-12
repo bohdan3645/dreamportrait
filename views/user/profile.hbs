@@ -15,31 +15,27 @@
     <div class="ordersContent" style="margin-bottom:300px">
         <div class="cartHead">My orders</div>
         {{# each orders}}
-            {{# each this.items }}
-
-                {{/each}}
+                <div class="orderDetailsInProgress">
+                    <div class="orderPhoto"><img src="{{ this.imagePath }}"></div>
+                    <div class="details">
+                        <div id="orderId">0023</div>
+                        <div id="date">05.09.20</div>
+                        <div class="numberOfPeopleOrder">Number of people:  {{ selectedPeople }}</b></div>
+                        <div class="backgroundOrder">Background: {{ this.selectedBakcground }}</div>
+                        <div class="noteOrder">Note: {{ this.wishesText }}</div>
+                        <div class="priceOrder">Price: $100<b></b></div>
+                
+                    </div>
+                    <div class="description" style=" display: flex; text-align: center;">
+                    In progress<br>
+                    estimated delivery date:<br>
+                    08.11.20<br>
+                    Your Portrait will be available<br>
+                    for downloading here
+                    </div>
+                </div>
         {{/each}}
-        <div class="orderDetailsInProgress">
-            <div class="orderPhoto"><img src="/images/comment1.jpg"></div>
-            <div class="details">
-                <div id="orderId">0023</div>
-                <div id="date">05.09.20</div>
-                <div class="numberOfPeopleOrder">Number of people: 1</b></div>
-                <div class="backgroundOrder">Background: Custom</div>
-                <div class="noteOrder">Note: hello niga</div>
-                <div class="priceOrder">Price: $100<b></b></div>
-        
-            </div>
-            <div class="description" style=" display: flex; text-align: center;">
-            In progress<br>
-            estimated delivery date:<br>
-            08.11.20<br>
-            Your Portrait will be available<br>
-            for downloading here
-        </div>
-            
-        </div>
-        <div class="orderDetailsInProgress">
+        <!-- <div class="orderDetailsInProgress">
             <div class="orderPhoto"><img src="/images/comment1.jpg"></div>
             <div class="details">
                 <div id="orderId">0022</div>
@@ -54,7 +50,7 @@
                 Conplited
             <button style="height: 50px; width: 80%"><i class="fa fa-download" aria-hidden="true"></i></button>
             <a href="/leaveComment/"><button style="height: 50px; margin-top: 10px">Leave a review</button></a>
-        </div>
+        </div> -->
 
     </div>
     
