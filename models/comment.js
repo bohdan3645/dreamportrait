@@ -1,11 +1,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var productOrder = require('./productOrder').schema;
 
 var schema =  new Schema ({
-	user: {type: Schema.Types.ObjectId, ref: 'User'},
-	nameComment: {type: String, required: true},
-	emailComment: {type: String, required: true},
-	comment: {type: String, required: true},
+	comment: { type: String, required: true },
+	rating: { type: Number, required: true }
 });
 
 

@@ -1,3 +1,99 @@
+<div>
+    
+    <div class="ordersContent" style="margin-bottom:300px">
+        <div class="cartHead">My orders</div>
+        {{# each orders}}
+            <div class="orderDetailsInProgress">
+                <div class="orderPhoto">
+                    <img src="{{ this.imagePath }}">
+                </div>
+                <div>
+                    <img src="{{ this.artImage }}">
+                </div>
+                <div class="details">
+                    <div id="orderId">0023</div>
+                    <div id="date">05.09.20</div>
+                    <div class="numberOfPeopleOrder">Number of people:  {{ selectedPeople }}</b></div>
+                    <div class="backgroundOrder">Background: {{ this.selectedBakcground }}</div>
+                    <div class="noteOrder">Note: {{ this.wishesText }}</div>
+                    <div class="priceOrder">Price: {{ this.price }}<b></b></div>
+            
+                </div>
+                <div class="description" style=" display: flex; text-align: center;">
+                    
+                    <a download="{{ this.wishesText }}.jpeg" href="{{ this.imagePath }}">Download</a>
+                    <input class="image-uploader" data-id="{{ this.id }}" type="file" value="upload">  
+                    <!-- <button>Upload</button> -->
+                In progress<br>
+                estimated delivery date:<br>
+                08.11.20<br>
+                Your Portrait will be available<br>
+                for downloading here
+                </div>
+            </div>
+        {{/each}}
+
+        <script>
+            var uploadButtons = document.getElementsByClassName("image-uploader");
+
+            for (var button of uploadButtons) {
+                button.addEventListener("change", function(event) {
+                    var files = event.target.files;
+                    var id = event.target.getAttribute('data-id');
+
+                    if (files.length) {
+                        var fileReader = new FileReader();
+
+                        fileReader.onload = function(fileLoadedEvent) {
+                            var srcData = fileLoadedEvent.target.result;
+                            image = srcData;
+
+                            fetch('/adminPageTest/upload-art-image', {
+                                method: 'post',
+                                headers: {
+                                  'Content-Type': 'application/json;charset=utf-8'
+                                },
+                                body: JSON.stringify({
+                                    image: image,
+                                    id: id
+                                })
+                            })
+                            .then(res => res.json())
+                            .then(res => {
+                                console.log(res)
+                            })
+                            .catch(err => {
+                                //TODO: check for a ponential errors
+                            });
+                        }
+
+                        fileReader.readAsDataURL(files[0]);
+                    }
+
+                }, false);
+            }
+        </script>
+        <!-- <div class="orderDetailsInProgress">
+            <div class="orderPhoto"><img src="/images/comment1.jpg"></div>
+            <div class="details">
+                <div id="orderId">0022</div>
+                <div id="date">05.08.20</div>
+                <div class="numberOfPeopleOrder">Number of people: 1</b></div>
+                <div class="backgroundOrder">Background: Custom</div>
+                <div class="noteOrder">Note: blabla</div>
+                <div class="priceOrder">Price: $1000000<b></b></div>
+        
+            </div>
+            <div class="downloadFile" style=" text-align: center;">
+                Conplited
+            <button style="height: 50px; width: 80%"><i class="fa fa-download" aria-hidden="true"></i></button>
+            <a href="/leaveComment/"><button style="height: 50px; margin-top: 10px">Leave a review</button></a>
+        </div> -->
+
+    </div>
+
+</div>
+
 <div class="adminPanel" style="display: flex;">
     <form action="" style="width: 330px;  margin: 50px; ">
         <h6>Welcome to the Dream Portrait upload form:</h6>

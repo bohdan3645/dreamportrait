@@ -14,16 +14,16 @@ router.get('/profile', isLoggedIn, function(req, res, next) {
         if (err) {
             return res.write('Error!');
         }
-        var cartHead;
-
         res.render('user/profile', { 
             orders: orders.reduce((acc, o) => acc.concat(o.products), []) 
-                .map(o => ({
-                    imagePath: o.imagePath,
-                    selectedPeople: o.selectedPeople,
-                    selectedBakcground: o.selectedBakcground,
-                    wishesText: o.wishesText,
-                    price: o.price,
+                .map(p => ({
+                    id: p._id,
+                    imagePath: p.imagePath,
+                    artImage: p.artImage,
+                    selectedPeople: p.selectedPeople,
+                    selectedBakcground: p.selectedBakcground,
+                    wishesText: p.wishesText,
+                    price: p.price,
                 }))
         });
     });

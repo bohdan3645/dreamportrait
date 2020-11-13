@@ -16,25 +16,66 @@
         <div class="cartHead">My orders</div>
         {{# each orders}}
                 <div class="orderDetailsInProgress">
-                    <div class="orderPhoto"><img src="{{ this.imagePath }}"></div>
+                    <div class="orderPhoto">
+                        <img src="{{ this.imagePath }}">
+                        <img src="{{ this.artImage }}">
+                    </div>
                     <div class="details">
                         <div id="orderId">0023</div>
                         <div id="date">05.09.20</div>
                         <div class="numberOfPeopleOrder">Number of people:  {{ selectedPeople }}</b></div>
                         <div class="backgroundOrder">Background: {{ this.selectedBakcground }}</div>
                         <div class="noteOrder">Note: {{ this.wishesText }}</div>
-                        <div class="priceOrder">Price: $100<b></b></div>
+                        <div class="priceOrder">Price: {{ this.price }}<b></b></div>
                 
                     </div>
                     <div class="description" style=" display: flex; text-align: center;">
-                    In progress<br>
+                    {{#if artImage}}
+                        Done!<br>
+                    {{else}}
+                        In progress!<br>
+                    {{/if}}
+                    
                     estimated delivery date:<br>
                     08.11.20<br>
                     Your Portrait will be available<br>
                     for downloading here
                     </div>
+                    <div>
+                        {{#if artImage}}
+                            <div>
+                                <a class="btn btn-success" download="{{ this.wishesText }}.jpeg" href="{{ this.artImage }}">Download art</a>
+                            </div>
+                            <div>
+                                <button onclick="updateEditingCommentId('{{this.id}}')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    Leave comment
+                                </button>
+                            </div>
+                        {{/if}}
+                    </div>
                 </div>
+
         {{/each}}
+        <!-- Comment -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Leave Comment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <textarea id="comment-text" cols="30" rows="10"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button id="close-comment-window" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="sendComment()">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- <div class="orderDetailsInProgress">
             <div class="orderPhoto"><img src="/images/comment1.jpg"></div>
             <div class="details">
@@ -55,3 +96,30 @@
     </div>
     
 </div>
+
+<script>
+    var editingCommentId = 0;
+
+    var updateEditingCommentId = id => {
+        editingCommentId = id;
+    };
+
+    var sendComment = () => {
+        const commentTextElement = document.getElementById('comment-text');
+
+        fetch('/reviewsTest/submit', {
+            method: 'post',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({
+                id: editingCommentId,
+                comment:  commentTextElement.value 
+            })
+        })
+        .then(res => res.json())
+        .then(res => {
+            document.getElementById('close-comment-window').click();
+        });
+    };
+</script>
