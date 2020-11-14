@@ -2,7 +2,7 @@
   <div class="home-img">
     <img class="img_home" src="/images/homeP.png">
     <img class="small_img_home" src="/images/smallhome.png">
-        <a href="/orderPageTest/"><button class="btn_home">GET MY CARTOON</button></a>
+        <a href="/orderPageTest/"><button class="primary-btn">GET MY CARTOON</button></a>
   </div>
   <div class="how-it-work"> 
       <h class="how"> HOW IT WORKS?</h>
@@ -39,4 +39,25 @@
   <div class="p">
     
   </div>
+  <div class="reviewsContent">
+    <div class="reviewsHeader" style="text-align: center">
+        HERE YOU CAN READ SOME REVIEWS FORM OUR CUSTOMER
+    </div>
+    <hr style="width: 70%; margin: 25px auto;">
+
+    <div class="reviewsContent">
+        <div class="reviewsAdmin" style="display: flex;">
+
+            {{#each products}}
+            <div class="card" style="max-width: 340px; padding: 10px">
+                <img src="{{imagePath}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Kelli W.</h5>
+                    <p class="card-text">{{comment.comment}}</p>
+                </div>
+            </div>
+            {{/each}}
+            
+        </div>
+</div>
 </div>

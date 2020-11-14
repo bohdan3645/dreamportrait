@@ -1,37 +1,39 @@
-<div>
-    
-    <div class="ordersContent" style="margin-bottom:300px">
-        <div class="cartHead">My orders</div>
+<div style=" display: flex; justify-content: flex-end;">
+<div class="adminOrders">
+    <div class="cartHead">My orders</div>
+    <h6>Welcome to the Dream Portrait upload form:</h6>
+        <hr style="margin-bottom: 10px; border:.5px solid black">
+    <div class="ordersContent">
         {{# each orders}}
+        <div>
             <div class="orderDetailsInProgress">
+
                 <div class="orderPhoto">
                     <img src="{{ this.imagePath }}">
                 </div>
-                <div>
+
+                <div class="orderPhoto">
                     <img src="{{ this.artImage }}">
                 </div>
+
                 <div class="details">
-                    <div id="orderId">0023</div>
-                    <div id="date">05.09.20</div>
+                    <div id="date">{{ artImageCreatedAt }}</div>
                     <div class="numberOfPeopleOrder">Number of people:  {{ selectedPeople }}</b></div>
                     <div class="backgroundOrder">Background: {{ this.selectedBakcground }}</div>
                     <div class="noteOrder">Note: {{ this.wishesText }}</div>
                     <div class="priceOrder">Price: {{ this.price }}<b></b></div>
-            
-                </div>
-                <div class="description" style=" display: flex; text-align: center;">
+            <div class="up-dw-admin-btn">
                     
-                    <a download="{{ this.wishesText }}.jpeg" href="{{ this.imagePath }}">Download</a>
-                    <input class="image-uploader" data-id="{{ this.id }}" type="file" value="upload">  
-                    <!-- <button>Upload</button> -->
-                In progress<br>
-                estimated delivery date:<br>
-                08.11.20<br>
-                Your Portrait will be available<br>
-                for downloading here
+                    <a style=" background-color: orange; padding: 5px; margin:5px;" type="button" download="{{ this.wishesText }}.jpeg" href="{{ this.imagePath }}">Download</a>
+                    <input style=" background-color: #000; color: white" class="image-uploader" data-id="{{ this.id }}" type="file" value="upload">  
+                </div>
+                </div>
                 </div>
             </div>
         {{/each}}
+    </div>
+</div>
+</div>
 
         <script>
             var uploadButtons = document.getElementsByClassName("image-uploader");
@@ -55,7 +57,8 @@
                                 },
                                 body: JSON.stringify({
                                     image: image,
-                                    id: id
+                                    id: id,
+                                    uploadedAt: new Date().toString()
                                 })
                             })
                             .then(res => res.json())
@@ -73,49 +76,11 @@
                 }, false);
             }
         </script>
-        <!-- <div class="orderDetailsInProgress">
-            <div class="orderPhoto"><img src="/images/comment1.jpg"></div>
-            <div class="details">
-                <div id="orderId">0022</div>
-                <div id="date">05.08.20</div>
-                <div class="numberOfPeopleOrder">Number of people: 1</b></div>
-                <div class="backgroundOrder">Background: Custom</div>
-                <div class="noteOrder">Note: blabla</div>
-                <div class="priceOrder">Price: $1000000<b></b></div>
-        
-            </div>
-            <div class="downloadFile" style=" text-align: center;">
-                Conplited
-            <button style="height: 50px; width: 80%"><i class="fa fa-download" aria-hidden="true"></i></button>
-            <a href="/leaveComment/"><button style="height: 50px; margin-top: 10px">Leave a review</button></a>
-        </div> -->
-
     </div>
 
 </div>
-
+<hr style="margin-bottom: 10px; border:.5px solid black">
 <div class="adminPanel" style="display: flex;">
-    <form action="" style="width: 330px;  margin: 50px; ">
-        <h6>Welcome to the Dream Portrait upload form:</h6>
-        <hr style="margin-bottom: 10px; border:.5px solid black">
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm"># ID</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-            </div>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-            </div>
-        </div>
-        <button type="button" class="btn btn-dark">Save file</button>
-    </form>
-    <!-- //////////////////// -->
     <form action="" style="width: 310px;  margin: 50px;">
         <h6>Welcome to the Dream Portrait price changing:</h6>
         <hr style="margin-bottom: 10px; border:.5px solid black">
@@ -185,7 +150,6 @@
                 </div>
             </div>
         </div>
-        <!-- //////////////////// -->
         <div class="input-group input-group-sm mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Price custom bacground $</span>

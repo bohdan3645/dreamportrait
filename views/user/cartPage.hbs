@@ -9,6 +9,7 @@
         </div>
     </div>
 </div>
+<div style="display: flex; justify-content: center;">
 <div class="cartContent">
     <div class="cartHead">CART</div>
     <div id="cart">
@@ -27,6 +28,7 @@
         <a class="checkoutBtn" href="/checkoutTest" type="button">CHECKOUT</a>
         <!-- SECOND CHECKOUT BUTTONS -->
     </div>
+</div>
 </div>
 <script>
 // timer for expire cart
@@ -67,7 +69,6 @@ showCartElement();
 function getItemTemplate(numPpl, bgName, price, text, image, index) {
     text = text || '';
     return '<div class="orderDetails">' +
-        '<div class="namberOfOrder"><b>0000</b></div>' +
         '<div class="orderPhoto"><img src="' + image + '"></div>' +
         '<div class="details">' +
         '<div class="hOrder">Original Dream Portrait Art</div>' +

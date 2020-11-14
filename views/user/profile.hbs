@@ -1,125 +1,112 @@
-<div style="display: grid;   grid-template-columns: 15% 46%; justify-content: center;">
-<div class="userManagement">
-    <div class="user-name" style="padding: 0 20px">
-        <div id="name"></div>
-        <h4 style="text-align:center">My account</h4>
-        <h5 style="text-align:center">Menage account</h5>
+<div class="accountContent">
+    <div class="userManagement">
+        <div class="user-name" style="padding: 0 20px">
+            <div id="name"></div>
+            <h4 style="text-align:center">My account</h4>
+            <h5 style="text-align:center">Menage account</h5>
+        </div>
+        <div class="menage-nav">
+            <div><a class="change-password">Change password</a></div>
+            <div><a href="/user/profile" class="my-orders">My orders</a></div>
+            <div><a href="/user/logout" class="sign-out">Sign out</a></div>
+        </div>
     </div>
-    <div class="menage-nav">
-    <div><a class="change-password">Change password</a></div>
-    <div><a href="/user/profile" class="my-orders">My orders</a></div>
-    <div><a href="/user/logout" class="sign-out">Sign out</a></div>
-    </div>
-</div>
-
-    <div class="ordersContent" style="margin-bottom:300px">
+    <div class="ordersQty" style="margin-bottom:300px">
         <div class="cartHead">My orders</div>
         {{# each orders}}
-                <div class="orderDetailsInProgress">
-                    <div class="orderPhoto">
-                        <img src="{{ this.imagePath }}">
-                        <img src="{{ this.artImage }}">
-                    </div>
-                    <div class="details">
-                        <div id="orderId">0023</div>
-                        <div id="date">05.09.20</div>
-                        <div class="numberOfPeopleOrder">Number of people:  {{ selectedPeople }}</b></div>
-                        <div class="backgroundOrder">Background: {{ this.selectedBakcground }}</div>
-                        <div class="noteOrder">Note: {{ this.wishesText }}</div>
-                        <div class="priceOrder">Price: {{ this.price }}<b></b></div>
+        <div class="orderDetailsInProgress">
+            <div class="orderPhoto">
+                <img src="{{ this.imagePath }}">
+                <img src="{{ this.artImage }}">
+            </div>
+            <div class="details">
+                {{#if artImage}}
+                <div id="date"></div>
+                <script>
+                    var date = document.getElementById('date')
+                    var newDate = new Date();
+                    date.innerHTML = newDate.toLocaleDateString("en-US");
+                </script>
                 
-                    </div>
-                    <div class="description" style=" display: flex; text-align: center;">
+                {{/if}}
+                <div class="numberOfPeopleOrder">Number of people: {{ selectedPeople }}</b></div>
+                <div class="backgroundOrder">Background: {{ this.selectedBakcground }}</div>
+                <div class="noteOrder">Note: {{ this.wishesText }}</div>
+                <div class="priceOrder">Price: {{ this.price }}<b></b></div>
+            </div>
+            <div class="description" style=" display: flex; text-align: center;">
+                {{#if artImage}}
+                <!-- Done!<br> -->
+                <div>
                     {{#if artImage}}
-                        Done!<br>
-                    {{else}}
-                        In progress!<br>
-                    {{/if}}
-                    
-                    estimated delivery date:<br>
-                    08.11.20<br>
-                    Your Portrait will be available<br>
-                    for downloading here
+                    <div>
+                        <button style="width: 100%; margin-bottom: 5px" onclick="updateEditingCommentId('{{this.id}}')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Leave comment
+                        </button>
                     </div>
                     <div>
-                        {{#if artImage}}
-                            <div>
-                                <a class="btn btn-success" download="{{ this.wishesText }}.jpeg" href="{{ this.artImage }}">Download art</a>
-                            </div>
-                            <div>
-                                <button onclick="updateEditingCommentId('{{this.id}}')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                    Leave comment
-                                </button>
-                            </div>
-                        {{/if}}
+                        <a style=" width: 100%; font-size: 30px" class="btn btn-success" download="{{ this.wishesText }}.jpeg" href="{{ this.artImage }}"><i class="fa fa-download" aria-hidden="true"></i><br>
+                            <p>Click to upload your portrait</p>
+                        </a>
                     </div>
+                    {{/if}}
                 </div>
-
+                {{else}}
+                In progress!<br>
+                estimated delivery date:<br>
+                08.11.20<br>
+                Your Portrait will be available<br>
+                for downloading here
+                {{/if}}
+            </div>
+        </div>
         {{/each}}
         <!-- Comment -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Leave Comment</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <textarea id="comment-text" cols="30" rows="10"></textarea>
-              </div>
-              <div class="modal-footer">
-                <button id="close-comment-window" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="sendComment()">Save changes</button>
-              </div>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Leave Comment</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <textarea id="comment-text" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="close-comment-window" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" onclick="sendComment()">Leave a comment
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        <!-- <div class="orderDetailsInProgress">
-            <div class="orderPhoto"><img src="/images/comment1.jpg"></div>
-            <div class="details">
-                <div id="orderId">0022</div>
-                <div id="date">05.08.20</div>
-                <div class="numberOfPeopleOrder">Number of people: 1</b></div>
-                <div class="backgroundOrder">Background: Custom</div>
-                <div class="noteOrder">Note: blabla</div>
-                <div class="priceOrder">Price: $1000000<b></b></div>
-        
-            </div>
-            <div class="downloadFile" style=" text-align: center;">
-                Conplited
-            <button style="height: 50px; width: 80%"><i class="fa fa-download" aria-hidden="true"></i></button>
-            <a href="/leaveComment/"><button style="height: 50px; margin-top: 10px">Leave a review</button></a>
-        </div> -->
-
     </div>
-    
 </div>
-
 <script>
-    var editingCommentId = 0;
+var editingCommentId = 0;
 
-    var updateEditingCommentId = id => {
-        editingCommentId = id;
-    };
+var updateEditingCommentId = id => {
+    editingCommentId = id;
+};
 
-    var sendComment = () => {
-        const commentTextElement = document.getElementById('comment-text');
+var sendComment = () => {
+    const commentTextElement = document.getElementById('comment-text');
 
-        fetch('/reviewsTest/submit', {
+    fetch('/reviewsTest/submit', {
             method: 'post',
             headers: {
-              'Content-Type': 'application/json;charset=utf-8'
+                'Content-Type': 'application/json;charset=utf-8'
             },
             body: JSON.stringify({
                 id: editingCommentId,
-                comment:  commentTextElement.value 
+                comment: commentTextElement.value
             })
         })
         .then(res => res.json())
         .then(res => {
             document.getElementById('close-comment-window').click();
         });
-    };
+};
 </script>
