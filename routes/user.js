@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const csrf = require('csurf');
-const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer'); 
 
 var Order = require('../models/order');
 
@@ -17,15 +17,19 @@ router.get('/profile', isLoggedIn, function(req, res, next) {
         }
         res.render('user/profile', { 
             orders: orders.reduce((acc, o) => acc.concat(o.products), []) 
-                .map(p => ({
+                .map(p => {
+                    const tedt = new Date(p.artImageCreatedAt);
+                    return{
                     id: p._id,
                     imagePath: p.imagePath,
                     artImage: p.artImage,
+                    artImageCreatedAt: tedt.getDate().toString() +"."+ tedt.getMonth().toString() +"."+ tedt.getFullYear().toString(),
                     selectedPeople: p.selectedPeople,
                     selectedBakcground: p.selectedBakcground,
                     wishesText: p.wishesText,
                     price: p.price,
-                }))
+                }
+                })
         });
     });
 });

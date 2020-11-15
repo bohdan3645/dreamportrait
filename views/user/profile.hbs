@@ -21,13 +21,7 @@
             </div>
             <div class="details">
                 {{#if artImage}}
-                <div id="date"></div>
-                <script>
-                    var date = document.getElementById('date')
-                    var newDate = new Date();
-                    date.innerHTML = newDate.toLocaleDateString("en-US");
-                </script>
-                
+                <div id="date">Date: {{ artImageCreatedAt }}</div>
                 {{/if}}
                 <div class="numberOfPeopleOrder">Number of people: {{ selectedPeople }}</b></div>
                 <div class="backgroundOrder">Background: {{ this.selectedBakcground }}</div>
@@ -52,11 +46,15 @@
                     {{/if}}
                 </div>
                 {{else}}
-                In progress!<br>
-                estimated delivery date:<br>
-                08.11.20<br>
+                <div style=" font-family: Arial; font-size: 14px; color: grey">
+                <p style="color: red">In progress!</p>
+                Estimated delivery date:<br>
+                3-5 days<br><br>
+                <p style=" color: #000">
                 Your Portrait will be available<br>
                 for downloading here
+            </p>
+            </div>
                 {{/if}}
             </div>
         </div>

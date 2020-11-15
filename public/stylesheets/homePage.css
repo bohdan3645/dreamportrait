@@ -2,6 +2,10 @@
     display: none
 }
 
+.home-img.loaded img{
+    opacity: 1;
+}
+
 .home-img {
     position: relative;
     text-align: center;
@@ -10,6 +14,12 @@
 
 .img_home {
     width: 100%;
+    opacity: 0;
+
+    -webkit-transition: opacity 150ms;
+    -moz-transition: opacity 150ms;
+    -ms-transition: opacity 150ms;
+    transition: opacity 150ms;
 }
 
 .how-it-work {

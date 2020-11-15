@@ -37,3 +37,16 @@
 .getHome:hover {
     color: #6A57A4;
 }
+
+@media(max-width: 770px){
+    .successContent{
+    width: 60%;
+}
+}
+
+@media(max-width: 440px){
+  .successContent{
+    width: 90%;
+}
+
+}
