@@ -1,15 +1,54 @@
 .reviewsContent {
-	margin: 25px 200px;
+    margin: 25px 200px;
 }
 
-.reviewsHeader{
-	font-size: 30px;
-	font-family: hellofreeday;
-	word-spacing: 7px;
-	color: #6A57A4; 
+.reviews {
+    margin: 25px 200px;
+    display: flex;
+}
+
+.reviewsHeader {
+    font-size: 30px;
+    font-family: hellofreeday;
+    word-spacing: 7px;
+    color: #6A57A4;
 }
 
 
 .card {
-   margin: 15px;
+    margin: 15px;
+}
+
+.reviewsAdmin {
+    width: 33%;
+    /*display: flex;*/
+    justify-content: center;
+    padding: 25px 0;
+}
+
+@media(max-width: 1200px) {
+    .reviewsContent {
+        margin: 25px 0;
+    }
+
+    .reviews {
+        margin: 25px 50px;
+    }
+
+}
+
+@media(max-width: 770px) {
+    .reviewsHeader {
+        font-size: 22px;
+    }
+}
+
+@media(max-width: 483px) {
+    .reviews {
+        display: block;
+    }
+
+    .reviewsAdmin {
+        width: 100%;
+    }
 }

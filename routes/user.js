@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const csrf = require('csurf');
+const nodemailer = require('nodemailer');
 
 var Order = require('../models/order');
 
@@ -55,6 +56,8 @@ router.post('/register', passport.authenticate('local.register', {
     } else {
         res.redirect('/user/profile');
     }
+    
+
 });
 
 

@@ -28,7 +28,6 @@ const cartPage = require('./routes/cartPage');
 
 const userRoutes = require('./routes/user');
 var checkout = require('./routes/checkout');
-var checkoutPayPal = require('./routes/checkoutPayPal');
 
 
 
@@ -40,6 +39,10 @@ const termsOfService = require('./routes/termsOfService');
 const refundPolicy = require('./routes/refundPolicy');
 const faq = require('./routes/faq');
 const reviews = require('./routes/reviews');
+const successPay = require('./routes/successPay');
+const successReg = require('./routes/successReg');
+const artIsDone = require('./routes/artIsDone');
+
 const leaveComment = require('./routes/leaveComment');
 
 const successMsgContact = require('./routes/successMsgContact');
@@ -107,8 +110,11 @@ app.use('/homePageTest', homePage);
 app.use('/cartPageTest', cartPage);
 app.use('/reviewsTest', reviews);
 app.use('/checkoutTest', checkout);
-// app.use('/checkoutPayPalTest', checkoutPayPal);
 app.use('/leaveComment', leaveComment);
+app.use('/successPay', successPay);
+app.use('/successReg', successReg);
+app.use('/artIsDone', artIsDone);
+
 
 
 app.use('/successMsgContactTest', successMsgContact);

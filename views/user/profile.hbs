@@ -40,12 +40,12 @@
                 <div>
                     {{#if artImage}}
                     <div>
-                        <button style="width: 100%; margin-bottom: 5px" onclick="updateEditingCommentId('{{this.id}}')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <button style="width: 100%; margin-bottom: 5px" onclick="updateEditingCommentId('{{this.id}}')" type="button" class="full-btn" data-toggle="modal" data-target="#exampleModal">
                             Leave comment
                         </button>
                     </div>
                     <div>
-                        <a style=" width: 100%; font-size: 30px" class="btn btn-success" download="{{ this.wishesText }}.jpeg" href="{{ this.artImage }}"><i class="fa fa-download" aria-hidden="true"></i><br>
+                        <a style=" width: 100%; font-size: 30px; color: #000; font-family: Arial; text-decoration: none" download="{{ this.wishesText }}.jpeg" href="{{ this.artImage }}"><i style="color: #4FC478" class="fa fa-download" aria-hidden="true"></i><br>
                             <p>Click to upload your portrait</p>
                         </a>
                     </div>

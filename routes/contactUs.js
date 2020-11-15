@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const nodemailer = require('nodemailer');
+ const nodemailer = require('nodemailer');
 
 
 
@@ -29,7 +29,7 @@ let mailOption = {
   from: email,
   to: 'dreamportraitstore@gmail.com',
   subject: 'Dream Portrait Support',
-  text: email + message
+  text: 'hello'
 }
 
 transporter.sendMail(mailOption, (err, data) => {

@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 
-/* GET checkout Pay Pal page. */
+/* GET successReg page. */
 router.get('/', function(req, res, next) {
-   res.render('shop/checkoutPayPal', { title: 'shopp' });
+   res.render('successPages/successReg', { title: 'shopp' });
 });
 
 module.exports = router;
