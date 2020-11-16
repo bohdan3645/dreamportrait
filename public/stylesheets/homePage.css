@@ -14,7 +14,7 @@
 
 .img_home {
     width: 100%;
-    opacity: 0;
+    /*opacity: 0;*/
 
     -webkit-transition: opacity 150ms;
     -moz-transition: opacity 150ms;
@@ -113,14 +113,14 @@
         display: flex;
     }
 
-    .btn_home {
-        top: 91%;
+    .primary-btn {
+        top: 89%;
         left: 50%;
-        font-size: 16px;
+        font-size: 18px;
         padding: 4px 20px;
     }
 
-    .btn_home:hover {
+    .primary-btn:hover {
         padding: 5px 21px;
     }
 
