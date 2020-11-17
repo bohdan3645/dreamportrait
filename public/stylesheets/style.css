@@ -168,6 +168,8 @@ footer {
 #navLinks {
     padding: 25px 0;
     justify-content: space-between;
+        letter-spacing: 1.5px;
+    max-width: 500px;
 }
 
 #navlink {
@@ -351,7 +353,11 @@ footer
     padding: 10px;
 }
 
-
+@media(max-width: 1370px) {
+#navlink {
+    font-size: 20px;
+}
+}
 @media(max-width: 1200px) {
 
     .adminOrders{

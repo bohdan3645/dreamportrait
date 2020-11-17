@@ -156,7 +156,7 @@
                     <h5 class="features__title">Upload your photo</h5>
                     <div class="container">
                         <div class="button-wrap" style="display: flex; justify-content: center;">
-                            <input class="btnUpl" id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+                            <input class="btnUpl" id="inputFileToLoad" type="file"  enctype="multipart/form-data" onchange="encodeImageFileAsURL();" />
                         </div>
                     </div>
                     <div id="imgTest" style="display: none"></div>
@@ -334,6 +334,7 @@ addToCart.addEventListener('click', function(event) {
             wishesText: wishesText,
             image: image
         });
+        debugger
 
         localStorage.setItem("cart", JSON.stringify(localStorageCart));
         updateCartQty(); 
