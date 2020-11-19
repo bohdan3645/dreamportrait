@@ -127,12 +127,15 @@ function decodeBase64Image(dataString) {
 }
 
 app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
-
     const secretKey = process.env.SECRET_PAY_KEY;
     const merchantAccount = process.env.MERCHANT_ACCOUNT;
     const merchantDomainName = process.env.MERCHANT_DOMAIN;
 
     const rootFolder = __dirname + `${path.sep}public${path.sep}images${path.sep}orders${path.sep}`;
+    
+    if (!fs.existsSync(rootFolder)){
+        fs.mkdirSync(rootFolder);
+    }
 
     const order = new Order({
         user: req.user,
