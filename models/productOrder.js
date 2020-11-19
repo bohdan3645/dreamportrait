@@ -4,6 +4,7 @@ var comment = require('./comment').schema;
 
 var schema =  new Schema ({
 	imagePath: {type: String, required: true},
+	imageMiniPath: {type: String, required: true},
 	artImage: {type: String, default: null},
 	artImageCreatedAt: {type: String, default: null}, 
 	selectedBakcground: {type: String, required: true},

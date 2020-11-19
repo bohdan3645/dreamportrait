@@ -10,164 +10,165 @@
     </div>
 </div>
 <div style="display: flex; justify-content: center;">
-<div class="cartContent">
-    <div class="cartHead">CART</div>
-    <div id="cart">
+    <div class="cartContent">
+        <div class="cartHead">CART</div>
+        <div id="cart">
+        </div>
+        <div class="nextPartOrder">
+            <div class="saveOfOrder">YOU SAVE: <span style="color: red;"><b>50% </b></span>OFF</div>
+            <div class="grandTotal" id="total-price">GRAND TOTAL:</div>
+            <br>
+
+            {{# if login }}
+                <form action="/createPaymant" id="payment-form" method="POST">
+                    <div id="card-element" style="margin: 20px 0"></div>
+                    <div class="sr-field-error" id="card-errors" role="alert"></div>
+                    <button class="full-btn" style="padding: 5px" type="button" action="/create-order"
+                            onclick="payWay()">Pay
+                    </button>
+                </form>
+            {{ else }}
+                <sapan>Plese <a href="/user/signin">Sign in</a> for pay!</sapan>
+            {{/if}}
+
+        </div>
     </div>
-    <div class="nextPartOrder">
-        <div class="saveOfOrder">YOU SAVE: <span style="color: red;"><b>50% </b></span>OFF</div>
-        <div class="grandTotal" id="total-price">GRAND TOTAL:</div> <br>
-       
-        {{# if login }}
-        <form action="/createPaymant" id="payment-form" method="POST">
-            <div id="card-element" style="margin: 20px 0"></div>
-            <div class="sr-field-error" id="card-errors" role="alert"></div>
-        <button class="full-btn" style="padding: 5px" type="button" action="/create-order" onclick="payWay()">Pay</button>
-    </form>
-    {{ else }}
-    <sapan>Plese <a href="/user/signin">Sign in</a> for pay!</sapan>
-    {{/if}}
-    
-    </div>
-</div>
 </div>
 <script>
-// timer for expire cart
-// var minutes = 9;
-// var seconds = 60;
-// var time = document.getElementById("countDown")
+    // timer for expire cart
+    // var minutes = 9;
+    // var seconds = 60;
+    // var time = document.getElementById("countDown")
 
-// setInterval( function() {
-//   if( minutes == 0 && seconds == 1){
-//     time.innerHTML = "00:00"
-//   }else{
-//     seconds--;
-//     if(seconds == 0){
-//       minutes--;
-//       seconds = 60;
-//       if (minutes == 0) {
-//         minutes = minutes;
-//       }
-//     }
-//     time.innerHTML = minutes + ":" + seconds;
-//   }
-// }, 1000);
-// timer for expire cart
+    // setInterval( function() {
+    //   if( minutes == 0 && seconds == 1){
+    //     time.innerHTML = "00:00"
+    //   }else{
+    //     seconds--;
+    //     if(seconds == 0){
+    //       minutes--;
+    //       seconds = 60;
+    //       if (minutes == 0) {
+    //         minutes = minutes;
+    //       }
+    //     }
+    //     time.innerHTML = minutes + ":" + seconds;
+    //   }
+    // }, 1000);
+    // timer for expire cart
 
-showCartElement();
-
-var localStorageCart = JSON.parse(localStorage.getItem("cart"));
-
-if (localStorageCart == null) {
-    localStorageCart = [];
-}
-
-
-localStorage.setItem("cart", JSON.stringify(localStorageCart));
-showCartElement();
-
-
-function getItemTemplate(numPpl, bgName, price, text, image, index) {
-    text = text || '';
-    return '<div class="orderDetails">' +
-        '<div class="orderPhoto"><img src="' + image + '"></div>' +
-        '<div class="details">' +
-        '<div class="hOrder">Original Dream Portrait Art</div>' +
-        '<div class="numberOfPeopleOrder">Number of people:<b> ' + numPpl + '</b></div>' +
-        '<div class="backgroundOrder">Background: ' + bgName + '</div>' +
-        '<div class="noteOrder"><div>Note: </div><div style="overflow: scroll"> ' + text + '</div></div>' +
-        '<div class="priceOrder">Price:  <del>$' + price * 2 + ' <b></del> $' + price + '</b></div>' +
-        '</div>' +
-        '<div class="price-Order"><b>$' + price + ' </b></div>' +
-        '<button class="deleteOrder" onclick="ClearData(' + index + ')"><img src="/images/container.png" alt=""></button>' +
-        '</div>';
-};
-
-
-function showCartElement() {
-    var localStorageCart = JSON.parse(localStorage.getItem("cart"));
-    var totalPrice = 0;
-
-    if (!localStorageCart) {
-        return;
-    }
-
-    var shoppingCart = document.getElementById('cart');
-    shoppingCart.innerHTML = '';
-
-    for (var i = 0; i < localStorageCart.length; i++) {
-        var item = localStorageCart[i];
-        totalPrice += item.selectedPeople.price;
-
-        if (item.selectedBakcground != null) {
-            totalPrice += item.selectedBakcground.price;
-
-            shoppingCart.innerHTML += getItemTemplate(item.selectedPeople.id, item.selectedBakcground.name, item.selectedPeople.price + item.selectedBakcground.price, item.wishesText, item.image);
-        }
-
-    }
-    var totalPriceElement = document.getElementById('total-price');
-    totalPriceElement.innerHTML = 'GRAND TOTAL:<b> $' + totalPrice + '</b>';
-}
-
-
-
-
-function getTotalPrice() {
-    var localStorageCart = JSON.parse(localStorage.getItem("cart"));
-    var totalPrice = 0;
-
-    if (!localStorageCart) {
-        return;
-    }
-
-    for (var i = 0; i < localStorageCart.length; i++) {
-        var item = localStorageCart[i];
-        totalPrice += item.selectedPeople.price;
-
-        if (item.selectedBakcground != null) {
-            totalPrice += item.selectedBakcground.price;
-        }
-    }
-    return totalPrice * 100;
-};
-
-
-function ClearData(index) {
-    var localStorageCart = JSON.parse(localStorage.getItem("cart"));
-    localStorageCart.splice(index, 1);
-    localStorage.setItem('cart', JSON.stringify(localStorageCart));
     showCartElement();
-    updateCartQty();
-    if (localStorageCart.length <= 0) {
-        window.location.href = '/orderPageTest';
-    }
-}
 
-
-function payWay(){
-    var createOrder = document.getElementById('createOrder');
-    var wayforpay = new Wayforpay();
-    //> Read order data from localStorage (ordered itmes):
     var localStorageCart = JSON.parse(localStorage.getItem("cart"));
 
-    const order = [];
+    if (localStorageCart == null) {
+        localStorageCart = [];
+    }
 
-    for (var m = 0; m < localStorageCart.length; m++) {
-        var item = localStorageCart[m];
 
-        order.push({
-            peopleId: item.selectedPeople.id,
-            backgroundName: item.selectedBakcground.name,
-            image: item.image,
-            text: item.wishesText,
-            price: item.selectedPeople.price + item.selectedBakcground.price
-        });
+    localStorage.setItem("cart", JSON.stringify(localStorageCart));
+    showCartElement();
+
+
+    function getItemTemplate(numPpl, bgName, price, text, image, index) {
+        text = text || '';
+        return '<div class="orderDetails">' +
+                '<div class="orderPhoto"><img src="' + image + '"></div>' +
+                '<div class="details">' +
+                '<div class="hOrder">Original Dream Portrait Art</div>' +
+                '<div class="numberOfPeopleOrder">Number of people:<b> ' + numPpl + '</b></div>' +
+                '<div class="backgroundOrder">Background: ' + bgName + '</div>' +
+                '<div class="noteOrder"><div>Note: </div><div style="overflow: scroll"> ' + text + '</div></div>' +
+                '<div class="priceOrder">Price:  <del>$' + price * 2 + ' <b></del> $' + price + '</b></div>' +
+                '</div>' +
+                '<div class="price-Order"><b>$' + price + ' </b></div>' +
+                '<button class="deleteOrder" onclick="ClearData(' + index + ')"><img src="/images/container.png" alt=""></button>' +
+                '</div>';
     };
-    //<
 
-    //>Send request to the server ("/create-order") with ordered items;
-    fetch('/create-order', {
+
+    function showCartElement() {
+        var localStorageCart = JSON.parse(localStorage.getItem("cart"));
+        var totalPrice = 0;
+
+        if (!localStorageCart) {
+            return;
+        }
+
+        var shoppingCart = document.getElementById('cart');
+        shoppingCart.innerHTML = '';
+
+        for (var i = 0; i < localStorageCart.length; i++) {
+            var item = localStorageCart[i];
+            totalPrice += item.selectedPeople.price;
+
+            if (item.selectedBakcground != null) {
+                totalPrice += item.selectedBakcground.price;
+
+                shoppingCart.innerHTML += getItemTemplate(item.selectedPeople.id, item.selectedBakcground.name, item.selectedPeople.price + item.selectedBakcground.price, item.wishesText, item.image, i);
+            }
+
+        }
+        var totalPriceElement = document.getElementById('total-price');
+        totalPriceElement.innerHTML = 'GRAND TOTAL:<b> $' + totalPrice + '</b>';
+    }
+
+
+    function getTotalPrice() {
+        var localStorageCart = JSON.parse(localStorage.getItem("cart"));
+        var totalPrice = 0;
+
+        if (!localStorageCart) {
+            return;
+        }
+
+        for (var i = 0; i < localStorageCart.length; i++) {
+            var item = localStorageCart[i];
+            totalPrice += item.selectedPeople.price;
+
+            if (item.selectedBakcground != null) {
+                totalPrice += item.selectedBakcground.price;
+            }
+        }
+        return totalPrice * 100;
+    };
+
+
+    function ClearData(index) {
+        var localStorageCart = JSON.parse(localStorage.getItem("cart"));
+        localStorageCart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(localStorageCart));
+        showCartElement();
+        updateCartQty();
+        if (localStorageCart.length <= 0) {
+            window.location.href = '/orderPageTest';
+        }
+    }
+
+    function payWay() {
+        var createOrder = document.getElementById('createOrder');
+        var wayforpay = new Wayforpay();
+        //> Read order data from localStorage (ordered itmes):
+        var localStorageCart = JSON.parse(localStorage.getItem("cart"));
+
+        const order = [];
+
+        for (var m = 0; m < localStorageCart.length; m++) {
+            var item = localStorageCart[m];
+
+            order.push({
+                peopleId: item.selectedPeople.id,
+                backgroundName: item.selectedBakcground.name,
+                image: item.image,
+                text: item.wishesText,
+                price: item.selectedPeople.price + item.selectedBakcground.price
+            });
+        }
+        ;
+        //<
+
+        //>Send request to the server ("/create-order") with ordered items;
+        fetch('/create-order', {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -177,30 +178,30 @@ function payWay(){
                 order: order
             })
         })
-        .then(res => res.json())
-        .then(res => {
-                wayforpay.run({
-                        merchantAccount: res.merchantAccount,
-                        merchantDomainName: res.merchantDomainName,
-                        merchantSignature: res.hashData,
-                        orderReference: res.orderId,
-                        orderDate: res.orderDate,
-                        amount: res.amount,
-                        currency: res.currency,
-                        productName: res.productName,
-                        productPrice: res.productPrice,
-                        productCount: res.productCount
-                    },
-                    function(response) {
-                        // on approved                          
-                    },
-                    function(response) {
-                        // on declined          
-                    },
-                    function(response) {
-                        // on pending or in processing 
+                .then(res => res.json())
+                .then(res => {
+                    wayforpay.run({
+                                merchantAccount: res.merchantAccount,
+                                merchantDomainName: res.merchantDomainName,
+                                merchantSignature: res.hashData,
+                                orderReference: res.orderId,
+                                orderDate: res.orderDate,
+                                amount: res.amount,
+                                currency: res.currency,
+                                productName: res.productName,
+                                productPrice: res.productPrice,
+                                productCount: res.productCount
+                            },
+                            function (response) {
+                                // on approved
+                            },
+                            function (response) {
+                                // on declined
+                            },
+                            function (response) {
+                                // on pending or in processing
 
-                    });
-        })
-}
+                            });
+                })
+    }
 </script>

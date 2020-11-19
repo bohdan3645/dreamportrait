@@ -2,90 +2,87 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const csrf = require('csurf');
-const nodemailer = require('nodemailer'); 
+const nodemailer = require('nodemailer');
 
 var Order = require('../models/order');
 
 const csrfProtection = csrf();
 router.use(csrfProtection);
 
-
-router.get('/profile', isLoggedIn, function(req, res, next) {
-    Order.find({ user: req.user }, function(err, orders) {
+router.get('/profile', isLoggedIn, function (req, res, next) {
+    Order.find({user: req.user}, function (err, orders) {
         if (err) {
             return res.write('Error!');
         }
-        res.render('user/profile', { 
-            orders: orders.reduce((acc, o) => acc.concat(o.products), []) 
+        res.render('user/profile', {
+            orders: orders.reduce((acc, o) => acc.concat(o.products), [])
                 .map(p => {
-                    const tedt = new Date(p.artImageCreatedAt);
-                    return{
-                    id: p._id,
-                    imagePath: p.imagePath,
-                    artImage: p.artImage,
-                    artImageCreatedAt: tedt.getDate().toString() +"."+ tedt.getMonth().toString() +"."+ tedt.getFullYear().toString(),
-                    selectedPeople: p.selectedPeople,
-                    selectedBakcground: p.selectedBakcground,
-                    wishesText: p.wishesText,
-                    price: p.price,
-                }
+                    const createAt = new Date(p.artImageCreatedAt);
+                    return {
+                        id: p._id,
+                        imagePath: p.imagePath,
+                        imageMiniPath: p.imageMiniPath,
+                        artImage: p.artImage,
+                        artImageCreatedAt: createAt.getDate().toString() + "." + createAt.getMonth().toString() + "." + createAt.getFullYear().toString(),
+                        selectedPeople: p.selectedPeople,
+                        selectedBakcground: p.selectedBakcground,
+                        wishesText: p.wishesText,
+                        price: p.price,
+                    }
                 })
         });
     });
 });
 
-router.get('/logout', isLoggedIn, function(req, res, next) {
+router.get('/logout', isLoggedIn, function (req, res, next) {
     req.logout();
     res.redirect('/');
 });
 
-router.use('/', notLoggedIn, function(req, res, next) {
+router.use('/', notLoggedIn, function (req, res, next) {
     next();
 });
 
 /* GET user/register page. */
-router.get('/register', function(req, res, next) {
+router.get('/register', function (req, res, next) {
     var messages = req.flash('error');
-    res.render('user/register', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
+    res.render('user/register', {csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0});
 });
 
 router.post('/register', passport.authenticate('local.register', {
     failureRedirect: '/user/register',
     failureFlash: true
-}), function(req, res, next) {
+}), function (req, res, next) {
     if (req.session.oldUrl) {
-    	var oldUrl = req.session.oldUrl;
-    	req.session.oldUrl = null;
+        var oldUrl = req.session.oldUrl;
+        req.session.oldUrl = null;
         res.redirect(oldUrl);
     } else {
         res.redirect('/user/profile');
     }
-    
+
 
 });
 
 
 /* GET user/signin page. */
-router.get('/signin', function(req, res, next) {
+router.get('/signin', function (req, res, next) {
     var messages = req.flash('error');
-    res.render('user/signin', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
+    res.render('user/signin', {csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0});
 });
 
 router.post('/signin', passport.authenticate('local.signin', {
     failureRedirect: '/user/signin',
     failureFlash: true
-}), function(req, res, next) {
+}), function (req, res, next) {
     if (req.session.oldUrl) {
         var oldUrl = req.session.oldUrl;
-    	req.session.oldUrl = null;
+        req.session.oldUrl = null;
         res.redirect(oldUrl);
     } else {
         res.redirect('/user/profile');
     }
 });
-
-
-
 
 
 /* GET user/profile page. */
