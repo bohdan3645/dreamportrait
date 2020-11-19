@@ -89,7 +89,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-
 app.use('/user', userRoutes);
 app.use('/', routes);
 
@@ -132,7 +131,7 @@ app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
     const merchantDomainName = process.env.MERCHANT_DOMAIN;
 
     const rootFolder = __dirname + `${path.sep}public${path.sep}images${path.sep}orders${path.sep}`;
-    
+
     if (!fs.existsSync(rootFolder)){
         fs.mkdirSync(rootFolder);
     }
@@ -270,11 +269,6 @@ app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
 //   }
 // };
 //Stripe Post
-
-//new Comment
-
-//new Comment
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const csrf = require('csurf');
+const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
-
+var crypto = require("crypto");
 var Order = require('../models/order');
+var User = require('../models/user');
 
 const csrfProtection = csrf();
 router.use(csrfProtection);
@@ -12,6 +14,7 @@ router.use(csrfProtection);
 router.get('/profile', isLoggedIn, function (req, res, next) {
     Order.find({user: req.user}, function (err, orders) {
         if (err) {
+            //TODO: bullshit
             return res.write('Error!');
         }
         res.render('user/profile', {
@@ -47,6 +50,127 @@ router.use('/', notLoggedIn, function (req, res, next) {
 router.get('/register', function (req, res, next) {
     var messages = req.flash('error');
     res.render('user/register', {csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0});
+});
+
+router.get('/forgot-password', function (req, res, next) {
+    var messages = req.flash('error');
+    res.render('user/forgotPassword', {csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0});
+});
+
+router.get('/update-password', function (req, res, next) {
+    res.render('user/updatePassword', {resetLink: null});
+});
+
+router.get('/update-password/:resetLink', function (req, res, next) {
+    const link = req.protocol + "://" + req.headers.host + req.baseUrl + req.url;
+
+    User.findOne({'resetLink': link}, function (err, user) {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            res.render('user/updatePassword', {resetLink: link, csrfToken: req.csrfToken()});
+        }
+    });
+
+    //TODO: Add Wrong reset link page
+    console.log('wrong link');
+    //res.render('user/successResetPassword');
+});
+
+router.post('/update-password', function (req, res, next) {
+    User.findOneAndUpdate({'resetLink': req.body.reset_link}, {
+        "$set": {
+            'password': new User().encryptPassword(req.body.password),
+            'resetLink': null
+        }
+    }, function (err, user) {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            // send email
+            let transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'dreamportraitstore@gmail.com',
+                    pass: '34yiuOH87%$#'
+                }
+            });
+
+            let mailOption = {
+                from: 'dreamportraitstore@gmail.com',
+                // TODO: fix email sending
+                to: user.email,
+                subject: 'Dream Portrait Support',
+                text: 'Your password has been changed'
+            }
+
+            transporter.sendMail(mailOption, (err, data) => {
+                if (err) {
+                    console.log(err);
+                }
+                res.redirect('/user/signin');
+            });
+        }
+    });
+});
+
+router.post('/forgot-password', function (req, res, next) {
+    // user new reset password link to the user
+
+    User.findOne({'email': req.body.email}, function (err, user) {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            if (!user) {
+                req.flash('error', ['Email does not exist']);
+                res.redirect('/user/forgot-password');
+            }
+
+            const baseLink = req.protocol + "://" + req.headers.host + '/user/update-password/';
+            const resetLink = crypto.randomBytes(50).toString('hex');
+
+            User.update({'email': req.body.email}, {
+                "$set": {
+                    "resetLink": baseLink + resetLink
+                }
+            }, function (err, user) {
+                if (err) {
+                    console.log(err);
+                    res.send(err);
+                } else {
+                    // send email
+                    let transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                            user: 'dreamportraitstore@gmail.com',
+                            pass: '34yiuOH87%$#'
+                        }
+                    });
+
+                    let mailOption = {
+                        from: 'dreamportraitstore@gmail.com',
+                        to: req.body.email,
+                        subject: 'Dream Portrait Support',
+                        text: 'Reset password link: \n' + baseLink + resetLink
+                    }
+
+                    transporter.sendMail(mailOption, (err, data) => {
+                        if (err) {
+                            console.log(err);
+                        }
+                        res.redirect('/user/success-reset-password');
+                    });
+                }
+            });
+        }
+    });
+});
+
+router.get('/success-reset-password', function (req, res, next) {
+    res.render('user/successResetPassword');
 });
 
 router.post('/register', passport.authenticate('local.register', {
