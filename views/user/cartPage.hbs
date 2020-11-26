@@ -5,7 +5,7 @@
         </div>
         <hr>
         <div class="getHomebtn">
-            <a type="button" href="/orderPageTest" class="getHome">Go to create an order ➜</a>
+            <a type="button" href="/order-page" class="getHome">Go to create an order ➜</a>
         </div>
     </div>
 </div>
@@ -78,7 +78,7 @@
                 '<div class="hOrder">Original Dream Portrait Art</div>' +
                 '<div class="numberOfPeopleOrder">Number of people:<b> ' + numPpl + '</b></div>' +
                 '<div class="backgroundOrder">Background: ' + bgName + '</div>' +
-                '<div class="noteOrder"><div>Note: </div><div style="overflow: scroll"> ' + text + '</div></div>' +
+                '<div class="noteOrder"><div>Note: </div><div class="wish"> ' + text + '</div></div>' +
                 '<div class="priceOrder">Price:  <del>$' + price * 2 + ' <b></del> $' + price + '</b></div>' +
                 '</div>' +
                 '<div class="price-Order"><b>$' + price + ' </b></div>' +
@@ -141,7 +141,7 @@
         showCartElement();
         updateCartQty();
         if (localStorageCart.length <= 0) {
-            window.location.href = '/orderPageTest';
+            window.location.href = '/order-page';
         }
     }
 

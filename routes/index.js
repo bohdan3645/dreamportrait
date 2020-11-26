@@ -6,12 +6,12 @@ const Order = require('../models/order');
 
 router.get('/', function(req, res, next) {
  Order.find(function(err, docs) {
-   res.render('shop/homePage', { title: 'shopp', orders: docs });
+   res.render('shop/homePage', { title: 'Dream Portrait', orders: docs });
   });	
 });
 //order
 
-router.get('/cartPageTest/:id', function(req, res, next) {
+router.get('/cart-page/:id', function(req, res, next) {
 	var orderId = req.params.id;
 	var cart = new Cart(req.session.cart ? req.session.cart : {});
 

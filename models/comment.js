@@ -7,5 +7,4 @@ var schema =  new Schema ({
 	rating: { type: Number, required: true }
 });
 
-
 module.exports = mongoose.model('Comment', schema);

@@ -1,8 +1,8 @@
-    <div class="register">
-    <div class="registerContent">
-        <div class="register">RGISTER</div>
+    <div class="authenticate-content register">
+    <div class="authenticate-form">
+        <div class="authenticate-title">RGISTER</div>
         <hr>
-        <div class="welcome">Welcome!</div>
+        <div class="authenticate-subtitle">Welcome!</div>
         {{#if hasErrors}}
         <div class="alert alert-danger">
             {{# each messages}}
@@ -26,7 +26,7 @@
                 <input type="password" id="password" name="password" class="form-control" placeholder="Password">
                 <input type="hidden" name="_csrf" value="{{ csrfToken }}">
                 <div class="btn">
-                    <button class="registerBtn">REGISTER</button>
+                    <button class="auth-form-btn">REGISTER</button>
                 </div>
                 <hr>
                 <div class="subtitleRegister">

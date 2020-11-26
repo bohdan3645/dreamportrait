@@ -68,8 +68,19 @@
     font-size: 20px;
     font-family: hellofreeday;
     color: #6A57A4;
-
     margin-bottom: 30px;
+}
+.noteOrder{
+    height: 40px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 5px 0;
+    padding-right: 5px;
+}
+.wish{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 40px;
 }
 
 .deleteOrder {
@@ -146,9 +157,7 @@
 }
 
 
-.noteOrder{
-    overflow: scroll;
-}
+
 
 
 @media(max-width: 1200px) {

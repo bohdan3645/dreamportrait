@@ -92,7 +92,7 @@ var updateEditingCommentId = id => {
 var sendComment = () => {
     const commentTextElement = document.getElementById('comment-text');
 
-    fetch('/reviewsTest/submit', {
+    fetch('/reviews-page/submit', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'

@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
                     }
                 }));
 
-            res.render('shop/reviews', { title: 'shopp', products: products});        
+            res.render('shop/reviews', { title: 'Dream Portrait', products: products});
         }
     });
 });

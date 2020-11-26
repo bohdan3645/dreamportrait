@@ -16,18 +16,26 @@
     <link rel='stylesheet' href='/stylesheets/refundPolicy.css'>
     <link rel='stylesheet' href='/stylesheets/faq.css'>
     <link rel='stylesheet' href='/stylesheets/homePage.css'>
-    <link rel='stylesheet' href='/stylesheets/register.css'>
     <link rel='stylesheet' href='/stylesheets/signIn.css'>
     <link rel='stylesheet' href='/stylesheets/cartPage.css'>
     <link rel='stylesheet' href='/stylesheets/reviews.css'>
-    <link rel='stylesheet' href='/stylesheets/checkout.css'>
     <link rel='stylesheet' href='/stylesheets/success.css'>
 
 
 
   </head>
   <body>
-    
+
+
+<div id="background-modall-for-window" onclick="closeModall()">
+    <div class="modall-window">
+        <h2 class="modall-title">Please Chouse All Parts!</h2>
+        <hr>
+    <div class="modall-btns">
+        <button style=" background-color: #4FC478;" class="modall-btn">Yes</button>
+    </div>
+    </div>
+</div>
     {{> header}}
    <div class="contain">
       {{{body}}}

@@ -1,8 +1,8 @@
-    <div class="signIn">
-    <div class="signInContent">
-        <div class="signIn">SIGN IN</div>
+    <div class="authenticate-content signin">
+    <div class="authenticate-form">
+        <div class="authenticate-title">SIGN IN</div>
         <hr>
-        <div class="welcomeBack">Welcome back!</div>
+        <div class="authenticate-subtitle">Welcome back!</div>
         {{#if hasErrors}}
         <div class="alert alert-danger">
             {{# each messages}}
@@ -17,7 +17,7 @@
             <div class="form-group">
                 <input type="password" id="password" name="password" class="form-control" placeholder="Password">
                 <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-                <button class="signInBtn">SIGN IN</button>
+                <button class="auth-form-btn">SIGN IN</button>
                 <hr>
                 <div class="subtitleSignIn">
                     <a class="dropdown-item" href="/user/register">Don't have an account? <b>Register now!</b></a>

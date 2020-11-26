@@ -19,6 +19,9 @@ const upload = multer({dest: './images'})
 const sharp = require('sharp');
 const fs = require('fs');
 const atob = require('atob');
+var enforce = require('express-sslify');
+const openssl = require('openssl-nodejs')
+
 // const paypal = require('paypal-rest-sdk');
 // const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY);
 
@@ -26,13 +29,8 @@ const routes = require('./routes/index');
 const homePage = require('./routes/homePage');
 const orderPage = require('./routes/orderPage');
 const cartPage = require('./routes/cartPage');
-
 const userRoutes = require('./routes/user');
-var checkout = require('./routes/checkout');
-
-
 const adminPage = require('./routes/adminPage');
-
 const contactUs = require('./routes/contactUs');
 const privacyPolicy = require('./routes/privacyPolicy');
 const termsOfService = require('./routes/termsOfService');
@@ -42,9 +40,7 @@ const reviews = require('./routes/reviews');
 const successPay = require('./routes/successPay');
 const successReg = require('./routes/successReg');
 const artIsDone = require('./routes/artIsDone');
-
 const leaveComment = require('./routes/leaveComment');
-
 const successMsgContact = require('./routes/successMsgContact');
 
 var Order = require('./models/order');
@@ -81,6 +77,7 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {
@@ -92,24 +89,21 @@ app.use(function (req, res, next) {
 app.use('/user', userRoutes);
 app.use('/', routes);
 
-app.use('/orderPageTest', orderPage);
-app.use('/contactUsTest', contactUs);
-app.use('/adminPageTest', adminPage);
-app.use('/termsOfServiceTest', termsOfService);
-app.use('/privacyPolicyTest', privacyPolicy);
-app.use('/refundPolicyTest', refundPolicy);
-app.use('/F.A.Q.Test', faq);
-app.use('/homePageTest', homePage);
-app.use('/cartPageTest', cartPage);
-app.use('/reviewsTest', reviews);
-app.use('/checkoutTest', checkout);
-app.use('/leaveComment', leaveComment);
-app.use('/successPay', successPay);
-app.use('/successReg', successReg);
-app.use('/artIsDone', artIsDone);
-
-
-app.use('/successMsgContactTest', successMsgContact);
+app.use('/order-page', orderPage);
+app.use('/contact-us', contactUs);
+app.use('/admin-page', adminPage);
+app.use('/terms-of-service', termsOfService);
+app.use('/privacy-policy', privacyPolicy);
+app.use('/refund-policy', refundPolicy);
+app.use('/f-a-q', faq);
+app.use('/home-page', homePage);
+app.use('/cart-page', cartPage);
+app.use('/reviews-page', reviews);
+app.use('/leave-comment', leaveComment);
+app.use('/success-pay', successPay);
+app.use('/success-reg', successReg);
+app.use('/art-is-done', artIsDone);
+app.use('/success-msg-contact', successMsgContact);
 
 function decodeBase64Image(dataString) {
     let matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),

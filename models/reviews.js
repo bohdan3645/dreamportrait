@@ -6,5 +6,4 @@ var rewievsSchema =  new Schema ({
     comment: {type: String, required: true}
 });
 
-
 module.exports = mongoose.model('Reviews', schema);

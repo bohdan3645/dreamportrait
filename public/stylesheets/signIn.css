@@ -1,9 +1,9 @@
- .signIn {
+ .authenticate-content {
      display: flex;
      justify-content: center;
  }
 
- .signInContent {
+ .authenticate-form {
      background-color: rgb(255, 255, 255, 0.4);
      text-align: center;
      width: 27%;
@@ -12,18 +12,13 @@
      font-size: 16px;
  }
 
- .signInContent p {
+ .auth-description p {
      font-size: 23px;
  }
 
-
- .signIn {
-     margin-bottom: 10px;
- }
-
- .welcomeBack {
+ .authenticate-subtitle {
      font-family: MidnightConstellations;
-     font-size: 45px;
+     font-size: 42px;
      margin: 13px;
  }
 
@@ -33,7 +28,7 @@
      height: 50px;
  }
 
- .signInBtn {
+ .auth-form-btn {
      width: 190px;
      height: 50px;
      font-size: 16px;
@@ -44,39 +39,30 @@
      margin: 20px 0 20px;
  }
 
- .signInBtn:hover {
+ .auth-form-btn:hover {
      background-color: rgb(0, 209, 90, .6);
  }
 
- .signInContent h {
-     letter-spacing: 1px;
- }
-
- .signInContent p {
-     letter-spacing: 3px;
-     margin: 15px 0 15px;
- }
-
- .subtitleSignIn {
-     margin-top: 7px;
- }
-
  @media(max-width: 1200px) {
-     .signInContent {
+     .authenticate-form {
          width: 41%;
      }
  }
 
  @media(max-width: 770px) {
-     .signInContent {
+     .authenticate-form {
          width: 54%;
      }
  }
 
  @media(max-width: 483px) {
-     .signInContent {
+     .authenticate-form  {
          width: 95%;
          padding: 10px;
+     }
+
+     .authenticate-form {
+         margin: 25px 0 100px;
      }
 
      .form-control {
@@ -87,28 +73,12 @@
 
      
 
-     .signInBtn {
+     .auth-form-btn{
      	height: 40px;
- }
-
-     .welcomeBack {
+    }
+     .authenticate-subtitle{
          font-size: 33px;
-         margin: 13px;
      }
-
-     .subtitleSignIn {
-         display: grid;
-
-         margin-top: 17px;
-         font-size: 15px;
-
-     }
-
-     .signIn {
-         font-size: 15px;
-         letter-spacing: 3px;
-     }
-
 
      .dropdown-item {
          width: 100%;

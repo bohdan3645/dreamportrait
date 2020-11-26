@@ -345,20 +345,17 @@
 
     var addToCart = document.getElementById('add-to-cart');
     var textIn = document.getElementById('text-in');
-
+    var modallWindow = document.getElementById('background-modall-for-window');
 
     addToCart.addEventListener('click', function (event) {
         if (!selectedPeopleAmount) {
-            //TODO: Add friendly message
-            alert('please select people');
+            modallWindow.style.display = "block";
             return;
         } else if (!selectedBakcground) {
-            //TODO: Add friendly message
-            alert('please select background');
+            modallWindow.style.display = "block";
             return;
         } else if (!image) {
-            //TODO: Add friendly message
-            alert('please select image');
+            modallWindow.style.display = "block";
             return;
         }
 
@@ -379,10 +376,15 @@
         localStorage.setItem("cart", JSON.stringify(localStorageCart));
         updateCartQty();
         if (localStorageCart.length > 0) {
-            window.location.href = '/cartPageTest';
+            window.location.href = '/cart-page';
         }
-
     });
+
+    function closeModall(){
+        modallWindow.style.display = "none";
+        return;
+    }
+
 
 
     var backgroundImage = document.getElementsByClassName("background-image");

@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET success page. */
 router.get('/', function(req, res, next) {
-   res.render('successPages/successMsgContact', { title: 'shopp' });
+   res.render('successPages/successMsgContact', { title: 'Dream Portrait' });
 });
 
 

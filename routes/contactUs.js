@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 
 
 router.get('/', function (req, res, next) {
-    res.render('info/contactUs', {title: 'shopp'});
+    res.render('info/contact-us', {title: 'Dream Portrait'});
 });
 
 router.post('/submit', (req, res, next) => {
@@ -30,9 +30,9 @@ router.post('/submit', (req, res, next) => {
 
     transporter.sendMail(mailOption, (err, data) => {
         if (!message) {
-            res.redirect('/contactUsTest');
+            res.redirect('/contact-us');
         } else {
-            res.redirect('/successMsgContactTest');
+            res.redirect('/success-msg-contact');
         }
     });
 });
