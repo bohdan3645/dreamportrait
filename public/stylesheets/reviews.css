@@ -16,6 +16,7 @@
 
 .dell-review-btn{
     border: none;
+    width: 20%;
 }
 .dell-review-btn:hover{
     background-color: #4FC478;
