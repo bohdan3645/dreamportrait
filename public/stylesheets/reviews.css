@@ -14,6 +14,12 @@
     color: #6A57A4;
 }
 
+.dell-review-btn{
+    border: none;
+}
+.dell-review-btn:hover{
+    background-color: #4FC478;
+}
 
 .card {
     margin: 15px;
