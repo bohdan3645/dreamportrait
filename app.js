@@ -105,6 +105,24 @@ app.use('/success-reg', successReg);
 app.use('/art-is-done', artIsDone);
 app.use('/success-msg-contact', successMsgContact);
 
+    (() => {
+    // Page is loaded
+    const objects = document.getElementsByClassName('img_home');
+    Array.from(objects).map((item) => {
+    // Start loading image
+    const img = new Image();
+    img.src = item.dataset.src;
+    // Once image is loaded replace the src of the HTML element
+    img.onload = () => {
+    item.classList.remove('img_home');
+    return item.nodeName === 'IMG' ?
+    item.src = item.dataset.src :
+    item.style.backgroundImage = `url(${item.dataset.src})`;
+};
+});
+})();
+
+
 function decodeBase64Image(dataString) {
     let matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
         response = {};
