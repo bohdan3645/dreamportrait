@@ -44,6 +44,7 @@ const leaveComment = require('./routes/leaveComment');
 const successMsgContact = require('./routes/successMsgContact');
 
 var Order = require('./models/order');
+var Comment = require('./models/comment');
 var productOrder = require('./models/productOrder');
 
 
@@ -53,6 +54,7 @@ const app = express();
 // mongodb
 mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority');
 require('./config/passport');
+const ObjectId = require("mongoose");
 // mongodb
 
 
@@ -77,7 +79,7 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
+// app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {
@@ -120,6 +122,46 @@ function decodeBase64Image(dataString) {
     return response;
 }
 
+app.post("/update-payment-status", (req, res) => {
+    const orderId = req.body.orderId;
+    const baseLink = req.protocol + "://" + req.headers.host + '/user/leave-review/';
+
+    Order.findByIdAndUpdate(orderId, {
+        "isPayed": true
+    }, function(err, order) {
+        if (err) {
+            res.send(err);
+        } else {
+            // send an email
+            let transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'dreamportraitstore@gmail.com',
+                    pass: '34yiuOH87%$#'
+                }
+            });
+
+            const reviewsList = order.products.map(product => baseLink + product._id).join("\n");
+
+            let mailOption = {
+                from: 'dreamportraitstore@gmail.com',
+                to: req.user.email,
+                subject: 'Dream Portrait Order',
+                text: 'Thanks for the ASS , you can leave tyhe comment here: \n\n' + reviewsList
+            };
+
+            transporter.sendMail(mailOption, (err, data) => {
+                if (err) {
+                    console.log(err);
+                    res.send();
+                } else {
+                    res.redirect('/user/profile');
+                }
+            });
+        }
+    });
+});
+
 app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
     const secretKey = process.env.SECRET_PAY_KEY;
     const merchantAccount = process.env.MERCHANT_ACCOUNT;
@@ -134,7 +176,6 @@ app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
     const order = new Order({
         user: req.user,
         products: req.body.order.map(o => {
-
             // save image to the file system
             const file = decodeBase64Image(o.image);
             const imageName = Math.random().toString().substr(2, 20);
@@ -170,12 +211,10 @@ app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
     order.save(function (err, result) {
         // console.log(err);
         if (!err) {
-            // console.log(userData.firstName, userData.lastName, userData.email, merchantAccount, merchantDomainName, amount, currency);
             const orderId = result.id;
             const productName = req.body.order.map(o => o.peopleId + o.backgroundName);
-            const productCount = req.body.order.map(o => 1);
+            const productCount = req.body.order.map(() => 1);
             const productPrice = req.body.order.map(o => o.price);
-
 
             const orderDate = new Date().getTime();
             const currency = 'USD';
@@ -209,7 +248,6 @@ app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
         }
     });
 })
-
 
 ////////////////////////////////////////////////////////////////////////////////////pal
 

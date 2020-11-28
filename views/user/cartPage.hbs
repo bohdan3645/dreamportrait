@@ -20,7 +20,7 @@
             <br>
 
             {{# if login }}
-                <form action="/createPaymant" id="payment-form" method="POST">
+                <form id="payment-form">
                     <div id="card-element" style="margin: 20px 0"></div>
                     <div class="sr-field-error" id="card-errors" role="alert"></div>
                     <button class="full-btn" style="padding: 5px" type="button" action="/create-order" onclick="payWay()">
@@ -133,7 +133,6 @@
         return totalPrice * 100;
     };
 
-
     function ClearData(index) {
         var localStorageCart = JSON.parse(localStorage.getItem("cart"));
         localStorageCart.splice(index, 1);
@@ -193,9 +192,27 @@
                                 productCount: res.productCount
                             },
                             function (response) {
+                                debugger
+                                fetch('/update-payment-status', {
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json'
+                                    },
+                                    method: 'POST',
+                                    body: JSON.stringify({ orderId: res.orderId })
+                                });
                                 // on approved
                             },
                             function (response) {
+                                debugger
+                                fetch('/update-payment-status', {
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json'
+                                    },
+                                    method: 'POST',
+                                    body: JSON.stringify({ orderId: res.orderId })
+                                });
                                 // on declined
                             },
                             function (response) {

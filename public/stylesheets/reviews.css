@@ -29,6 +29,7 @@
 .card {
     margin: 15px;
     display: inline-block;
+    vertical-align: top;
 }
 
 .reviewsAdmin {

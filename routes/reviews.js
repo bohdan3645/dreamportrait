@@ -6,8 +6,17 @@ var Comment = require('../models/comment');
 var Order = require('../models/order');
 var ObjectId = require('mongodb').ObjectID;
 
+//TODO: Remove the duplication.
+const isAdmin = (roles, user) => {
+    if (!user) {
+        return false;
+    }
+
+    return !!roles.find(role => user.role === role);
+};
+
 /* GET reviews page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     Order.find({}, function (err, orders) {
         if (err) {
             console.log(err);
@@ -24,7 +33,27 @@ router.get('/', function(req, res, next) {
                     }
                 }));
 
-            res.render('shop/reviews', { title: 'Dream Portrait', products: products});
+            res.render('shop/reviews', {
+                title: 'Dream Portrait',
+                products: products.filter(product => product.comment.isVisible),
+                isAdmin: isAdmin(["admin"], req.user)
+            });
+        }
+    });
+});
+
+router.put('/hide', (req, res) => {
+    const productId = req.body.productId;
+
+    Order.update({'products._id': ObjectId(productId)}, {
+        "$set": {
+            "products.$.comment.isVisible": false
+        }
+    }, function (err, order) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(order);
         }
     });
 });
@@ -34,19 +63,19 @@ router.post('/submit', (req, res, next) => {
     var id = req.body.id;
     var rating = 5;
 
-    Order.update({ 'products._id': ObjectId(id) }, { 
-            "$set": {
-                "products.$.comment": new Comment({
-                    comment: comment,
-                    rating: rating
-                })
-            }
-        }, function (err, order) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.send(order);
-            }
+    Order.update({'products._id': ObjectId(id)}, {
+        "$set": {
+            "products.$.comment": new Comment({
+                comment: comment,
+                rating: rating
+            })
+        }
+    }, function (err, order) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(order);
+        }
     });
 })
 

@@ -13,26 +13,29 @@
                     <h5 class="card-title">Kelli W.</h5>
                     <p class="card-text">{{comment.comment}}</p>
                 </div>
-                <button class="dell-review-btn">Dell</button>
+
+                {{# if ../isAdmin }}
+                    <button class="dell-review-btn">Hide</button>
+                {{/ if }}
             </div>
             {{/each}}
         
-            <div class="card" style="max-width: 340px; padding: 10px">
-                <img src="/images/comment2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Roberta K.</h5>
-                    <p class="card-text">
-                        I love it!!!!</p>
-                </div>
-            </div>
-            <div class="card" style="max-width: 340px; padding: 10px">
-                <img src="/images/comment3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Mark P.</h5>
-                    <p class="card-text">
-                        Uploaded my pic and asked for a beautiful dress on the girl and the Disney artists absolutely delivered. I love it!!</p>
-                </div>
-            </div>
+<!--            <div class="card" style="max-width: 340px; padding: 10px">-->
+<!--                <img src="/images/comment2.jpg" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">Roberta K.</h5>-->
+<!--                    <p class="card-text">-->
+<!--                        I love it!!!!</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card" style="max-width: 340px; padding: 10px">-->
+<!--                <img src="/images/comment3.jpg" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">Mark P.</h5>-->
+<!--                    <p class="card-text">-->
+<!--                        Uploaded my pic and asked for a beautiful dress on the girl and the Disney artists absolutely delivered. I love it!!</p>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
 </div>

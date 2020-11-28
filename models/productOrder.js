@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var comment = require('./comment').schema;
+var Comment = require('./comment');
 
 var schema =  new Schema ({
 	imagePath: {type: String, required: true},
@@ -11,8 +11,7 @@ var schema =  new Schema ({
 	selectedPeople: {type: Number, required: true},
 	wishesText: {type: String, required: false},
 	price: {type: Number, required: true},
-	comment: {type: comment, ref: 'comment', default: null}
-
+	comment: {type: Comment.schema, ref: 'comment', default: null}
 });
 
 
