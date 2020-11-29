@@ -42,6 +42,7 @@ const successReg = require('./routes/successReg');
 const artIsDone = require('./routes/artIsDone');
 const leaveComment = require('./routes/leaveComment');
 const successMsgContact = require('./routes/successMsgContact');
+const reviewForm = require('./routes/reviewForm');
 
 var Order = require('./models/order');
 var Comment = require('./models/comment');
@@ -106,7 +107,7 @@ app.use('/success-pay', successPay);
 app.use('/success-reg', successReg);
 app.use('/art-is-done', artIsDone);
 app.use('/success-msg-contact', successMsgContact);
-
+app.use('/review-form', reviewForm);
 
 function decodeBase64Image(dataString) {
     let matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
