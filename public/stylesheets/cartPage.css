@@ -72,14 +72,12 @@
 }
 .noteOrder{
     height: 40px;
-    overflow-y: auto;
-    overflow-x: hidden;
     margin: 5px 0;
     padding-right: 5px;
 }
 .wish{
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
+    text-overflow: ellipsis;
     height: 40px;
 }
 

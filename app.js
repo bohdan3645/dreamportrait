@@ -125,7 +125,6 @@ function decodeBase64Image(dataString) {
 
 app.post("/update-payment-status", (req, res) => {
     const orderId = req.body.orderId;
-    const baseLink = req.protocol + "://" + req.headers.host + '/user/leave-review/';
 
     Order.findByIdAndUpdate(orderId, {
         "isPayed": true
@@ -142,7 +141,7 @@ app.post("/update-payment-status", (req, res) => {
                 }
             });
 
-            const reviewsList = order.products.map(product => baseLink + product._id).join("\n");
+            const reviewsList = order.products.map(product => product.comment.url).join("\n");
 
             let mailOption = {
                 from: 'dreamportraitstore@gmail.com',
@@ -198,11 +197,17 @@ app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
                     });
             });
 
+            const randomText = crypto.randomBytes(50).toString('hex');
+            const baseLink = req.protocol + "://" + req.headers.host + '/review-form/';
+
             return {
                 selectedBakcground: o.backgroundName,
                 imagePath: '/images/orders/' + publicPath,
                 imageMiniPath: '/images/orders/' + publicMiniPath,
                 selectedPeople: o.peopleId,
+                comment: new Comment({
+                    url: baseLink + randomText
+                }),
                 wishesText: o.text,
                 price: o.price
             }

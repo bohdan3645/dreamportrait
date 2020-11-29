@@ -139,8 +139,8 @@
     .container-with-photos {
         overflow: hidden;
         margin: 10px 0;
-        width: 525px;
-        height: 175px;
+        width: 460px;
+        height: 154px;
         background-color: #E4E9E9;
         color: white;
         box-shadow: 0 0 20px 10px;
@@ -149,8 +149,8 @@
     .items-with-photo {
         float: left;
         margin: 4px;
-        width: 167px;
-        height: 167px;
+        width: 145px;
+        height: 145px;
         overflow: hidden;
     }
 
@@ -159,8 +159,8 @@
     }
 
     .items-with-photo img {
-        width: 167px;
-        height: 167px;
+        width: 145px;
+        height: 145px;
         object-fit: cover;
     }
 
@@ -200,13 +200,13 @@
 
     .showSlide img {
         object-fit: cover;
-        width: 525px;
-        height: 525px;
+        width: 460px;
+        height: 460px;
     }
 
     .slidercontainer {
-        width: 525px;
-        height: 525px;
+        width: 460px;
+        height: 460px;
         position: relative;
         overflow: hidden;
         margin: 5px 0 15px 20px;

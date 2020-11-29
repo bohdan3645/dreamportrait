@@ -3,7 +3,6 @@ body {
     background: linear-gradient(0deg, rgba(255, 175, 194, 1) 0%, rgba(200, 212, 213, 1) 100%);
     margin: 0 auto;
     height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 * {
@@ -242,7 +241,6 @@ footer {
     padding: 25px 0;
     justify-content: space-between;
         letter-spacing: 1.5px;
-    max-width: 500px;
 }
 
 #navlink {
@@ -400,13 +398,19 @@ footer
     background-color: rgb(255, 255, 255, 0.4);
     padding: 20px;
     margin-top: 40px;
+    text-align: center;
+}
+.ordersQty hr{
+    width: 50%;
+    display: flex;
+    margin: 0 auto;
 }
 
 .menage-nav div {
     padding: 5px 20px;
 }
 
-.menage-nav div:hover {
+.menage-nav div:hover{
     background-color: rgb(255, 255, 255, 0.9);
 }
 
@@ -493,7 +497,7 @@ footer
         flex-direction: column;
         position: absolute;
         width: 100%;
-        top: 310px;
+        top: 295px;
         left: 0;
         margin: 0;
         background-color: #808080;
@@ -551,7 +555,7 @@ footer
     }
 
     #navlinkSignIn {
-        top: 190px;
+        top: 225px;
     }
 
 

@@ -2,7 +2,7 @@
     <div class="userManagement">
         <div class="user-name" style="padding: 0 20px">
             <div id="name"></div>
-            <h4 style="text-align:center">My account</h4>
+            <h4 style="text-align:center">{{firstName}} {{lastName}}</h4>
             <h5 style="text-align:center">Menage account</h5>
         </div>
         <div class="menage-nav">
@@ -13,6 +13,11 @@
     </div>
     <div class="ordersQty" style="margin-bottom:300px">
         <div class="cartHead">My orders</div>
+        <hr>
+        <div>
+            <h2 style="margin-bottom: 25px">Don't have any orders yet.</h2>
+            <a type="button" href="/order-page" class="getHome">Get my Cartoon! ➜</a>
+        </div>
         {{# each orders}}
         <div class="orderDetailsInProgress">
             <div class="orderPhoto">
@@ -54,19 +59,6 @@
             </div>
         </div>
         {{/each}}
-        <!-- Comment -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Leave Comment</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <script>

@@ -1,14 +1,3 @@
-<div class="cartPageVisual">
-    <div class="successContent">
-        <div class="titleSuccess">
-            <h1>Cart is empty yet!</h1>
-        </div>
-        <hr>
-        <div class="getHomebtn">
-            <a type="button" href="/order-page" class="getHome">Go to create an order ➜</a>
-        </div>
-    </div>
-</div>
 <div style="display: flex; justify-content: center;">
     <div class="cartContent">
         <div class="cartHead">CART</div>
@@ -32,7 +21,15 @@
             {{/if}}
 
         </div>
+        <div class="cartPageVisual">
+            <hr>
+            <div>
+                <h2 style="margin-bottom: 25px">Don't have any orders yet.</h2>
+                <a type="button" href="/order-page" class="getHome">Get my Cartoon! ➜</a>
+            </div>
+        </div>
     </div>
+
 </div>
 <script>
     // timer for expire cart

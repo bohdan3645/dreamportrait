@@ -18,6 +18,8 @@ router.get('/profile', isLoggedIn, function (req, res, next) {
             return res.write('Error!');
         }
         res.render('user/profile', {
+            firstName: req.user.firstName,
+            lastName: req.user.lastName,
             orders: orders.reduce((acc, o) => acc.concat(o.products), [])
                 .map(p => {
                     const createAt = new Date(p.artImageCreatedAt);

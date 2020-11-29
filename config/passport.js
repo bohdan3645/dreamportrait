@@ -19,11 +19,12 @@ passport.use('local.register', new LocalStrategy({
 	passReqToCallback: true
 }, async (req, email, password, done) => { 
 
-	 var huy = await body('email').notEmpty().isEmail().withMessage('E-mail will be contain email').run(req);
+	 await body('firstName').notEmpty().withMessage('First name is a required field').run(req);
+	 await body('lastName').notEmpty().withMessage('Last name is a required field').run(req);
+	 await body('email').notEmpty().isEmail().withMessage('E-mail will be contain email').run(req);
 	 await body('password').notEmpty().isLength({min: 6}).withMessage('Password will be at least 7 chars long').run(req);
 	 const errors = validationResult(req);
-  if (!errors.isEmpty()){ 
-    
+  if (!errors.isEmpty()){
   	var messages = [];
 
   	errors.array().forEach(function(error) {messages.push(error.msg)});
@@ -37,6 +38,8 @@ passport.use('local.register', new LocalStrategy({
 			return done(null, false, {message: 'Email is already in use!'});
 		} 
 		var newUser = new User();
+		newUser.firstName = req.body.firstName;
+		newUser.lastName = req.body.lastName;
 		newUser.email = email;
 		newUser.password = newUser.encryptPassword(password);
 		newUser.role = 'customer'

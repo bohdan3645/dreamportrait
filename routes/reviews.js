@@ -24,11 +24,14 @@ router.get('/', function (req, res, next) {
             res.send();
         } else {
             const products = orders.reduce((acc, o) => acc.concat(o.products), [])
-                .filter(p => p.comment)
+                .filter(p => p.comment.isVisible)
                 .map(p => ({
                     imagePath: p.imagePath,
+                    artImage: p.artImage,
+                    id: p._id,
                     comment: {
                         comment: p.comment.comment,
+                        isVisible: p.comment.isVisible,
                         ratig: p.comment.rating
                     }
                 }));
@@ -42,7 +45,8 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.put('/hide', (req, res) => {
+router.post('/hide', (req, res) => {
+    //TODO: Add admin validation
     const productId = req.body.productId;
 
     Order.update({'products._id': ObjectId(productId)}, {
@@ -53,20 +57,21 @@ router.put('/hide', (req, res) => {
         if (err) {
             res.send(err);
         } else {
-            res.send(order);
+            res.redirect('/reviews-page')
         }
     });
 });
 
 router.post('/submit', (req, res, next) => {
-    var comment = req.body.comment;
-    var id = req.body.id;
-    var rating = 5;
+    const comment = req.body.comment;
+    const id = req.body.id;
+    const rating = 5;
 
     Order.update({'products._id': ObjectId(id)}, {
         "$set": {
             "products.$.comment": new Comment({
                 comment: comment,
+                isVisible: true,
                 rating: rating
             })
         }
@@ -74,7 +79,7 @@ router.post('/submit', (req, res, next) => {
         if (err) {
             res.send(err);
         } else {
-            res.send(order);
+            res.redirect('/');
         }
     });
 })
