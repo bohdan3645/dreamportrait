@@ -181,7 +181,7 @@
         height: 260px;
         position: relative;
         overflow: hidden;
-        margin: 5px 0 15px 20px;
+        margin: 5px auto 20px;
         color: white;
         box-shadow: 0 0 20px 10px;
     }

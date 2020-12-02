@@ -15,7 +15,10 @@
 }
 
 .card{
-    width: 31%;
+    width: 30%;
+    margin: 15px;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .dell-review-btn{
@@ -24,12 +27,6 @@
 }
 .dell-review-btn:hover{
     background-color: #4FC478;
-}
-
-.card {
-    margin: 15px;
-    display: inline-block;
-    vertical-align: top;
 }
 
 .reviewsAdmin {
