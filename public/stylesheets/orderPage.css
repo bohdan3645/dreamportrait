@@ -109,7 +109,7 @@
     .button-wrap {
         background-color: #FF4B4B;
         padding: 15px 0;
-        width: 85%;
+        width: 100%;
         font-size: 17px;
         margin: 10px;
         transition: all 0.5s;
@@ -267,18 +267,18 @@
         }
 
         .container-with-photos {
-            width: 520px;
-            height: 520px;
+            width: 460px;
+            height: 153px;
         }
 
         .items-with-photo {
-            width: 162px;
-            height: 162px;
+            width: 145px;
+            height: 145px;
         }
 
     }
 
-    @media(max-width: 770px) {
+    @media(max-width: 768px) {
         .grid-container {
             display: block;
         }
@@ -317,19 +317,18 @@
             left: 0;
         }
 
-        .items-with-photo {
-            width: 167px;
-            height: 167px;
-        }
-
         .items-with-photo img {
             width: 167px;
             height: 167px;
         }
 
         .container-with-photos {
-            width: 525px;
-            height: 525px;
+            width: 90%;
+        }
+
+        .items-with-photo {
+            width: 145px;
+            height: 145px;
         }
 
         .flex-container-two {

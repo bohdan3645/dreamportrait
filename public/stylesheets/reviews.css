@@ -52,14 +52,20 @@
     .reviewsHeader {
         font-size: 22px;
     }
+    .cart{
+        width: 49%;
+    }
 }
 
 @media(max-width: 483px) {
     .reviews {
         display: block;
     }
+    .cart{
+        width: 100%;
+    }
 
-    .reviewsAdmin {
+    .reviewsAdm100 {
         width: 100%;
     }
 }

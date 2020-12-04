@@ -136,21 +136,23 @@ la {
     font-size: 20px;
 }
 
+.primary-btn a{
+    color: white;
+    text-decoration: none;
+}
+
 .primary-btn {
-    position: absolute;
-    top: 70%;
-    left: 23%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     color: white;
     background-color: #FF007d;
     font-family: hellofreeday;
-    font-size: 40px;
-    padding: 10px 45px;
+    font-size: 30px;
     box-shadow: 0 0 15px 15px white;
     border: none;
-    border-radius: 5px;
+    border-radius: 7px;
     text-align: center;
+    line-height: 80px;
+    letter-spacing: 1px;
+    width: 320px;
 }
 .btn_home:hover {
     padding: 11px 46px;
@@ -220,17 +222,11 @@ footer {
 
 /*header*/
 .header {
-    padding: 0 3%;
     background-color: #FFD8FE;
-    display: grid;
-    grid-template-columns: 31% 38% 31%;
-    width: 100% max-height: 129px;
-
-}
-
-.header div {
-    display: flex;
-    background-color: #FFD8FE;
+    width: 100%;
+    max-height: 129px;
+    position: relative;
+    line-height: 129px;
 }
 
 .header a {
@@ -238,17 +234,19 @@ footer {
 }
 
 #navLinks {
-    padding: 25px 0;
-    justify-content: space-between;
-        letter-spacing: 1.5px;
+    letter-spacing: 1.5px;
+    width: 30%;
+    display: inline-block;
+    vertical-align: middle;
+    float: left;
 }
 
 #navlink {
     color: #6A57A4;
     font-size: 22px;
     font-family: hellofreeday;
-    margin: 3px 5px;
-    padding: 20px 0;
+    position: relative;
+    vertical-align: middle;
 }
 
 #navlinkSignIn {
@@ -268,17 +266,20 @@ footer {
 
 
 .logoHead {
-    justify-content: center;
-    align-items: center;
+    width: 20%;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .logot {
-    width: 350px;
+    max-width: 350px;
 }
 
 #navLinksManagment {
-    padding: 25px 0;
-    justify-content: flex-end;
+    width: 10%;
+    display: inline-block;
+    vertical-align: middle;
+    float: right;
 }
 
 #navLinksManagment a {
@@ -422,6 +423,10 @@ footer
     font-size: 18px;
     color: black;
     text-decoration: none;
+}
+
+.empty-page{
+    display: none;
 }
 
 

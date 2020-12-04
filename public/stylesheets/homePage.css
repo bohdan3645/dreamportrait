@@ -1,61 +1,60 @@
+.home-page{
+    width: 100%;
+    position: relative;
+}
+.wrap-item1{
+    width: 100%;
+    position: relative;
+    display: block;
+}
+
+.wrap-item1 .main-img-div{
+    position: absolute;
+    right: 0;
+    display: block;
+    max-width: 1200px;
+}
+
+.wrap-item1 .small-main-img{
+    display: none;
+}
+
+
+.wrap-item1 a{
+    width: 100%;
+    position: relative;
+    vertical-align: middle;
+}
+
+.wrap-item2{
+    width: 100%;
+    direction: block;
+    position: relative;
+    clear: both;
+}
+
+.wrap-item-icons{
+    width: 50%;
+}
+
+.wrap-item-icons .wrap-item-icon{
+    width: 33%;
+    display: inline-block;
+}
+
+
 .small_img_home {
     display: none
 }
 
-.home-img.loaded img{
+.main-img .loaded img{
     opacity: 1;
 }
 
-.home-img {
-    position: relative;
-    text-align: center;
-    color: white;
-}
-
-.img_home {
-    width: 100%;
-}
-
-.how-it-work {
-    margin-top: 25px;
-    background-color: #E9EEEE;
-    padding: 25px;
-    text-align: center;
-}
 
 
-.description {
-    display: grid;
-    grid-template-columns: 20% 20% 20%;
-    align-items: center;
-    justify-content: center;
-}
 
-.description div {
-    text-align: center;
-    font-size: 25px;
-    word-spacing: 7px;
-    justify-content: space-between;
-    font-family: hellofreeday;
-}
 
-.description img {
-    margin-top: 20px;
-}
-
-.how-it-work-desc {
-
-    text-align: center;
-    padding: 25px;
-    font-size: 18px;
-    font-weight: bolder;
-    background-color: #E9EEEE;
-
-}
-
-.p {
-    height: 200px;
-}
 
 @media(max-width: 1235px) {
     .btn_home {
