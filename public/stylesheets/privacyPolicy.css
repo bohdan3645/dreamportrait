@@ -1,50 +1,21 @@
-h {
+.info-content h {
     font-size: 40px;
     letter-spacing: 1px;
     color: #6A57A4;
     font-family: hellofreeday;
 }
 
-p {
+.info-content p {
     font-size: 16px;
     letter-spacing: 0px;
     margin: 7px 0 7px;
 }
 
-
-.grid-container2 {
-    display: grid;
-    justify-content: space-evenly;
-    padding: 10px;
-}
-
-.grid-container2>div {
-    max-width: 1000px;         
-    background-color: rgb(255, 255, 255, 0.4);
-    padding: 10px 10px;
-    margin: 30px;
-    text-align: center;
-}
-
 .textPP {
     text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     padding: 0 26px;
     margin: 5px 0;
 }
 
-@media(max-width: 770px) {
-    .grid-container2>div {
-        margin: 30px 0;
-    }
-}
-
-@media (max-width: 483px) {
-    .grid-container2>div {
-        padding: 0;
-    }
-
-    .textPP {
-        font-size: 14px;
-    }
-}
