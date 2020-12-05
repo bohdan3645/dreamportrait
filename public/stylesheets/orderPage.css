@@ -1,22 +1,52 @@
 
+.order-page{
+    width: 100%;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
 .order-page .subwrap1{
-        width: 40%;
-        display: inline-block;
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 25px 10px;
 }
 .order-page .subwrap2{
-    width: 40%;
+    width: 49%;
     display: inline-block;
+    vertical-align: top;
+    padding: 25px 10px;
 }
-.order-page .wrap-item {
-        width: 540px;
-        background-color: rgb(255, 255, 255, 0.4);
-        padding: 20px 20px;
-        text-align: left;
-    }
+.subwrap1 .wrap-item {
+    width: 500px;
+    background-color: rgb(255, 255, 255, 0.4);
+    padding: 10px 10px;
+    text-align: left;
+    margin: 5px 0;
+}
+.subwrap2 .wrap-item {
+    width: 460px;
+    background-color: rgb(255, 255, 255, 0.4);
+    padding: 10px 10px;
+    text-align: left;
+    margin: 5px 0;
+}
+.subwrap1 .wrap-item{
+    position: relative;
+    float: right;
+}
+.subwrap2 .wrap-item{
+    position: relative;
+    float: left;
+}
 
-    .wrap-item .descriptionOfSale {
-        padding: 30px;
-    }
+.item3 .description-of-sale .title{
+
+}
+
+.wrap-item .descriptionOfSale {
+    padding: 30px;
+}
 
 
     .item-with-photo img {
@@ -90,12 +120,6 @@
         border-radius: 100%;
     }
 
-
-    .container {
-        display: flex;
-        justify-content: center;
-    }
-
     .button-wrap {
         background-color: #FF4B4B;
         padding: 15px 0;
@@ -119,10 +143,7 @@
 
 
     /*=============================*/
-    .wrap-item {
-        padding: 30px 15px 30px;
-        grid-column: 2;
-    }
+   
 
 
     .container-with-photos {
@@ -238,242 +259,15 @@
     }
 
     @media(max-width: 1235px) {
-        .row {
-            margin-left: 0;
-        }
-
-        .grid-item.item0 {
-            padding: 10px 0 0 10px;0.5
-        }
-
-        .wrap-item {
-            padding: 10px 0 0 25px;
-
-        }
-
-        .slidercontainer {
-            margin-left: 0;
-        }
-
-        .container-with-photos {
-            width: 460px;
-            height: 153px;
-        }
-
-        .item-with-photo {
-            width: 145px;
-            height: 145px;
-        }
+        
 
     }
 
     @media(max-width: 768px) {
-        .wrap-item {
-            display: block;
-        }
-
-        .wrap-item>div {
-            width: 560px;
-            padding: 20px 65px;
-
-        }
-
-        .grid-item.item0 {
-            padding: 10px;
-
-        }
-
-        .wrap-item {
-            padding: 10px;
-
-        }
-
-        .slidercontainer {
-            width: 90%;
-            height: 500px;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-        }
-
-        .showSlide img {
-            width: 100%;
-            height: 500px;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-        }
-
-        .item-with-photo img {
-            width: 167px;
-            height: 167px;
-        }
-
-        .container-with-photos {
-            width: 100%;
-        }
-
-        .item-with-photo {
-            width: 145px;
-            height: 145px;
-        }
-
-        .wrap-item-two {
-            width: 460px;
-        }
-
-        .wrap-item {
-            justify-content: center;
-        }
-
-        .input_text {
-            margin-top: 15px;
-        }
+        
     }
 
     @media(max-width: 483px) {
 
-        .slidercontainer {
-            width: 100%;
-            margin: 0;
-            position: relative;
-        }
-
-        .slidercontainerBcgr {
-            width: 320px;
-            height: 200px;
-        }
-
-        .showSlideBcgr img {
-            width: 320px;
-            height: 200px;
-        }
-
-        .container-with-photos {
-            display: none;
-        }
-
-        .grid-item.item0 {
-            padding: 0 2px;
-        }
-
-        .wrap-item {
-            padding: 0 2px;
-        }
-
-        .showSlide img {
-            width: 100%;
-        }
-
-        .wrap-item>div {
-            width: 100%;
-            padding: 20px 10px;
-        }
-
-        .dots {
-            position: absolute;
-            width: 100%;
-            align-self: flex-end;
-        }
-
-        .dot {
-            display: block;
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #fff;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
-
-        .active,
-        .dot:hover {
-            background-color: #000;
-        }
-
-
-        .background-image {
-            width: 55px;
-            height: 55px;
-            margin: 2px;
-            border: 2px solid #D5AEA2;
-        }
-
-        .galery {
-            width: 100%;
-        }
-
-        .features__title {
-            font-size: 40px;
-        }
-
-        .descriptionOfSale h2 {
-            font-size: 25px;
-        }
-
-        .descriptionOfSale h3 b {
-            font-size: 22px;
-        }
-
-        .descriptionOfSale b {
-            font-size: 16px;
-        }
-
-        .features__title {
-            font-size: 25px;
-        }
-
-        .people-amount-image {
-            width: 61px;
-            height: 61px;
-            font-size: 25px;
-            margin: 3px auto;
-            line-height: 13px;
-            border: 2px solid #D5AEA2;
-        }
-
-        .people-amount-image:hover {
-            border: 2px solid #000;
-        }
-
-        .background-image:hover {
-            border: 2px solid #000;
-        }
-
-        .people-amount-image-clicked {
-            border: 2px solid #000;
-        }
-
-        .galery {
-            margin: 15px 0;
-            height: 200px;
-        }
-
-        .btn-3 {
-            margin: 5px 50px;
-        }
-
-        .btnUpl {
-            font-size: 14px;
-        }
-
-        .input_text {
-            margin: 15px 0;
-            font-size: 22px;
-        }
-
-        .add_btn {
-            width: 100%;
-            height: 60px;
-            font-size: 25px;
-            margin: 0;
-        }
-
-        .fas {
-            font-size: 50px;
-        }
+        
     }
