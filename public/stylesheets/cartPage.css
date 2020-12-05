@@ -1,20 +1,19 @@
 .cartPageVisual {
     display: none;
-    justify-content: center;
 }
 
 .cartContent {
-    width: 46%;
+    width: 800px;
     background-color: rgb(255, 255, 255, 0.4);
     padding: 20px;
     margin: 40px 0 420px 0;
+    margin: 25px auto 80px;
 }
 
 .cartHead {
     font-size: 30px;
     font-family: hellofreeday;
     color: #6A57A4;
-
     text-align: center;
     margin-bottom: 10px;
 }

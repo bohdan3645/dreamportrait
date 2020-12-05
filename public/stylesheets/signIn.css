@@ -1,14 +1,13 @@
  .authenticate-content {
-     display: flex;
-     justify-content: center;
+     
  }
 
  .authenticate-form {
      background-color: rgb(255, 255, 255, 0.4);
      text-align: center;
-     width: 27%;
+     width: 540px;
      padding: 20px 30px;
-     margin: 100px 0 250px;
+     margin: 25px auto 200px;
      font-size: 16px;
  }
 
@@ -71,14 +70,12 @@
  }
 
  @media(max-width: 1200px) {
-     .authenticate-form {
-         width: 41%;
-     }
+    
  }
 
  @media(max-width: 770px) {
      .authenticate-form {
-         width: 54%;
+         width: 440px;
      }
  }
 
@@ -88,20 +85,13 @@
          padding: 10px;
      }
 
-     .authenticate-form {
-         margin: 25px 0 100px;
-     }
-
      .form-control {
          height: 100%;
          font-size: 16px;
          padding: 10px
      }
 
-
-
      
-
      .auth-form-btn{
      	height: 40px;
     }
@@ -112,7 +102,7 @@
      .dropdown-item {
          width: 100%;
          padding: 4px;
-         letter-spacing: 1px;
+         letter-spacing: 0.5px;
 
      }
 

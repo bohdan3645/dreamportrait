@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 
 
 router.get('/', function (req, res, next) {
-    res.render('info/contact-us', {title: 'Dream Portrait'});
+    res.render('info/contactUs', {title: 'Dream Portrait'});
 });
 
 router.post('/submit', (req, res, next) => {
