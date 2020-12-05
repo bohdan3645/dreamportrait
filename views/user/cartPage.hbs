@@ -60,6 +60,11 @@
         localStorageCart = [];
     }
 
+    if (localStorageCart.length === 0) {
+        // redirect to home page if the cart is empty
+        document.getElementsByClassName("nextPartOrder")[0].style.display = "none";
+        document.getElementsByClassName("cartPageVisual")[0].style.display = "block";
+    }
 
     localStorage.setItem("cart", JSON.stringify(localStorageCart));
     showCartElement();
@@ -134,9 +139,7 @@
         localStorage.setItem('cart', JSON.stringify(localStorageCart));
         showCartElement();
         updateCartQty();
-        if (localStorageCart.length <= 0) {
-            window.location.href = '/order-page';
-        }
+        
     }
 
     function payWay() {
@@ -174,6 +177,19 @@
         })
                 .then(res => res.json())
                 .then(res => {
+                    const confirmPayment = () => {
+                        fetch('/update-payment-status', {
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json'
+                                    },
+                                    method: 'POST',
+                                    body: JSON.stringify({ orderId: res.orderId })
+                                }).then(() => {
+                                    localStorage.clear();
+                                    //window.location = '/';
+                                });
+                    };
                     wayforpay.run({
                                 merchantAccount: res.merchantAccount,
                                 merchantDomainName: res.merchantDomainName,
@@ -188,26 +204,12 @@
                             },
                             function (response) {
                                 // on approved
-                                fetch('/update-payment-status', {
-                                    headers: {
-                                        'Accept': 'application/json',
-                                        'Content-Type': 'application/json'
-                                    },
-                                    method: 'POST',
-                                    body: JSON.stringify({ orderId: res.orderId })
-                                });
+                                confirmPayment();
                             },
                             function (response) {
                                 // on declined
                                 if ("{{isDevelopment}}") {
-                                    fetch('/update-payment-status', {
-                                        headers: {
-                                            'Accept': 'application/json',
-                                            'Content-Type': 'application/json'
-                                        },
-                                        method: 'POST',
-                                        body: JSON.stringify({ orderId: res.orderId })
-                                    });
+                                    confirmPayment();
                                 }
                             },
                             function (response) {
