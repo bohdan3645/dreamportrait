@@ -199,7 +199,7 @@
                             },
                             function (response) {
                                 // on declined
-                                if ({{isDevelopment}}) {
+                                if ("{{isDevelopment}}") {
                                     fetch('/update-payment-status', {
                                         headers: {
                                             'Accept': 'application/json',
