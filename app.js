@@ -80,7 +80,11 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(enforce.HTTPS({ trustProtoHeader: true }));
+if (!process.env.IS_DEVELOPMENT)
+{
+    app.use(enforce.HTTPS({ trustProtoHeader: true }));    
+}
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {

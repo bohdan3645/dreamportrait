@@ -47,12 +47,15 @@ router.get('/', checkIsInRole("admin"), function (req, res, next) {
         }
 
         res.render('admin/adminPage', {
-            orders: orders.reduce((acc, o) => acc.concat(o.products), [])
+            orders: orders
+                .filter(o => o.isPayed)
+                .reduce((acc, o) => acc.concat(o.products), [])
                 .map(p => {
                     const tedt = new Date(p.artImageCreatedAt);
                     return {
                         id: p._id,
                         orderId: p.orderId,
+                        isPayed: p.isPayed,
                         artImage: p.artImage,
                         artImageCreatedAt: tedt.getDate().toString() + "." + tedt.getMonth().toString() + "." + tedt.getFullYear().toString(),
                         imagePath: p.imagePath,

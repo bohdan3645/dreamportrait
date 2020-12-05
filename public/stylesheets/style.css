@@ -1,17 +1,13 @@
+
 body {
     background: rgb(200, 212, 213);
     background: linear-gradient(0deg, rgba(255, 175, 194, 1) 0%, rgba(200, 212, 213, 1) 100%);
     margin: 0 auto;
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
-    
+
 }
 
-* {
-    margin:0;padding:0;
-    outline:0;list-style:none;
-    font-family: 'Raleway Dots', cursive;
-}
 
 
 .center {
@@ -216,11 +212,6 @@ footer {
     background-color: #482020;
 }
 
-.row {
-    margin: 0;
-}
-
-
 /*header*/
 .header {
     background-color: #FFD8FE;
@@ -333,16 +324,9 @@ footer {
 .brgSpan:after {
     bottom: 10px;
 }
-
-
-
-
 /*
 footer
 ==========================================*/
-
-
-
 .footer__lnk {
     font-size: 14px;
     text-decoration: none;
@@ -353,12 +337,10 @@ footer
     margin: 30px;
 }
 
-
 .footer__inner {
     padding: 40px 0 25px 0;
     text-align: center;
 }
-
 .copyright__content div {
     width: 23%;
     margin: auto;
@@ -368,15 +350,15 @@ footer
     padding-bottom: 80px;
     color: #808080;
 }
-
-
-.accountContent{
+/*
+footer
+==========================================*/
+.account-content{
     display: grid;
     grid-template-columns: 15% 45%;
     justify-content: center;
 }
-
-.ordersContent{
+.orders-content{
     margin: 30px;
     padding: 10px;
     overflow:scroll; 
