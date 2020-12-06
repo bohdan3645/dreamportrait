@@ -1,3 +1,4 @@
+<div style="width: 100%; display: flex;">
 <div class="account-content">
     <div class="user-management">
         <div class="user-name" style="padding: 0 20px">
@@ -14,7 +15,6 @@
     
     <div class="ordersQty" style="margin-bottom:300px">
         <div class="cartHead">My orders</div>
-        <hr>
         <div class="empty-page">
             <h2 style="margin-bottom: 25px">Don't have any orders yet.</h2>
             <a type="button" href="/order-page" class="getHome">Get my Cartoon! ➜</a>
@@ -48,7 +48,7 @@
                 </div>
                 {{else}}
                 <div style=" font-family: Arial; font-size: 14px; color: grey">
-                <p style="color: red">In progress!</p>
+                <p style="color: #F07F00">In progress!</p>
                 Estimated delivery date:<br>
                 3-5 days<br><br>
                 <p style=" color: #000">
@@ -61,6 +61,7 @@
         </div>
         {{/each}}
     </div>
+</div>
 </div>
 <script>
 var editingCommentId = 0;

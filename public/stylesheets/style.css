@@ -10,6 +10,24 @@ body {
 
 
 
+
+.slider-nav-thumbnails .slick-slide {
+    opacity: 0.5;
+}
+
+.slider-nav-thumbnails .slick-slide.slick-active {
+    opacity: 1;
+  background: green;
+}
+
+
+
+
+
+
+.cartPageVisual{
+    text-align: center;
+}
 .center {
     width: 105px;
     margin: 0 auto;
@@ -354,12 +372,11 @@ footer
 footer
 ==========================================*/
 .account-content{
-    display: grid;
-    grid-template-columns: 15% 45%;
-    justify-content: center;
+    width: 50%;
+    margin: 0 30% 0 20%;
+    display: inline-block;
 }
 .orders-content{
-    margin: 30px;
     padding: 10px;
     overflow:scroll; 
     height: 700px; 
@@ -374,17 +391,28 @@ footer
     margin-bottom: 20px;
     overflow: hidden;
 }  
-.userManagement {
+
+.orderDetailsInProgress .details {
+   text-align: left;
+}
+.user-management {
+    width: 24%;
+    margin-top: 25px;
+    display: inline-block;
     background-color: rgb(255, 255, 255, 0.4);
     height: 200px;
     padding: 20px 0;
-    margin: 40px 10px;
+    vertical-align: top;
 }
 .ordersQty {
+    width: 74%;
+    display: inline-block;
     background-color: rgb(255, 255, 255, 0.4);
     padding: 20px;
-    margin-top: 40px;
+    margin-top: 25px;
     text-align: center;
+    vertical-align: top;
+
 }
 .ordersQty hr{
     width: 50%;

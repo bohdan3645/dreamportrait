@@ -39,6 +39,7 @@
     "paypal-rest-sdk": "^1.8.1",
     "popper.js": "^1.16.1",
     "sharp": "^0.26.3",
+    "slick-carousel": "^1.8.1",
     "stripe": "^8.98.0",
     "uuid": "^8.3.0",
     "validator": "^13.1.1"
