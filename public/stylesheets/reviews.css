@@ -3,7 +3,7 @@
 }
 
 .reviews {
-    margin: 25px 200px;
+    width: 100%;
     display: flex;
 }
 
@@ -30,11 +30,12 @@
 }
 
 .reviewsAdmin {
-    width: 100%;
+    width: 50%;
     /*display: flex;*/
     justify-content: center;
     padding: 25px 0;
     flex-wrap: wrap;
+    margin: 0 auto;
 }
 
 @media(max-width: 1200px) {
