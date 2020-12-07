@@ -45,7 +45,6 @@
 }
 .subwrap1 .item2{
     background-color: rgb(255, 255, 255, 0);
-    width: 1500px;
 }
 .subwrap2 .wrap-item{
     position: relative;
@@ -186,7 +185,6 @@
         margin: 4px;
         width: 145px;
         height: 145px;
-        overflow: hidden;
     }
 
     .container-with-photos img:hover {

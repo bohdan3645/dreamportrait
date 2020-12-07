@@ -373,7 +373,7 @@ footer
 ==========================================*/
 .account-content{
     width: 50%;
-    margin: 0 30% 0 20%;
+    margin: 0 auto;
     display: inline-block;
 }
 .orders-content{
@@ -396,7 +396,7 @@ footer
    text-align: left;
 }
 .user-management {
-    width: 24%;
+    width: 200px;
     margin-top: 25px;
     display: inline-block;
     background-color: rgb(255, 255, 255, 0.4);
@@ -405,7 +405,7 @@ footer
     vertical-align: top;
 }
 .ordersQty {
-    width: 74%;
+    width: 750px;
     display: inline-block;
     background-color: rgb(255, 255, 255, 0.4);
     padding: 20px;
@@ -564,8 +564,39 @@ footer
 
 }
 
+@media(max-width: 2000px) {
+    .account-content{
+        width: 60%;
+    }
+}
+@media(max-width: 1800px) {
+    .account-content{
+        width: 65%;
+    }
+}
+@media(max-width: 1600px) {
+    .account-content{
+        width: 750px;
+    }
+    .user-management {
+    width: 750px;
+    margin: 25px auto;
+}
+.ordersQty{
+    margin: 0 auto;
+
+}
+}
+
+
 
 @media(max-width: 992px) {
+    .logoHead {
+    width: 75%;
+}
+#navLinksManagment {
+    width: 13%;
+}
     #navLinks {
         top: 130px;
     }
@@ -599,6 +630,7 @@ footer
     .footer__lnk {
         font-size: 17px;
     }
+
 
 }
 
@@ -687,6 +719,30 @@ footer
     .logo_footer img {
         width: 250px;
     }
+
+.account-content{
+    width: 100%;
+}
+.user-management {
+    width: 100%;
+    margin: 25px auto;
+}
+.ordersQty{
+    width: 100%;
+    margin: 0 auto;
+}
+.orderDetailsInProgress{
+    display: block;
+}
+.orderPhoto img{
+    width: 100%;
+    height: auto;
+    position: relative !important;
+    min-height: 1px!important;
+}
+.description{
+    display: block!important;
+}
 
 }
 
