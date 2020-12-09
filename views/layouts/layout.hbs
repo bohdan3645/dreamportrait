@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>{{title}}</title>
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
     <meta name="viewport" content="width=device-width" initial-scale=1>
 
-    <script id="widget-wfp-script" language="javascript" type="text/javascript" src="https://secure.wayforpay.com/server/pay-widget.js">
+    <script id="widget-wfp-script" language="javascript" type="text/javascript"
+            src="https://secure.wayforpay.com/server/pay-widget.js">
     </script>
 
     <script src="https://kit.fontawesome.com/0cf37eb68e.js" crossorigin="anonymous">
     </script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
@@ -29,8 +31,11 @@
     <link rel='stylesheet' href='/stylesheets/reviews.css'>
     <link rel='stylesheet' href='/stylesheets/success.css'>
 
-  </head>
-  <body>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
 
 <!--  <div class="center">-->
 <!--      <canvas id="canvas" width="105" height="105">-->
@@ -43,67 +48,68 @@
     <div class="modall-window">
         <h2 class="modall-title">Please Chouse All Parts!</h2>
         <hr>
-    <div class="modall-btns">
-        <button style=" background-color: #4FC478;" class="modall-btn">Yes</button>
-    </div>
+        <div class="modall-btns">
+            <button style=" background-color: #4FC478;" class="modall-btn">Yes</button>
+        </div>
     </div>
 </div>
-   <div class="contain">
+<div class="contain">
     {{> header}}
-      {{{body}}}
-    </div>
+    {{{body}}}
+</div>
 
-    {{> footer}}
+{{> footer}}
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-  crossorigin="anonymous"></script>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script>
-// var cvs = document.getElementById('canvas');
-//     ctx = cvs.cvs.getContext('2d');
-//     sA = (Math.PI / 180) * 45;
-//     sE = (Math.PI / 180) * 90;
-//     ca = canvas.width;
-//     ch = canvas.height;
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+<script>
+    // var cvs = document.getElementById('canvas');
+    //     ctx = cvs.cvs.getContext('2d');
+    //     sA = (Math.PI / 180) * 45;
+    //     sE = (Math.PI / 180) * 90;
+    //     ca = canvas.width;
+    //     ch = canvas.height;
 
-// function init(){
-// setInterval(function(){
+    // function init(){
+    // setInterval(function(){
 
-//     ctx.clearRect(0, 0, ca, ch);
-//     ctx.lineWidth = 15;
+    //     ctx.clearRect(0, 0, ca, ch);
+    //     ctx.lineWidth = 15;
 
-//     ctx.beginPath();
-//     ctx.strokeStyle = "#ffffff";
-//     ctx.shadowColor = "#eeeeee";
-//     ctx.shadowOffsetX = 2;
-//     ctx.shadowOffsetY = 2;
-//     ctx.shadowBlur = 5;
-//     ctx.arc(50, 50, 25, 0, 360, false);
-//     ctx.stroke();
-//     ctx.closePath();
+    //     ctx.beginPath();
+    //     ctx.strokeStyle = "#ffffff";
+    //     ctx.shadowColor = "#eeeeee";
+    //     ctx.shadowOffsetX = 2;
+    //     ctx.shadowOffsetY = 2;
+    //     ctx.shadowBlur = 5;
+    //     ctx.arc(50, 50, 25, 0, 360, false);
+    //     ctx.stroke();
+    //     ctx.closePath();
 
-//     sE += 0.05;
-//     sA += 0.05;
+    //     sE += 0.05;
+    //     sA += 0.05;
 
-//     ctx.beginPath();
-//     ctx.strokeStyle = "#aaaaaa";
-//     ctx.arc(50, 50, 25, sA, sE, false);
-//     ctx.stroke();
-//     ctx.closePath();
+    //     ctx.beginPath();
+    //     ctx.strokeStyle = "#aaaaaa";
+    //     ctx.arc(50, 50, 25, sA, sE, false);
+    //     ctx.stroke();
+    //     ctx.closePath();
 
-//     }, 6);
-// }
+    //     }, 6);
+    // }
 
-//init();
+    //init();
 
 
-      function imgLoaded (img) {
-    var $img = ($img)
-    $img.parent().addClass('loaded');
-  }
-    </script>
-  </body>
+    function imgLoaded(img) {
+        var $img = ($img)
+        $img.parent().addClass('loaded');
+    }
+</script>
+</body>
 </html>

@@ -49,7 +49,7 @@ function myFunction() {
 
 function updateCartQty () {
     var localStorageCart = JSON.parse(localStorage.getItem("cart"));
-    document.getElementById('qtyCart').innerHTML = localStorageCart.length;
+    document.getElementById('qtyCart').innerHTML = localStorageCart ? localStorageCart.length : 0;
 }
 
 updateCartQty ();
