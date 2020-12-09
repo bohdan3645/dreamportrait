@@ -23,7 +23,7 @@
         <div class="cartPageVisual">
             <hr>
             <div>
-                <h2 style="margin-bottom: 25px">Don't have any orders yet.</h2>
+                <h2 style="margin-bottom: 25px">You don't have any orders yet.</h2>
                 <a type="button" href="/order-page" class="getHome">Get my Cartoon! ➜</a>
             </div>
         </div>
@@ -79,9 +79,9 @@
                 '<div class="numberOfPeopleOrder">Number of people:<b> ' + numPpl + '</b></div>' +
                 '<div class="backgroundOrder">Background: ' + bgName + '</div>' +
                 '<div class="noteOrder"><div>Note: </div><div class="wish"> ' + text + '</div></div>' +
-                '<div class="priceOrder">Price:  <del>$' + price * 2 + ' <b></del> $' + price + '</b></div>' +
+                '<div class="priceOrder">Price:  <del>$' + price * 2 + ' <b></del> $' + price + ' </b> USD</div>' +
                 '</div>' +
-                '<div class="price-Order"><b>$' + price + ' </b></div>' +
+                '<div class="price-Order"><b>$' + price + ' </b> USD</div>' +
                 '<button class="deleteOrder" onclick="ClearData(' + index + ')"><img src="/images/container.png" alt=""></button>' +
                 '</div>';
     };
@@ -110,7 +110,7 @@
 
         }
         var totalPriceElement = document.getElementById('total-price');
-        totalPriceElement.innerHTML = 'GRAND TOTAL:<b> $' + totalPrice + '</b>';
+        totalPriceElement.innerHTML = 'GRAND TOTAL:<b> $' + totalPrice + ' </b>USD';
     }
 
 
@@ -157,7 +157,7 @@
                 peopleId: item.selectedPeople.id,
                 backgroundName: item.selectedBakcground.name,
                 image: item.image,
-                text: item.wishesText,
+                text: "Notes" + item.wishesText,
                 price: item.selectedPeople.price + item.selectedBakcground.price
             });
         }

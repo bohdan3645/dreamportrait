@@ -375,6 +375,14 @@ footer
     margin: 0 auto;
     display: inline-block;
 }
+
+.user-name h4{
+    font-size: 35px;
+    padding: 5px;
+    font-family: hellofreeday;
+    color: darkmagenta;
+    font-weight: 200;
+}
 .orders-content{
     padding: 10px;
     overflow:scroll; 
@@ -399,8 +407,8 @@ footer
     margin-top: 25px;
     display: inline-block;
     background-color: rgb(255, 255, 255, 0.4);
-    height: 110px;
-    padding: 20px 0;
+    height: 155px;
+    padding: 10px 0;
     vertical-align: top;
 }
 .ordersQty {
@@ -614,7 +622,13 @@ footer
     .brgSpan:after {
         bottom: 20px;
     }
-
+    table,
+    tr,
+    th {
+        max-width:460px;
+        margin: 0 auto;
+        word-wrap: break-word;
+    }
 
 
     .copyright__content div {
@@ -627,6 +641,15 @@ footer
     }
 
 
+}
+@media (max-width: 600px){
+    table,
+    tr,
+    th {
+        max-width:300px;
+        margin: 0 auto;
+        word-wrap: break-word;
+    }
 }
 
 @media (max-width: 768px) {
@@ -759,6 +782,15 @@ footer
     }
     .logot {
         width: 190px;
+    }
+
+    table,
+    tr,
+    th {
+        max-width:190px;
+        margin: 0 auto;
+        word-wrap: break-word;
+        font-size: 12px;
     }
 
 

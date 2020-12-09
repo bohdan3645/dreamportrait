@@ -1,3 +1,10 @@
+<style>
+    .star-rating {
+        height: 35px;
+        padding: 3px;
+    }
+</style>
+
 <div class="reviewsContent">
     <div class="reviews">
         <div class="reviewsAdmin">
@@ -12,6 +19,15 @@
                 <div class="card-body">
                     <h5 class="card-title">Kelli W.</h5>
                     <p class="card-text">{{comment.comment}}</p>
+                    <div>
+                        {{#each comment.rating}}
+                            {{# if this }}
+                                <img class="star-rating" src="/images/filled_star.png" alt="">
+                            {{else}}
+                                <img class="star-rating" src="/images/empty_star.png" alt="">
+                            {{/ if }}
+                        {{/each}}
+                    </div>
                 </div>
 
                 {{# if ../isAdmin }}
@@ -22,39 +38,6 @@
                 {{/ if }}
             </div>
             {{/each}}
-
-            <div class="card">
-                <img src="/images/comment2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Roberta K.</h5>
-                    <p class="card-text">
-                        I love it!!!!</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/images/comment3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Mark P.</h5>
-                    <p class="card-text">
-                        Uploaded my pic and asked for a beautiful dress on the girl and the Disney artists absolutely delivered. I love it!!</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/images/comment3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Mark P.</h5>
-                    <p class="card-text">
-                        Uploaded my pic and asked for a beautiful dress on the girl and the Disney artists absolutely delivered. I love it!!</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/images/comment3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Mark P.</h5>
-                    <p class="card-text">
-                        Uploaded my pic and asked for a beautiful dress on the girl and the Disney artists absolutely delivered. I love it!!</p>
-                </div>
-            </div>
         </div>
     </div>
 </div>

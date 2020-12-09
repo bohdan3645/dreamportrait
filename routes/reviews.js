@@ -25,16 +25,23 @@ router.get('/', function (req, res, next) {
         } else {
             const products = orders.reduce((acc, o) => acc.concat(o.products), [])
                 .filter(p => p.comment.isVisible)
-                .map(p => ({
-                    imagePath: p.imagePath,
-                    artImage: p.artImage,
-                    id: p._id,
-                    comment: {
-                        comment: p.comment.comment,
-                        isVisible: p.comment.isVisible,
-                        ratig: p.comment.rating
+                .map(p => {
+                    const ratingList = [];
+
+                    for (let i = 0; i < 5; i++) {
+                        ratingList.push(i < p.comment.rating);
                     }
-                }));
+                    return {
+                        imagePath: p.imagePath,
+                        artImage: p.artImage,
+                        id: p._id,
+                        comment: {
+                            comment: p.comment.comment,
+                            isVisible: p.comment.isVisible,
+                            rating: ratingList
+                        }
+                    }
+                });
 
             res.render('shop/reviews', {
                 title: 'Dream Portrait',
@@ -65,7 +72,7 @@ router.post('/hide', (req, res) => {
 router.post('/submit', (req, res, next) => {
     const comment = req.body.comment;
     const id = req.body.id;
-    const rating = 5;
+    const rating = Number(req.body.rating) || 5;
 
     Order.update({'products._id': ObjectId(id)}, {
         "$set": {

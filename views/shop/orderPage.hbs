@@ -1,3 +1,10 @@
+<style>
+    .star-rating {
+        height: 35px;
+        padding: 3px;
+    }
+</style>
+
 <div class="order-page">
     <div class="main-wrap">
     <div class="subwrap1">
@@ -88,7 +95,16 @@
             <div class="description-of-sale">
                 <div class="title">Original DreamPortrait art</div>
                 <div style="display: flex; margin: 10px 0">
-                    <img style="max-height: 23px" src="/images/stars.png">
+                    <div>
+                        {{#each averageRating}}
+                            {{# if this }}
+                                <img class="star-rating" src="/images/filled_star.png" alt="">
+                            {{else}}
+                                <img class="star-rating" src="/images/empty_star.png" alt="">
+                            {{/ if }}
+                        {{/each}}
+                    </div>
+<!--                    <img style="max-height: 23px" src="/images/stars.png">-->
                 </div>
                 <hr>
                 <div class="counter">
@@ -106,14 +122,14 @@
                     <del>
                         <h2>$98</h2>
                     </del>
-                    <h2 style="color: red; padding-left:10px;"><b>$49</b></h2>
+                    <h2 style="color: red; padding-left:10px;"><b>$49</b> USD</h2>
                 </div>
                 <!-- <h3><b>Only <div id="countDownPortrait">50</div> arts left at this price</b></h3> -->
             </div>
         </div>
         <div class="wrap-item item4">
             <div>
-                <h5 class="features__title">Number of people & pets:</h5>
+                <h5 class="features__title">Choose number of people & pets:</h5>
                 <div style="display: flex; justify-content: space-between;">
                     <button data-price="49" data-id="1" class="people-amount-image">1</button>
                     <button data-price="59" data-id="2" class="people-amount-image">2</button>
@@ -132,7 +148,7 @@
         </div>
         <div class="wrap-item item5">
             <div>
-                <h5 class="features__title">Background:</h5>
+                <h5 class="features__title">Choose Background:</h5>
                 <div class="slidercontainerBcgr" style="margin: 15px auto">
                     <div class="showSlideBcgr">
                         <img src="/images/12x18 H starry night.jpg"/>
@@ -172,7 +188,7 @@
         </div>
         <div class="wrap-item item6">
             <div>
-                <h5 class="features__title">Notes (eye, color, particular<br> accessories, details, special test):
+                <h5 class="features__title">Add notes (eye, color, particular<br> accessories, details, special test):
                 </h5>
                 <div style="display: flex; justify-content: center;">
                     <textarea class="input_text" id="text-in" type="input" oninput="textIn(this.value)"
@@ -464,7 +480,7 @@
         var totalPricePage = peoplePricePage + backgroundPricePage;
 
         if (selectedPeopleAmount.price != null) {
-            document.getElementById('total-price-page-static').innerHTML = '<del><h2>$' + totalPricePage * 2 + '</h2></del>' + ' <h2 style="color:red; padding-left:10px;">$' + totalPricePage + '</h2>';
+            document.getElementById('total-price-page-static').innerHTML = '<del><h2>$' + totalPricePage * 2 + '</h2></del>' + ' <h2 style="color:red; padding-left:10px;">$' + totalPricePage + ' USD</h2>';
         }
     }
 

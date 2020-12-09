@@ -4,6 +4,7 @@
         <div class="user-name" style="padding: 0 20px">
             <div id="name"></div>
             <h4 style="text-align:center">{{firstName}} {{lastName}}</h4>
+            <hr>
         </div>
         <div class="menage-nav">
             <div><a class="change-password">Change password</a></div>
@@ -30,7 +31,7 @@
                 <div class="numberOfPeopleOrder">Number of people: {{ selectedPeople }}</b></div>
                 <div class="backgroundOrder">Background: {{ this.selectedBakcground }}</div>
                 <div class="noteOrder">Note: {{ this.wishesText }}</div>
-                <div class="priceOrder">Price: {{ this.price }}<b></b></div>
+                <div class="priceOrder">Price: ${{ this.price }}USD<b></b></div>
             </div>
             <div class="description" style=" display: flex; text-align: center;">
                 {{#if artImage}}

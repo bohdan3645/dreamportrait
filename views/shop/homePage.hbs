@@ -1,3 +1,11 @@
+<style>
+    .star-rating {
+        height: 35px;
+        padding: 3px;
+    }
+</style>
+
+
 <div class="home-page">
     <div class="wrap-item1">
         <div class="main-img-div" onload="imgLoaded(this)" />
@@ -62,26 +70,20 @@
                         <h5 class="card-title">Kelli W.</h5>
                         <p class="card-text">{{comment.comment}}</p>
                     </div>
-                    <button class="dell-review-btn">Dell</button>
+                    <div>
+                        <div>
+                            {{#each comment.rating}}
+                                {{# if this }}
+                                    <img class="star-rating" src="/images/filled_star.png" alt="">
+                                {{else}}
+                                    <img class="star-rating" src="/images/empty_star.png" alt="">
+                                {{/ if }}
+                            {{/each}}
+                        </div>
+                    </div>
+<!--                    <button class="dell-review-btn">Dell</button>-->
                 </div>
             {{/each}}
-
-            <div class="card" style="max-width: 340px; padding: 10px">
-                <img src="/images/comment2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Roberta K.</h5>
-                    <p class="card-text">
-                        I love it!!!!</p>
-                </div>
-            </div>
-            <div class="card" style="max-width: 340px; padding: 10px">
-                <img src="/images/comment3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Mark P.</h5>
-                    <p class="card-text">
-                        Uploaded my pic and asked for a beautiful dress on the girl and the Disney artists absolutely delivered. I love it!!</p>
-                </div>
-            </div>
         </div>
     </div>
 </div>
