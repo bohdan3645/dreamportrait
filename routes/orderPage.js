@@ -13,8 +13,9 @@ router.get('/', function (req, res, next) {
             const products = orders.reduce((acc, o) => acc.concat(o.products), [])
                 .filter(p => p.comment.isVisible);
 
-            const averageRating = products.reduce((acc, product) => acc + product.comment.rating, 0) / products.length;
+            let  averageRating = products.reduce((acc, product) => acc + product.comment.rating, 0) / products.length;
             const ratingList = [];
+            averageRating = averageRating || 5;
 
             for (let i = 0; i < 5; i++) {
                 ratingList.push(i < averageRating);
