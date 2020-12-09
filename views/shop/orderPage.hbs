@@ -180,9 +180,7 @@
                          name="Castle" width="70" height="70" onclick="currentSlideBcgr(4)">
                     <img data-price="0" data-id="15" class="background-image" src="/images/12x18 bokeh.jpg"
                          name="Bokeh" width="70" height="70" onclick="currentSlideBcgr(5)">
-                    <div data-price="25" data-id="111" name="Custom" class="background-image custom-background-img" onclick="currentSlideBcgr(6)">
-                        custom
-                    </div>
+                    <img data-price="25" data-id="111" name="Custom" class="background-image" src="/images/custom.png" onclick="currentSlideBcgr(6)">
                 </div>
             </div>
         </div>
@@ -223,14 +221,15 @@
         $('.multiple-items').slick({
             infinite: true,
             slidesToShow: 3,
-            slidesToScroll: 1,
+            slidesToScroll: 3,
             arrows: false,
             autoPlay: true,
-            autoplaySpeed: 2000,
-            centerMode: true,
+            autoplaySpeed: 1000,
             focusOnSelect: true
         });
     });
+
+    
 
     // var minutes = 9;
     // var seconds = 60;
