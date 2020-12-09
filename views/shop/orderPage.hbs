@@ -150,7 +150,7 @@
                         <img src="/images/12x18 bokeh.jpg"/>
                     </div>
                     <div class="showSlideBcgr" style="padding: 30px 0">
-                        <h1 style="text-align:center;">Custom Bacground<br>+25$</h1>
+                        <h1 style="text-align:center;">Custom Background<br>+25$</h1>
                     </div>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
@@ -164,9 +164,7 @@
                          name="Castle" width="70" height="70" onclick="currentSlideBcgr(4)">
                     <img data-price="0" data-id="15" class="background-image" src="/images/12x18 bokeh.jpg"
                          name="Bokeh" width="70" height="70" onclick="currentSlideBcgr(5)">
-                    <div data-price="25" data-id="111" name="Custom" class="background-image"
-                         onclick="currentSlideBcgr(6)"
-                         style="font-size: 22px; text-align: center; padding: 6px 0; width: 60px; height: 60px">
+                    <div data-price="25" data-id="111" name="Custom" class="background-image custom-background-img" onclick="currentSlideBcgr(6)">
                         custom
                     </div>
                 </div>
@@ -186,8 +184,8 @@
         <div class="wrap-item item7">
             <div>
                 <h5 class="features__title">Upload your photo</h5>
-                <div class="container">
-                    <div class="button-wrap" style="display: flex; justify-content: center;">
+                <div>
+                    <div class="button-wrap">
                         <input class="btnUpl" id="inputFileToLoad" type="file" enctype="multipart/form-data"
                                onchange="encodeImageFileAsURL();"/>
                     </div>

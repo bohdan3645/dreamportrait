@@ -10,7 +10,6 @@ body {
 
 
 
-
 .slider-nav-thumbnails .slick-slide {
     opacity: 0.5;
 }
@@ -186,7 +185,7 @@ la {
 }
 
 .full-btn {
-    width: 350px;
+    width: 340px;
     height: 60;
     background-color: #4FC478;
     border: none;
@@ -400,7 +399,7 @@ footer
     margin-top: 25px;
     display: inline-block;
     background-color: rgb(255, 255, 255, 0.4);
-    height: 200px;
+    height: 110px;
     padding: 20px 0;
     vertical-align: top;
 }
@@ -456,7 +455,6 @@ footer
     text-align: center;
 }
 #navLinksManagment {
-    width: 10%;
 }
 
     .adminOrders{
@@ -516,10 +514,12 @@ footer
 
     #navlinkSignIn {
         display: none;
+        text-align: left;
+        height: 90px;
         flex-direction: column;
         position: absolute;
         width: 100%;
-        top: 295px;
+        top: 400px;
         left: 0;
         margin: 0;
         background-color: #808080;
@@ -529,6 +529,7 @@ footer
     #navLinks #navlink {
         padding: 0 20px;
         color: #FFD8FE;
+        height: 90px;
     }
 
     #navlinkSignIn {
@@ -597,13 +598,7 @@ footer
 #navLinksManagment {
     width: 13%;
 }
-    #navLinks {
-        top: 130px;
-    }
 
-    #navlinkSignIn {
-        top: 225px;
-    }
 
 
     .brgSpan {
@@ -663,7 +658,6 @@ footer
         padding: 5px 25px;
         color: #FFD8FE;
         width: 100%;
-        top: 265px;
         left: 0;
         background-color: #808080;
         z-index: 1;

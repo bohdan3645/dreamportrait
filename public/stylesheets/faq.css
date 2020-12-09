@@ -1,5 +1,5 @@
 .info-content > div {
-  width: 750px;
+  width: 850px;
   background-color: rgb(255,255,255,0.4);
   padding: 10px 10px;
   text-align: center;
@@ -40,7 +40,7 @@
 
 @media(max-width: 768px){
     .info-content > div {
-      width: 90%;
+      width: 100%;
     }
 
 }
