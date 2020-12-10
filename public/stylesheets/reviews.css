@@ -37,6 +37,10 @@
     flex-wrap: wrap;
     margin: 0 auto;
 }
+.star-rating {
+        height: 35px;
+        padding: 3px;
+    }
 
 
 
