@@ -13,7 +13,8 @@ router.get('/', function (req, res, next) {
             const products = orders.reduce((acc, o) => acc.concat(o.products), [])
                 .filter(p => p.comment.isVisible);
 
-            let  averageRating = products.reduce((acc, product) => acc + product.comment.rating, 0) / products.length;
+            let reviewsAmount = products.filter(product => product.comment).length;
+            let averageRating = products.reduce((acc, product) => acc + product.comment.rating, 0) / products.length;
             const ratingList = [];
             averageRating = averageRating || 5;
 
@@ -24,6 +25,8 @@ router.get('/', function (req, res, next) {
             res.render('shop/orderPage', {
                 title: 'Dream Portrait',
                 products: products.filter(product => product.comment.isVisible),
+                hasReviews: reviewsAmount > 0,
+                reviewsAmount: reviewsAmount,
                 averageRating: ratingList
             });
         }
