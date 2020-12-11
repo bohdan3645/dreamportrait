@@ -6,7 +6,8 @@ var schema =  new Schema ({
 	imagePath: {type: String, required: true},
 	imageMiniPath: {type: String, required: true},
 	artImage: {type: String, default: null},
-	artImageCreatedAt: {type: String, default: null}, 
+	artImageCreatedAt: {type: String, default: null},
+	// TODO: Rename this shit later
 	selectedBakcground: {type: String, required: true},
 	selectedPeople: {type: Number, required: true},
 	wishesText: {type: String, required: false},

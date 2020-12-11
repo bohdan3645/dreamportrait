@@ -11,15 +11,15 @@
 </style>
 <div class="authenticate-content">
     <div class="authenticate-form">
-        <form action="/reviews-page/submit" method="POST">
+        <form id="submit-form" action="/reviews-page/submit" method="POST">
             <div>REVIEW</div>
             <hr>
             <h2 class="authenticate-subtitle">Leave a review</h2>
             <div class="rating-stars"></div>
-            <input name="rating" type="hidden" value="5" id="rating-input">
+            <input name="rating" type="hidden" value="0" id="rating-input">
             <input name="id" type="hidden" value="{{ productId }}">
             <textarea maxlength="200" name="comment" class="comment" placeholder="Your comment "></textarea>
-            <button class="auth-form-btn">SUBMIT</button>
+            <button id="submit-button" class="auth-form-btn" type="button">SUBMIT</button>
             <hr>
         </form>
     </div>
@@ -28,32 +28,45 @@
 <script>
     const ratingStars = document.getElementsByClassName('rating-stars')[0];
     const ratingInput = document.getElementById('rating-input');
-    // let selectedRating = 5;
+    const submitButton = document.getElementById('submit-button');
+    const submitForm = document.getElementById('submit-form');
+    let selectedRating = 0;
 
+    // generate initial empty stars
     for (let i = 0; i < 5; i++) {
         const starImage = document.createElement('img');
         starImage.className = 'star-item';
         starImage.setAttribute('data-rating', (i + 1).toString());
-        starImage.setAttribute('src', '/images/filled_star.png');
+        starImage.setAttribute('src', '/images/empty_star.png');
 
         ratingStars.appendChild(starImage);
     }
 
     let stars = document.getElementsByClassName('star-item');
 
-    for (let i = 0; i < stars.length; i++){
+    for (let i = 0; i < stars.length; i++) {
         stars[i].addEventListener('mouseover', e => {
-            for (let j = 0; j < stars.length; j++){
+            for (let j = 0; j < stars.length; j++) {
                 stars[j].setAttribute('src', '/images/filled_star.png');
             }
 
             const rating = Number(e.target.getAttribute('data-rating'));
             ratingInput.setAttribute('value', rating.toString());
-            // selectedRating = rating;
+            selectedRating = rating;
 
-            for (let j = rating; j < stars.length; j++){
+            for (let j = rating; j < stars.length; j++) {
                 stars[j].setAttribute('src', '/images/empty_star.png');
             }
         });
     }
+
+    submitButton.addEventListener('click', e => {
+        if (selectedRating === 0) {
+            e.preventDefault();
+            alert("Please SOSI3");
+            return;
+        }
+
+        submitForm.submit();
+    });
 </script>

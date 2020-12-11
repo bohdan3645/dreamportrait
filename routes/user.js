@@ -69,7 +69,10 @@ router.get('/update-password/:resetLink', function (req, res, next) {
     User.findOne({'resetLink': link}, function (err, user) {
         if (err) {
             console.log(err);
-            res.send(err);
+            res.redirect('/');
+        } else if (!user) {
+            console.log("link not found");
+            res.redirect('/');
         } else {
             res.render('user/updatePassword', {resetLink: link, csrfToken: req.csrfToken()});
         }

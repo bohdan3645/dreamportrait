@@ -3,6 +3,7 @@ var router = express.Router();
 var Order = require('../models/order');
 var ProductOrder = require('../models/productOrder');
 var ObjectId = require('mongodb').ObjectID;
+const nodemailer = require('nodemailer');
 
 const isAdmin = (roles, user) => {
     if (!user) {
@@ -30,11 +31,44 @@ router.post('/upload-art-image', checkIsInRole("admin"), function (req, res, nex
             "products.$.artImage": image,
             "products.$.artImageCreatedAt": date
         }
-    }, function (err, order) {
+    }, function (err) {
         if (err) {
             res.send(err);
         } else {
-            res.send(order);
+            Order.findOne({'products._id': ObjectId(id)}, (err, order) => {
+                //TODO: It does not work
+                const product = order.products.find(product => product._id === ObjectId(id));
+
+                if (!product) {
+                    res.send("no product found");
+                }
+
+                let transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: 'dreamportraitstore@gmail.com',
+                        pass: '34yiuOH87%$#'
+                    }
+                });
+
+                let mailOption = {
+                    from: 'dreamportraitstore@gmail.com',
+                    to: req.user.email,
+                    subject: 'Dream Portrait Art',
+                    text: `Thanks for the SOSI2:\n
+                    Art Image:\n${product.artImage}\n\n
+                    You can leave a comment here:\n${product.comment.url}`
+                };
+
+                transporter.sendMail(mailOption, (err, data) => {
+                    if (err) {
+                        console.log(err);
+                        res.send();
+                    } else {
+                        res.send(order);
+                    }
+                });
+            });
         }
     });
 });

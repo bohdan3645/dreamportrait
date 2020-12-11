@@ -130,9 +130,7 @@ function decodeBase64Image(dataString) {
 app.post("/update-payment-status", (req, res) => {
     const orderId = req.body.orderId;
 
-    Order.findByIdAndUpdate(orderId, {
-        "isPayed": true
-    }, function(err, order) {
+    Order.findByIdAndUpdate(orderId, { isPayed: true }, (err, order) => {
         if (err) {
             res.send(err);
         } else {
@@ -145,13 +143,14 @@ app.post("/update-payment-status", (req, res) => {
                 }
             });
 
-            const reviewsList = order.products.map(product => product.comment.url).join("\n");
+            // const reviewsList = order.products.map(product => product.comment.url).join("\n");
 
             let mailOption = {
                 from: 'dreamportraitstore@gmail.com',
                 to: req.user.email,
                 subject: 'Dream Portrait Order',
-                text: 'Thanks for the ASS , you can leave tyhe comment here: \n\n' + reviewsList
+                // text: 'Thanks for the ASS , you can leave tyhe comment here: \n\n' + reviewsList
+                text: 'Thanks for the SOSI1'
             };
 
             transporter.sendMail(mailOption, (err, data) => {
