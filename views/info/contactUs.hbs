@@ -1,27 +1,25 @@
 <div class="contact-us-content">
-  <div class="contact-us-wrap">
-    <h>Welcome!</h>
-    <hr class="hr1">
-    <div class="textCU">
-       <b>
-          <p>
-            <li>If you have just places an order please wait at least 3-5<br>
-               busines days before requesting 
-               information about your order. You'll<br>
-               help us to work better on you beautiful Portraits.<br> 
-            <li>Please notee that our cutomer support is active from Monday<br> 
-             to Friday.
-          </p>
-       </b>
+    <div class="contact-us-wrap">
+        <h>Welcome!</h>
+        <hr class="hr1">
+        <div class="textCU">
+            <b>
+                <p>
+                    <li>If you have just places an order please wait at least 3-5<br>
+                        busines days before requesting
+                        information about your order. You'll<br>
+                        help us to work better on you beautiful Portraits.<br>
+                <li>Please notee that our cutomer support is active from Monday<br>
+                    to Friday.
+                </p>
+            </b>
+        </div>
+        <form action="/contact-us/submit" method="POST">
+            <input type="email" name="contactEmail" placeholder="E-mail">
+            <textarea maxlength="5000" type="message" name="contactMessage" placeholder="Message"></textarea>
+            <div class="btn">
+                <button type="submit" class="sendBtn">SEND</button>
+            </div>
+        </form>
     </div>
-   <form action="/contact-us/submit" method="POST">
-      <input type="email" name="contactEmail" placeholder="E-mail">
-      <textarea maxlength="5000" type="message" name="contactMessage" placeholder="Message"></textarea>
-      <div class="btn">
-        <button type="submit" class="sendBtn">SEND</button>
-      </div>
-    </form>
-
-
-  </div>
 </div>

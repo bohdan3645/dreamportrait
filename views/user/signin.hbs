@@ -1,14 +1,14 @@
-    <div class="authenticate-content signin">
+<div class="authenticate-content signin">
     <div class="authenticate-form">
         <div class="authenticate-title">SIGN IN</div>
         <hr>
         <div class="authenticate-subtitle">Welcome back!</div>
         {{#if hasErrors}}
-        <div class="alert alert-danger">
-            {{# each messages}}
-            <p>{{ this }}</p>
-            {{/each}}
-        </div>
+            <div class="alert alert-danger">
+                {{# each messages}}
+                    <p>{{ this }}</p>
+                {{/each}}
+            </div>
         {{/if}}
         <form action="/user/signin" method="post">
             <div class="form-group">
@@ -26,4 +26,4 @@
             </div>
         </form>
     </div>
-    </div>
+</div>

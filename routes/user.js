@@ -197,6 +197,7 @@ router.post('/register', passport.authenticate('local.register', {
 /* GET user/signin page. */
 router.get('/signin', function (req, res, next) {
     var messages = req.flash('error');
+    // store previous page url
     res.render('user/signin', {csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0});
 });
 
