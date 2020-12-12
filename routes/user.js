@@ -189,8 +189,6 @@ router.post('/register', passport.authenticate('local.register', {
     } else {
         res.redirect('/user/profile');
     }
-
-
 });
 
 
@@ -225,7 +223,7 @@ function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.redirect('/');
+    res.redirect('/user/signin');
 }
 
 function notLoggedIn(req, res, next) {

@@ -10,16 +10,16 @@
                 <img src="{{artImage}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Kelli W.</h5>
-                    {{#each comment.rating}}
-                    <p class="card-text">{{comment.comment}}</p>
                     <div>
-                            {{# if this }}
-                                <img class="star-rating" src="/images/filled_star.png" alt="">
-                            {{else}}
-                                <img class="star-rating" src="/images/empty_star.png" alt="">
-                            {{/ if }}
-                        {{/each}}
+                    {{#each comment.rating}}
+                        {{# if this }}
+                            <img class="star-rating" src="/images/filled_star.png" alt="">
+                        {{else}}
+                            <img class="star-rating" src="/images/empty_star.png" alt="">
+                        {{/ if }}
+                    {{/each}}
                     </div>
+                    <p class="card-text">{{comment.comment}}</p>
                 </div>
 
                 {{# if ../isAdmin }}
