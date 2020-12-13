@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var Order = require('../models/order')
+var Order = require('../models/order');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -38,5 +39,8 @@ router.get('/', function(req, res, next) {
       }
    })
 });
+
+
+
 
 module.exports = router;

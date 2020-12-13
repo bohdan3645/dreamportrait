@@ -1,33 +1,33 @@
-    <div class="cartContent">
-        <div class="cartHead">CART</div>
-        <div id="cart">
-        </div>
-        <div class="nextPartOrder">
-            <div class="saveOfOrder">YOU SAVE: <span style="color: red;"><b>50% </b></span>OFF</div>
-            <div class="grandTotal" id="total-price">GRAND TOTAL:</div>
-            <br>
+<div class="cartContent">
+    <div class="cartHead">CART</div>
+    <div id="cart">
+    </div>
+    <div class="nextPartOrder">
+        <div class="saveOfOrder">YOU SAVE: <span style="color: red;"><b>50% </b></span>OFF</div>
+        <div class="grandTotal" id="total-price">GRAND TOTAL:</div>
+        <br>
 
-            {{# if login }}
-                <form id="payment-form">
-                    <div id="card-element" style="margin: 20px 0"></div>
-                    <div class="sr-field-error" id="card-errors" role="alert"></div>
-                    <button class="full-btn" style="padding: 5px" type="button" action="/create-order" onclick="payWay()">
-                        Checkout
-                    </button>
-                </form>
-            {{ else }}
-                <sapan>Plese <a href="/user/signin">Sign in</a> for pay!</sapan>
-            {{/if}}
+        {{# if login }}
+            <form id="payment-form">
+                <div id="card-element" style="margin: 20px 0"></div>
+                <div class="sr-field-error" id="card-errors" role="alert"></div>
+                <button class="full-btn" style="padding: 5px" type="button" action="/create-order" onclick="payWay()">
+                    Checkout
+                </button>
+            </form>
+        {{ else }}
+            <sapan>Plese <a href="/user/signin">Sign in</a> for pay!</sapan>
+        {{/if}}
 
-        </div>
-        <div class="cartPageVisual">
-            <hr>
-            <div>
-                <h2 style="margin-bottom: 25px">You don't have any orders yet.</h2>
-                <a type="button" href="/order-page" class="getHome">Get my Cartoon! ➜</a>
-            </div>
+    </div>
+    <div class="cartPageVisual">
+        <hr>
+        <div>
+            <h2 style="margin-bottom: 25px">You don't have any orders yet.</h2>
+            <a type="button" href="/order-page" class="getHome">Get my Cartoon! ➜</a>
         </div>
     </div>
+</div>
 
 <script>
     // timer for expire cart
@@ -71,21 +71,21 @@
 
 
     function getItemTemplate(numPpl, bgName, price, text, image, index) {
-        text = text || '';
+        text = text ? '<div>Note: ' + text + '</div>' : '';
+
         return '<div class="orderDetails">' +
                 '<div class="orderPhoto"><img src="' + image + '"></div>' +
                 '<div class="details">' +
                 '<div class="hOrder">Original Dream Portrait Art</div>' +
                 '<div class="numberOfPeopleOrder">Number of people:<b> ' + numPpl + '</b></div>' +
                 '<div class="backgroundOrder">Background: ' + bgName + '</div>' +
-                '<div class="noteOrder"><div>Note: </div><div class="wish"> ' + text + '</div></div>' +
+                '<div class="noteOrder"><div class="wish"> ' + text + '</div></div>' +
                 '<div class="priceOrder">Price:  <del>$' + price * 2 + ' <b></del> $' + price + ' </b> USD</div>' +
                 '</div>' +
-                '<div class="price-Order"><b>$' + price + ' </b> USD</div>' +
+                '<div class="price-Order"><b>$' + price + ' </b> <span style="font-size: 14px; vertical-align: bottom">USD</span></div>' +
                 '<button class="deleteOrder" onclick="ClearData(' + index + ')"><img src="/images/container.png" alt=""></button>' +
                 '</div>';
-    };
-
+    }
 
     function showCartElement() {
         var localStorageCart = JSON.parse(localStorage.getItem("cart"));
@@ -139,7 +139,7 @@
         localStorage.setItem('cart', JSON.stringify(localStorageCart));
         showCartElement();
         updateCartQty();
-        
+
     }
 
     function payWay() {
@@ -179,16 +179,16 @@
                 .then(res => {
                     const confirmPayment = () => {
                         fetch('/update-payment-status', {
-                                    headers: {
-                                        'Accept': 'application/json',
-                                        'Content-Type': 'application/json'
-                                    },
-                                    method: 'POST',
-                                    body: JSON.stringify({ orderId: res.orderId })
-                                }).then(() => {
-                                    localStorage.clear();
-                                    //window.location = '/';
-                                });
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            method: 'POST',
+                            body: JSON.stringify({orderId: res.orderId})
+                        }).then(() => {
+                            localStorage.clear();
+                            //window.location = '/';
+                        });
                     };
                     wayforpay.run({
                                 merchantAccount: res.merchantAccount,

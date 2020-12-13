@@ -403,7 +403,7 @@ footer
    text-align: left;
 }
 .user-management {
-    width: 200px;
+    max-width: 250px;
     margin-top: 25px;
     display: inline-block;
     background-color: rgb(255, 255, 255, 0.4);

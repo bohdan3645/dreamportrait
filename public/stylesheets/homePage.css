@@ -5,11 +5,12 @@
     width: 100%;
     display: block;
 }
-.wrap-item1 .main-img{
+.wrap-item1 .main-img {
     width: 100%;
     position: relative;
     left: 0;
 }
+
 .wrap-item1 .main-img-div{
     width: 100%;
     position: relative;
@@ -24,8 +25,9 @@
     display: none;
 }
 .wrap-item1 button{
- position: relative;
-  left: 15%;
+    position: relative;
+    left: 17%;
+    transform: translateY(-400%);
 }
 .wrap-item2{
     width: 100%;
@@ -84,15 +86,46 @@
 
 
 
+@media (max-width: 2000px){
+    .wrap-item1 button{
+        left: 15%;
+        transform: translateY(-300%);
+    }
+}
 
-
+@media (max-width: 1500px){
+    .wrap-item1 button{
+        left: 13%;
+        transform: translateY(-200%);
+    }
+    .primary-btn {
+        line-height: 60px;
+        width: 300px;
+    }
+}
 
 
 @media(max-width: 1200px) {
    .wrap-item-icons{
     width: 80%;
 }
+    .wrap-item1 button{
+        left: 10%;
+        transform: translateY(-200%);
+    }
 
+}
+
+@media(max-width: 992px){
+    .wrap-item1 button{
+        left: 10%;
+        transform: translateY(-240%);
+    }
+    .primary-btn {
+        line-height: 50px;
+        width: 250px;
+        font-size: 20px;
+    }
 }
 
 @media(max-width: 768px) {
@@ -108,6 +141,17 @@
         width: 100%;
         margin-bottom: 30px;
     }
+
+    .wrap-item1 button{
+        left: 50%;
+        transform: translateY(-240%) translateX(-50%);
+    }
+
+    .primary-btn {
+        line-height: 50px;
+        width: 250px;
+        font-size: 20px;
+    }
 }
 
 @media(max-width: 460px) {
@@ -117,8 +161,16 @@
     .wrap-item2 p{
        word-spacing: 1px;
     }
+    .wrap-item1 button{
+        left: 50%;
+        transform: translateY(-130%) translateX(-50%);
+    }
 
-   
+    .primary-btn {
+        line-height: 40px;
+        width: 210px;
+        font-size: 18px;
+    }
 
     .primary-btn {
         font-size: 18px;

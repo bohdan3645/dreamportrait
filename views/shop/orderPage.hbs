@@ -112,10 +112,15 @@
                     <br>
                     <div id="total-price-page-static" style="display: flex;">
                         <!-- <h4 style="padding: 5px 10px 5px 5px">Discount </h4> -->
+                        <h3>
+                            Price:
                         <del>
-                            <h3>$98 USD</h3>
+                            $98
                         </del>
-                        <h3 style="color: red; padding-left:10px;"><b>$49</b> USD Price</h3>
+                            <span style="font-size: 22px"> USD</span>
+                        </h3>
+                        <h3 style="color: red; padding-left:10px;"><b>$49</b>
+                            <span style="font-size: 22px"> USD</span></h3>
                     </div>
                     <!-- <h3><b>Only <div id="countDownPortrait">50</div> arts left at this price</b></h3> -->
                 </div>
@@ -395,7 +400,7 @@
         var totalPricePage = peoplePricePage + backgroundPricePage;
 
         if (selectedPeopleAmount.price != null) {
-            document.getElementById('total-price-page-static').innerHTML = '<del><h3>$' + totalPricePage * 2 + ' USD</h3></del>' + ' <h3 style="color:red; padding-left:10px;">$<b>' + totalPricePage + '</b> USD Price</h3>';
+            document.getElementById('total-price-page-static').innerHTML = '<h3>Price: <del>$' + totalPricePage * 2 + '</h3> <span style="font-size: 22px">USD</span></del>' + ' <h3 style="color:red; padding-left:10px;">$<b>' + totalPricePage + '</b> <span style="font-size: 22px">USD</span></h3>';
         }
     }
 

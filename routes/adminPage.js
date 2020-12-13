@@ -5,6 +5,7 @@ var ProductOrder = require('../models/productOrder');
 var ObjectId = require('mongodb').ObjectID;
 const nodemailer = require('nodemailer');
 const {sendEmail} = require("../helper");
+const fs = require('fs');
 
 const isAdmin = (roles, user) => {
     if (!user) {
@@ -44,13 +45,17 @@ router.post('/upload-art-image', checkIsInRole("admin"), function (req, res, nex
                     res.send("no product found");
                 }
 
-                const reviewText = `Thanks for the SOSI2:\nYou can leave a comment here:\n${product.comment.url}`;
-                sendEmail(req.user.email, 'Dream Portrait Art', reviewText, () => res.send(), () => res.send(order));
+                fs.readFile('./views/mailTemplates/order.html', (err, data) => {
+                    let reviewText = data.toString('utf8');
+                    reviewText = reviewText.replace('$1', product.comment.url);
 
-                const accountLink = req.protocol + "://" + req.headers.host + '/user/profile/';
-                const artText = `Thanks for the SOSI2:\nArt Image:\n
-                <a href="${accountLink}" target="_blank">Download</a>`;
-                sendEmail(req.user.email, 'Dream Portrait Art', artText, () => res.send(), () => res.send(order));
+                    // const reviewText = `Thanks for the SOSI2:\nYou can leave a comment here:\n${product.comment.url}`;
+                    sendEmail(req.user.email, 'Dream Portrait Art', reviewText, () => res.send(), () => res.send(order));
+
+                    const accountLink = req.protocol + "://" + req.headers.host + '/user/profile/';
+                    const artText = `Thanks for the SOSI2:\nArt Image:\n<a href="${accountLink}" target="_blank">Download</a>`;
+                    sendEmail(req.user.email, 'Dream Portrait Art', artText, () => res.send(), () => res.send(order));
+                });
             });
         }
     });

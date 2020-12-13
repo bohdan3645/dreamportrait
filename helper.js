@@ -14,7 +14,7 @@ module.exports = {
             from: 'dreamportraitstore@gmail.com',
             to: receiver,
             subject: title,
-            text: content
+            html: content
         };
 
         transporter.sendMail(mailOption, (err, data) => {
