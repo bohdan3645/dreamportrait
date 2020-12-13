@@ -45,9 +45,13 @@ router.post('/upload-art-image', checkIsInRole("admin"), function (req, res, nex
                     res.send("no product found");
                 }
 
-                fs.readFile('./views/mailTemplates/order.html', (err, data) => {
+                fs.readFile('./views/mailTemplates/review-mail.html', (err, data) => {
                     let reviewText = data.toString('utf8');
                     reviewText = reviewText.replace('$1', product.comment.url);
+
+                    // fs.readFile('./views/mailTemplates/download-art-mail.html', (err, data) => {
+                    //     let artText = data.toString('utf8');
+                    //     artText = artText.replace('$2', accountLink);
 
                     // const reviewText = `Thanks for the SOSI2:\nYou can leave a comment here:\n${product.comment.url}`;
                     sendEmail(req.user.email, 'Dream Portrait Art', reviewText, () => res.send(), () => res.send(order));

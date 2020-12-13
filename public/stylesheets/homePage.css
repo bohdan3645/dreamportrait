@@ -88,15 +88,15 @@
 
 @media (max-width: 2000px){
     .wrap-item1 button{
-        left: 15%;
-        transform: translateY(-300%);
+        left: 14%;
+        transform: translateY(-320%);
     }
 }
 
-@media (max-width: 1500px){
+@media (max-width: 1550px){
     .wrap-item1 button{
-        left: 13%;
-        transform: translateY(-200%);
+        left: 12%;
+        transform: translateY(-250%);
     }
     .primary-btn {
         line-height: 60px;
@@ -110,20 +110,24 @@
     width: 80%;
 }
     .wrap-item1 button{
-        left: 10%;
-        transform: translateY(-200%);
+        left: 11%;
+        transform: translateY(-230%);
+    }
+    .primary-btn {
+        line-height: 60px;
+        width: 280px;
     }
 
 }
 
 @media(max-width: 992px){
     .wrap-item1 button{
-        left: 10%;
+        left: 12%;
         transform: translateY(-240%);
     }
     .primary-btn {
         line-height: 50px;
-        width: 250px;
+        width: 210px;
         font-size: 20px;
     }
 }
