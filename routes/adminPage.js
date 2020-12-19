@@ -54,7 +54,7 @@ router.post('/upload-art-image', checkIsInRole("admin"), function (req, res, nex
                 });
                 fs.readFile('./views/mailTemplates/download-art-mail.html', (err, data) => {
                     let artText = data.toString('utf8');
-                    artText = artText.replace('$2', accountLink);
+                    artText = artText.replace('${accountLink}');
 
                     sendEmail(req.user.email, 'Dream Portrait Art', artText, () => res.send(), () => res.send(order));
 
