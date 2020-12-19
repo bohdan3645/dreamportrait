@@ -19,11 +19,11 @@
         </div>
         {{# each orders}}
         <div class="orderDetailsInProgress">
-            <div class="orderPhoto">
+            <div style="width: 30%" class="orderPhoto">
                 <img src="{{ this.imageMiniPath }}">
                 <img src="{{ this.artImage }}">
             </div>
-            <div class="details">
+            <div style="width: 30%" class="details">
                 {{#if artImage}}
                 <div id="date">Date: {{ artImageCreatedAt }}</div>
                 {{/if}}
@@ -38,7 +38,7 @@
                 <div>
                     {{#if artImage}}
                     <div>
-                        <a style=" width: 100%; font-size: 30px; color: #000; font-family: Arial; text-decoration: none" download="{{ this.wishesText }}.jpeg" href="{{ this.artImage }}"><i style="color: #4FC478" class="fa fa-download" aria-hidden="true"></i><br>
+                        <a style=" width: 100%; font-size: 30px; color: #000; font-family: Arial; text-decoration: none; line-height: 40px; display: block;" download="{{ this.wishesText }}.jpeg" href="{{ this.artImage }}"><i style="color: #4FC478" class="fa fa-download" aria-hidden="true"></i><br>
                             <p style="font-size: 20px">Click to download your portrait</p>
                         </a>
                     </div>
