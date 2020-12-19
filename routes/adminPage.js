@@ -56,12 +56,7 @@ router.post('/upload-art-image', checkIsInRole("admin"), function (req, res, nex
                     let reviewText = data.toString('utf8');
                     artText = artText.replace('$2', accountLink);
 
-                    // fs.readFile('./views/mailTemplates/download-art-mail.html', (err, data) => {
-                    //     let artText = data.toString('utf8');
-                    //     artText = artText.replace('$2', accountLink);
-
-                    // const reviewText = `Thanks for the SOSI2:\nYou can leave a comment here:\n${product.comment.url}`;
-                    sendEmail(req.user.email, 'Dream Portrait Art', reviewText, () => res.send(), () => res.send(order));
+                    sendEmail(req.user.email, 'Dream Portrait Art', artText, () => res.send(), () => res.send(order));
 
                     // const accountLink = req.protocol + "://" + req.headers.host + '/user/profile/';
                     // const artText = `Thanks for the SOSI2:\nArt Image:\n<a href="${accountLink}" target="_blank">Download</a>`;
