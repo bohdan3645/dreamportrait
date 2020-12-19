@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 
 
 router.get('/', function (req, res, next) {
-    res.render('info/contactUs', {title: 'Dream Portrait'});
+    res.render('info/contactUs', {title: 'Dream Portrait', gmailPassword: process.env.GMAIL_PASSWORD, gmailUser: process.env.GMAIL_USER });
 });
 
 router.post('/submit', (req, res, next) => {
@@ -16,8 +16,8 @@ router.post('/submit', (req, res, next) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'dreamportraitstore@gmail.com',
-            pass: '34yiuOH87%$#'
+            user: gmailUser,
+            pass: gmailPassword
         }
     });
 

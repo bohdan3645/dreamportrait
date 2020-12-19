@@ -48,19 +48,15 @@ router.post('/upload-art-image', checkIsInRole("admin"), function (req, res, nex
                 fs.readFile('./views/mailTemplates/review-mail.html', (err, data) => {
                     let reviewText = data.toString('utf8');
                     reviewText = reviewText.replace('$1', product.comment.url);
-
-                   
+                       
                     sendEmail(req.user.email, 'Dream Portrait Art', reviewText, () => res.send(), () => res.send(order));
                 });
                 fs.readFile('./views/mailTemplates/download-art-mail.html', (err, data) => {
+                    const accountLink = req.protocol + "://" + req.headers.host + '/user/profile/';
                     let artText = data.toString('utf8');
-                    artText = artText.replace('${accountLink}');
+                    // artText = artText.replace('${accountLink}');
 
                     sendEmail(req.user.email, 'Dream Portrait Art', artText, () => res.send(), () => res.send(order));
-
-                    // const accountLink = req.protocol + "://" + req.headers.host + '/user/profile/';
-                    // const artText = `Thanks for the SOSI2:\nArt Image:\n<a href="${accountLink}" target="_blank">Download</a>`;
-                    // sendEmail(req.user.email, 'Dream Portrait Art', artText, () => res.send(), () => res.send(order));
                 });
             });
         }

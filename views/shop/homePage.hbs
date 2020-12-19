@@ -68,9 +68,6 @@
                     <img src="{{artImage}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{firstName}} {{lastName}}</h5>
-                        <p class="card-text">{{comment.comment}}</p>
-                    </div>
-                    <div>
                         <div>
                             {{#each comment.rating}}
                                 {{# if this }}
@@ -80,8 +77,8 @@
                                 {{/ if }}
                             {{/each}}
                         </div>
+                        <p class="card-text">{{comment.comment}}</p>
                     </div>
-<!--                    <button class="dell-review-btn">Dell</button>-->
                 </div>
             {{/each}}
         </div>
