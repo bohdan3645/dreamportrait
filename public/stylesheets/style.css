@@ -411,11 +411,10 @@ footer
     height: 700px; 
 }
 .orderDetailsInProgress {
-    min-height: 200px;
+    height: 150px;
     font-weight: 600;
-    display: grid;
-    grid-template-columns: 30% 30% 40%;
-    padding: 20px 10px;
+    display: flex;
+    padding: 5px 5px;
     background-color: rgb(255, 255, 255, 0.6);
     margin-bottom: 20px;
     overflow: hidden;
@@ -781,6 +780,9 @@ footer
     height: auto;
     position: relative !important;
     min-height: 1px!important;
+}
+.noteOrder{
+    font-weight: normal;
 }
 .description{
     display: block!important;
