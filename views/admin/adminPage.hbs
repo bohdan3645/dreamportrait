@@ -26,6 +26,9 @@
         font-weight: bold;
         text-align: center;
     }
+    .price-changing-items{
+        display: none;
+    }
 </style>
 
 
@@ -36,6 +39,7 @@
         <div>
             <button id="active-adm" class="admin-headers-for-items" onclick="showActive()">Active</button>
             <button id="completed-adm" class="admin-headers-for-items" onclick="showCompleted()">Completed</button>
+            <button id="price-changing-adm" class="admin-headers-for-items" onclick="priceChanging()">Price Changing</button>
         </div>
         <hr style="margin-bottom: 10px; border:.5px solid black">
     <div class="ordersContent">
@@ -70,74 +74,10 @@
             </div>
         {{/each}}
     </div>
-    </div>
-</div>
-
-
-
-<script>
-    // var active = document.getElementById("active-adm");
-    var completed = document.getElementsByClassName("active-items")[0];
-
-function showActive() {
-    completed.style.display = 'block';
-}
-function showCompleted() {
-    completed.style.display = 'none';
-}
-
-</script>
-
-
-        <script>
-            var uploadButtons = document.getElementsByClassName("image-uploader");
-
-            for (var button of uploadButtons) {
-                button.addEventListener("change", function(event) {
-                    var files = event.target.files;
-                    var id = event.target.getAttribute('data-id');
-
-                    if (files.length) {
-                        var fileReader = new FileReader();
-
-                        fileReader.onload = function(fileLoadedEvent) {
-                            var srcData = fileLoadedEvent.target.result;
-                            image = srcData;
-
-                            fetch('/admin-page/upload-art-image', {
-                                method: 'post',
-                                headers: {
-                                  'Content-Type': 'application/json;charset=utf-8'
-                                },
-                                body: JSON.stringify({
-                                    image: image,
-                                    id: id,
-                                    uploadedAt: new Date().toString()
-                                })
-                            })
-                            .then(res => res.json())
-                            .then(res => {
-                                console.log(res)
-                            })
-                            .catch(err => {
-                                //TODO: check for a ponential errors
-                            });
-                        }
-
-                        fileReader.readAsDataURL(files[0]);
-                    }
-
-                }, false);
-            }
-        </script>
-    </div>
-
-</div>
-<hr style="margin-bottom: 10px; border:.5px solid black">
-<div class="adminPanel" style="display: flex;">
+    <div class="price-changing-items">
     <form action="" style="width: 310px;  margin: 50px;">
-        <h6>Welcome to the Dream Portrait price changing:</h6>
-        <hr style="margin-bottom: 10px; border:.5px solid black">
+        <!-- <h6>Welcome to the Dream Portrait price changing:</h6>
+        <hr style="margin-bottom: 10px; border:.5px solid black"> -->
         <div class="peoplePriceQty" style="display: flex; justify-content: space-between;">
             <div style="width: 150px;">
                 <div class="input-group input-group-sm mb-3">
@@ -218,8 +158,80 @@ function showCompleted() {
         </div>
         <button type="button" class="btn btn-dark">Save changing</button>
     </form>
+    </div>
 </div>
-<hr style="margin-bottom: 10px; border:.5px solid black">
+
+
+
+<script>
+    // var active = document.getElementById("active-adm");
+    var completed = document.getElementsByClassName("active-items")[0];
+    var priceChangingItems = document.getElementsByClassName("price-changing-items")[0];
+    var admHeaders = document.getElementsByClassName('admin-orders-items')[0];
+
+function showActive() {
+    completed.style.display = 'block';
+    priceChangingItems.style.display = 'none';
+    admHeaders.style.display = 'block';
+}
+function showCompleted() {
+    completed.style.display = 'none';
+    admHeaders.style.display = 'block';
+}
+function priceChanging() {
+    admHeaders.style.display = 'none';
+    completed.style.display = 'none';
+    priceChangingItems.style.display = 'block';
+}
+
+</script>
+
+
+        <script>
+            var uploadButtons = document.getElementsByClassName("image-uploader");
+
+            for (var button of uploadButtons) {
+                button.addEventListener("change", function(event) {
+                    var files = event.target.files;
+                    var id = event.target.getAttribute('data-id');
+
+                    if (files.length) {
+                        var fileReader = new FileReader();
+
+                        fileReader.onload = function(fileLoadedEvent) {
+                            var srcData = fileLoadedEvent.target.result;
+                            image = srcData;
+
+                            fetch('/admin-page/upload-art-image', {
+                                method: 'post',
+                                headers: {
+                                  'Content-Type': 'application/json;charset=utf-8'
+                                },
+                                body: JSON.stringify({
+                                    image: image,
+                                    id: id,
+                                    uploadedAt: new Date().toString()
+                                })
+                            })
+                            .then(res => res.json())
+                            .then(res => {
+                                console.log(res)
+                            })
+                            .catch(err => {
+                                //TODO: check for a ponential errors
+                            });
+                        }
+
+                        fileReader.readAsDataURL(files[0]);
+                    }
+
+                }, false);
+            }
+        </script>
+    </div>
+
+</div>
+
 
 
 <script type="text/javascript">
