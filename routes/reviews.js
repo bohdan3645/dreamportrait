@@ -36,6 +36,8 @@ router.get('/', function (req, res, next) {
                         artImage: p.artImage,
                         id: p._id,
                         comment: {
+                            firstName: req.body.firstName,
+                            lastName: req.body.lastName,
                             comment: p.comment.comment,
                             isVisible: p.comment.isVisible,
                             rating: ratingList
