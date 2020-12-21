@@ -11,8 +11,13 @@
         display: inline-block;
         border-right: 2px solid grey;
         padding-left: 10px;
-        color: grey
+        color: grey;
     }
+    .adm-header-btns{
+        border: none;
+        background-color: grey;
+    }
+    
     .uploading-btns{
         border-right: none;
     }
@@ -37,11 +42,11 @@
     <h6>Welcome to the Dream Portrait upload form:</h6>
         <hr style="margin-bottom: 10px; border:.5px solid black">
         <div>
-            <button id="active-adm" class="admin-headers-for-items" onclick="showActive()">Active</button>
-            <button id="completed-adm" class="admin-headers-for-items" onclick="showCompleted()">Completed</button>
-            <button id="price-changing-adm" class="admin-headers-for-items" onclick="priceChanging()">Price Changing</button>
+            <button id="active-adm" class="admin-headers-for-items adm-header-btns" onclick="showActive()">Active</button>
+            <button id="completed-adm" class="admin-headers-for-items adm-header-btns" onclick="showCompleted()">Completed</button>
+            <button id="price-changing-adm" class="admin-headers-for-items adm-header-btns" onclick="priceChanging()">Price Changing</button>
         </div>
-        <hr style="margin-bottom: 10px; border:.5px solid black">
+        <hr style="margin-bottom: 10px; border:.5px solid black;margin-top: 0">
     <div class="ordersContent">
         <div class="admin-orders-items">
             <h6 class="admin-headers-for-items">{NAME}</h6>
@@ -164,7 +169,6 @@
 
 
 <script>
-    // var active = document.getElementById("active-adm");
     var completed = document.getElementsByClassName("active-items")[0];
     var priceChangingItems = document.getElementsByClassName("price-changing-items")[0];
     var admHeaders = document.getElementsByClassName('admin-orders-items')[0];
@@ -176,6 +180,7 @@ function showActive() {
 }
 function showCompleted() {
     completed.style.display = 'none';
+    priceChangingItems.style.display = 'none';
     admHeaders.style.display = 'block';
 }
 function priceChanging() {
