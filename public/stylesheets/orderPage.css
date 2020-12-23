@@ -188,7 +188,8 @@
 
     .container-with-photos {
         display: flex;
-        overflow: hidden;
+        /*overflow: hidden;*/
+        font-size: 30px;
         margin: 0;
         height: 154px;
         background-color: #E4E9E9;
@@ -240,7 +241,11 @@
         height: 260px;
     }
 
-
+.slick-prev,
+.slick-next {
+     height: 20px;
+    width: 30px;
+}
 
     .showSlide {
         display: none;
@@ -256,7 +261,7 @@
         width: 460px;
         height: 460px;
         position: relative;
-        overflow: hidden;
+        /*overflow: hidden;*/
         color: white;
         margin: 0 auto;
         padding: 0;

@@ -11,6 +11,14 @@ var User = require('../models/user');
 const csrfProtection = csrf();
 router.use(csrfProtection);
 
+const isAdmin = (roles, user) => {
+    if (!user) {
+        return false;
+    }
+
+    return !!roles.find(role => user.role === role);
+};
+
 router.get('/profile', isLoggedIn, function (req, res, next) {
     Order.find({user: req.user}, function (err, orders) {
         if (err) {
@@ -187,7 +195,7 @@ router.post('/register', passport.authenticate('local.register', {
         req.session.oldUrl = null;
         res.redirect(oldUrl);
     } else {
-        res.redirect('/user/profile');
+        res.redirect('/order-page');
     }
 });
 

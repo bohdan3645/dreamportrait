@@ -4,8 +4,7 @@
         padding: 3px;
     }
 </style>
-
-<div class="order-page">
+    <div class="order-page">
     <div class="main-wrap">
         <div class="subwrap1">
             <div class="wrap-item item1">
@@ -102,7 +101,7 @@
                     <hr>
                     <div class="counter">
                         <img src="/images/eye.png">
-                        <h6 style="margin:0"><b><span id="demo">17 </span></b> People are currently looking at this prod
+                        <h6 style="margin:0"><b><span id="demo">17 </span></b> People are currently looking at this product
                         </h6>
                     </div>
                     <div class="deliver">
@@ -190,7 +189,7 @@
                     </h5>
                     <div style="display: flex; justify-content: center;">
                     <textarea class="input_text" id="text-in" type="input" oninput="textIn(this.value)"
-                              style="width: 98%; height: 150px;"></textarea>
+                              style="width: 89%; height: 150px; margin: 3px auto"></textarea>
                     </div>
                     <p id="demo"></p>
                 </div>
@@ -222,13 +221,14 @@
     $('.slidercontainer').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false,
+        arrows: true,
         fade: true,
         asNavFor: '.multiple-items'
     });
     $('.multiple-items').slick({
         slidesToShow: 2.4,
         slidesToScroll: 1,
+        arrows: true,
         asNavFor: '.slidercontainer',
         centerMode: true,
         focusOnSelect: true

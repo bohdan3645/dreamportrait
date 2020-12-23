@@ -13,7 +13,10 @@
         <a href="/home-page/"><img class="logot" src="/images/logo.png"></a>
         </div>
 
-        <div class="navLinksManagment" id="navLinksManagment">
+        <div  class="navLinksManagment" id="navLinksManagment">
+            {{# if ../isAdmin }}
+            <a style="font-size: 29px; vertical-align: bottom; color: #6A57A4; border:1px solid grey; padding:3px" href="/admin-page/"><i class="fas fa-user-cog"></i></a>
+            {{/ if }}
         {{# if login }}
             <a class="navlink userSign" id="navlink" href="/user/profile/" data-scroll="#USER"><i class="fas fa-user" style="font-size: 30px"></i></a>
 
@@ -30,11 +33,6 @@
         </a>
     </div>
 </div>
-
-
-
-
-
 
 <script>
 navv = document.getElementById("navLinks");
