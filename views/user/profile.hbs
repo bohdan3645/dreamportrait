@@ -32,7 +32,7 @@
                 {{/if}}
                 <div class="numberOfPeopleOrder">Number of people: {{ selectedPeople }}</b></div>
                 <div class="backgroundOrder">Background: {{ this.selectedBakcground }}</div>
-                <div class="noteOrder">Note: {{ this.wishesText }}</div>
+                <div style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" class="noteOrder">Note: {{ this.wishesText }}</div>
                 <div class="priceOrder">Price: ${{ this.price }}USD<b></b></div>
             </div>
             <div class="description" style=" display: flex; text-align: center;">

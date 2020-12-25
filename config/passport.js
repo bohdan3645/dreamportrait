@@ -22,7 +22,7 @@ passport.use('local.register', new LocalStrategy({
 	 await body('firstName').notEmpty().withMessage('First name is a required field').run(req);
 	 await body('lastName').notEmpty().withMessage('Last name is a required field').run(req);
 	 await body('email').notEmpty().isEmail().withMessage('E-mail will be contain email').run(req);
-	 await body('password').notEmpty().isLength({min: 6}).withMessage('Password will be at least 7 chars long').run(req);
+	 await body('password').notEmpty().isLength({min: 6}).withMessage('Password must be at least 6 characters long').run(req);
 	 const errors = validationResult(req);
   if (!errors.isEmpty()){
   	var messages = [];

@@ -82,9 +82,14 @@
 }
 
 .wish {
-    overflow: hidden;
-    text-overflow: ellipsis;
+    width: 80%;
     height: 40px;
+}
+
+.wish div {
+    text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
 }
 
 .deleteOrder {
