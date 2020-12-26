@@ -69,8 +69,7 @@
                     <div class="backgroundOrder">Background: {{ this.selectedBakcground }}</div>
                 </div>
 
-                <div id="see-more-notes" class="note-item-adm adm-order-item">{{ this.wishesText }}
-                    <button id="see-more-wish" class="see-more-adm" onclick="toggleText()">+</button></div>
+                <div id="see-more-notes" class="note-item-adm adm-order-item">{{ this.wishesText }}</div>
                 <div class="total-item-adm adm-order-item">Price: {{ this.price }}<b></b></div>
                 <div class="date-active-order-adm adm-order-item" id="date">Date: {{ artImageCreatedAt }}</div>
                 <div class="uploading-btns adm-order-item">
@@ -239,20 +238,4 @@ function priceChanging() {
 
 
 
-<script type="text/javascript">
-    var status = "less";
 
-function toggleText() {
-    var text="Here is some text";
-
-    if (status == "less") {
-        document.getElementById("see-more-notes").innerHTML=text;
-        document.getElementById("see-more-wish").innerText = "-";
- status = "more";
-    } else if (status == "more") {
-        document.getElementById("see-more-notes").innerHTML = "";
-        document.getElementById("see-more-wish").innerText = "+";
-        status = "less"
-    }
-}
-</script>

@@ -11,7 +11,7 @@
             <form id="payment-form">
                 <div id="card-element" style="margin: 20px 0"></div>
                 <div class="sr-field-error" id="card-errors" role="alert"></div>
-                <button class="full-btn" style="padding: 5px" type="button" action="/create-order" onclick="payWay()">
+                <button id="way-pay-btn" class="full-btn" style="padding: 5px" type="button" action="/create-order" onclick="payWay()">
                     Checkout
                 </button>
             </form>
@@ -141,6 +141,7 @@
         updateCartQty();
 
     }
+
 
     function payWay() {
         var createOrder = document.getElementById('createOrder');

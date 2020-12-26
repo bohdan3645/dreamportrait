@@ -23,7 +23,6 @@
                 </div>
 
                 {{# if ../isAdmin }}
-            <a style="font-size: 29px; vertical-align: bottom; color: #6A57A4; border:1px solid grey; padding:3px;" href="/admin-page/"><i class="fas fa-user-cog"></i></a>
                     <form action="/reviews-page/hide" method="POST">
                         <input type="hidden" name="productId" value="{{id}}">
                         <button type="submit" class="dell-review-btn">Hide</button>
