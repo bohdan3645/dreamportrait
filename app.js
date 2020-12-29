@@ -53,7 +53,7 @@ const app = express();
 
 
 // mongodb
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@' + process.env.MONGOCLASTER + '?retryWrites=true&w=majority');
 require('./config/passport');
 const ObjectId = require("mongoose");
 // mongodb
