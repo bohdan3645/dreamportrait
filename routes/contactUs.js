@@ -16,14 +16,14 @@ router.post('/submit', (req, res, next) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: gmailUser,
-            pass: gmailPassword
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_PASSWORD
         }
     });
 
     let mailOption = {
         from: email,
-        to: 'dreamportraitstore@gmail.com',
+        to: process.env.GMAIL_USER,
         subject: 'Dream Portrait Support',
         text: 'hello'
     }

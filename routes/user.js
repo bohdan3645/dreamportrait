@@ -106,13 +106,13 @@ router.post('/update-password', function (req, res, next) {
             let transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'dreamportraitstore@gmail.com',
-                    pass: '34yiuOH87%$#'
+                    user: process.env.GMAIL_USER,
+                    pass: process.env.GMAIL_PASSWORD
                 }
             });
 
             let mailOption = {
-                from: 'dreamportraitstore@gmail.com',
+                from: process.env.GMAIL_USER,
                 // TODO: fix email sending
                 to: user.email,
                 subject: 'Dream Portrait Support',
@@ -158,13 +158,13 @@ router.post('/forgot-password', function (req, res, next) {
                     let transporter = nodemailer.createTransport({
                         service: 'gmail',
                         auth: {
-                            user: 'dreamportraitstore@gmail.com',
-                            pass: '34yiuOH87%$#'
+                            user: process.env.GMAIL_USER,
+                            pass: process.env.GMAIL_PASSWORD
                         }
                     });
 
                     let mailOption = {
-                        from: 'dreamportraitstore@gmail.com',
+                        from: process.env.GMAIL_USER,
                         to: req.body.email,
                         subject: 'Dream Portrait Support',
                         text: 'Reset password link: \n' + baseLink + resetLink

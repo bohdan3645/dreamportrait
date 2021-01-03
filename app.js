@@ -138,15 +138,15 @@ app.post("/update-payment-status", (req, res) => {
             let transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'dreamportraitstore@gmail.com',
-                    pass: '34yiuOH87%$#'
+                    user: process.env.GMAIL_USER,
+                    pass: process.env.GMAIL_PASSWORD
                 }
             });
 
             // const reviewsList = order.products.map(product => product.comment.url).join("\n");
 
             let mailOption = {
-                from: 'dreamportraitstore@gmail.com',
+                from: process.env.GMAIL_USER,
                 to: req.user.email,
                 subject: 'Dream Portrait Order',
                 // text: 'Thanks for the ASS , you can leave tyhe comment here: \n\n' + reviewsList
