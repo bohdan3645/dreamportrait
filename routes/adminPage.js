@@ -7,6 +7,8 @@ const nodemailer = require('nodemailer');
 const {sendEmail} = require("../helper");
 const fs = require('fs');
 
+const moment = require('moment');
+
 const isAdmin = (roles, user) => {
     if (!user) {
         return false;
@@ -74,15 +76,13 @@ router.get('/', checkIsInRole('admin'), function (req, res, next) {
       if (!order.isPayed) return
 
       order.products.forEach(function (p) {
-        const tedt = new Date(p.artImageCreatedAt);
-
         result.push({
           id: p._id,
           orderIdNumber: order.idNumber,
           orderId: p.orderId,
           isPayed: p.isPayed,
           artImage: p.artImage,
-          artImageCreatedAt: tedt.getDate().toString() + '.' + tedt.getMonth().toString() + '.' + tedt.getFullYear().toString(),
+          artImageCreatedAt: moment(order.createdAt).format('YYYY-MM-DD HH:mm'),
           imagePath: p.imagePath,
           selectedPeople: p.selectedPeople,
           selectedBakcground: p.selectedBakcground,
