@@ -82,7 +82,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 if (!process.env.IS_DEVELOPMENT)
 {
-    app.use(enforce.HTTPS({ trustProtoHeader: true }));    
+    app.use(enforce.HTTPS({ trustProtoHeader: true }));
 }
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -176,6 +176,7 @@ app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
         fs.mkdirSync(rootFolder);
     }
 
+    console.log(req.body.order)
     const order = new Order({
         user: req.user,
         products: req.body.order.map(o => {
@@ -212,9 +213,10 @@ app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
                     url: baseLink + randomText
                 }),
                 wishesText: o.text,
-                price: o.price
+                price: o.price,
+                email: o.email
             }
-        })
+        }),
     });
 
     order.save(function (err, result) {

@@ -188,8 +188,7 @@
                         test):
                     </h5>
                     <div style="display: flex; justify-content: center;">
-                    <textarea class="input_text" id="text-in" type="input" oninput="textIn(this.value)"
-                              style="width: 89%; height: 150px; margin: 3px auto"></textarea>
+                    <textarea class="input_text" id="text-in" type="input" oninput="textIn(this.value)"></textarea>
                     </div>
                     <p id="demo"></p>
                 </div>
@@ -205,6 +204,13 @@
                     </div>
                     <div id="imgTest" style="display: none"></div>
                 </div>
+            </div>
+            <div class="wrap-item item7 email-block">
+                <h5>
+                    <label for="email">Enter your email</label>
+                </h5>
+                <input type="email" id="email" class="input_text">
+                <p class="email-error">email is invalid</p>
             </div>
             <div class="wrap-item item8" style="text-align: center;">
                 <div>
@@ -318,6 +324,12 @@
             return;
         }
 
+        const emailValid = validateEmail();
+
+        if (!emailValid) {
+          return;
+        }
+
         var localStorageCart = JSON.parse(localStorage.getItem("cart"));
 
         if (localStorageCart == null) {
@@ -329,7 +341,8 @@
             selectedBakcground: selectedBakcground,
             wishesText: wishesText,
             image: image,
-            imageFile: imageFile
+            imageFile: imageFile,
+            email: getEmailValue()
         });
 
         localStorage.setItem("cart", JSON.stringify(localStorageCart));
@@ -338,6 +351,21 @@
             window.location.href = '/cart-page';
         }
     });
+
+    function getEmailValue () {
+        return $(".email-block #email").val()
+    }
+
+    function validateEmail() {
+        const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const $emailError = $(".email-block .email-error");
+        const email = getEmailValue();
+
+        const isEmailValid = EMAIL_REGEX.test(email)
+        $emailError.toggle(!isEmailValid)
+
+        return isEmailValid
+    }
 
     function closeModall() {
         modallWindow.style.display = "none";

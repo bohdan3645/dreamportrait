@@ -1,9 +1,21 @@
-.order-page{
+.order-page {
     width: 100%;
     display: inline-block;
     font-family: Arial, Helvetica, sans-serif;
 
 }
+
+.order-page .input_text {
+    position: relative;
+    width: 100%;
+
+}
+
+.order-page .email-block .email-error {
+    color: red;
+    display: none;
+}
+
 .main-wrap{
     width: 50%;
     margin: 0 auto;
@@ -29,7 +41,7 @@
 .subwrap2 .wrap-item {
     width: 460px;
     background-color: rgb(255, 255, 255, 0.4);
-    padding: 10px 10px;
+    padding: 20px;
     text-align: left;
     margin: 5px 0;
 }
@@ -144,10 +156,10 @@
     }
 
     .custom-background-img{
-        font-size: 22px; 
-        text-align: center; 
-        padding: 6px 0; 
-        width: 60px; 
+        font-size: 22px;
+        text-align: center;
+        padding: 6px 0;
+        width: 60px;
         height: 60px;
     }
 
@@ -183,7 +195,7 @@
 
 
     /*=============================*/
-   
+
 
 
     .container-with-photos {
@@ -303,12 +315,12 @@
 
 @media(max-width: 1024px) {
 .order-page .subwrap1{
-    width: 100%; 
-    padding: 10px 0;  
+    width: 100%;
+    padding: 10px 0;
 }
 .order-page .subwrap2{
-    width: 100%;   
-} 
+    width: 100%;
+}
 .subwrap1 .wrap-item{
     float: none;
     margin-left: auto;
@@ -318,12 +330,12 @@
     float: none;
     margin-left: auto;
     margin-right: auto;
-} 
+}
 
 }
 
 @media(max-width: 992px) {
-    
+
    .order-page .subwrap2{
         padding: 0;
     }
@@ -375,7 +387,7 @@
 .slidercontainer{
     width: 100%;
     height: 400px;
-}        
+}
 .container-with-photos{
     width: 100%;
     height: 124px;
@@ -399,7 +411,7 @@
 }
 
 .custom-background-img{
-    font-size: 20px; 
+    font-size: 20px;
 }
 
 

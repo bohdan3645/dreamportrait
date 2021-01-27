@@ -12,7 +12,8 @@ var schema =  new Schema ({
 	selectedPeople: {type: Number, required: true},
 	wishesText: {type: String, required: false},
 	price: {type: Number, required: true},
-	comment: {type: Comment.schema, ref: 'comment', default: null}
+	comment: {type: Comment.schema, ref: 'comment', default: null},
+	email: { type: Schema.Types.String }
 });
 
 

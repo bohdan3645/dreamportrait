@@ -87,7 +87,8 @@ router.get('/', checkIsInRole('admin'), function (req, res, next) {
           selectedPeople: p.selectedPeople,
           selectedBakcground: p.selectedBakcground,
           wishesText: p.wishesText,
-          price: p.price
+          price: p.price,
+          email: p.email,
         })
       })
     })

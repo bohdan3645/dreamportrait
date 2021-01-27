@@ -4,7 +4,10 @@
     }
     .admin-headers-for-items{
         display: inline-block;
-        width: 14%;
+        width: 13%;
+    }
+    .admin-headers-for-items.number{
+        width: 70px;
     }
     .adm-order-item{
         width: 14%;
@@ -12,6 +15,9 @@
         border-right: 2px solid grey;
         padding-left: 10px;
         color: grey;
+    }
+    .adm-order-item.number {
+        width: 70px;
     }
     .adm-header-btns{
         border: none;
@@ -50,8 +56,9 @@
     <div class="ordersContent">
         <!-- TODO: better use table -->
         <div class="admin-orders-items">
-            <h6 class="admin-headers-for-items"></h6>
+            <h6 class="admin-headers-for-items number"></h6>
             <h6 class="admin-headers-for-items">{NAME}</h6>
+            <h6 class="admin-headers-for-items">Email</h6>
             <h6 class="admin-headers-for-items">GIG</h6>
             <h6 class="admin-headers-for-items">NOTES</h6>
             <h6 class="admin-headers-for-items">TOTAL</h6>
@@ -61,12 +68,17 @@
         <div class="active-items">
         {{# each orders }}
             <div class="orderDetailsInProgress">
-                <div class="adm-order-item">
-                    {{ this.orderIdNumber }}
+                <div class="adm-order-item number">
+                    {{#if this.orderIdNumber }}
+                        #{{ this.orderIdNumber }}
+                    {{/if}}
                 </div>
                 <div class="client-name-item-adm adm-order-item">
                      <a style=" background-color: orange; padding: 5px; margin:5px;" type="button" download="{{ this.wishesText }}.jpeg" href="{{ this.imagePath }}">Download</a>
                      {name}
+                </div>
+                <div class="adm-order-item">
+                    {{ this.email }}
                 </div>
 
                 <div class="gig-item adm-order-item">
