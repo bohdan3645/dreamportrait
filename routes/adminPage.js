@@ -48,7 +48,7 @@ router.post('/upload-art-image', checkIsInRole("admin"), function (req, res, nex
                 fs.readFile('./views/mailTemplates/review-mail.html', (err, data) => {
                     let reviewText = data.toString('utf8');
                     reviewText = reviewText.replace('$1', product.comment.url);
-                       
+
                     sendEmail(req.user.email, 'Dream Portrait Art', reviewText, () => res.send(), () => res.send(order));
                 });
                 fs.readFile('./views/mailTemplates/download-art-mail.html', (err, data) => {
@@ -64,34 +64,36 @@ router.post('/upload-art-image', checkIsInRole("admin"), function (req, res, nex
 });
 
 /* GET admin page. */
-router.get('/', checkIsInRole("admin"), function (req, res, next) {
-    Order.find({}, function (err, orders) {
-        if (err) {
-            return res.write('Error!');
-        }
+router.get('/', checkIsInRole('admin'), function (req, res, next) {
+  Order.find({}, function (err, orders) {
+    if (err) return res.write('Error!')
 
-        res.render('admin/adminPage', {
-            orders: orders
-                .filter(o => o.isPayed)
-                .reduce((acc, o) => acc.concat(o.products), [])
-                .map(p => {
-                    const tedt = new Date(p.artImageCreatedAt);
-                    return {
-                        id: p._id,
-                        orderId: p.orderId,
-                        isPayed: p.isPayed,
-                        artImage: p.artImage,
-                        artImageCreatedAt: tedt.getDate().toString() + "." + tedt.getMonth().toString() + "." + tedt.getFullYear().toString(),
-                        imagePath: p.imagePath,
-                        selectedPeople: p.selectedPeople,
-                        selectedBakcground: p.selectedBakcground,
-                        wishesText: p.wishesText,
-                        price: p.price,
-                    };
-                })
-        });
-    });
+    const result = []
 
-});
+    orders.forEach(function (order) {
+      if (!order.isPayed) return
+
+      order.products.forEach(function (p) {
+        const tedt = new Date(p.artImageCreatedAt);
+
+        result.push({
+          id: p._id,
+          orderIdNumber: order.idNumber,
+          orderId: p.orderId,
+          isPayed: p.isPayed,
+          artImage: p.artImage,
+          artImageCreatedAt: tedt.getDate().toString() + '.' + tedt.getMonth().toString() + '.' + tedt.getFullYear().toString(),
+          imagePath: p.imagePath,
+          selectedPeople: p.selectedPeople,
+          selectedBakcground: p.selectedBakcground,
+          wishesText: p.wishesText,
+          price: p.price
+        })
+      })
+    })
+
+    res.render('admin/adminPage', { orders: result })
+  })
+})
 
 module.exports = router;

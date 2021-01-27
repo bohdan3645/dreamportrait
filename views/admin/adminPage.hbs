@@ -3,11 +3,11 @@
         padding: 5px;
     }
     .admin-headers-for-items{
-        display: inline-block; 
-        width: 16%;
+        display: inline-block;
+        width: 14%;
     }
     .adm-order-item{
-        width: 16%;
+        width: 14%;
         display: inline-block;
         border-right: 2px solid grey;
         padding-left: 10px;
@@ -17,7 +17,7 @@
         border: none;
         background-color: grey;
     }
-    
+
     .uploading-btns{
         border-right: none;
     }
@@ -48,7 +48,9 @@
         </div>
         <hr style="margin-bottom: 10px; border:.5px solid black;margin-top: 0">
     <div class="ordersContent">
+        <!-- TODO: better use table -->
         <div class="admin-orders-items">
+            <h6 class="admin-headers-for-items"></h6>
             <h6 class="admin-headers-for-items">{NAME}</h6>
             <h6 class="admin-headers-for-items">GIG</h6>
             <h6 class="admin-headers-for-items">NOTES</h6>
@@ -59,6 +61,9 @@
         <div class="active-items">
         {{# each orders }}
             <div class="orderDetailsInProgress">
+                <div class="adm-order-item">
+                    {{ this.orderIdNumber }}
+                </div>
                 <div class="client-name-item-adm adm-order-item">
                      <a style=" background-color: orange; padding: 5px; margin:5px;" type="button" download="{{ this.wishesText }}.jpeg" href="{{ this.imagePath }}">Download</a>
                      {name}
@@ -73,7 +78,7 @@
                 <div class="total-item-adm adm-order-item">Price: {{ this.price }}<b></b></div>
                 <div class="date-active-order-adm adm-order-item" id="date">Date: {{ artImageCreatedAt }}</div>
                 <div class="uploading-btns adm-order-item">
-                    <input style=" background-color: #000; color: white" class="image-uploader" data-id="{{ this.id }}" type="file" value="upload"> 
+                    <input style=" background-color: #000; color: white" class="image-uploader" data-id="{{ this.id }}" type="file" value="upload">
                 </div>
             </div>
         {{/each}}
