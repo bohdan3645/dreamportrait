@@ -193,16 +193,14 @@
                     <p id="demo"></p>
                 </div>
             </div>
+
+
             <div class="wrap-item item7">
                 <div>
                     <h5 class="features__title">Upload your photo</h5>
-                    <div>
-                        <div class="button-wrap">
-                            <input class="btnUpl" id="inputFileToLoad" type="file" enctype="multipart/form-data"
-                                   onchange="encodeImageFileAsURL();"/>
-                        </div>
+                    <div class="pt-3">
+                        <input id="upload-image" type="file" class="filepond" name="filepond" multiple data-allow-reorder="true" data-max-file-size="10MB" data-max-files="1">
                     </div>
-                    <div id="imgTest" style="display: none"></div>
                 </div>
             </div>
             <div class="wrap-item item7 email-block">
@@ -220,9 +218,27 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 <script>
-
+  FilePond.registerPlugin(FilePondPluginFileValidateType);
+  FilePond.registerPlugin(FilePondPluginImagePreview);
+  FilePond.registerPlugin(FilePondPluginFileValidateSize);
+  FilePond.create(
+    document.querySelector('#upload-image'),
+    {
+      acceptedFileTypes: ['image/*'],
+      maxFileSize: '10MB',
+      credits: false,
+      labelIdle: 'Drag & Drop your image or <span class="filepond--label-action"> Browse </span>',
+      server: {
+        process: function (fieldName, file, metadata, load, error, progress, abort) {
+          // TODO: upload photo to s3!
+          setTimeout(function () {
+            load('asdads')
+          }, 3000)
+        }
+      }
+    }
+  );
 
     $('.slidercontainer').slick({
         slidesToShow: 1,
