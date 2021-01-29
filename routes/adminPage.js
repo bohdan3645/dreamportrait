@@ -83,7 +83,7 @@ router.get('/', checkIsInRole('admin'), function (req, res, next) {
           isPayed: p.isPayed,
           artImage: p.artImage,
           artImageCreatedAt: moment(order.createdAt).format('YYYY-MM-DD HH:mm'),
-          imagePath: p.imagePath,
+          imageUrl: p.imageUrl,
           selectedPeople: p.selectedPeople,
           selectedBakcground: p.selectedBakcground,
           wishesText: p.wishesText,

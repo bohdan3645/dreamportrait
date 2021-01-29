@@ -234,9 +234,10 @@
         process: function (fieldName, file, metadata, load, error, progress, abort) {
           // upload image to s3
           s3.upload({
-            Key: `${Date.now()}_${file.name}`,
+            Key: `photos/${Date.now()}_${file.name}`,
             Body: file,
             ContentType: file.type,
+            ContentDisposition: 'attachment',
             ACL: 'public-read'
           }, function(err, data) {
             if (err) return error('Something went wrong')
