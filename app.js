@@ -176,38 +176,15 @@ app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
         fs.mkdirSync(rootFolder);
     }
 
-    console.log(req.body.order)
     const order = new Order({
         user: req.user,
         products: req.body.order.map(o => {
-            // save image to the file system
-            const file = decodeBase64Image(o.image);
-            const imageName = Math.random().toString().substr(2, 20);
-            const publicPath = imageName + '.' + file.type.split('/')[1];
-            const publicMiniPath = imageName + '-mini.' + file.type.split('/')[1];
-            const filePath = rootFolder + publicPath
-
-            fs.writeFile(filePath, file.data, function (err) {
-                console.log(err);
-
-                // save mini image
-                sharp(filePath).resize({width: 200})
-                    .toFile(rootFolder + publicMiniPath)
-                    // .then(function (newFileInfo) {
-                    //     console.log("Image Resized");
-                    // })
-                    .catch(function (err) {
-                        console.log("Got Error " + err);
-                    });
-            });
-
             const randomText = crypto.randomBytes(50).toString('hex');
             const baseLink = req.protocol + "://" + req.headers.host + '/review-form/';
 
             return {
                 selectedBakcground: o.backgroundName,
-                imagePath: '/images/orders/' + publicPath,
-                imageMiniPath: '/images/orders/' + publicMiniPath,
+                imageUrl: o.imageUrl,
                 selectedPeople: o.peopleId,
                 comment: new Comment({
                     url: baseLink + randomText

@@ -199,7 +199,8 @@
                 <div>
                     <h5 class="features__title">Upload your photo</h5>
                     <div class="pt-3">
-                        <input id="upload-image" type="file" class="filepond" name="filepond" multiple data-allow-reorder="true" data-max-file-size="10MB" data-max-files="1">
+                        <input id="upload-image" type="file" class="filepond" name="filepond">
+                        <input type="text" class="filepond" name="image-url" hidden>
                     </div>
                 </div>
             </div>
@@ -231,10 +232,19 @@
       labelIdle: 'Drag & Drop your image or <span class="filepond--label-action"> Browse </span>',
       server: {
         process: function (fieldName, file, metadata, load, error, progress, abort) {
-          // TODO: upload photo to s3!
-          setTimeout(function () {
-            load('asdads')
-          }, 3000)
+          // upload image to s3
+          s3.upload({
+            Key: `${Date.now()}_${file.name}`,
+            Body: file,
+            ContentType: file.type,
+            ACL: 'public-read'
+          }, function(err, data) {
+            if (err) return error('Something went wrong')
+
+            $('input[name=image-url]').val(data.Location)
+
+            load(data.Key);
+          });
         }
       }
     }
@@ -319,8 +329,6 @@
     var selectedPeopleAmount = null;
     var selectedBakcground = null;
     var wishesText = null;
-    var image = null;
-    var imageFile = null;
     // order data variables
 
 
@@ -335,7 +343,7 @@
         } else if (!selectedBakcground) {
             modallWindow.style.display = "block";
             return;
-        } else if (!image) {
+        } else if (!getImageURL()) {
             modallWindow.style.display = "block";
             return;
         }
@@ -356,8 +364,7 @@
             selectedPeople: selectedPeopleAmount,
             selectedBakcground: selectedBakcground,
             wishesText: wishesText,
-            image: image,
-            imageFile: imageFile,
+            imageUrl: getImageURL(),
             email: getEmailValue()
         });
 
@@ -367,6 +374,10 @@
             window.location.href = '/cart-page';
         }
     });
+
+    function getImageURL () {
+      return $('input[name=image-url]').val()
+    }
 
     function getEmailValue () {
         return $(".email-block #email").val()
@@ -484,28 +495,4 @@
     textIn.addEventListener('input', function (event) {
         wishesText = event.target.value;
     });
-
-    function encodeImageFileAsURL() {
-        var filesSelected = document.getElementById("inputFileToLoad").files;
-        if (filesSelected.length > 0) {
-
-            var fileToLoad = filesSelected[0];
-
-            // fileToLoad.text().then((r) => {
-            //     debugger
-            // })
-            var fileReader = new FileReader();
-
-            fileReader.onload = function (fileLoadedEvent) {
-                var srcData = fileLoadedEvent.target.result;
-
-                image = srcData;
-
-                // var data = new FormData(),
-                // imageFile/ = fileToLoad;
-
-            }
-            fileReader.readAsDataURL(fileToLoad);
-        }
-    }
 </script>

@@ -3,8 +3,7 @@ var Schema = mongoose.Schema;
 var Comment = require('./comment');
 
 var schema =  new Schema ({
-	imagePath: {type: String, required: true},
-	imageMiniPath: {type: String, required: true},
+	imageUrl: { type: Schema.Types.String, required: true },
 	artImage: {type: String, default: null},
 	artImageCreatedAt: {type: String, default: null},
 	// TODO: Rename this shit later
