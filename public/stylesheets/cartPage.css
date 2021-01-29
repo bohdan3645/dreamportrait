@@ -41,9 +41,13 @@
 .orderPhoto {
     margin: 0 25px;
     /*padding: 15px 0;*/
-    background-color: #DDD8E5;
     position: relative;
     overflow: hidden;
+
+    background-image: url(/images/default-order-image.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .orderPhoto img {
@@ -177,7 +181,7 @@ overflow: hidden;
 
 
 /*@media(max-width: 770px) {
-    
+
 }*/
 
 @media(max-width: 670px) {
