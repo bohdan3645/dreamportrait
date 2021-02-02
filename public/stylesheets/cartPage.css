@@ -1,3 +1,21 @@
+#payment-form .email-block .email-error {
+    color: red;
+    display: none;
+}
+
+#payment-form .email-block label {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+#payment-form .email-block input {
+    border-radius: 10px;
+}
+
+#payment-form .email-block .email-info-text {
+    margin-top: 0;
+}
+
 .cartPageVisual {
     display: none;
 }
