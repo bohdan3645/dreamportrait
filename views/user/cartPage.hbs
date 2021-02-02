@@ -1,7 +1,6 @@
 <div class="cartContent">
     <div class="cartHead">CART</div>
-    <div id="cart">
-    </div>
+    <div id="cart"></div>
     <div class="nextPartOrder">
         <div class="saveOfOrder">YOU SAVE: <span style="color: red;"><b>50% </b></span>OFF</div>
         <div class="grandTotal" id="total-price">GRAND TOTAL:</div>
@@ -30,30 +29,6 @@
 </div>
 
 <script>
-    // timer for expire cart
-    // var minutes = 9;
-    // var seconds = 60;
-    // var time = document.getElementById("countDown")
-
-    // setInterval( function() {
-    //   if( minutes == 0 && seconds == 1){
-    //     time.innerHTML = "00:00"
-    //   }else{
-    //     seconds--;
-    //     if(seconds == 0){
-    //       minutes--;
-    //       seconds = 60;
-    //       if (minutes == 0) {
-    //         minutes = minutes;
-    //       }
-    //     }
-    //     time.innerHTML = minutes + ":" + seconds;
-    //   }
-    // }, 1000);
-    // timer for expire cart
-
-    showCartElement();
-
     var localStorageCart = JSON.parse(localStorage.getItem("cart"));
 
     if (localStorageCart == null) {
@@ -71,20 +46,25 @@
 
 
     function getItemTemplate(numPpl, bgName, price, text, image, index) {
-        text = text ? '<div>Note: ' + text + '</div>' : '';
-
-        return '<div class="orderDetails">' +
-                '<div class="orderPhoto"></div>' +
-                '<div class="details">' +
-                '<div class="hOrder">Original Dream Portrait Art</div>' +
-                '<div class="numberOfPeopleOrder">Number of people:<b> ' + numPpl + '</b></div>' +
-                '<div class="backgroundOrder">Background: ' + bgName + '</div>' +
-                '<div class="noteOrder"><div class="wish"> '+ text + '</div></div>' +
-                '<div class="priceOrder">Price:  <del>' + price * 2 + ' ' + '</del>USD<b>' + ' '  + ' ' + price + ' ' + '</b>USD</div>' +
-                '</div>' +
-                '<div class="price-Order"><b>' + price  + ' ' + ' </b> <span style="font-size: 14px; vertical-align: bottom">   USD</span></div>' +
-                '<button class="deleteOrder" onclick="ClearData(' + index + ')"><img src="/images/container.png" alt=""></button>' +
-                '</div>';
+        return `
+            <div class="cart-item">
+                <div class="cart-photo"></div>
+                <div class="cart-info">
+                    <div class="cart-title">Original Dream Portrait Art</div>
+                    <div class="cart-details-container">
+                        <div class="cart-details">
+                            Number of people: <b>${numPpl}</b> <br/>
+                            Background: ${bgName} <br/>
+                            Note: ${text} <br/><br/>
+                            Price: <del>${price * 2} USD</del> <b>${price} USD</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-delete-btn">
+                    <button type="button" class="delete-cart-item" onclick="ClearData(${index})"></button>
+                </div>
+            </div>
+        `
     }
 
     function showCartElement() {
