@@ -177,7 +177,7 @@ app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
     }
 
     const order = new Order({
-        user: req.user,
+        user: (req.user || null), // null is for unauthorized users
         products: req.body.order.map(o => {
             const randomText = crypto.randomBytes(50).toString('hex');
             const baseLink = req.protocol + "://" + req.headers.host + '/review-form/';

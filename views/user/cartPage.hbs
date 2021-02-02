@@ -6,17 +6,17 @@
         <div class="grandTotal" id="total-price">GRAND TOTAL:</div>
         <br>
 
-        {{# if login }}
-            <form id="payment-form">
-                <div id="card-element" style="margin: 20px 0"></div>
-                <div class="sr-field-error" id="card-errors" role="alert"></div>
-                <button id="way-pay-btn" class="full-btn" style="padding: 5px" type="button" action="/create-order" onclick="payWay()">
-                    Checkout
-                </button>
-            </form>
-        {{ else }}
-            <sapan>Plese <a href="/user/signin">Sign in</a> for pay!</sapan>
-        {{/if}}
+        <form id="payment-form">
+            <div id="card-element" style="margin: 20px 0"></div>
+            <div class="sr-field-error" id="card-errors" role="alert"></div>
+            <button id="way-pay-btn" class="full-btn" style="padding: 5px" type="button" onclick="payWay()">
+                Checkout
+            </button>
+        </form>
+
+<!--        {{#unless login}}-->
+<!--            <sapan>Plese <a href="/user/signin">Sign in</a> for pay!</sapan>-->
+<!--        {{/unless}}-->
 
     </div>
     <div class="cartPageVisual">
