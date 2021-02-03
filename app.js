@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const mailer = require('./services/mailer')
 const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -63,6 +64,8 @@ const ObjectId = require("mongoose");
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 // view engine hbs setup
+
+mailer.init()
 
 app.use(logger('dev'));
 app.use(express.urlencoded({limit: '50mb', extended: false}));
