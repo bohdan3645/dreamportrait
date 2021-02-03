@@ -5,10 +5,8 @@
 
 }
 
-.order-page .input_text {
-    position: relative;
-    width: 100%;
-
+.order-page #text-in {
+    border-radius: 10px;
 }
 
 .main-wrap{
