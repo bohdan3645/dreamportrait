@@ -130,43 +130,20 @@ function decodeBase64Image(dataString) {
     return response;
 }
 
-app.post("/update-payment-status", (req, res) => {
-    const orderId = req.body.orderId;
+app.post('/update-payment-status', (req, res) => {
+    const orderId = req.body.orderId
 
     Order.findByIdAndUpdate(orderId, { isPayed: true }, (err, order) => {
-        if (err) {
-            res.send(err);
-        } else {
-            // send an email
-            let transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                    user: process.env.GMAIL_USER,
-                    pass: process.env.GMAIL_PASSWORD
-                }
-            });
+        if (err) return res.send(err)
 
-            // const reviewsList = order.products.map(product => product.comment.url).join("\n");
-
-            let mailOption = {
-                from: process.env.GMAIL_USER,
-                to: req.user.email,
-                subject: 'Dream Portrait Order',
-                // text: 'Thanks for the ASS , you can leave tyhe comment here: \n\n' + reviewsList
-                text: 'Thanks for the SOSI1'
-            };
-
-            transporter.sendMail(mailOption, (err, data) => {
-                if (err) {
-                    console.log(err);
-                    res.send();
-                } else {
-                    res.redirect('/user/profile');
-                }
-            });
-        }
-    });
-});
+        mailer.sendOrderEmail(order)
+          .then(_ => res.send('ok'))
+          .catch(err => {
+              console.error(err)
+              res.send(err)
+          })
+    })
+})
 
 app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
     const secretKey = process.env.SECRET_PAY_KEY;

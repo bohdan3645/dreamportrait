@@ -1,9 +1,8 @@
 const nodemailer = require('nodemailer')
 const expressHbs = require('express-handlebars');
 
-// TODO: maybe move to env
-const GMAIL_USER = 'no-reply@dream-portrait.com'
-const GMAIL_PASSWORD = '8yZXRM&htyu'
+const GMAIL_USER = process.env.GMAIL_USER
+const GMAIL_PASSWORD = process.env.GMAIL_PASSWORD
 
 function init () {
   if (global.transporter) {
@@ -31,14 +30,28 @@ async function sendEmail({ to, subject, html }) {
   });
 }
 
-async function sendOrderEmail (user, orderId) {
-  const email = 'rishko92@gmail.com'
-  const html = await _getEmailHtml('order_email', { orderName: 'test' })
+async function sendOrderEmail (order) {
+  const email = order.products[0].email // all products have the same email for one order
+  const context = _getOrderData(order)
+  const html = await _getEmailHtml('order_email', context)
 
   await sendEmail({ to: email, html })
 }
 
 // --- Private ---
+
+function _getOrderData (order) {
+  const result = Object.assign({}, order.toJSON())
+
+  result.totalPrice = 0
+
+  result.products.forEach(product => {
+    result.totalPrice += product.price
+    product.doublePrice = product.price * 2
+  })
+
+  return result
+}
 
 async function _getEmailHtml (emailTemplateName, context) {
   return await expressHbs
