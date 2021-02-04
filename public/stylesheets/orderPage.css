@@ -9,6 +9,28 @@
     border-radius: 10px;
 }
 
+.order-page .info-section .info-section-title {
+    font-family: hellofreeday;
+    color: #6A57A4;
+}
+
+.order-page .info-section .info-section-image {
+    position: relative;
+    width: 100%;
+}
+
+.order-page .info-section .info-section-image img {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.order-page .info-section > p {
+    font-weight: normal;
+    line-height: 1.3rem;
+    font-size: 1rem;
+}
+
 .main-wrap{
     width: 50%;
     margin: 0 auto;
