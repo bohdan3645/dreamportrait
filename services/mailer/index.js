@@ -18,7 +18,7 @@ function init () {
   })
 }
 
-async function sendEmail({ to, subject, html }) {
+async function sendEmail({ to, subject, html, text }) {
   const DEFAULT_SUBJECT = 'DreamPortrait new order'
   const DEFAULT_FROM = 'no-reply@dream-portrait.com'
 
@@ -26,7 +26,8 @@ async function sendEmail({ to, subject, html }) {
     from: DEFAULT_FROM,
     to: to,
     subject: subject || DEFAULT_SUBJECT,
-    html: html,
+    html: html || '',
+    text: text || '',
   });
 }
 
@@ -36,6 +37,16 @@ async function sendOrderEmail (order) {
   const html = await _getEmailHtml('order_email', context)
 
   await sendEmail({ to: email, html })
+}
+
+async function sendContactUsEmail (context) {
+   const html = await _getEmailHtml('contact_us_email', context)
+
+  await sendEmail({
+    to: 'support@dream-portrait.com',
+    subject: 'Customer contact form',
+    html
+  })
 }
 
 // --- Private ---
@@ -62,5 +73,6 @@ async function _getEmailHtml (emailTemplateName, context) {
 module.exports = {
   init,
   sendEmail,
-  sendOrderEmail
+  sendOrderEmail,
+  sendContactUsEmail
 }

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const nodemailer = require('nodemailer');
+const mailer = require('../services/mailer')
 
 
 router.get('/', function (req, res, next) {
@@ -8,33 +8,14 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/submit', (req, res, next) => {
-    var fname = req.body.contactFname;
-    var lname = req.body.contactLname;
-    var email = req.body.contactEmail;
-    var message = req.body.contactMessage;
+    const { email, message } = req.body
 
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.GMAIL_USER,
-            pass: process.env.GMAIL_PASSWORD
-        }
-    });
-
-    let mailOption = {
-        from: email,
-        to: process.env.GMAIL_USER,
-        subject: 'Dream Portrait Support',
-        text: 'hello'
-    }
-
-    transporter.sendMail(mailOption, (err, data) => {
-        if (!message) {
-            res.redirect('/contact-us');
-        } else {
-            res.redirect('/success-msg-contact');
-        }
-    });
+    mailer.sendContactUsEmail({ email, message })
+      .then(_ => res.redirect('/contact-us'))
+      .catch(err => {
+          console.error(err)
+          res.redirect('/contact-us');
+      })
 });
 
 

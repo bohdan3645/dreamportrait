@@ -14,9 +14,9 @@
                 </p>
             </b>
         </div>
-        <form action="/contact-us/submit" method="POST">
-            <input type="email" name="contactEmail" placeholder="E-mail">
-            <textarea maxlength="5000" type="message" name="contactMessage" placeholder="Message"></textarea>
+        <form action="/contact-us/submit" method="POST" enctype=”multipart/form-data” name="contact-form">
+            <input type="email" name="email" placeholder="E-mail" required>
+            <textarea maxlength="5000" name="message" placeholder="Message" required></textarea>
             <div class="btn">
                 <button type="submit" class="sendBtn">SEND</button>
             </div>
