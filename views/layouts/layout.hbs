@@ -48,22 +48,6 @@
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.832.0.min.js"></script>
 <script src="/js/s3.js"></script>
 
-<!--  <div class="center">-->
-<!--      <canvas id="canvas" width="105" height="105">-->
-<!--          <p>Get chrooome!</p>-->
-<!--      </canvas>-->
-<!--  </div>-->
-<!--  <p class="load-title" title="Loading, please wait."></p>-->
-
-<div id="background-modall-for-window" onclick="closeModall()">
-    <div class="modall-window">
-        <h2 class="modall-title">Please Chouse All Parts!</h2>
-        <hr>
-        <div class="modall-btns">
-            <button style=" background-color: #4FC478;" class="modall-btn">Yes</button>
-        </div>
-    </div>
-</div>
 <div class="contain">
     {{> header}}
     {{{body}}}
@@ -71,44 +55,6 @@
 
 {{> footer}}
 <script>
-    // var cvs = document.getElementById('canvas');
-    //     ctx = cvs.cvs.getContext('2d');
-    //     sA = (Math.PI / 180) * 45;
-    //     sE = (Math.PI / 180) * 90;
-    //     ca = canvas.width;
-    //     ch = canvas.height;
-
-    // function init(){
-    // setInterval(function(){
-
-    //     ctx.clearRect(0, 0, ca, ch);
-    //     ctx.lineWidth = 15;
-
-    //     ctx.beginPath();
-    //     ctx.strokeStyle = "#ffffff";
-    //     ctx.shadowColor = "#eeeeee";
-    //     ctx.shadowOffsetX = 2;
-    //     ctx.shadowOffsetY = 2;
-    //     ctx.shadowBlur = 5;
-    //     ctx.arc(50, 50, 25, 0, 360, false);
-    //     ctx.stroke();
-    //     ctx.closePath();
-
-    //     sE += 0.05;
-    //     sA += 0.05;
-
-    //     ctx.beginPath();
-    //     ctx.strokeStyle = "#aaaaaa";
-    //     ctx.arc(50, 50, 25, sA, sE, false);
-    //     ctx.stroke();
-    //     ctx.closePath();
-
-    //     }, 6);
-    // }
-
-    //init();
-
-
     function imgLoaded(img) {
         var $img = ($img)
         $img.parent().addClass('loaded');

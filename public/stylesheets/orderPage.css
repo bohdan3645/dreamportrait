@@ -31,6 +31,10 @@
     font-size: 1rem;
 }
 
+.error-message {
+    display: none;
+}
+
 .main-wrap{
     width: 50%;
     margin: 0 auto;

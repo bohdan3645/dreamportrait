@@ -128,7 +128,7 @@
                 <h4 class="text-center">PLACE TOUR ORDER IN <b>4</b> STEPS</h4>
             </div>
             <div class="wrap-item item4">
-                <div>
+                <div class="selected-people-block">
                     <h5 class="features__title"><b>1.</b> Choose number of people & pets:</h5>
                     <div style="display: flex; justify-content: space-between;">
                         <button data-price="49" data-id="1" class="people-amount-image">1</button>
@@ -144,10 +144,11 @@
                         <button data-price="129" data-id="9" class="people-amount-image">9</button>
                         <button data-price="139" data-id="10" class="people-amount-image">10</button>
                     </div>
+                    <small class="form-text text-danger error-message">required</small>
                 </div>
             </div>
             <div class="wrap-item item5">
-                <div>
+                <div class="background-image-block">
                     <h5 class="features__title"><b>2.</b> Choose Background:</h5>
                     <div class="slidercontainerBcgr" style="margin: 15px auto">
                         <div class="showSlideBcgr">
@@ -183,10 +184,11 @@
                         <img data-price="25" data-id="111" name="Custom" class="background-image"
                              src="/images/custom.png" onclick="currentSlideBcgr(6)">
                     </div>
+                    <small class="form-text text-danger error-message">required</small>
                 </div>
             </div>
             <div class="wrap-item item6">
-                <div>
+                <div class="notes-block">
                     <h5 class="features__title">
                         <b>3.</b> Add notes (eye, color, particular accessories, details, special test):
                     </h5>
@@ -197,12 +199,13 @@
 
 
             <div class="wrap-item item7">
-                <div>
+                <div class="photo-block">
                     <h5 class="features__title"><b>4.</b> Upload your photo</h5>
                     <div class="mt-3">
                         <input id="upload-image" type="file" class="filepond" name="filepond">
                         <input type="text" class="filepond" name="image-url" hidden>
                     </div>
+                    <small class="form-text text-danger error-message">required</small>
                 </div>
             </div>
             <div class="wrap-item item8" style="text-align: center;">
@@ -367,18 +370,14 @@
 
     var addToCart = document.getElementById('add-to-cart');
     var textIn = document.getElementById('text-in');
-    var modallWindow = document.getElementById('background-modall-for-window');
 
     addToCart.addEventListener('click', function (event) {
-        if (!selectedPeopleAmount) {
-            modallWindow.style.display = "block";
-            return;
-        } else if (!selectedBakcground) {
-            modallWindow.style.display = "block";
-            return;
-        } else if (!getImageURL()) {
-            modallWindow.style.display = "block";
-            return;
+        // validations
+        if (!selectedPeopleAmount || !selectedBakcground || !getImageURL()) {
+            $('.selected-people-block .error-message').toggle(!selectedPeopleAmount)
+            $('.background-image-block .error-message').toggle(!selectedBakcground)
+            $('.photo-block .error-message').toggle(!getImageURL())
+            return false
         }
 
         var localStorageCart = JSON.parse(localStorage.getItem("cart"));
@@ -403,11 +402,6 @@
 
     function getImageURL () {
       return $('input[name=image-url]').val()
-    }
-
-    function closeModall() {
-        modallWindow.style.display = "none";
-        return;
     }
 
 
