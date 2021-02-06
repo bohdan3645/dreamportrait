@@ -15,11 +15,17 @@
     margin-bottom: 25px
 }
 
+.review-column{
+    width: 33%;
+    display: inline-block;
+    display: flex;
+    
+}
+
 .card{
     width: 285px;
     margin: 15px;
     padding: 10px;
-    display: inline-block;
     vertical-align: top;
 }
 
