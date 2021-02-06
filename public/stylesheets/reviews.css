@@ -18,13 +18,12 @@
 .review-column{
     width: 33%;
     display: inline-block;
-    display: flex;
-    
+    vertical-align: top;
 }
 
 .card{
     width: 285px;
-    margin: 15px;
+    margin: 40px 15px;
     padding: 10px;
     vertical-align: top;
 }
@@ -40,6 +39,7 @@
 .reviewsAdmin {
     width: 970px;
     padding: 25px 0;
+    display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
 }
@@ -57,29 +57,38 @@
     margin: 0 auto;
 }
 
+.review-column{
+    width: 32%;
+}
+
 .card {
-    width: 31%;
-    margin: 5px;
+    width: 95%;
+    margin: 15px;
+}
+
+.star-rating {
+    height: 31px;
 }
 
 }
 
 @media(max-width: 992px) {
-.card {
-    width: 48%;
+    .reviewsAdmin {
+    width: 95%;
 }
 .reviewsHeader {
     font-size: 26px;
 }
+.star-rating {
+    height: 25px;
+}
 }
 
 @media(max-width: 768px) {
-     .reviewsAdmin {
-    width: 80%;
-    margin: 0 auto;
-}
-.card {
-    width: 45%;
+
+.review-column{
+    width: 60%;
+    margin: 15px auto;
 }
 .reviewsHeader {
     font-size: 20px;
