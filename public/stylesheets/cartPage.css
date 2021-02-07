@@ -46,6 +46,18 @@
 
 }
 
+.cart-item {
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .125);
+    padding: 10px 24px;
+}
+
+
+.form-control{
+        border: 1px solid rgba(0,0,0,.125);
+}
+
 
 .price-Order,
 .deleteOrder {
@@ -110,8 +122,8 @@
 
 .wish div {
     text-overflow: ellipsis;
-white-space: nowrap;
-overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .deleteOrder {
