@@ -53,9 +53,11 @@
 }
 .subwrap1 .wrap-item {
     width: 460px;
-    background-color: rgb(255, 255, 255, 0.4);
+    background-color: #fff;
     text-align: left;
     margin: 20px 0;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
 }
 .subwrap2 .wrap-item {
     width: 460px;
