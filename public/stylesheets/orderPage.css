@@ -192,6 +192,10 @@
     margin-left: 5px;
     vertical-align: bottom;
 }
+
+.order-page-rating{
+    margin: 10px auto;
+}
 .subwrap1 .wrap-item .star-rating {
     height: 32px;
 }
