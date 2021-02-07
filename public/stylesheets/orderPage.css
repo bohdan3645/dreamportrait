@@ -53,24 +53,24 @@
 }
 .subwrap1 .wrap-item {
     width: 460px;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255, 0.4);
     text-align: left;
     margin: 20px 0;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
 }
 .subwrap2 .wrap-item {
     width: 460px;
-    background-color: rgb(255, 255, 255, 0.4);
+    background-color: #fff;
     padding: 20px;
     text-align: left;
     margin: 5px 0;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
 }
 .subwrap1 .wrap-item{
     position: relative;
     float: right;
     box-shadow: 0 0 20px 10px;
-    color: #fff
+    color: #fff;
 }
 .subwrap1 .item1{
     background-color: rgb(255, 255, 255, 0);
