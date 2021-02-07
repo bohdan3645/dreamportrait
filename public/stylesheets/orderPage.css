@@ -188,8 +188,12 @@
 }
 
 .reviews-qty {
-    font-size: 24px;
+    font-size: 22px;
     margin-left: 5px;
+    vertical-align: bottom;
+}
+.subwrap1 .wrap-item .star-rating {
+    height: 32px;
 }
 
 .custom-background-img {
