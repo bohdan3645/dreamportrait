@@ -8,73 +8,31 @@
     <div class="main-wrap">
         <div class="subwrap1">
             <div class="wrap-item item1">
-                <div class="slidercontainer">
-                    <div class="showSlide ">
-                        <img src="/images/ex1 cut.jpg"/>
-                    </div>
-                    <div class="showSlide ">
-                        <img src="/images/ex 2 cut.jpg"/>
-                    </div>
-                    <div class="showSlide ">
-                        <img src="/images/ex3 cut.jpg"/>
-                    </div>
-                    <div class="showSlide ">
-                        <img src="/images/ex4 cut.jpg"/>
-                    </div>
-                    <div class="showSlide ">
-                        <img src="/images/ex5 cut.jpg"/>
-                    </div>
-                    <div class="showSlide ">
-                        <img src="/images/ex6 cut.jpg"/>
-                    </div>
-                    <div class="showSlide ">
-                        <img src="/images/ex7 cut.jpg"/>
-                    </div>
-                    <div class="showSlide ">
-                        <img src="/images/ex8 cut.jpg"/>
-                    </div>
-                    <div class="showSlide ">
-                        <img src="/images/ex9 cut.jpg"/>
-                    </div>
-                    <div class="showSlide ">
-                        <img src="/images/ex10 cut.jpg"/>
-                    </div>
-                    <!-- Navigation arrows -->
+                <div class="carousel carousel-main">
+                    <div class="carousel-cell" style="background-image: url('/images/ex1 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex 2 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex3 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex4 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex5 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex6 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex7 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex8 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex9 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex10 cut.jpg')"></div>
                 </div>
             </div>
             <div class="wrap-item item2">
-                <div class="container-with-photos multiple-items">
-                    <div class="item-with-photo">
-                        <img class="current-item" src="/images/ex1 cut.jpg">
-                    </div>
-                    <div class="item-with-photo">
-                        <img class="current-item" src="/images/ex 2 cut.jpg">
-                    </div>
-                    <div class="item-with-photo">
-                        <img class="current-item" src="/images/ex3 cut.jpg">
-                    </div>
-
-                    <div class="item-with-photo">
-                        <img class="current-item" src="/images/ex4 cut.jpg">
-                    </div>
-                    <div class="item-with-photo">
-                        <img class="current-item" src="/images/ex5 cut.jpg">
-                    </div>
-                    <div class="item-with-photo">
-                        <img class="current-item" src="/images/ex6 cut.jpg">
-                    </div>
-                    <div class="item-with-photo">
-                        <img class="current-item" src="/images/ex7 cut.jpg">
-                    </div>
-                    <div class="item-with-photo">
-                        <img class="current-item" src="/images/ex8 cut.jpg">
-                    </div>
-                    <div class="item-with-photo">
-                        <img class="current-item" src="/images/ex9 cut.jpg">
-                    </div>
-                    <div class="item-with-photo">
-                        <img class="current-item" src="/images/ex10 cut.jpg">
-                    </div>
+                <div class="carousel carousel-nav">
+                    <div class="carousel-cell" style="background-image: url('/images/ex1 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex 2 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex3 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex4 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex5 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex6 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex7 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex8 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex9 cut.jpg')"></div>
+                    <div class="carousel-cell" style="background-image: url('/images/ex10 cut.jpg')"></div>
                 </div>
             </div>
         </div>
@@ -263,70 +221,48 @@
     </div>
 </div>
 <script>
-  FilePond.registerPlugin(FilePondPluginFileValidateType);
-  FilePond.registerPlugin(FilePondPluginImagePreview);
-  FilePond.registerPlugin(FilePondPluginFileValidateSize);
-  FilePond.create(
-    document.querySelector('#upload-image'),
-    {
-      acceptedFileTypes: ['image/*'],
-      maxFileSize: '10MB',
-      credits: false,
-      labelIdle: 'Drag & Drop your image or <span class="filepond--label-action"> Browse </span>',
-      server: {
-        process: function (fieldName, file, metadata, load, error, progress, abort) {
-          // upload image to s3
-          s3.upload({
-            Key: `photos/${Date.now()}_${file.name}`,
-            Body: file,
-            ContentType: file.type,
-            ContentDisposition: 'attachment',
-            ACL: 'public-read'
-          }, function(err, data) {
-            if (err) return error('Something went wrong')
+    initFilePond()
+    initFlickityCarousel()
 
-            $('input[name=image-url]').val(data.Location)
+    function initFilePond () {
+        FilePond.registerPlugin(FilePondPluginFileValidateType);
+        FilePond.registerPlugin(FilePondPluginImagePreview);
+        FilePond.registerPlugin(FilePondPluginFileValidateSize);
+        FilePond.create(
+                document.querySelector('#upload-image'),
+                {
+                    acceptedFileTypes: ['image/*'],
+                    maxFileSize: '10MB',
+                    credits: false,
+                    labelIdle: 'Drag & Drop your image or <span class="filepond--label-action"> Browse </span>',
+                    server: {
+                        process: function (fieldName, file, metadata, load, error, progress, abort) {
+                            // upload image to s3
+                            s3.upload({
+                                Key: `photos/${Date.now()}_${file.name}`,
+                                Body: file,
+                                ContentType: file.type,
+                                ContentDisposition: 'attachment',
+                                ACL: 'public-read'
+                            }, function(err, data) {
+                                if (err) return error('Something went wrong')
 
-            load(data.Key);
-          });
-        }
-      }
+                                $('input[name=image-url]').val(data.Location)
+
+                                load(data.Key);
+                            });
+                        }
+                    }
+                }
+        );
     }
-  );
 
-    $('.slidercontainer').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        fade: true,
-        asNavFor: '.multiple-items'
-    });
-    $('.multiple-items').slick({
-        slidesToShow: 2.3,
-        slidesToScroll: 2.4,
-        arrows: true,
-        asNavFor: '.slidercontainer',
-        centerMode: true,
-        focusOnSelect: true
-    });
-
-    // var countDown = document.getElementById("countDownPortrait")
-
-    // setInterval(function () {
-    //     if (qtyPortraits == 0) {
-    //         countDown.innerHTML = "0"
-    //     } else {
-    //         qtyPortraits--;
-    //         if (qtyPortraits == 0) {
-    //             qtyPortraits = 50;
-    //         }
-
-    //         countDown.innerHTML = qtyPortraits;
-    //     }
-    // }, 60000 * 60 * 4);
+    function initFlickityCarousel () {
+        $('.carousel-main').flickity({ pageDots: false });
+        $('.carousel-nav').flickity({ asNavFor: '.carousel-main', contain: true, pageDots: false, prevNextButtons: false });
+    }
 
     // dynamic counter
-
     var x = 0;
 
     setInterval(function () {

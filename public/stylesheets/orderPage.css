@@ -74,8 +74,6 @@
 .subwrap1 .wrap-item {
     position: relative;
     float: right;
-    box-shadow: 0 0 20px 10px;
-    color: #fff;
 }
 
 .subwrap1 .item1 {
@@ -589,4 +587,34 @@
     #cart .cart-item .cart-info .cart-details-container .cart-details {
         font-size: 0.8em;
     }
+}
+
+/* Gallery Carousel using Flickity */
+.carousel-cell {
+    width: 100%;
+    height: 460px;
+    margin-right: 10px;
+    border-radius: 5px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.carousel-nav .carousel-cell {
+    height: 100px;
+    width: 100px;
+}
+
+.carousel-nav .carousel-cell {
+    opacity: 0.5;
+}
+
+.carousel-nav .carousel-cell.is-nav-selected {
+    opacity: 1;
+}
+
+.flickity-prev-next-button {
+    width: 30px;
+    height: 30px;
 }
