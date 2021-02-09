@@ -61,3 +61,15 @@
 
 }
 
+#faq-content {
+    font-family: Montserrat, sans-serif;
+}
+
+#faq-content .faq-question {
+    font-size: 1rem;
+}
+
+#faq-content .faq-answer {
+    font-size: 0.8rem;
+    padding-left: 10px;
+}
