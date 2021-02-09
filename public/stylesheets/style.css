@@ -309,7 +309,7 @@ la {
 }
 
 footer {
-    background-color: #482020;
+    background-color: var(--dark-pink);
 }
 
 /*header*/
@@ -454,9 +454,13 @@ footer
     text-decoration: none;
     font-weight: 400;
     line-height: 1.5;
-    background-color: #482020;
     color: #fff;
     margin: 30px;
+}
+
+.footer-copyright {
+    color: white;
+    padding: 20px 0;
 }
 
 .footer__inner {
@@ -574,6 +578,10 @@ footer
     font-family: hellofreeday, sans-serif;
     font-size: 2rem;
     color: var(--dark-pink);
+}
+
+.font-montserrat {
+    font-family: Montserrat, sans-serif;
 }
 
 @media(max-width: 1200px) {
