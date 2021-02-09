@@ -314,22 +314,31 @@ footer {
 
 /*header*/
 .header {
-    background-color: #FFD8FE;
+    background-color: var(--pink);
     width: 100%;
-    max-height: 140px;
-    line-height: 125px;
-    padding: 0 15px;
+    padding: 15px 0;
 }
 
 .header a {
     text-decoration: none;
 }
 
-#navLinks {
-    width: 40%;
-    display: inline-block;
-    vertical-align: middle;
-    float: left;
+.header .home-page-link img {
+    position: relative;
+    height: 60px;
+    width: auto;
+}
+
+#navLinks > .navlink + .navlink {
+    margin-left: 10px ;
+}
+
+#navLinks > .navlink {
+    color: var(--dark-pink);
+    font-family: Montserrat, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+
 }
 
 #navlink {
@@ -362,7 +371,6 @@ footer {
 #navlinkCart {
     color: #6A57A4;
     font-size: 22px;
-    margin: 3px 5px;
     padding: 20px 0;
 
 }
@@ -411,7 +419,8 @@ footer {
     display: none;
     background: none;
     border: 0;
-    padding: 9px 2px;
+    padding: 0;
+    margin: 0;
     cursor: pointer;
 }
 
@@ -637,11 +646,10 @@ footer
         flex-direction: column;
         position: absolute;
         width: 100%;
-        top: 130px;
         left: 0;
         margin: 0;
         padding-bottom: 1px;
-        background-color: #7b66b6;
+        background-color: var(--pink);
         display: none;
         z-index: 1;
     }
@@ -674,17 +682,8 @@ footer
         line-height: 50px;
     }
 
-
-
-    .navlink:hover {
-        background-color: #CCD4D4;
-    }
-
-
     .burger {
-        display: inline-block;
-        width: 10%;
-        vertical-align: middle;
+        display: block;
     }
 
 
@@ -818,11 +817,6 @@ footer
         display: block;
     }
 
-    .header {
-        padding: 0 5px;
-        line-height: 100px;
-    }
-
     .userSign {
         display: none
     }
@@ -856,9 +850,12 @@ footer
     }
 
     #navLinks {
-        top: 92px;
+        top: 0;
     }
 
+    #navLinks > .navlink {
+        margin: 10px 0;
+    }
 
     #navLinksManagment {
         padding: 0 0;
@@ -953,8 +950,9 @@ footer
         width: 70%;
     }
 
-    .logot {
-        width: 190px;
+    .header .home-page-link img {
+        width: 200px;
+        height: auto;
     }
 
 
@@ -983,12 +981,15 @@ footer
         bottom: 10px;
     }
 
-    .burger {
-        padding: 10px 2px 0 2px;
-    }
-
     .orderDetailsInProgress {
         display: block;
     }
 
+}
+
+@media(max-width: 376px) {
+    .header .home-page-link img {
+        width: 180px;
+        height: auto;
+    }
 }
