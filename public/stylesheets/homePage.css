@@ -100,6 +100,9 @@
     position: relative;
 }
 
+.home-page .wrap-item2 {
+    margin-bottom: 30px;
+}
 
 
 @media (max-width: 2000px) {

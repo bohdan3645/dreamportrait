@@ -53,7 +53,7 @@
 
 
 @media(max-width: 1200px) {
-   
+
     .reviewsAdmin {
     width: 80%;
     margin: 0 auto;
@@ -78,9 +78,7 @@
     .reviewsAdmin {
     width: 95%;
 }
-.reviewsHeader {
-    font-size: 26px;
-}
+
 .star-rating {
     height: 25px;
 }
@@ -96,15 +94,6 @@
     margin: 15px 0;
     width: 100%;
 
-}
-.reviewsHeader {
-    font-size: 20px;
-}
-}
-
-@media(max-width: 685px) {
-.reviewsHeader {
-    font-size: 18px;
 }
 }
 

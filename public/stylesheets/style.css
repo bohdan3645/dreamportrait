@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+/* color vars */
+:root {
+    --pink: #FFD8FE;
+    --dark-pink: #6A57A4;
+}
+
 body {
     margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;
@@ -563,6 +569,12 @@ footer
     padding: 10px;
 }
 
+/* helpers */
+.title-hellofreeday {
+    font-family: hellofreeday, sans-serif;
+    font-size: 2rem;
+    color: var(--dark-pink);
+}
 
 @media(max-width: 1200px) {
 
