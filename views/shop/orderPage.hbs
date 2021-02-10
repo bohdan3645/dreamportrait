@@ -1,10 +1,5 @@
-<style>
-    .star-rating {
-        height: 35px;
-        padding: 3px;
-    }
-</style>
-    <div class="order-page">
+
+<div class="order-page">
     <div class="main-wrap">
         <div class="subwrap1">
             <div class="wrap-item item1">
@@ -40,143 +35,143 @@
         <div class="subwrap2">
             <div class="wrap-item item3">
                 <div class="description-of-sale">
-                    <div class="title">Original DreamPortrait art</div>
+                    <div class="title">Original Dream Portrait Art</div>
                     <div class="order-page-rating">
-                    <img class="star-rating" src="/images/filled_star.png" alt="">
-                    <img class="star-rating" src="/images/filled_star.png" alt="">
-                    <img class="star-rating" src="/images/filled_star.png" alt="">
-                    <img class="star-rating" src="/images/filled_star.png" alt="">
-                    <img class="star-rating" src="/images/filled_star.png" alt="">
-                    <span class="reviews-qty">20 reviews</span>
+                        <img class="star-rating" src="/images/filled_star.png"
+                             alt="">
+                        <img class="star-rating" src="/images/filled_star.png"
+                             alt="">
+                        <img class="star-rating" src="/images/filled_star.png"
+                             alt="">
+                        <img class="star-rating" src="/images/filled_star.png"
+                             alt="">
+                        <img class="star-rating" src="/images/filled_star.png"
+                             alt="">
+                        <span class="reviews-qty">20 reviews</span>
                     </div>
                     {{#if hasReviews}}
                         <div style="display: flex; margin: 10px 0">
                             <div>
                                 {{#each averageRating}}
                                     {{# if this }}
-                                        <img class="star-rating" src="/images/filled_star.png" alt="">
+                                        <img class="star-rating"
+                                             src="/images/filled_star.png"
+                                             alt="">
                                     {{else}}
-                                        <img class="star-rating" src="/images/empty_star.png" alt="">
+                                        <img class="star-rating"
+                                             src="/images/empty_star.png"
+                                             alt="">
                                     {{/ if }}
                                 {{/each}}
                             </div>
-                            <div class="reviews-qty">20{{ reviewsAmount }} reviews</div>
+                            <div class="reviews-qty">20{{ reviewsAmount }}
+                                reviews
+                            </div>
                             <!--                    <img style="max-height: 23px" src="/images/stars.png">-->
                         </div>
                     {{/if}}
-                    <hr>
-                    <div class="counter">
-                        <img src="/images/eye.png">
-                        <h6 style="margin:0"><b><span id="demo">17 </span></b> People are currently looking at this product
-                        </h6>
+                    <div class="total-price" id="total-price-page-static">
+                        <del>$98</del><b class="text-danger">$49</b>
                     </div>
-                    <div class="deliver">
-                        <img src="/images/airport.png">
-                        <h6 style="margin:5px 0 0 0"> Estimated delivery time 3-5 days</h6>
-                    </div>
-                    <br>
-                    <div id="total-price-page-static" style="display: flex;">
-                        <!-- <h4 style="padding: 5px 10px 5px 5px">Discount </h4> -->
-                        <h3>
-                            Price:
-                        <del>
-                            98
-                        </del>
-                            <span style="font-size: 22px"> USD</span>
-                        </h3>
-                        <h3 style="color: red; padding-left:10px;"><b> 49 </b>
-                            <span style="font-size: 22px"> USD</span></h3>
-                    </div>
-                    <!-- <h3><b>Only <div id="countDownPortrait">50</div> arts left at this price</b></h3> -->
                 </div>
             </div>
             <div class="wrap-item item4">
-                <h4 class="text-center">PLACE YOUR ORDER IN <b>4</b> STEPS</h4>
+                <div class="order-form">
+                    <div class="title text-center mb-2">PLACE YOUR ORDER IN 4 STEPS</div>
+                    <div class="number-of-people-block">
+                        <div class="sub-title mb-2"><b class="pr-2">1</b>Choose number of people & pets</div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <button data-price="49" data-id="1" class="people-amount-image">1</button>
+                            <button data-price="59" data-id="2" class="people-amount-image">2</button>
+                            <button data-price="69" data-id="3" class="people-amount-image">3</button>
+                            <button data-price="79" data-id="4" class="people-amount-image">4</button>
+                            <button data-price="89" data-id="5" class="people-amount-image">5</button>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <button data-price="99" data-id="6" class="people-amount-image">6</button>
+                            <button data-price="109" data-id="7" class="people-amount-image">7</button>
+                            <button data-price="119" data-id="8" class="people-amount-image">8</button>
+                            <button data-price="129" data-id="9" class="people-amount-image">9</button>
+                            <button data-price="139" data-id="10" class="people-amount-image">10</button>
+                        </div>
+                        <small class="form-text text-danger error-message">required</small>
+                    </div>
+
+                    <div class="background-image-block mt-3">
+                        <div class="sub-title mb-2"><b class="pr-2">2</b>Choose Background</div>
+                        <!-- TODO: rework to gallery-->
+                        <div class="slidercontainerBcgr" style="margin: 15px auto">
+                            <div class="showSlideBcgr">
+                                <img src="/images/12x18 H castle.jpg"/>
+                            </div>
+                            <div class="showSlideBcgr">
+                                <img src="/images/18x12 H beach.jpg"/>
+                            </div>
+                            <div class="showSlideBcgr">
+                                <img src="/images/12x18 H hearts.jpg"/>
+                            </div>
+                            <div class="showSlideBcgr">
+                                <img src="/images/12x18 H starry night.jpg"/>
+                            </div>
+                            <div class="showSlideBcgr">
+                                <img src="/images/12x18 bokeh.jpg"/>
+                            </div>
+                            <div class="showSlideBcgr" style="padding: 30px 0">
+                                <h1 style="text-align:center;">Custom Background<br>+25$</h1>
+                            </div>
+                        </div>
+                        <div class="bcgr-items" style="display: flex; justify-content: space-between;">
+                            <img data-price="0" data-id="14" class="background-image" src="/images/12x18 H castle.jpg"
+                                 name="Castle" width="70" height="70" onclick="currentSlideBcgr(1)">
+                            <img data-price="0" data-id="12" class="background-image" src="/images/18x12 H beach.jpg"
+                                 name="Beach" width="70" height="70" onclick="currentSlideBcgr(2)">
+                            <img data-price="0" data-id="13" class="background-image" src="/images/12x18 H hearts.jpg"
+                                 name="Hearts" width="70" height="70" onclick="currentSlideBcgr(3)">
+                            <img data-price="0" data-id="11" class="background-image" src="/images/12x18 H starry night.jpg"
+                                 name="Starry Night" onclick="currentSlideBcgr(4)">
+                            <img data-price="0" data-id="15" class="background-image" src="/images/12x18 bokeh.jpg"
+                                 name="Bokeh" width="70" height="70" onclick="currentSlideBcgr(5)">
+                            <img data-price="25" data-id="111" name="Custom" class="background-image"
+                                 src="/images/custom.png" onclick="currentSlideBcgr(6)">
+                        </div>
+                        <small class="form-text text-danger error-message">required</small>
+                    </div>
+
+                    <div class="notes-block mt-3">
+                        <div class="sub-title mb-2"><b class="pr-2">3</b>Add notes (eye color, particular accessories, details, special test)</div>
+                        <textarea id="text-in" class="form-control mt-3" maxlength="500" rows="4"></textarea>
+                    </div>
+
+                    <div class="photo-block mt-3">
+                        <div class="sub-title mb-2"><b class="pr-2">4</b>Upload your photo</div>
+                        <div class="mt-3">
+                            <input id="upload-image" type="file" class="filepond" name="filepond">
+                            <input type="text" class="filepond" name="image-url" hidden>
+                        </div>
+                        <small class="form-text text-danger error-message">required</small>
+                    </div>
+
+                    <div class="total-price text-center mt-3">
+                        <del>$98</del><b class="text-danger">$49</b>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <button class="full-btn" id="add-to-cart"><span>ADD TO CART</span></button>
+                    </div>
+                </div>
             </div>
+
             <div class="wrap-item item4">
-                <div class="selected-people-block">
-                    <h5 class="features__title"><b>1.</b> Choose number of people & pets:</h5>
-                    <div style="display: flex; justify-content: space-between;">
-                        <button data-price="49" data-id="1" class="people-amount-image">1</button>
-                        <button data-price="59" data-id="2" class="people-amount-image">2</button>
-                        <button data-price="69" data-id="3" class="people-amount-image">3</button>
-                        <button data-price="79" data-id="4" class="people-amount-image">4</button>
-                        <button data-price="89" data-id="5" class="people-amount-image">5</button>
+                <div class="counter">
+                    <img src="/images/eye.png">
+                    <div class="text">
+                        <b id="demo">17</b>
+                        People are currently looking at this product
                     </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <button data-price="99" data-id="6" class="people-amount-image">6</button>
-                        <button data-price="109" data-id="7" class="people-amount-image">7</button>
-                        <button data-price="119" data-id="8" class="people-amount-image">8</button>
-                        <button data-price="129" data-id="9" class="people-amount-image">9</button>
-                        <button data-price="139" data-id="10" class="people-amount-image">10</button>
-                    </div>
-                    <small class="form-text text-danger error-message">required</small>
                 </div>
-            </div>
-            <div class="wrap-item item5">
-                <div class="background-image-block">
-                    <h5 class="features__title"><b>2.</b> Choose Background:</h5>
-                    <div class="slidercontainerBcgr" style="margin: 15px auto">
-                        <div class="showSlideBcgr">
-                            <img src="/images/12x18 H castle.jpg"/>
-                        </div>
-                        <div class="showSlideBcgr">
-                            <img src="/images/18x12 H beach.jpg"/>
-                        </div>
-                        <div class="showSlideBcgr">
-                            <img src="/images/12x18 H hearts.jpg"/>
-                        </div>
-                        <div class="showSlideBcgr">
-                            <img src="/images/12x18 H starry night.jpg"/>
-                        </div>
-                        <div class="showSlideBcgr">
-                            <img src="/images/12x18 bokeh.jpg"/>
-                        </div>
-                        <div class="showSlideBcgr" style="padding: 30px 0">
-                            <h1 style="text-align:center;">Custom Background<br>+25$</h1>
-                        </div>
-                    </div>
-                    <div class="bcgr-items" style="display: flex; justify-content: space-between;">
-                        <img data-price="0" data-id="14" class="background-image" src="/images/12x18 H castle.jpg"
-                             name="Castle" width="70" height="70" onclick="currentSlideBcgr(1)">
-                        <img data-price="0" data-id="12" class="background-image" src="/images/18x12 H beach.jpg"
-                             name="Beach" width="70" height="70" onclick="currentSlideBcgr(2)">
-                        <img data-price="0" data-id="13" class="background-image" src="/images/12x18 H hearts.jpg"
-                             name="Hearts" width="70" height="70" onclick="currentSlideBcgr(3)">
-                        <img data-price="0" data-id="11" class="background-image" src="/images/12x18 H starry night.jpg"
-                             name="Starry Night" onclick="currentSlideBcgr(4)">
-                        <img data-price="0" data-id="15" class="background-image" src="/images/12x18 bokeh.jpg"
-                             name="Bokeh" width="70" height="70" onclick="currentSlideBcgr(5)">
-                        <img data-price="25" data-id="111" name="Custom" class="background-image"
-                             src="/images/custom.png" onclick="currentSlideBcgr(6)">
-                    </div>
-                    <small class="form-text text-danger error-message">required</small>
-                </div>
-            </div>
-            <div class="wrap-item item6">
-                <div class="notes-block">
-                    <h5 class="features__title">
-                        <b>3.</b> Add notes (eye color, particular accessories, details, special test):
-                    </h5>
-                    <textarea id="text-in" class="form-control mt-3" maxlength="500" rows="4"></textarea>
-                    <p id="demo"></p>
-                </div>
-            </div>
-
-
-            <div class="wrap-item item7">
-                <div class="photo-block">
-                    <h5 class="features__title"><b>4.</b> Upload your photo</h5>
-                    <div class="mt-3">
-                        <input id="upload-image" type="file" class="filepond" name="filepond">
-                        <input type="text" class="filepond" name="image-url" hidden>
-                    </div>
-                    <small class="form-text text-danger error-message">required</small>
-                </div>
-            </div>
-            <div class="wrap-item item8" style="text-align: center;">
-                <div>
-                    <button class="full-btn" id="add-to-cart"><span>ADD TO CART</span></button>
+                <div class="deliver">
+                    <img src="/images/airport.png">
+                    <div class="text"> Estimated delivery time 3-5 days</div>
                 </div>
             </div>
 
@@ -318,7 +313,7 @@
     addToCart.addEventListener('click', function (event) {
         // validations
         if (!selectedPeopleAmount || !selectedBakcground || !getImageURL()) {
-            $('.selected-people-block .error-message').toggle(!selectedPeopleAmount)
+            $('.number-of-people-block .error-message').toggle(!selectedPeopleAmount)
             $('.background-image-block .error-message').toggle(!selectedBakcground)
             $('.photo-block .error-message').toggle(!getImageURL())
             return false
@@ -404,7 +399,7 @@
         var totalPricePage = peoplePricePage + backgroundPricePage;
 
         if (selectedPeopleAmount.price != null) {
-            document.getElementById('total-price-page-static').innerHTML = '<h3>Price: <del>' + totalPricePage * 2 + ' ' + '</h3><span style="font-size: 22px">USD</span></del>' + ' <h3 style="color:red; padding-left:10px;"><b>' + totalPricePage + ' ' + '</b><span style="font-size: 22px">USD</span></h3>';
+            $('.total-price').html(`<del>$${totalPricePage * 2}</del><b class="text-danger">$${totalPricePage}</b>`)
         }
     }
 

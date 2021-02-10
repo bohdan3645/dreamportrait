@@ -1,8 +1,20 @@
 .order-page {
     width: 100%;
     display: inline-block;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Montserrat, Helveticatitle, sans-serif;
+}
 
+.order-page .title {
+    font-size: 1.25rem;
+    color: var(--dark-pink);
+}
+
+.order-page .sub-title {
+    font-size: 1rem;
+}
+
+.order-page .text {
+    font-size: 0.8rem;
 }
 
 .order-page #text-in {
@@ -90,22 +102,18 @@
 }
 
 .description-of-sale .title {
-    font-family: hellofreeday;
-    font-size: 20px;
+    border-bottom: 2px solid var(--dark-pink);
 }
 
-.counter {
+.counter, .deliver {
     display: flex;
+    align-items: center;
 }
 
 .counter img {
     width: 20px;
     height: 13px;
     margin: 5px 10px;
-}
-
-.deliver {
-    display: flex;
 }
 
 .deliver img {
@@ -133,13 +141,13 @@
     padding: 0;
     font-size: 40px;
     line-height: 12px;
-    font-family: hellofreeday;
+    font-family: hellofreeday, sans-serif;
     margin: 3px 5px;
     overflow: hidden;
     cursor: pointer;
     border-radius: 50%;
-    border-color: #fff;
-    border: 3px solid #D5AEA2;
+    border: 2px solid var(--circle-border);
+    background: transparent;
     transition: border .1s;
     outline: none;
 }
@@ -149,53 +157,54 @@
     background-color: #f1f0ef;
 }
 
-
-
-.people-amount-image:hover {
-    border: 4px solid #000;
+.people-amount-image:hover, .background-image:hover {
+    border: 2px solid var(--dark-pink);
 }
-
-
 
 .people-amount-image h3 {
     border: none;
 }
 
-.background-image:hover {
-    border: 4px solid #000;
-}
-
-
 .background-image {
     width: 60px;
     height: 60px;
     padding: 0;
-    font-family: hellofreeday;
+    font-family: hellofreeday, sans-serif;
     margin: 3px 0;
     cursor: pointer;
     overflow: hidden;
     border-radius: 50%;
-    border: 3px solid #D5AEA2;
+    border: 2px solid var(--circle-border);
     transition: border .1s;
 }
 
 .people-amount-image-clicked {
-    border: 4px solid #000;
+    border: 3px solid var(--dark-pink);
     font-size: 40px;
     text-align: center;
 }
 
-.reviews-qty {
-    font-size: 22px;
-    margin-left: 5px;
-    vertical-align: bottom;
+.order-page-rating {
+    margin: 10px auto;
+    display: flex;
+    align-self: center;
 }
 
-.order-page-rating{
-    margin: 10px auto;
+.order-page-rating .star-rating {
+    height: 20px
 }
-.subwrap1 .wrap-item .star-rating {
-    height: 32px;
+
+.order-page-rating .reviews-qty {
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+.total-price b {
+    padding-left: 10px;
+}
+
+.order-page .order-form .title {
+    font-size: 1.5rem;
 }
 
 .custom-background-img {
