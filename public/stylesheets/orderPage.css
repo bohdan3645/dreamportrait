@@ -43,6 +43,16 @@
     font-size: 1rem;
 }
 
+.order-page .filepond--drop-label {
+    border: 2px solid var(--dark-pink);
+    border-radius: 0.5rem;
+}
+
+.order-page .filepond--label-action {
+    text-decoration: none;
+    color: var(--dark-pink);
+}
+
 .error-message {
     display: none;
 }
