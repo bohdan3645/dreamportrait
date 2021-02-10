@@ -414,10 +414,6 @@
         padding: 0;
     }
 
-    .subwrap1 .item1 {
-        margin: 0 auto;
-    }
-
     .main-wrap {
         width: 100%;
     }
@@ -435,15 +431,6 @@
 
     .container-with-photos {
         box-shadow: none;
-    }
-
-    .subwrap1 .item1 {
-        margin: 0;
-    }
-
-    .subwrap1 .item2 {
-        margin: 0;
-        margin-bottom: 20px;
     }
 
     .showSlide img {
