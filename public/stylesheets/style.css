@@ -594,6 +594,26 @@ footer
     font-family: Montserrat, sans-serif;
 }
 
+.font-size-08 {
+    font-size: 0.8rem!important;
+}
+
+.font-size-1 {
+    font-size: 1rem!important;
+}
+
+.font-size-125 {
+    font-size: 1.25rem!important;
+}
+
+.font-size-15 {
+    font-size: 1.5rem!important;
+}
+
+.font-size-175 {
+    font-size: 1.75rem!important;
+}
+
 @media(max-width: 1200px) {
 
     .logoHead {

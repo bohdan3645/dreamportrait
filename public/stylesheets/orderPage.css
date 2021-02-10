@@ -22,8 +22,7 @@
 }
 
 .order-page .info-section .info-section-title {
-    font-family: hellofreeday;
-    color: #6A57A4;
+    font-size: 1.25rem;
 }
 
 .order-page .info-section .info-section-image {
@@ -37,10 +36,10 @@
     height: auto;
 }
 
-.order-page .info-section>p {
+.order-page .info-section > p {
     font-weight: normal;
     line-height: 1.3rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .order-page .filepond--drop-label {
