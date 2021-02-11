@@ -81,7 +81,7 @@
                     <div class="number-of-people-block">
                         <div class="sub-title mb-2"><b class="pr-2">1</b>Choose number of people & pets</div>
                         <div style="display: flex; justify-content: space-between;">
-                            <button data-price="49" data-id="1" class="people-amount-image">1</button>
+                            <button data-price="49" data-id="1" class="people-amount-image people-amount-image-clicked">1</button>
                             <button data-price="59" data-id="2" class="people-amount-image">2</button>
                             <button data-price="69" data-id="3" class="people-amount-image">3</button>
                             <button data-price="79" data-id="4" class="people-amount-image">4</button>
@@ -99,40 +99,21 @@
 
                     <div class="background-image-block mt-3">
                         <div class="sub-title mb-2"><b class="pr-2">2</b>Choose Background</div>
-                        <!-- TODO: rework to gallery-->
-                        <div class="slidercontainerBcgr" style="margin: 15px auto">
-                            <div class="showSlideBcgr">
-                                <img src="/images/12x18 H castle.jpg"/>
-                            </div>
-                            <div class="showSlideBcgr">
-                                <img src="/images/18x12 H beach.jpg"/>
-                            </div>
-                            <div class="showSlideBcgr">
-                                <img src="/images/12x18 H hearts.jpg"/>
-                            </div>
-                            <div class="showSlideBcgr">
-                                <img src="/images/12x18 H starry night.jpg"/>
-                            </div>
-                            <div class="showSlideBcgr">
-                                <img src="/images/12x18 bokeh.jpg"/>
-                            </div>
-                            <div class="showSlideBcgr" style="padding: 30px 0">
-                                <h1 style="text-align:center;">Custom Background<br>+25$</h1>
-                            </div>
+                        <div class="carousel background-carousel-main my-2">
+                            <div class="carousel-cell" id="castle" style="background-image: url('/images/12x18 H castle.jpg')"></div>
+                            <div class="carousel-cell" id="beach" style="background-image: url('/images/18x12 H beach.jpg')"></div>
+                            <div class="carousel-cell" id="hearts" style="background-image: url('/images/12x18 H hearts.jpg')"></div>
+                            <div class="carousel-cell" id="staryNight" style="background-image: url('/images/12x18 H starry night.jpg')"></div>
+                            <div class="carousel-cell" id="bokeh" style="background-image: url('/images/12x18 bokeh.jpg')"></div>
+                            <div class="carousel-cell" id="custom">+25$</div>
                         </div>
-                        <div class="bcgr-items" style="display: flex; justify-content: space-between;">
-                            <img data-price="0" data-id="14" class="background-image" src="/images/12x18 H castle.jpg"
-                                 name="Castle" width="70" height="70" onclick="currentSlideBcgr(1)">
-                            <img data-price="0" data-id="12" class="background-image" src="/images/18x12 H beach.jpg"
-                                 name="Beach" width="70" height="70" onclick="currentSlideBcgr(2)">
-                            <img data-price="0" data-id="13" class="background-image" src="/images/12x18 H hearts.jpg"
-                                 name="Hearts" width="70" height="70" onclick="currentSlideBcgr(3)">
-                            <img data-price="0" data-id="11" class="background-image" src="/images/12x18 H starry night.jpg"
-                                 name="Starry Night" onclick="currentSlideBcgr(4)">
-                            <img data-price="0" data-id="15" class="background-image" src="/images/12x18 bokeh.jpg"
-                                 name="Bokeh" width="70" height="70" onclick="currentSlideBcgr(5)">
-                            <img data-price="25" data-id="111" name="Custom" class="background-image"
-                                 src="/images/custom.png" onclick="currentSlideBcgr(6)">
+                        <div class="carousel background-carousel-nav my-2">
+                            <div class="carousel-cell is-nav-selected" data-price="0" data-id="14" data-name="Castle" style="background-image: url('/images/12x18 H castle.jpg')"></div>
+                            <div class="carousel-cell" data-price="0" data-id="12" data-name="Beach" style="background-image: url('/images/18x12 H beach.jpg')"></div>
+                            <div class="carousel-cell" data-price="0" data-id="13" data-name="Hearts" style="background-image: url('/images/12x18 H hearts.jpg')"></div>
+                            <div class="carousel-cell" data-price="0" data-id="11" data-name="Starry Night" style="background-image: url('/images/12x18 H starry night.jpg')"></div>
+                            <div class="carousel-cell" data-price="0" data-id="15" data-name="Bokeh" style="background-image: url('/images/12x18 bokeh.jpg')"></div>
+                            <div class="carousel-cell" data-price="25" data-id="111" data-name="Custom" style="background-image: url('/images/custom.png')"></div>
                         </div>
                         <small class="form-text text-danger error-message">required</small>
                     </div>
@@ -257,6 +238,9 @@
     function initFlickityCarousel () {
         $('.carousel-main').flickity({ pageDots: false });
         $('.carousel-nav').flickity({ asNavFor: '.carousel-main', contain: true, pageDots: false, prevNextButtons: false });
+
+        $('.background-carousel-main').flickity({ pageDots: false, prevNextButtons: false });
+        $('.background-carousel-nav').flickity({ asNavFor: '.background-carousel-main', contain: true, pageDots: false, prevNextButtons: false, groupCells: true });
     }
 
     // dynamic counter
@@ -270,41 +254,11 @@
     // dynamic counter
 </script>
 <script>
-    // slider for bacground
-    var slide_index_bcgr = 1;
-    displaySlidesBcgr(slide_index_bcgr);
-
-    function nextSlideBcgr(h) {
-        displaySlidesBcgr(slide_index_bcgr += h);
-    }
-
-    function currentSlideBcgr(h) {
-        displaySlidesBcgr(slide_index_bcgr = h);
-    }
-
-
-    function displaySlidesBcgr(h) {
-        var y;
-        var slidesBcgr = document.getElementsByClassName("showSlideBcgr");
-        if (h > slidesBcgr.length) {
-            slide_index_bcgr = 1
-        }
-        if (h < 1) {
-            slide_index_bcgr = slidesBcgr.length
-        }
-        for (y = 0; y < slidesBcgr.length; y++) {
-            slidesBcgr[y].style.display = "none";
-        }
-        slidesBcgr[slide_index_bcgr - 1].style.display = "block";
-    }
-
-    // slider for bacground
-
     // =============================
 
     // order data variables
-    var selectedPeopleAmount = null;
-    var selectedBakcground = null;
+    var selectedPeopleAmount = getSelectedPeopleData();
+    var selectedBakcground = getBackgroundData();
     var wishesText = null;
     // order data variables
 
@@ -345,30 +299,19 @@
       return $('input[name=image-url]').val()
     }
 
-
-    var backgroundImage = document.getElementsByClassName("background-image");
-
-    for (var i = 0; i < backgroundImage.length; i++) {
-        backgroundImage[i].addEventListener('click', function (event) {
-            for (var j = 0; j < backgroundImage.length; j++) {
-                backgroundImage[j].className = "background-image";
-            }
-
-            var price = Number(event.target.getAttribute('data-price'));
-            var id = event.target.getAttribute('data-id');
-            var name = event.target.getAttribute('name');
-
-            event.target.className += " people-amount-image-clicked";
-
-            selectedBakcground = {
-                id: id,
-                price: price,
-                name: name
-            };
-            priceForAll();
-
-        });
+    function getBackgroundData () {
+      return $('.background-carousel-nav .is-nav-selected').data()
     }
+
+    function getSelectedPeopleData () {
+      return $('.number-of-people-block .people-amount-image-clicked').data()
+    }
+
+
+    $('.background-carousel-nav .carousel-cell').click(e => {
+        selectedBakcground = getBackgroundData()
+        priceForAll()
+    })
 
 
     var peopleAmountImages = document.getElementsByClassName("people-amount-image");
@@ -395,6 +338,7 @@
 
 
     var priceForAll = () => {
+        console.log(selectedBakcground)
         var peoplePricePage = selectedPeopleAmount ? selectedPeopleAmount.price : 0;
         var backgroundPricePage = selectedBakcground ? selectedBakcground.price : 0;
 

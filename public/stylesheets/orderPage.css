@@ -166,7 +166,7 @@
     background-color: #f1f0ef;
 }
 
-.people-amount-image:hover, .background-image:hover {
+.people-amount-image:hover:not(.people-amount-image-clicked) {
     border: 2px solid var(--dark-pink);
 }
 
@@ -622,4 +622,36 @@
 .flickity-prev-next-button {
     width: 30px;
     height: 30px;
+}
+
+.background-carousel-main .carousel-cell  {
+    height: 260px;
+}
+
+.background-carousel-main .carousel-cell#custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--dark-pink);
+}
+
+.background-carousel-nav .carousel-cell {
+    width: 60px;
+    height: 60px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    text-decoration: none;
+    border: 2px solid var(--circle-border);
+    transition: border .1s;
+}
+
+.background-carousel-nav .carousel-cell:hover:not(.is-nav-selected) {
+    border: 2px solid var(--dark-pink);
+}
+
+.background-carousel-nav .carousel-cell.is-nav-selected  {
+    border: 3px solid var(--dark-pink);
 }
