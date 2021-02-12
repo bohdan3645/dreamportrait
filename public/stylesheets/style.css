@@ -885,6 +885,10 @@ footer
         margin: 10px 0;
     }
 
+    #navLinks > .navlink + .navlink {
+        margin-left: 0;
+    }
+
     #navLinksManagment {
         padding: 0 0;
     }

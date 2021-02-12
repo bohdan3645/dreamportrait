@@ -236,11 +236,25 @@
     }
 
     function initFlickityCarousel () {
-        $('.carousel-main').flickity({ pageDots: false });
-        $('.carousel-nav').flickity({ asNavFor: '.carousel-main', contain: true, pageDots: false, prevNextButtons: false });
+        $('.carousel-main').flickity({ pageDots: false })
+        $('.carousel-nav').flickity({
+            asNavFor: '.carousel-main',
+            contain: true,
+            pageDots: false,
+            prevNextButtons: false
+        })
 
-        $('.background-carousel-main').flickity({ pageDots: false, prevNextButtons: false });
-        $('.background-carousel-nav').flickity({ asNavFor: '.background-carousel-main', contain: true, pageDots: false, prevNextButtons: false, groupCells: true });
+        $('.background-carousel-main').flickity({
+            pageDots: false,
+            prevNextButtons: false
+        })
+        $('.background-carousel-nav').flickity({
+            asNavFor: '.background-carousel-main',
+            contain: true,
+            pageDots: false,
+            prevNextButtons: false,
+            groupCells: true
+        })
     }
 
     // dynamic counter
@@ -250,10 +264,6 @@
         var x = Math.floor((Math.random() * 7) + 15);
         document.getElementById("demo").innerHTML = x;
     }, 6000);
-
-    // dynamic counter
-</script>
-<script>
     // =============================
 
     // order data variables
@@ -308,7 +318,7 @@
     }
 
 
-    $('.background-carousel-nav .carousel-cell').click(e => {
+    $('.background-carousel-main').on('change.flickity', e => {
         selectedBakcground = getBackgroundData()
         priceForAll()
     })
@@ -338,7 +348,6 @@
 
 
     var priceForAll = () => {
-        console.log(selectedBakcground)
         var peoplePricePage = selectedPeopleAmount ? selectedPeopleAmount.price : 0;
         var backgroundPricePage = selectedBakcground ? selectedBakcground.price : 0;
 
