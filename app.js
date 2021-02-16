@@ -47,6 +47,7 @@ const reviewForm = require('./routes/reviewForm');
 
 var Order = require('./models/order');
 var Comment = require('./models/comment');
+var Settings = require('./models/settings');
 var productOrder = require('./models/productOrder');
 
 
@@ -130,19 +131,19 @@ function decodeBase64Image(dataString) {
     return response;
 }
 
-app.post('/update-payment-status', (req, res) => {
-    const orderId = req.body.orderId
+app.post('/update-payment-status', async (req, res) => {
+    try {
+        const orderId = req.body.orderId
+        const order = await Order.findByIdAndUpdate(orderId, { isPayed: true })
 
-    Order.findByIdAndUpdate(orderId, { isPayed: true }, (err, order) => {
-        if (err) return res.send(err)
+        await mailer.sendOrderEmail(order)
+        await Settings.useSpot()
 
-        mailer.sendOrderEmail(order)
-          .then(_ => res.send('ok'))
-          .catch(err => {
-              console.error(err)
-              res.send(err)
-          })
-    })
+        res.send('ok')
+    } catch (err) {
+        console.error(err)
+        res.send(err)
+    }
 })
 
 app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
