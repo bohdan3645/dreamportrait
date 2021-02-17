@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var productOrder = require('./productOrder').schema;
 
 var schema =  new Schema ({
 	firstName: { type: String, default: true },
