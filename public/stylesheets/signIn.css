@@ -1,5 +1,5 @@
  .authenticate-content {
-     
+
  }
 
  .authenticate-form {
@@ -19,12 +19,6 @@
      font-family: MidnightConstellations;
      font-size: 42px;
      margin: 13px;
- }
-
- .form-control {
-     border-radius: 0;
-     border: none;
-     height: 50px;
  }
 
  .auth-form-btn {
@@ -70,7 +64,7 @@
  }
 
  @media(max-width: 1200px) {
-    
+
  }
 
  @media(max-width: 770px) {
@@ -91,7 +85,7 @@
          padding: 10px
      }
 
-     
+
      .auth-form-btn{
      	height: 40px;
     }

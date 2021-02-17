@@ -97,4 +97,12 @@ router.get('/', checkIsInRole('admin'), function (req, res, next) {
   })
 })
 
+router.get('/review', checkIsInRole('admin'), (req, res, next) => {
+  res.render('admin/review')
+})
+
+router.post('/review', checkIsInRole('admin'), (req, res, next) => {
+  res.send(req.body)
+})
+
 module.exports = router;

@@ -19,6 +19,11 @@
                         <span id="qtyCart" class="badge badge-light">0</span>
                     </svg>
                 </a>
+                {{# if login }}
+                    <a class="navlink" href="/admin-page" title="Admin page">
+                        <i class="fas fa-user-cog"></i>
+                    </a>
+                {{/if}}
             </div>
         </div>
         <div class="row">
@@ -36,7 +41,7 @@
 
     <div>
         <!-- unused, do we need this? -->
-        {{# if login }}
+        <!--{{# if login }}
             <a class="navlink userSign" id="navlink" href="/user/profile/"
                data-scroll="#USER"><i class="fas fa-user"
                                       style="font-size: 30px"></i></a>
@@ -44,8 +49,8 @@
             <a class="navlink userWord" id="navlinkUser" href="/user/profile/"
                data-scroll="#USER">USER</a>
         {{ else }}
-            <!--            <a class="navlink" id="navlinkSignIn" href="/user/signin/" data-scroll="#SIGN IN">SIGN IN</a>-->
-        {{/if}}
+            &lt;!&ndash;            <a class="navlink" id="navlinkSignIn" href="/user/signin/" data-scroll="#SIGN IN">SIGN IN</a>&ndash;&gt;
+        {{/if}}-->
     </div>
 </div>
 

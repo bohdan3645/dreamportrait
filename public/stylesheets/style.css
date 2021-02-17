@@ -352,6 +352,12 @@ footer {
     margin: 0 6px;
 }
 
+.navlink > .fas, .navlink > .far {
+    font-size: 1.3rem;
+    color: var(--dark-pink);
+    margin-left: 5px;
+}
+
 #navlinkSignIn {
     color: #6A57A4;
     font-size: 22px;

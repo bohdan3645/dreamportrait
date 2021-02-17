@@ -16,6 +16,10 @@
     margin: 25px auto;
 }
 
+.reviews-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
 
 .review-column{
     width: 33%;
@@ -25,7 +29,7 @@
 
 .card{
     width: 285px;
-    margin: 40px 15px;
+    margin: 15px;
     padding: 10px;
     vertical-align: top;
 }

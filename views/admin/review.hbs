@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row my-3">
+        <div class="col-6 offset-3 ">
+            <h3 class="text-center my-3">Create Review</h3>
+            <form name="create-review" action="/admin-page/review" method="post">
+                <div class="form-group">
+                    <label for="customerName">Customer Name *</label>
+                    <input name="customerName" type="text" class="form-control" id="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="rate">Rate *</label>
+                    <select name="rate" class="form-control" id="rate" required>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option selected>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="custom-file">
+                        <input name="imageUrl" type="file" class="custom-file-input" id="imageUrl" required>
+                        <label class="custom-file-label" for="imageUrl">Choose image...</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="body">Text *</label>
+                    <textarea name="body" class="form-control" id="body" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
