@@ -1,0 +1,11 @@
+#admin-page .filepond--drop-label {
+    color: var(--primary);
+}
+
+#admin-page .filepond--label-action {
+    text-decoration-color: var(--primary);
+}
+
+#admin-page .filepond--panel-root {
+    background-color: white;
+}

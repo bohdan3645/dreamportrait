@@ -19,7 +19,7 @@ const isAdmin = (roles, user) => {
 
 /* GET reviews page. */
 router.get('/', async function (req, res, next) {
-    const reviews = (await Review.find().sort({ createdAt: 1 })).map(r => r.toJSON())
+    const reviews = (await Review.find().sort({ createdAt: -1 })).map(r => r.toJSON())
 
     Order.find({}, function (err, orders) {
         if (err) {

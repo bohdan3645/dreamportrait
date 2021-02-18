@@ -7,6 +7,8 @@ const nodemailer = require('nodemailer');
 const {sendEmail} = require("../helper");
 const fs = require('fs');
 
+const mongoose = require('mongoose');
+
 const moment = require('moment');
 
 const isAdmin = (roles, user) => {
@@ -101,8 +103,22 @@ router.get('/review', checkIsInRole('admin'), (req, res, next) => {
   res.render('admin/review')
 })
 
-router.post('/review', checkIsInRole('admin'), (req, res, next) => {
-  res.send(req.body)
+router.post('/review', checkIsInRole('admin'), async (req, res, next) => {
+  const Review = mongoose.model('Review')
+  const {
+    customerName,
+    rate,
+    imageUrl,
+    body,
+  } = req.body
+
+  try {
+    await Review.create({ customerName, rate, imageUrl, body, fake: true })
+    res.redirect('/admin-page')
+  } catch (err) {
+    console.error(err)
+    res.send(err)
+  }
 })
 
 module.exports = router;

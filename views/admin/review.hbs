@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="admin-page">
     <div class="row my-3">
         <div class="col-6 offset-3 ">
             <h3 class="text-center my-3">Create Review</h3>
@@ -18,10 +18,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <div class="custom-file">
-                        <input name="imageUrl" type="file" class="custom-file-input" id="imageUrl" required>
-                        <label class="custom-file-label" for="imageUrl">Choose image...</label>
-                    </div>
+                    <input id="upload-review-image" type="file" class="filepond" name="filepond" required>
+                    <input type="text" class="filepond" name="imageUrl" hidden>
                 </div>
                 <div class="form-group">
                     <label for="body">Text *</label>
@@ -32,3 +30,38 @@
         </div>
     </div>
 </div>
+
+<script>
+    (function initFilePond () {
+        FilePond.registerPlugin(FilePondPluginFileValidateType);
+        FilePond.registerPlugin(FilePondPluginImagePreview);
+        FilePond.registerPlugin(FilePondPluginFileValidateSize);
+        FilePond.create(
+            document.querySelector('#upload-review-image'),
+            {
+                acceptedFileTypes: ['image/*'],
+                maxFileSize: '10MB',
+                credits: false,
+                labelIdle: '<span class="filepond--label-action">Upload Photo</span>',
+                server: {
+                    process: function (fieldName, file, metadata, load, error, progress, abort) {
+                        // upload image to s3
+                        s3.upload({
+                            Key: `photos/reviews/${Date.now()}_${file.name}`,
+                            Body: file,
+                            ContentType: file.type,
+                            ContentDisposition: 'attachment',
+                            ACL: 'public-read'
+                        }, function(err, data) {
+                            if (err) return error('Something went wrong')
+
+                            $('input[name=imageUrl]').val(data.Location)
+
+                            load(data.Key);
+                        });
+                    }
+                }
+            }
+        );
+    })()
+</script>
