@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const express = require('express')
 const logger = require('morgan');
 const expressHbs = require('express-handlebars');
+const hbsHelpers = require('./config/handlebars_helpers');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
@@ -62,7 +63,7 @@ const ObjectId = require("mongoose");
 
 
 // view engine hbs setup
-app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
+app.engine('.hbs', expressHbs({ defaultLayout: 'layout', extname: '.hbs', helpers: hbsHelpers }));
 app.set('view engine', '.hbs');
 // view engine hbs setup
 

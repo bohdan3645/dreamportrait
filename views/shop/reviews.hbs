@@ -36,14 +36,7 @@
                         <img src="{{this.imageUrl}}" class="card-img-top" alt="Review Art Image">
                         <div class="card-body">
                             <h5 class="card-title">{{this.customerName}}</h5>
-                            <div>
-                                <!-- TODO: add stars -->
-                                <img class="star-rating" src="/images/filled_star.png" alt="Review Rating ating star">
-                                <img class="star-rating" src="/images/filled_star.png" alt="Review Rating ating star">
-                                <img class="star-rating" src="/images/filled_star.png" alt="Review Rating ating star">
-                                <img class="star-rating" src="/images/filled_star.png" alt="Review Rating ating star">
-                                <img class="star-rating" src="/images/filled_star.png" alt="Review Rating ating star">
-                            </div>
+                            {{ stars this.rate }}
                             <p class="card-text">{{this.body}}</p>
                         </div>
                     </div>
