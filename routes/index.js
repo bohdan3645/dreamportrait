@@ -3,11 +3,18 @@ const router = express.Router();
 
 //order
 const Order = require('../models/order');
+const Review = require('../models/review');
 
-router.get('/', function(req, res, next) {
+router.get('/', async (req, res, next) => {
+	const reviews = (await Review.find().sort({ createdAt: -1 })).map(r => r.toJSON())
+
  Order.find(function(err, docs) {
-   res.render('shop/homePage', { title: 'Dream Portrait', orders: docs });
-  });	
+   res.render('shop/homePage', {
+   	 title: 'Dream Portrait',
+		 orders: docs,
+		 reviews
+   });
+  });
 });
 //order
 router.get('/cart-page/:id', function(req, res, next) {

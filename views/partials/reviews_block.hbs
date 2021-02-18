@@ -1,0 +1,12 @@
+<div class="reviews-wrapper">
+    {{#each reviews}}
+        <div class="card">
+            <img src="{{this.imageUrl}}" class="card-img-top" alt="Review Art Image">
+            <div class="card-body">
+                <h5 class="card-title">{{this.customerName}}</h5>
+                {{ stars this.rate }}
+                <p class="card-text">{{this.body}}</p>
+            </div>
+        </div>
+    {{/each}}
+</div>

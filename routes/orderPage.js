@@ -2,10 +2,12 @@ var express = require('express');
 var router = express.Router();
 var Order = require('../models/order');
 var Settings = require('../models/settings');
+var Review = require('../models/review');
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
     const settings = await Settings.getSettings()
+    const reviews = (await Review.find().sort({ createdAt: -1 })).map(r => r.toJSON())
 
     Order.find({}, function (err, orders) {
         if (err) {
@@ -25,14 +27,14 @@ router.get('/', async function (req, res, next) {
                 ratingList.push(i < averageRating);
             }
 
-            // console.log(settings)
             res.render('shop/orderPage', {
                 title: 'Dream Portrait',
                 products: products.filter(product => product.comment.isVisible),
                 hasReviews: reviewsAmount > 0,
                 reviewsAmount: reviewsAmount,
                 averageRating: ratingList,
-                spots: settings.spots
+                spots: settings.spots,
+                reviews
             });
         }
     })

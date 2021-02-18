@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var Order = require('../models/order');
+const Review = require('../models/review');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async (req, res, next) => {
+  const reviews = (await Review.find().sort({ createdAt: -1 })).map(r => r.toJSON())
+
    Order.find({}, function (err, orders) {
       if (err) {
          console.log(err);
@@ -32,8 +35,9 @@ router.get('/', function(req, res, next) {
              });
 
          res.render('shop/homePage', {
-            title: 'Dream Portrait',
-            products: products.filter(product => product.comment.isVisible),
+           title: 'Dream Portrait',
+           products: products.filter(product => product.comment.isVisible),
+           reviews
             // isAdmin: isAdmin(["admin"], req.user)
          });
       }
