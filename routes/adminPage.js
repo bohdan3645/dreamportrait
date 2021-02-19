@@ -121,4 +121,18 @@ router.post('/review', checkIsInRole('admin'), async (req, res, next) => {
   }
 })
 
+router.delete('/review/:id', checkIsInRole('admin'), async (req, res, next) => {
+  const Review = mongoose.model('Review')
+
+  try {
+    const _id = ObjectId(req.params.id)
+    await Review.findOneAndRemove({ _id })
+
+    res.send({ ok: 1 })
+  } catch (err) {
+    console.error(err)
+    res.send(err)
+  }
+})
+
 module.exports = router;

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@' + process.env.MONGOCLASTER + '?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://' + process.env.MONGOUSER + ':' + process.env.MONGOPASSWORD + '@' + process.env.MONGOCLASTER + '?retryWrites=true&w=majority');
 var Comment = require('../models/comment');
 var Order = require('../models/order');
 var ObjectId = require('mongodb').ObjectID;
@@ -52,7 +52,6 @@ router.get('/', async function (req, res, next) {
             res.render('shop/reviews', {
                 title: 'Dream Portrait',
                 products: products.filter(product => product.comment.isVisible),
-                isAdmin: isAdmin(["admin"], req.user),
                 reviews
             });
         }

@@ -6,7 +6,32 @@
                 <h5 class="card-title">{{this.customerName}}</h5>
                 {{ stars this.rate }}
                 <p class="card-text">{{this.body}}</p>
+                {{#if ../isAdmin}}
+                    <button class="btn btn-outline-danger btn-sm remove-review" title="Visible only for admin" data-id="{{_id}}">Delete</button>
+                {{/if}}
             </div>
         </div>
     {{/each}}
 </div>
+
+<script>
+    (function () {
+      $('.remove-review').click(e => {
+        e.preventDefault();
+        const { id } = $(e.target).data()
+
+        if (!confirm('Are you sure you want to remove this review?')) {
+          return;
+        }
+
+        $.ajax({
+          method: 'DELETE',
+          url: `/admin-page/review/${id}`
+        }).done(function() {
+          location.reload();
+        }).fail(function(err) {
+          alert(err);
+        })
+      })
+    })()
+</script>

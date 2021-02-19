@@ -38,7 +38,6 @@ router.get('/', async (req, res, next) => {
            title: 'Dream Portrait',
            products: products.filter(product => product.comment.isVisible),
            reviews
-            // isAdmin: isAdmin(["admin"], req.user)
          });
       }
    })

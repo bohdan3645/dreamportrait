@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
+const { removeObject } = require('../services/s3')
 
 const schema = new Schema(
   {
@@ -14,5 +15,13 @@ const schema = new Schema(
     timestamps: true
   }
 )
+
+schema.post('findOneAndRemove', async function (doc) {
+  try {
+    await removeObject(doc.imageUrl)
+  } catch (err) {
+    console.error('Error on Review post #findOneAndRemove:', err)
+  }
+});
 
 module.exports = mongoose.model('Review', schema)
