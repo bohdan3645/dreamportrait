@@ -144,7 +144,6 @@ function disconnect () {
 
 function connect () {
 	const { MONGODB_URI, MONGOUSER, MONGOPASSWORD } = process.env
-	console.log(MONGODB_URI)
 	const url = MONGODB_URI || `mongodb+srv://${MONGOUSER}:${MONGOPASSWORD}@cluster0.gdpfy.mongodb.net/test?retryWrites=true&w=majority`
 
 	mongoose.connect(url);

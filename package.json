@@ -8,6 +8,7 @@
   "dependencies": {
     "@popperjs/core": "^2.5.3",
     "atob": "^2.1.2",
+    "aws-sdk": "^2.847.0",
     "bcrypt": "^5.0.0",
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
