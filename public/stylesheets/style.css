@@ -5,6 +5,7 @@
     --pink: #FFD8FE;
     --dark-pink: #6A57A4;
     --circle-border: #D5AEA2;
+    --btn-pink: #FF007d;
 }
 
 body {
@@ -250,6 +251,21 @@ la {
     width: 320px;
     position: absolute;
     z-index: 3;
+}
+
+.get-cartoon-btn {
+    color: white;
+    background-color: var(--btn-pink);
+    border-color: var(--btn-pink);
+    font-family: hellofreeday, sans-serif;
+    font-size: 1.5rem;
+    padding: 0.5rem 3rem;
+}
+
+.get-cartoon-btn:focus, .get-cartoon-btn:hover, .get-cartoon-btn:active {
+    color: white;
+    background-color: var(--btn-pink);
+    border-color: var(--btn-pink);
 }
 
 .btn_home:hover {
@@ -627,6 +643,15 @@ footer .social-media-block a:hover {
     font-size: 1.75rem!important;
 }
 
+.show-mobile {
+    display: none !important;
+}
+
+.hide-mobile {
+    display: block !important;
+}
+
+
 @media(max-width: 1200px) {
 
     .logoHead {
@@ -827,6 +852,13 @@ footer
 }
 
 @media (max-width: 768px) {
+    .show-mobile {
+        display: block !important;
+    }
+
+    .hide-mobile {
+        display: none !important;
+    }
 
     .slick-next,
     .slick-arrow {
@@ -970,7 +1002,6 @@ footer
 }
 
 @media(max-width: 460px) {
-
     .cartPageVisual h2 {
         font-size: 25px;
         margin: 10px 0;

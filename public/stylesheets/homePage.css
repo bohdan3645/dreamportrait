@@ -1,5 +1,6 @@
 .home-page {
     width: 100%;
+    font-family: Montserrat, Helveticatitle, sans-serif;
 }
 
 .wrap-item1 {
@@ -44,8 +45,6 @@
     clear: both;
     text-align: center;
     margin-bottom: 100px;
-    background-color: rgba(255, 255, 255, .4);
-    padding: 30px;
 }
 
 .wrap-item2 h2 {
@@ -87,13 +86,6 @@
 
 .wrap-item2 .description {
     margin-bottom: 40px;
-}
-
-.wrap-item2 p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.2px;
-    word-spacing: 6px;
 }
 
 .wrap-item2 button {
@@ -168,9 +160,22 @@
         width: 100%;
     }
 
-    .wrap-item-icons .wrap-item-icon {
+    .wrap-item-icons {
+        display: flex;
         width: 100%;
-        margin-bottom: 30px;
+        position: relative;
+    }
+
+    .wrap-item-icons .wrap-item-icon {
+        min-width: auto;
+        width: 33%;
+        font-size: 0.6rem;
+    }
+
+
+    .wrap-item-icons .wrap-item-icon img {
+        width: 100px;
+        height: auto;
     }
 
     .wrap-item1 button {
@@ -205,10 +210,6 @@
 }
 
 @media(max-width: 460px) {
-    .wrap-item2 {
-        padding: 10px;
-    }
-
     .wrap-item2 p {
         word-spacing: 1px;
     }
