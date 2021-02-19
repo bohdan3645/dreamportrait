@@ -34,6 +34,7 @@ router.get('/', async function (req, res, next) {
                 reviewsAmount: reviewsAmount,
                 averageRating: ratingList,
                 spots: settings.spots,
+                reviewsCount: reviews.length,
                 reviews
             });
         }
