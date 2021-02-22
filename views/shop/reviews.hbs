@@ -1,10 +1,19 @@
 <div class="reviewsContent">
     <div class="reviews">
         <div class="reviewsAdmin">
-            <h2>
+            <h2 class="my-3">
                 HERE YOU CAN READ SOME REVIEWS FROM OUR CUSTOMERS
             </h2>
-            <hr>
+            <div>
+                <div class="rating-sum my-2 d-flex justify-content-center align-items-center">
+                    <img class="star-rating" src="/images/filled_star.png" alt="">
+                    <img class="star-rating" src="/images/filled_star.png" alt="">
+                    <img class="star-rating" src="/images/filled_star.png" alt="">
+                    <img class="star-rating" src="/images/filled_star.png" alt="">
+                    <img class="star-rating" src="/images/filled_star.png" alt="">
+                    <span class="reviews-qty">{{ reviewsCount }} reviews</span>
+                </div>
+            </div>
             {{#each products}}
             <div class="card">
                 <img src="{{artImage}}" class="card-img-top" alt="Review Art Image">

@@ -37,6 +37,7 @@ router.get('/', async (req, res, next) => {
          res.render('shop/homePage', {
            title: 'Dream Portrait',
            products: products.filter(product => product.comment.isVisible),
+           reviewsCount: reviews.length,
            reviews
          });
       }

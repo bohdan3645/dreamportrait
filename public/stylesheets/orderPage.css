@@ -193,17 +193,18 @@
     text-align: center;
 }
 
-.order-page-rating {
+.order-page-rating, .rating-sum {
     margin: 10px auto;
     display: flex;
     align-self: center;
 }
 
-.order-page-rating .star-rating {
-    height: 20px
+.order-page-rating .star-rating, .rating-sum .star-rating {
+    height: 20px;
+    width: 20px;
 }
 
-.order-page-rating .reviews-qty {
+.order-page-rating .reviews-qty, .rating-sum .reviews-qty {
     font-size: 1rem;
     margin-left: 5px;
 }
@@ -399,10 +400,6 @@
 }
 
 @media(max-width: 992px) {
-
-    .order-page .subwrap2 {
-        padding: 0;
-    }
 
     .main-wrap {
         width: 70%;

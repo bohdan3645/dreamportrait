@@ -999,6 +999,11 @@ footer
         top: 285px;
     }
 
+    .reviews-wrapper .star-rating,
+    .rating-sum .star-rating {
+        height: 30px;
+        width: 30px;
+    }
 }
 
 @media(max-width: 460px) {

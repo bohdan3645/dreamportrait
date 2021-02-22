@@ -37,16 +37,11 @@
                 <div class="description-of-sale">
                     <div class="title">Original Dream Portrait Art</div>
                     <div class="order-page-rating">
-                        <img class="star-rating" src="/images/filled_star.png"
-                             alt="">
-                        <img class="star-rating" src="/images/filled_star.png"
-                             alt="">
-                        <img class="star-rating" src="/images/filled_star.png"
-                             alt="">
-                        <img class="star-rating" src="/images/filled_star.png"
-                             alt="">
-                        <img class="star-rating" src="/images/filled_star.png"
-                             alt="">
+                        <img class="star-rating" src="/images/filled_star.png" alt="">
+                        <img class="star-rating" src="/images/filled_star.png" alt="">
+                        <img class="star-rating" src="/images/filled_star.png" alt="">
+                        <img class="star-rating" src="/images/filled_star.png" alt="">
+                        <img class="star-rating" src="/images/filled_star.png" alt="">
                         <span class="reviews-qty">{{ reviewsCount }} reviews</span>
                     </div>
                     {{#if hasReviews}}
@@ -204,8 +199,14 @@
 
     <div class="reviewsContent">
         <h2 class="title-hellofreeday text-center">HAPPY CUSTOMERS</h2>
-        <hr style="width: 70%; margin: 25px auto;">
-
+        <div class="rating-sum my-2 d-flex justify-content-center align-items-center">
+            <img class="star-rating" src="/images/filled_star.png" alt="">
+            <img class="star-rating" src="/images/filled_star.png" alt="">
+            <img class="star-rating" src="/images/filled_star.png" alt="">
+            <img class="star-rating" src="/images/filled_star.png" alt="">
+            <img class="star-rating" src="/images/filled_star.png" alt="">
+            <span class="reviews-qty">{{ reviewsCount }} reviews</span>
+        </div>
         <div class="reviews">
             <div class="reviewsAdmin">
                 {{> reviews_block }}

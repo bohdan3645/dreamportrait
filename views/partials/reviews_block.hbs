@@ -3,7 +3,10 @@
         <div class="card">
             <img src="{{this.imageUrl}}" class="card-img-top" alt="Review Art Image">
             <div class="card-body">
-                <h5 class="card-title">{{this.customerName}}</h5>
+                <h5 class="card-title mb-1">
+                    <b>{{this.customerName}}</b>
+                    <i class="fas fa-check-circle"></i>
+                </h5>
                 {{ stars this.rate }}
                 <p class="card-text">{{this.body}}</p>
                 {{#if ../isAdmin}}

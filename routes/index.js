@@ -12,6 +12,7 @@ router.get('/', async (req, res, next) => {
    res.render('shop/homePage', {
    	 title: 'Dream Portrait',
 		 orders: docs,
+		 reviewsCount: reviews.length,
 		 reviews
    });
   });

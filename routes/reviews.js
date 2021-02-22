@@ -52,6 +52,7 @@ router.get('/', async function (req, res, next) {
             res.render('shop/reviews', {
                 title: 'Dream Portrait',
                 products: products.filter(product => product.comment.isVisible),
+                reviewsCount: reviews.length,
                 reviews
             });
         }
