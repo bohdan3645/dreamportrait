@@ -15,11 +15,17 @@
     text-align: center;
 }
 
+
 .reviews-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content:center;
 }
+
+.reviews-wrapper .card {
+    display: none;
+}
+
 
 .reviews-wrapper .fa-check-circle {
     color: black;
@@ -30,6 +36,11 @@
 .reviews-wrapper .star-rating {
     height: 20px;
     width: 20px;
+}
+
+.reviews #show-more {
+    position: relative;
+    width: 100%;
 }
 
 .review-column{

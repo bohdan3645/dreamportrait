@@ -1,6 +1,6 @@
 <div class="reviews-wrapper">
     {{#each reviews}}
-        <div class="card">
+        <div class="card" data-id="{{@index}}">
             <img src="{{this.imageUrl}}" class="card-img-top" alt="Review Art Image">
             <div class="card-body">
                 <h5 class="card-title mb-1">
@@ -16,9 +16,49 @@
         </div>
     {{/each}}
 </div>
+<div class="d-flex justify-content-center mb-3 mx-3">
+    <button id="show-more" class="btn btn-outline-info btn-lg btn-dark-pink" title="Show more reviews">Show more</button>
+</div>
 
 <script>
-    (function () {
+  (function () {
+    const DEFAULT_PAGINATION = Number({{ pagination }}) || 6
+
+    showCarts()
+    initRemoveListener()
+    initShowMoreListener()
+
+    //  show first 6 elemens
+    function showCarts(index) {
+      window.lastVisibleCardIndex = window.lastVisibleCardIndex || 0
+      index = index || DEFAULT_PAGINATION;
+
+      $('.reviews-wrapper .card').each((i, el) => {
+        if (i === index) return false
+
+        lastVisibleCardIndex = i + 1
+        $(el).show()
+      })
+    }
+
+    function initShowMoreListener () {
+      $('#show-more').click(e => {
+        lastVisibleCardIndex += DEFAULT_PAGINATION
+        showCarts(lastVisibleCardIndex)
+        hideShowMoreIfFull()
+      })
+    }
+
+    function hideShowMoreIfFull () {
+      const visibleCards = $('.reviews-wrapper .card:visible').length
+      const allCards = $('.reviews-wrapper .card').length
+
+      if (visibleCards === allCards) {
+        $('#show-more').hide()
+      }
+    }
+
+    function initRemoveListener () {
       $('.remove-review').click(e => {
         e.preventDefault();
         const { id } = $(e.target).data()
@@ -36,5 +76,6 @@
           alert(err);
         })
       })
-    })()
+    }
+  })()
 </script>
