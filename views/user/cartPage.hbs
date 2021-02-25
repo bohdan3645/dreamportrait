@@ -180,7 +180,7 @@
                             body: JSON.stringify({orderId: res.orderId})
                         }).then(() => {
                             localStorage.clear();
-                            //window.location = '/';
+                            window.location.assign('/order-page');
                         });
                     };
                     wayforpay.run({
