@@ -1,3 +1,16 @@
+.success-page {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+.success-page a {
+    color: var(--dark-pink);
+}
+
+.success-page a:hover {
+    color: var(--dark-pink);
+}
+
 .successContent{
 	width: 40%;
     margin: 0 auto;
