@@ -224,18 +224,17 @@ la {
 .primary-btn1 {
     color: white;
     background-color: #FF007d;
-    font-family: hellofreeday;
+    font-family: hellofreeday, sans-serif;
     font-size: 30px;
     box-shadow: 0 0 15px 15px white;
     border: none;
     border-radius: 7px;
     text-align: center;
-    line-height: 80px;
-    width: 320px;
-    position: absolute;
     z-index: 3;
-    left: 15%;
-    transform: translateY(-300%);
+    padding: 5px 20px;
+    position: absolute;
+    bottom: 30%;
+    left: 12%;
 }
 
 .primary-btn2 {
@@ -811,7 +810,29 @@ footer
     }
 }
 
+/* 4k */
+@media(max-width: 2560px) {
+    .primary-btn1 {
+        bottom: 35%;
+        left: 15%;
+    }
+}
 
+/* Laptop L */
+@media(max-width: 1440px) {
+    .primary-btn1 {
+        bottom: 30%;
+        left: 12%;
+    }
+}
+
+/* Tablet */
+@media(max-width: 1024px) {
+    .primary-btn1 {
+        left: 10%;
+        bottom: 25%;
+    }
+}
 
 @media(max-width: 992px) {
 
