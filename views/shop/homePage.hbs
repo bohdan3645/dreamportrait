@@ -39,8 +39,38 @@
     <a href="/order-page/" class="btn btn-primary btn-lg get-cartoon-btn my-3">GET MY CARTOON</a>
 </div>
 
-<div class="container text-center mb-3">
-    <div class="row">
+<div class="container text-center">
+    <div class="row mb-3">
+        <div class="col">
+            <div id="demo-images">
+                <a href="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/1.jpg">
+                    <img src="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/1.jpg" alt="demo image" />
+                </a>
+                <a href="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/2.jpg">
+                    <img src="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/2.jpg" alt="demo image" />
+                </a>
+                <a href="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/3.jpg">
+                    <img src="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/3.jpg" alt="demo image" />
+                </a>
+                <a href="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/4.jpg">
+                    <img src="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/4.jpg" alt="demo image" />
+                </a>
+                <a href="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/5.jpg">
+                    <img src="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/5.jpg" alt="demo image" />
+                </a>
+                <a href="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/6.jpg">
+                    <img src="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/6.jpg" alt="demo image" />
+                </a>
+                <a href="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/7.jpg">
+                    <img src="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/7.jpg" alt="demo image" />
+                </a>
+                <a href="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/8.jpg">
+                    <img src="https://dream-portrait.s3.eu-central-1.amazonaws.com/photos/demo-images/8.jpg" alt="demo image" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
         <div class="col">
             <iframe class="sample-video" src="https://www.youtube.com/embed/TLtnyamAJbc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -99,5 +129,17 @@
                 item.style.backgroundImage = `url(${item.dataset.src})`;
         };
     });
+})();
+
+(() => {
+    //Init blueimp gallery
+    document.getElementById('demo-images').onclick = function (event) {
+        event = event || window.event
+        var target = event.target || event.srcElement
+        var link = target.src ? target.parentNode : target
+        var options = { index: link, event: event }
+        var links = this.getElementsByTagName('a')
+        blueimp.Gallery(links, options)
+    }
 })();
 </script>

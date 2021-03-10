@@ -103,6 +103,26 @@
     height: 400px;
 }
 
+#demo-images {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#demo-images > a {
+    position: relative;
+    padding: 10px;
+}
+
+#demo-images > a > img {
+    position: relative;
+    width: 250px;
+    height: auto
+}
+
 @media (max-width: 2000px) {
     .wrap-item1 button {
         left: 14%;
