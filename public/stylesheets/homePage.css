@@ -199,7 +199,13 @@
 
 @media(max-width: 425px) {
     .sample-video {
+        width: 100%;
+        padding: 0 10px;
         height: 200px;
+    }
+
+    #demo-images > a > img {
+        width: 100%;
     }
 }
 
