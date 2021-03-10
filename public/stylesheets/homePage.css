@@ -124,8 +124,6 @@
         transform: translateY(-230%);
     }}
 
-}
-
 @media(max-width: 992px) {
     .wrap-item1 button {
         left: 12%;

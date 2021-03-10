@@ -305,7 +305,7 @@ la {
 
 .full-btn {
     width: 340px;
-    height: 60;
+    max-width: 100%;
     background-color: #4FC478;
     border: none;
     color: #FFFFFF;
