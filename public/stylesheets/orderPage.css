@@ -161,16 +161,39 @@
     outline: none;
 }
 
+.format-block .format-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 25%;
+    border: 2px solid var(--circle-border);
+    background: transparent;
+    transition: border .1s;
+    outline: none;
+}
+
 .order-page #text-in {
     border-radius: 10px;
     background-color: #f1f0ef;
 }
 
-.people-amount-image:hover:not(.people-amount-image-clicked) {
+.people-amount-image:hover:not(.people-amount-image-clicked),
+.format-item:hover:not(.format-item-clicked) {
     border: 2px solid var(--dark-pink);
 }
 
-.people-amount-image h3 {
+.format-block .format-item.format-item-clicked {
+    border: 3px solid var(--dark-pink);
+}
+
+people-amount-image h3 {
     border: none;
 }
 
