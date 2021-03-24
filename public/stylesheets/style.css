@@ -253,12 +253,18 @@ la {
 }
 
 .get-cartoon-btn {
+    width: 22rem;
+    border-radius: 28px/20px;
+    height: 40px;
     color: white;
     background-color: var(--btn-pink);
     border-color: var(--btn-pink);
-    font-family: hellofreeday, sans-serif;
-    font-size: 1.5rem;
-    padding: 0.5rem 3rem;
+    /*font-family: hellofreeday, sans-serif;*/
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 0.2rem 3rem;
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
 }
 
 .get-cartoon-btn:focus, .get-cartoon-btn:hover, .get-cartoon-btn:active {
@@ -670,6 +676,10 @@ footer .social-media-block a:hover {
     display: block !important;
 }
 
+.hide-mobile-example {
+    display: flex;
+}
+
 
 @media(max-width: 1200px) {
 
@@ -897,7 +907,15 @@ footer
         display: block !important;
     }
 
+    .show-mobile-flex {
+        display: flex !important;
+    }
+
     .hide-mobile {
+        display: none !important;
+    }
+
+    .hide-mobile-example {
         display: none !important;
     }
 
