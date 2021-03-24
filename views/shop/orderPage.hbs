@@ -92,18 +92,18 @@
                     <div class="format-block">
                         <div class="sub-title mb-2"><b class="pr-2">1</b>Choose format</div>
                         <div style="display: flex; justify-content: space-between;" class="mb-2">
-                            <button data-id="1" class="format-item format-item-clicked font-weight-bold font-size-125">DIGITAL</button>
-                            <button data-price="50" data-id="2" class="format-item">
+                            <button data-type="digital" class="format-item format-item-clicked font-weight-bold font-size-125">DIGITAL</button>
+                            <button data-price="50" data-type="canvas-18" class="format-item">
                                 <span class="font-weight-bold">canvas</span>
                                 <span class="font-size-125 font-weight-bold">18" x 12"</span>
                                 <span>45 x 30cm</span>
                             </button>
-                            <button data-price="70" data-id="3" class="format-item">
+                            <button data-price="70" data-type="canvas-24" class="format-item">
                                 <span class="font-weight-bold">canvas</span>
                                 <span class="font-size-125 font-weight-bold">24" x 16"</span>
                                 <span>60 x 40cm</span>
                             </button>
-                            <button data-price="110" data-id="4" class="format-item">
+                            <button data-price="110" data-type="canvas-36" class="format-item">
                                 <span class="font-weight-bold">canvas</span>
                                 <span class="font-size-125 font-weight-bold">36" x 24"</span>
                                 <span>90 x 60cm</span>
@@ -324,9 +324,9 @@
     // order data variables
     var selectedPeopleAmount = getSelectedPeopleData();
     var selectedBakcground = getBackgroundData();
+    var format = getFormatData();
     var wishesText = null;
     // order data variables
-
 
     var addToCart = document.getElementById('add-to-cart');
     var textIn = document.getElementById('text-in');
@@ -350,7 +350,8 @@
             selectedPeople: selectedPeopleAmount,
             selectedBakcground: selectedBakcground,
             wishesText: wishesText,
-            imageUrl: getImageURL()
+            imageUrl: getImageURL(),
+            format: format
         });
 
         localStorage.setItem("cart", JSON.stringify(localStorageCart));
@@ -372,10 +373,21 @@
       return $('.number-of-people-block .people-amount-image-clicked').data()
     }
 
+    function getFormatData () {
+      return $('.format-block .format-item-clicked').data()
+    }
+
 
     $('.background-carousel-main').on('change.flickity', e => {
-        selectedBakcground = getBackgroundData()
-        priceForAll()
+      selectedBakcground = getBackgroundData()
+      priceForAll()
+    })
+
+    $('.format-block .format-item').click(e => {
+      $('.format-block .format-item-clicked').removeClass('format-item-clicked')
+      $(e.target).closest('.format-item').addClass('format-item-clicked')
+      format = getFormatData()
+      priceForAll()
     })
 
 
@@ -405,10 +417,11 @@
     var priceForAll = () => {
         var peoplePricePage = selectedPeopleAmount ? selectedPeopleAmount.price : 0;
         var backgroundPricePage = selectedBakcground ? selectedBakcground.price : 0;
+        var formatPrice = format.price || 0
 
-        var totalPricePage = peoplePricePage + backgroundPricePage;
+        var totalPricePage = peoplePricePage + backgroundPricePage + formatPrice;
 
-        if (selectedPeopleAmount.price != null) {
+        if (selectedPeopleAmount.price || format.price) {
             $('.total-price').html(`<del>$${totalPricePage * 2}</del><b class="text-danger">$${totalPricePage}</b>`)
         }
     }
