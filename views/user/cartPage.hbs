@@ -1,29 +1,105 @@
 <div class="cartContent">
     <div class="cartHead">CART</div>
     <div id="cart"></div>
-    <div class="nextPartOrder">
-        <div class="saveOfOrder">YOU SAVE: <span style="color: red;"><b>50% </b></span>OFF</div>
-        <div class="grandTotal" id="total-price">GRAND TOTAL:</div>
-        <br>
-
+    <div class="container">
         <form id="payment-form">
-            <div class="form-group email-block">
-                <label for="email">Enter your email *</label>
-                <small class="form-text">Your email for us to send your finished digital product to!</small>
-                <input type="email" id="email" class="form-control" required>
-                <small class="form-text text-danger email-error">email is invalid</small>
+            <div class="row">
+                <div class="col-6 offset-6">
+                    <div class="nextPartOrder">
+                        <div class="saveOfOrder">YOU SAVE: <span style="color: red;"><b>50% </b></span>OFF</div>
+                        <div class="grandTotal" id="total-price">GRAND TOTAL:</div>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group email-block">
+                                <label for="email">Enter your email *</label>
+                                <small class="form-text text-muted">Your email for us to send your finished digital product to!</small>
+                                <input type="email" id="email" class="form-control" required>
+                                <small class="form-text text-danger email-error">email is invalid</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="user-form-block">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="first-name">First name *</label>
+                                    <input type="text" name="firstName" class="form-control" id="first-name" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="last-name">Last name *</label>
+                                    <input type="text" name="lastName" class="form-control" id="last-name" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="phone">Phone *</label>
+                                    <input type="text" name="phone" class="form-control" id="phone" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="address1">Address Line 1 *</label>
+                                    <input id="address1" name="address1" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="address2">Address Line 2 (optional)</label>
+                                    <input id="address2" name="address2" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="city">City / Suburb *</label>
+                                    <input id="city" name="city" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="postcode">Postcode *</label>
+                                    <input id="postcode" name="postcode" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="country">Country *</label>
+                                    <select id="country" name="country" class="form-control" required>
+                                        <option>USA</option>
+                                        <option>Ukraine</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="country">State *</label>
+                                    <select id="country" name="country" class="form-control" required>
+                                        <option>Alaska</option>
+                                        <option>California</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 offset-6">
+                            <button id="way-pay-btn" class="full-btn" style="padding: 5px" type="button" onclick="payWay()">
+                                Checkout
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="card-element" style="margin: 20px 0"></div>
-            <div class="sr-field-error" id="card-errors" role="alert"></div>
-            <button id="way-pay-btn" class="full-btn" style="padding: 5px" type="button" onclick="payWay()">
-                Checkout
-            </button>
         </form>
-
-<!--        {{#unless login}}-->
-<!--            <sapan>Plese <a href="/user/signin">Sign in</a> for pay!</sapan>-->
-<!--        {{/unless}}-->
-
     </div>
     <div class="cartPageVisual">
         <hr>
@@ -33,7 +109,6 @@
         </div>
     </div>
 </div>
-
 <script>
     var localStorageCart = JSON.parse(localStorage.getItem("cart"));
 
@@ -49,7 +124,27 @@
 
     localStorage.setItem("cart", JSON.stringify(localStorageCart));
     showCartElement();
+    showUserFormBlock();
 
+    function isCanvasFormat () {
+      try {
+        const type = JSON.parse(localStorage.getItem("cart"))[0].format.type
+
+        return type.startsWith('canvas')
+      } catch (e) {
+        return false
+      }
+    }
+
+    function showUserFormBlock () {
+      if (!isCanvasFormat()) return
+
+      $('#user-form-block').show()
+    }
+
+    function userFormData () {
+      return getFormData($('#payment-form'))
+    }
 
     function getItemTemplate(numPpl, bgName, price, text, image, index) {
         return `
@@ -145,7 +240,7 @@
         for (var m = 0; m < localStorageCart.length; m++) {
             var item = localStorageCart[m];
 
-            order.push({
+            const orderData = {
                 peopleId: item.selectedPeople.id,
                 backgroundName: item.selectedBakcground.name,
                 imageUrl: item.imageUrl,
@@ -153,7 +248,13 @@
                 price: item.selectedPeople.price + item.selectedBakcground.price,
                 formatType: item.format.type,
                 email: getEmailValue()
-            });
+            }
+
+            if (isCanvasFormat()) {
+                orderData.userForm = userFormData()
+            }
+
+            order.push(orderData);
         }
         ;
         //<
