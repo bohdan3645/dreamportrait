@@ -678,6 +678,7 @@ footer .social-media-block a:hover {
 
 .hide-mobile-example {
     display: flex;
+    align-items: center;
 }
 
 
