@@ -3,7 +3,7 @@ textarea {
   width: 340px;
   height: 120px;
   padding: 12px 12px;
-  margin: 3px; 
+  margin: 3px;
 
   font-family: 'Releway', sans-serif;
   border: none;
@@ -12,19 +12,11 @@ textarea {
 }
 input[type="text1"], [type="text2"]{
  padding: 12px 12px;
- width: 166px; 
- height: 40px; 
- margin: 3px 2px; 
- line-height: 28px; 
+ width: 166px;
+ height: 40px;
+ margin: 3px 2px;
+ line-height: 28px;
  border: none;
-}
-input[type="email"]{ 
-  padding: 12px 12px;
-  width: 340px; 
-  height: 40px; 
-  margin: 3px; 
-  line-height: 28px; 
-  border: none;
 }
 
 .contact-us-content h {
@@ -72,16 +64,16 @@ input[type="email"]{
 }
 
 
-input[type="email"]{ 
-  width: 270px; 
-  height: 40px; 
+input[type="email"]{
+  width: 270px;
+  height: 40px;
 }
 textarea {
   width: 270px;
 }
 
 input[type="text1"], [type="text2"]{
- width: 156px; 
- height: 40px; 
+ width: 156px;
+ height: 40px;
 }
 }

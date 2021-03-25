@@ -166,7 +166,7 @@ app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
             const randomText = crypto.randomBytes(50).toString('hex');
             const baseLink = req.protocol + "://" + req.headers.host + '/review-form/';
 
-            return {
+            const product = {
                 selectedBakcground: o.backgroundName,
                 imageUrl: o.imageUrl,
                 selectedPeople: o.peopleId,
@@ -175,8 +175,15 @@ app.post("/create-order", /*upload.single("avatar"),*/ (req, res) => {
                 }),
                 wishesText: o.text,
                 price: o.price,
+                formatType: o.formatType,
                 email: o.email
             }
+
+            if (o.userForm) {
+                product.userData = o.userForm
+            }
+
+            return product
         }),
     });
 
