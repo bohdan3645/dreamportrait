@@ -69,11 +69,20 @@
     })
 
     function isCanvasFormat () {
-      //TODO: check all items for canvas!
       try {
-        const type = JSON.parse(localStorage.getItem("cart"))[0].format.type
+        const items = JSON.parse(localStorage.getItem("cart"))
+        let result = false
 
-        return type.startsWith('canvas')
+        for (let i = 0; i < items.length; i++) {
+          const type = items[i].format.type
+
+          if (type.startsWith('canvas')) {
+            result = true
+            break
+          }
+        }
+
+        return result
       } catch (e) {
         return false
       }
