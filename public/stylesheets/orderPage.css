@@ -65,7 +65,7 @@
     width: 49%;
     display: inline-block;
     vertical-align: top;
-    padding: 10px 10px;
+    padding: 10px 0 10px 10px;
 }
 
 .order-page .subwrap2 {
@@ -705,11 +705,17 @@ people-amount-image h3 {
     margin-bottom: 20px;
 }
 
+@media (min-width: 1200px) {
+    .order-page-tabs {
+        max-width: 967px;
+    }
+}
+
 .orders-green-box {
     background-color: #53b575;
     border-radius: 30px;
     padding: 20px;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 
 .orders-green-box > .container {
