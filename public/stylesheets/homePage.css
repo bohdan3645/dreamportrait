@@ -366,6 +366,16 @@
     #demo-images > a > img {
         width: 100%;
     }
+
+    .format-block .format-item {
+        width: 80px;
+        height: 80px;
+        font-size: 0.8rem;
+    }
+
+    .format-block .format-item .font-weight-bold {
+        font-size: 1rem;
+    }
 }
 
 @media(max-width: 550px) {

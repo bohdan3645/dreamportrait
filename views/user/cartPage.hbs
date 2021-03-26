@@ -28,7 +28,7 @@
                     </div>
                     <div class="row">
                         <div class="col-6 offset-6">
-                            <button id="way-pay-btn" class="full-btn" style="padding: 5px" type="button" onclick="payWay()">
+                            <button id="way-pay-btn" class="full-btn" style="padding: 5px" type="submit" form="payment-form" value="Submit">
                                 Checkout
                             </button>
                         </div>
@@ -62,6 +62,12 @@
     showCartElement();
     showUserFormBlock();
 
+    $('#payment-form').submit(e => {
+      e.preventDefault()
+
+      payWay()
+    })
+
     function isCanvasFormat () {
       //TODO: check all items for canvas!
       try {
@@ -83,7 +89,7 @@
       return getFormData($('#payment-form'))
     }
 
-    function getItemTemplate(numPpl, bgName, price, text, image, index) {
+    function getItemTemplate(numPpl, bgName, price, text, image, format, index) {
         return `
             <div class="cart-item">
                 <div class="cart-photo"></div>
@@ -92,7 +98,8 @@
                     <div class="cart-details-container">
                         <div class="cart-details">
                             Number of people: <b>${numPpl}</b> <br/>
-                            Background: ${bgName} <br/><br/>
+                            Background: ${bgName} <br/>
+                            Format: ${format} <br/><br/>
                             Price: <del>${price * 2} USD</del> <b>${price} USD</b>
                         </div>
                     </div>
@@ -117,17 +124,29 @@
 
         for (var i = 0; i < localStorageCart.length; i++) {
             var item = localStorageCart[i];
-            totalPrice += item.selectedPeople.price;
 
             if (item.selectedBakcground != null) {
-                totalPrice += item.selectedBakcground.price;
+              const formatTitle = getFormatTitle(item?.format?.type)
+              const price = item.selectedPeople.price + item.selectedBakcground.price + (item?.format?.price || 0)
+              totalPrice += price;
 
-                shoppingCart.innerHTML += getItemTemplate(item.selectedPeople.id, item.selectedBakcground.name, item.selectedPeople.price + item.selectedBakcground.price, item.wishesText, item.image, i);
+              shoppingCart.innerHTML += getItemTemplate(item.selectedPeople.id, item.selectedBakcground.name, price, item.wishesText, item.image, formatTitle, i);
             }
 
         }
         var totalPriceElement = document.getElementById('total-price');
         totalPriceElement.innerHTML = 'GRAND TOTAL:<b> $' + totalPrice + ' </b>USD';
+    }
+
+    function getFormatTitle (type) {
+      const TITLES = {
+        'digital': 'Digital',
+        'canvas-18': 'Canvas 18x12 (45x30cm)',
+        'canvas-24': 'Canvas 24x16 (60x40cm)',
+        'canvas-36': 'Canvas 36x24 (90x60cm)',
+      }
+
+      return TITLES[type] || TITLES.digital
     }
 
 
@@ -177,12 +196,13 @@
         for (var m = 0; m < localStorageCart.length; m++) {
             var item = localStorageCart[m];
 
+            const formatPrice = item.format.price || 0
             const orderData = {
                 peopleId: item.selectedPeople.id,
                 backgroundName: item.selectedBakcground.name,
                 imageUrl: item.imageUrl,
                 text: item.wishesText,
-                price: item.selectedPeople.price + item.selectedBakcground.price,
+                price: item.selectedPeople.price + item.selectedBakcground.price + formatPrice,
                 formatType: item.format.type,
                 email: getEmailValue()
             }
