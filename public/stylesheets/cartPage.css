@@ -9,11 +9,15 @@
 }
 
 #payment-form .email-block input {
-    border-radius: 10px;
+    /*border-radius: 10px;*/
 }
 
 #payment-form .email-block .email-info-text {
     margin-top: 0;
+}
+
+#payment-form #user-form-block {
+    display: none;
 }
 
 .cartPageVisual {
@@ -128,16 +132,6 @@
 
 .deleteOrder:focus {
     outline: none;
-}
-
-.nextPartOrder {
-    display: grid;
-    justify-content: flex-end;
-
-}
-
-.nextPartOrder>div {
-    width: 300px;
 }
 
 .saveOfOrder,

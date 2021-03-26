@@ -12,7 +12,19 @@ var schema =  new Schema ({
 	wishesText: {type: String, required: false},
 	price: {type: Number, required: true},
 	comment: {type: Comment.schema, ref: 'comment', default: null},
-	email: { type: Schema.Types.String }
+	email: { type: Schema.Types.String },
+	formatType: { type: Schema.Types.String },
+	userData: {
+		firstName: Schema.Types.String,
+		lastName: Schema.Types.String,
+		phone: Schema.Types.String,
+		address1: Schema.Types.String,
+		address2: Schema.Types.String,
+		city: Schema.Types.String,
+		postcode: Schema.Types.String,
+		country: Schema.Types.String,
+		state: Schema.Types.String,
+	},
 });
 
 
